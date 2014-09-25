@@ -1,3 +1,6 @@
+// TODO RELEASEBLOCKER nur width oder height setzen, wenn w bzw h relativ zu elternelement ist
+
+
 (function($) {  
   $.fn.sticky_enable = function(opts) {
     var parent_selector, sticky_class, z_index, stick_directions, scrollarea_offset;
