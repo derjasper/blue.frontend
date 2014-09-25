@@ -1,0 +1,129 @@
+// menu works with ul only
+
+// TODO make compatible with animations
+
+@mixin menu($type,$opt) {
+    list-style:none;
+    
+    @if $type==horizontal {
+        @include list-level(0,false) {
+            @include list-layout(horizontal);
+        }
+        
+        @include list-level(0,true) {
+            li {
+                position:relative;
+            }
+        }
+        
+        $menuwidth:1;
+        @if map-has-key($opt,submenuwdth) {
+            $menuwidth: map-get($opt,submenuwdth);
+        }
+        
+        @include list-level(1,true) {
+            @include list-layout(vertical);
+            @include container(($menuwidth $menuwidth),auto,absolute);
+            margin:0 !important;
+        }
+        @include list-level(2,true) {
+            // TODO replace with an extension of the container module:
+            top:0;
+            left:$container*$menuwidth;
+        }
+    }
+    @else if $type==vertical {
+        @include list-level(0,true) {
+            @include list-layout(vertical);
+        }
+    }
+    
+    @include list-level(0,true) {
+        @include list-blocklink();
+    }
+    
+    @if map-has-key($opt,strctspac) {
+        @include list-level(1,true) {
+            @include list-structure-spacing(map-get($opt,strctspac));
+        }
+    }
+    
+    @if map-has-key($opt,innrgttr) {
+        @include list-level(0,true) {
+            @include list-gutter(inner,map-get($opt,innrgttr));
+        }
+    }
+    
+    @if map-has-key($opt,outrgttr) {
+        @include list-level(0,true) {
+            @include list-gutter(outer,map-get($opt,outrgttr));
+        }
+    }
+    
+    @if map-has-key($opt,submenutrggr) {
+        @if map-get($opt,submenutrggr)==hover {
+            @include list-level(0,true) {
+                li {
+                    @include trigger("{this}","menu-show",mouseover,on);
+                    @include trigger("{this}","menu-show",mouseout,off);
+                    
+                    & > ul {
+                        @include visibility(hide);
+                    }
+                        
+                    @include bp-triggered("menu-show") {
+                        & > ul {
+                            @include visibility(showblock);
+                        }
+                    }
+                }
+            }
+        }
+        @else if map-get($opt,submenutrggr)==click {            
+            @include list-level(0,true) {
+                & > li {
+                    & > a {
+                        @include trigger("{parent-1}","menu-show",click,toggle);
+                        @include trigger("{parent-1} li","menu-show",click,off);
+                    } 
+                    
+                    & > ul { 
+                        @include visibility(hide);
+                    }
+
+                    @include bp-triggered("menu-show") {
+                        & > ul {
+                            @include visibility(showblock);
+                        }
+                    }
+                }
+            }
+        }
+        @else if map-get($opt,submenutrggr)==click-superfish {
+            // Notice: You may want to add the following code to your stylesheet:
+            // html {
+            //     @include trigger("[path to your menu] li","menu-show",click,off,-1);
+            // }
+            
+            @include list-level(0,true) {
+                & > li {
+                    & > a {
+                        @include trigger("{parent-3}","menu-show",click,on);
+                        @include trigger("{parent-1}","menu-show",click,toggle);
+                        @include trigger("{parent-1} li","menu-show",click,off);
+                    } 
+                    
+                    & > ul { 
+                        @include visibility(hide);
+                    }
+
+                    @include bp-triggered("menu-show") {
+                        & > ul {
+                            @include visibility(showblock);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+.toggle {
+    @include offcanvas-toggle(".offcanvas");
+}
+
+.offcanvas {
+    @include offcanvas();
+}

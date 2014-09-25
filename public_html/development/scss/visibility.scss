@@ -1,0 +1,26 @@
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+div {
+    background: green;
+    @include container();
+}
+
+.c1 {
+    @include visibility(hide);
+}
+
+.c2 {
+    @include visibility(invisible);
+}
+
+.c3 {
+    @include visibility(show);
+}
+
+.c4 {
+    @include visibility(showblock);
+}
+
+.c5 {
+    @include visibility(hidecontent);
+}

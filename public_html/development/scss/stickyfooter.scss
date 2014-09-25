@@ -1,0 +1,7 @@
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+.stickyfooter {
+    background:gray;
+    
+    @include stickyfooter();
+}

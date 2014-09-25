@@ -1,0 +1,12 @@
+@mixin smoothscrolling($time:1000) {
+    @include customrule(smoothscrolling, (time: $time));
+}
+
+@mixin scrollareaoffset($offset) {
+    @include customrule(scrollareaoffset, (offset: $offset));
+    
+    display: block;
+    position: relative;
+    top: -$offset;
+    visibility: hidden;
+}

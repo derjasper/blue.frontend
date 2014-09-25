@@ -1,0 +1,58 @@
+/*! blueleaf */
+*, *:before, *:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-size: 100%; }
+
+html {
+  position: relative; }
+
+.container {
+  display: block;
+  position: relative;
+  *zoom: 1;
+  margin-left: auto;
+  margin-right: auto; }
+  .container:before, .container:after {
+    content: "";
+    display: table; }
+  .container:after {
+    clear: both; }
+
+div {
+  background: green;
+  display: block;
+  position: relative;
+  *zoom: 1;
+  margin-left: auto;
+  margin-right: auto; }
+  div:before, div:after {
+    content: "";
+    display: table; }
+  div:after {
+    clear: both; }
+
+.c1 {
+  display: none; }
+
+.c2 {
+  visibility: hidden; }
+
+.c3 {
+  display: initial;
+  visibility: visible; }
+
+.c4 {
+  display: block;
+  visibility: visible; }
+
+.c5 {
+  text-indent: -99999999px; }
+
+/*# sourceMappingURL=visibility.css.map */

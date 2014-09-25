@@ -1,0 +1,34 @@
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+div {
+    height:5rem;
+}
+.color-up {
+    @include bp(s) { // corresponds to bp(s,up)
+        background:red;
+    }
+    @include bp(m) {
+        background:green;
+    }
+    @include bp(l) {
+        background:blue;
+    }
+}
+.color-only {
+    @include bp(m,onl) {
+        background:red;
+    }
+}
+.color-down {
+    @include bp(m,down) {
+        background:green;
+    }
+}
+.color-o {
+    @include bp-o(landscape) {
+        background:orange;
+    }
+    @include bp-o(portrait) {
+        background:turquoise;
+    }
+}

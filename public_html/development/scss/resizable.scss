@@ -1,0 +1,25 @@
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+div {
+    width:100px;
+    height:100px;
+    background:darkgreen;
+}
+
+.resizable {
+    @include resizable();
+    
+    @include bp-resizing() {
+        background:green;
+    }
+}
+
+.resize-hide {
+    @include resizable("hidecontent"); // class can be customized
+    
+    @include bp-resizing("hidecontent") {
+        * {
+            @include visibility(hide);
+        }
+    }
+}

@@ -1,0 +1,74 @@
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+div > div {
+    border:0.5em black solid;
+}
+
+.c1 {
+    @include container();
+    
+    div {
+        @include col(4);
+    }
+}
+
+.c2 {
+    @include container();
+    
+    div {
+        @include col(4);
+    }
+    
+    .o {
+        @include col-offset(4);
+    }
+}
+
+.c3 {
+    @include container();
+    
+    div {
+        @include col(4,right);
+    }
+}
+
+.c4 {
+    @include container();
+    
+    div {
+        @include col(4);
+    }
+    
+    .pl {
+        @include col-pull(4);
+    }
+    
+    .ps {
+        @include col-push(4);
+    }
+}
+
+.c5 {
+    @include container();
+    
+    div {
+        @include col(4,right);
+    }
+    
+    .pl {
+        @include col-pull(4);
+    }
+    
+    .ps {
+        @include col-push(4);
+    }
+}
+
+.c6 {
+    @include container(auto,(2 2));
+     
+    div {
+        @include col(12);
+        @include row(4);
+    }
+}

@@ -1,0 +1,79 @@
+// TODO RELEASEBLOCKER nur width oder height setzen, wenn w bzw h relativ ist
+
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+div:not(.placeholder) {
+    background:blue;
+    border:green 0.25em dashed;
+    color:white;
+    font-weight:bold;
+}
+
+div:not(.placeholder) > div {
+    background:red;
+    border:orange 0.25em dashed;
+}
+
+.placeholder {
+    height:30em;
+}
+
+.s2 {
+    height:20em;
+    div {
+        @include sticky(".s2","t");
+    }
+}
+
+.s3 {
+    height:20em;
+    div {
+        @include sticky(".s3","tb");
+    }
+}
+
+.s4 {
+    height:20em;
+    div {
+        @include sticky(".s4","tb");
+        
+        span {
+            @include visibility("invisible");
+        }
+        
+        @include bp-sticked() {
+            span {
+                @include visibility("show");
+            }
+        }
+    }
+}
+
+.s5 {
+    height:20em;
+    div {
+        @include sticky(".s5","t");
+        @include sticky-spacing(5em 0);
+    }
+}
+
+.s1 {
+    @include sticky("body","t","t"); // $scrollarea_offset adds this to the current offset
+    padding:1em;
+}
+
+a[name] {
+    @include scrollareaoffset(3em); // invisible jumplink offset
+}
+
+.s6 {
+    height:20em;
+    div {
+        @include sticky(".s6","t","t",0);
+        padding:1em;
+        @include bp-sticked {
+            margin-top:3.6em;
+        }
+    }
+}
+

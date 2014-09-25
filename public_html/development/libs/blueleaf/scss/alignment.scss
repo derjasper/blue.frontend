@@ -1,0 +1,11 @@
+@mixin align($flags...) { // left,center,right;[top,middle,bottom]
+    @if index($flags,left) {
+        text-align:left;
+    }
+    @if index($flags,center) {
+        text-align:center;
+    }
+    @if index($flags,right) {
+        text-align:right;
+    }
+}

@@ -1,0 +1,40 @@
+@mixin reset($flags...) {
+    // please note that the all-property has poor browser support (only firefox as of May 2014)
+    @if index($flags,all-initial) {
+        all: initial;
+    }
+    
+    @if index($flags,all-inherit) {
+        all: inherit;
+    }
+    
+    @if index($flags,all-unset) {
+        all: unset;
+    }
+    
+    @if length($flags)==0 {
+        $flags: (margin padding);
+    }
+    
+    @if index($flags,margin) {
+        margin:0;
+    }
+    
+    @if index($flags,padding) {
+        padding:0;
+    }
+    
+    @if index($flags,display) {
+        display:initial;
+    }
+    
+    @if index($flags,text-align) {
+        text-align:initial;
+    }
+}
+
+@mixin reset-p($mode,$properties...) { // $mode: inherit, initial, unset
+    @each $property in $properties {
+        #{$property}:$mode;
+    }
+}

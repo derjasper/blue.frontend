@@ -1,0 +1,10 @@
+// $target: _null, _link
+@mixin scrollposition($target:"_null",$group:"default",$scrolled_class:"scrolled") {
+    @include customrule(scrollposition, (target: $target, group: $group, scrolled_class: $scrolled_class));
+}
+
+@mixin bp-scrolled($scrolled_class:"scrolled") {
+    &.#{$scrolled_class} {
+        @content;
+    }
+}

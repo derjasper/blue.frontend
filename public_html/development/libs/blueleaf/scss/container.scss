@@ -1,0 +1,169 @@
+// TODO floating container / shrink to fit
+
+@mixin container($width:auto,$height:auto,$flags...) {
+    display:block;
+    
+    @if (length($flags)==0) {
+        $flags:(center);
+    }
+    
+    // position
+    $positionType: regular;
+    @if index($flags,absolute) {
+        position:absolute;
+        $positionType: alt;
+    } 
+    @else if index($flags,fixed) {
+        position:fixed;
+        $positionType: alt;
+    }
+    @else {
+        position:relative;
+    }                                                       
+    
+    
+    *zoom:1;
+
+    &:before, &:after {
+	content:"";
+	display:table;
+    }
+    &:after {
+        clear:both;
+    }
+    
+    // width and height
+    @if $width!=auto or index($flags,width) {
+        @if length($width)==2 and nth($width,1)==nth($width,2) {
+            width: $container*nth($width,1);
+        }
+        @else {
+            width: 100%;
+        }
+    }
+    
+    @if $height!=auto or index($flags,height) {
+        @if length($height)==2 and nth($height,1)==nth($height,2) {
+            height: $container*nth($height,1);
+        }
+        @else {
+            height: 100%;
+        }
+    }
+        
+    @if $width!=auto {
+        @if (length($width)==1) {
+            max-width: $container*$width;
+        }
+        @else {
+            @if nth($width,1)!=auto {
+                min-width: $container*nth($width,1);
+            }
+            @if nth($width,2)!=auto {
+                max-width: $container*nth($width,2);
+            }
+        }
+    }
+    
+    @if $height!=auto {
+        @if (length($height)==1) {
+            max-height: $container*$height;
+        }
+        @else {
+            @if nth($height,1)!=auto {
+                min-height: $container*nth($height,1);
+            }
+            @if nth($height,2)!=auto {
+                max-height: $container*nth($height,2);
+            }
+        }
+    }  
+    
+    // alignment
+    @if index($flags,left) {
+        @if $positionType==regular {
+            margin-left:0;
+            margin-right:auto;
+        }
+        @else {
+            left:0;
+            right:auto;
+        }
+    } 
+    @if index($flags,center) {
+        @if $positionType==regular {
+            margin-left:auto;
+            margin-right:auto;
+        }
+        @else { // only works with fixed width
+            left:0;
+            right:0;
+            margin-left:auto;
+            margin-right:auto;
+        }
+    }
+    @if index($flags,right) {
+        @if $positionType==regular {
+            margin-left:auto;
+            margin-right:0;
+        }
+        @else {
+            left:auto;
+            right:0;
+        }
+    }
+    @if index($flags,top) {
+        @if $positionType==regular {
+        }
+        @else {
+            top:0;
+            bottom:auto;
+        }
+    } 
+    @if index($flags,middle) {
+        @if $positionType==regular {
+        }
+        @else { // only works with fixed height
+            top:0;
+            bottom:0;
+            margin-top:auto;
+            margin-bottom:auto;
+        }
+    } 
+    @if index($flags,bottom) {
+        @if $positionType==regular {
+        }
+        @else {
+            top:auto;
+            bottom:0;
+        }
+    }
+    
+    // overflow
+    @if index($flags,overflow-visible) {
+        overflow:visible;
+    }
+    @else if index($flags,overflow-hidden) {
+        overflow:hidden;
+    }
+    @else if index($flags,overflow-scroll) {
+        overflow:scroll;
+    }
+    @else if index($flags,overflow-auto) {
+        overflow:auto;
+    }
+}
+
+@include predefine("container") {
+    @include container();
+}
+
+// convience mixins, use with care
+@mixin container-outergutter($spacing...) {
+    $spacing:multiply-list($gutter,$spacing);    
+    margin:$spacing;
+}
+@mixin container-breakout($spacing...) {
+    $spacing:multiply-list(-$gutter,$spacing);    
+    margin:$spacing;
+}
