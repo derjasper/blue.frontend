@@ -1,8 +1,4 @@
-@import "../libs/blueleaf/scss/blueleaf.scss";
-
-div {
-    border: black 0.5em solid;
-}
+@import "demo.scss";
 
 .c1 {
     @include gutter(10);

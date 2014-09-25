@@ -1,7 +1,6 @@
-@import "../libs/blueleaf/scss/blueleaf.scss";
+@import "demo.scss";
 
 div {
-    background: green;
     @include container();
 }
 
@@ -15,6 +14,7 @@ div {
 
 .c3 {
     @include visibility(show);
+    border:none;
 }
 
 .c4 {

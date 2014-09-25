@@ -1,13 +1,4 @@
-@import "../libs/blueleaf/scss/blueleaf.scss";
-
-ul {
-    li {
-        background:green;
-        a {
-            background:lightgreen;
-        }
-    }
-}
+@import "demo.scss";
 
 .horizontal {
     @include menu(horizontal,(innrgttr:2,submenutrggr:hover)); 

@@ -1,11 +1,4 @@
-@import "../libs/blueleaf/scss/blueleaf.scss";
-
-ol,ul {
-    background:#ccc;
-    li {
-        background:#999;
-    }
-}
+@import "demo.scss";
 
 .vertical {
     @include list-layout(vertical);

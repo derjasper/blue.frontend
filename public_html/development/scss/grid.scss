@@ -1,8 +1,4 @@
-@import "../libs/blueleaf/scss/blueleaf.scss";
-
-div > div {
-    border:0.5em black solid;
-}
+@import "demo.scss";
 
 .c1 {
     @include container();

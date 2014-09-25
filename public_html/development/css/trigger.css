@@ -25,23 +25,57 @@ html {
   .container:after {
     clear: both; }
 
+body {
+  font-family: sans;
+  color: white;
+  background: #222; }
+
+h1, h2, h3 {
+  padding: 1em;
+  margin: 0;
+  font-weight: normal; }
+
+a {
+  color: white; }
+
+div:not(.nostyle) {
+  background: #006785;
+  border: #037698 0.5em solid; }
+
+div:not(.nostyle) > div {
+  background: #4c4c4c;
+  border: #575757 0.5em solid; }
+
+div.placeholder, div > div.placeholder {
+  height: 30em;
+  background: transparent;
+  border: none; }
+
+ol:not(.nostyle), ul:not(.nostyle) {
+  background: #006785;
+  color: white; }
+  ol:not(.nostyle) li, ul:not(.nostyle) li {
+    background: #037698; }
+    ol:not(.nostyle) li a, ul:not(.nostyle) li a {
+      background: #4c4c4c;
+      color: white; }
+
 .clickdemo a {
-  color: blue;
   /*! customrule: {"trigger": {"target_expr": ".clickdemo a", "trigger_class": "toggleclass", "type": "click", "trigger_mode": "toggle", "priority": 0, "enabled": true}} */ }
   .clickdemo a.toggleclass {
-    color: red; }
+    font-weight: bold; }
 
 .hoverdemo a {
-  color: blue;
   /*! customrule: {"trigger": {"target_expr": ".hoverdemo a", "trigger_class": "toggleclass", "type": "mouseover", "trigger_mode": "on", "priority": 0, "enabled": true}} */
   /*! customrule: {"trigger": {"target_expr": ".hoverdemo a", "trigger_class": "toggleclass", "type": "mouseout", "trigger_mode": "off", "priority": 0, "enabled": true}} */ }
   .hoverdemo a.toggleclass {
-    color: red; }
+    font-weight: bold; }
 
 .offcanvasdemo a {
   /*! customrule: {"trigger": {"target_expr": ".offcanvasdemo div", "trigger_class": "trigger", "type": "click", "trigger_mode": "toggle", "priority": 0, "enabled": true}} */ }
 .offcanvasdemo div {
   height: 0;
+  border: none !important;
   overflow: hidden;
   transition: height 1s ease, height 1s ease; }
   .offcanvasdemo div.trigger {
@@ -57,7 +91,7 @@ html {
 .groupdemo div {
   display: none; }
   .groupdemo div.trigger {
-    display: initial;
+    display: block;
     visibility: visible; }
 .groupdemo a[data-tab="1"], .groupdemo div.tab1 {
   /*! customrule: {"triggered": {"trigger_class": "trigger", "enabled": true}} */ }

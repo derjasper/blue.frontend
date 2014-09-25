@@ -1,0 +1,45 @@
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+body {
+    font-family:sans;
+    color:white;
+    background:#222;
+}
+
+h1,h2,h3 {
+    padding:1em;
+    margin:0;
+    font-weight:normal;
+}
+
+a {
+    color:white;
+}
+
+div:not(.nostyle) {
+    background:#006785;
+    border:#037698 0.5em solid;
+}
+
+div:not(.nostyle) > div {    
+    background:#4c4c4c;
+    border:#575757 0.5em solid;
+}
+
+div.placeholder, div > div.placeholder {
+    height:30em;
+    background:transparent;
+    border:none;
+}
+
+ol:not(.nostyle),ul:not(.nostyle) {
+    background:#006785;
+    color:white;
+    li {
+        background:#037698;
+        a {
+            background:#4c4c4c;
+            color:white;
+        }
+    }
+}
