@@ -1,0 +1,77 @@
+/*! blueleaf */
+*, *:before, *:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-size: 100%; }
+
+html {
+  position: relative; }
+
+.container {
+  display: block;
+  position: relative;
+  *zoom: 1;
+  margin-left: auto;
+  margin-right: auto; }
+  .container:before, .container:after {
+    content: "";
+    display: table; }
+  .container:after {
+    clear: both; }
+
+.clickdemo a {
+  color: blue;
+  /*! customrule: {"trigger": {"target_expr": ".clickdemo a", "trigger_class": "toggleclass", "type": "click", "trigger_mode": "toggle", "priority": 0, "enabled": true}} */ }
+  .clickdemo a.toggleclass {
+    color: red; }
+
+.hoverdemo a {
+  color: blue;
+  /*! customrule: {"trigger": {"target_expr": ".hoverdemo a", "trigger_class": "toggleclass", "type": "mouseover", "trigger_mode": "on", "priority": 0, "enabled": true}} */
+  /*! customrule: {"trigger": {"target_expr": ".hoverdemo a", "trigger_class": "toggleclass", "type": "mouseout", "trigger_mode": "off", "priority": 0, "enabled": true}} */ }
+  .hoverdemo a.toggleclass {
+    color: red; }
+
+.offcanvasdemo a {
+  /*! customrule: {"trigger": {"target_expr": ".offcanvasdemo div", "trigger_class": "trigger", "type": "click", "trigger_mode": "toggle", "priority": 0, "enabled": true}} */ }
+.offcanvasdemo div {
+  height: 0;
+  overflow: hidden;
+  transition: height 1s ease, height 1s ease; }
+  .offcanvasdemo div.trigger {
+    height: 50px; }
+
+.groupdemo a {
+  /*! customrule: {"trigger": {"target_expr": "{parent-1} a", "trigger_class": "trigger", "type": "click", "trigger_mode": "off", "priority": 0, "enabled": true}} */
+  /*! customrule: {"trigger": {"target_expr": "{parent-1} div", "trigger_class": "trigger", "type": "click", "trigger_mode": "off", "priority": 0, "enabled": true}} */
+  /*! customrule: {"trigger": {"target_expr": "{this}", "trigger_class": "trigger", "type": "click", "trigger_mode": "on", "priority": 0, "enabled": true}} */
+  /*! customrule: {"trigger": {"target_expr": "{parent-1} div.tab{attr-data-tab}", "trigger_class": "trigger", "type": "click", "trigger_mode": "on", "priority": 0, "enabled": true}} */ }
+  .groupdemo a.trigger {
+    font-weight: bold; }
+.groupdemo div {
+  display: none; }
+  .groupdemo div.trigger {
+    display: initial;
+    visibility: visible; }
+.groupdemo a[data-tab="1"], .groupdemo div.tab1 {
+  /*! customrule: {"triggered": {"trigger_class": "trigger", "enabled": true}} */ }
+
+html {
+  /*! customrule: {"trigger": {"target_expr": ".menudemo li div", "trigger_class": "trigger", "type": "click", "trigger_mode": "off", "priority": 0, "enabled": true}} */ }
+
+.menudemo li a {
+  /*! customrule: {"trigger": {"target_expr": "{parent-2} li div:not({parent-1} div)", "trigger_class": "trigger", "type": "click", "trigger_mode": "off", "priority": 1, "enabled": true}} */
+  /*! customrule: {"trigger": {"target_expr": "{parent-1} div", "trigger_class": "trigger", "type": "click", "trigger_mode": "toggle", "priority": 2, "enabled": true}} */ }
+.menudemo li div {
+  display: none; }
+  .menudemo li div.trigger {
+    display: initial;
+    visibility: visible; }
+
+/*# sourceMappingURL=trigger.css.map */

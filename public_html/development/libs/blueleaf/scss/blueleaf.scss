@@ -1,0 +1,59 @@
+// TODO mixins in mehrere aufteilen; ggf nur variablen setzen und am ende regeln berechnen
+
+// config
+$gutter: 0.2rem;
+$guttersteps: 10;
+$container: 10rem;
+$containersteps: 10;
+$columns: 12;
+$rows: 12;
+$screensizes: (
+    s: (0em 40em),
+    m: (40.063em 64em),
+    l: (64.063em)
+);
+$predefined:true;
+
+// framework meta information
+// important: do not remove this comment, otherwise some features may not work
+/*! blueleaf */
+
+// general rules
+*, *:before, *:after {
+    box-sizing: border-box; 
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html,body {
+    margin:0;
+    padding:0;
+    min-height:100%;
+    font-size:100%;
+}
+
+html {
+    position:relative;
+}
+
+// modules
+@import "helper.scss";
+@import "customrules.scss";
+@import "mediaquerys.scss";
+@import "predefinedrules.scss";
+@import "container.scss";
+@import "grid.scss";
+@import "gutter.scss";
+@import "menu.scss";
+@import "alignment.scss";
+@import "visibility.scss";
+@import "utility.scss";
+@import "sticky.scss";
+@import "trigger.scss";
+@import "scrollposition.scss";
+@import "scrolling.scss";
+@import "reset.scss";
+@import "list.scss";
+@import "resizable.scss";
+@import "offcanvas.scss";
+@import "stickyfooter.scss";

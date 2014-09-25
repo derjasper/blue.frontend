@@ -1,0 +1,32 @@
+/*! blueleaf */
+*, *:before, *:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-size: 100%; }
+
+html {
+  position: relative; }
+
+.container {
+  display: block;
+  position: relative;
+  *zoom: 1;
+  margin-left: auto;
+  margin-right: auto; }
+  .container:before, .container:after {
+    content: "";
+    display: table; }
+  .container:after {
+    clear: both; }
+
+.stickyfooter {
+  background: gray;
+  /*! customrule: {"stickyfooter": {"parent": "html", "enabled": true}} */ }
+
+/*# sourceMappingURL=stickyfooter.css.map */

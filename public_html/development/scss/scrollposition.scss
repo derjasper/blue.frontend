@@ -1,0 +1,60 @@
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+.placeholder {
+    height:20em;
+}
+
+.left {
+    .inner {
+        @include sticky();
+    }
+    
+    @include col(3);
+}
+.right {
+    @include col(9);
+}
+.test2 {
+    .inner {
+        @include col(6);
+    }
+}
+
+
+.r1,.r21,.r22,.r23,.r24 {
+    @include bp-scrolled() {
+        font-weight:bold;
+    }
+}
+
+
+.s1 {
+    @include scrollposition(".r1");
+}
+.s1-1 {
+    @include scrollposition();
+}
+
+
+.s21 {
+    @include scrollposition(".r21",A);
+}
+.s22 {
+    @include scrollposition(".r22",B);
+}
+.s23 {
+    @include scrollposition(".r23",A);
+}
+.s24 {
+    @include scrollposition(".r24",B);
+}
+
+
+a[name] {
+    @include scrollposition("_link",B);
+}
+a[href] {
+    @include bp-scrolled() {
+        font-weight:bold;
+    }
+}

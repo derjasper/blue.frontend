@@ -1,0 +1,15 @@
+@mixin sticky($parent:"body",$directions:"tb",$scrollarea_offset:"",$zindex:999) {
+    @include customrule(sticky, (zindex: $zindex, directions: $directions, parent:$parent, scrollarea_offset:$scrollarea_offset, sticked_class: sticked));
+}
+
+@mixin bp-sticked() {
+    &.sticked {
+        @content;
+    }
+}
+
+@mixin sticky-spacing($margin...) {
+    @include bp-sticked() {
+        margin:$margin;
+    }
+}

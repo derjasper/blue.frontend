@@ -1,0 +1,20 @@
+@mixin trigger($target_expr,$trigger_class:"trigger",$type:click,$trigger_mode:toggle,$priority:0) {
+    @include customrule(trigger, (target_expr:$target_expr,trigger_class:$trigger_class,type:$type,trigger_mode:$trigger_mode,priority:$priority));
+}
+// $type: click, mouseover, mouseout; $trigger_mode: toggle, on, off; $priority: number [the higher the number the later the handler will be executed]
+
+@mixin triggered($trigger_class:"trigger") {
+    @include customrule(triggered, (trigger_class:$trigger_class));
+}
+
+@mixin bp-triggered($trigger_class:"trigger") {
+    &.#{$trigger_class} {
+        @content;
+    }
+}
+
+@mixin bp-untriggered($trigger_class:"trigger") {
+    &.#{$trigger_class}_off {
+        @content;
+    }
+}

@@ -1,0 +1,64 @@
+@mixin customrule($rule,$map) {
+    $map: map_merge($map, (enabled: true));
+    @include json-encode(($rule: $map));
+}
+
+// following code based on parts of SassyJSON
+@function _throw($string, $pointer) {
+    @warn "ERROR::#{$pointer}::#{$string}";
+    @return $pointer, false;
+}
+
+@function _proof-quote($value) {
+    @return '"' + $value + '"';
+}
+
+@function _json-encode--bool($boolean) {
+    @return $boolean;
+}
+
+@function _json-encode--color($color) {
+    @return _proof-quote($color);
+}
+
+@function _json-encode--list($list) {
+    $str: "";
+    @each $item in $list {
+        $str: $str + ', ' + json-encode($item);
+    }
+    @return '[' + str-slice($str, 3) + ']';
+}
+
+@function _json-encode--map($map) {
+    $str: "";
+    @each $key, $value in $map {
+        $str: $str + ', ' + _proof-quote($key) + ': ' + json-encode($value);
+    }
+    @return '{' + str-slice($str, 3) + '}';
+}
+
+@function _json-encode--number($number) {
+    @return if(unitless($number), $number, _proof-quote($number));
+}
+
+@function _json-encode--string($string) {
+    @return _proof-quote($string);
+}
+
+@function _json-encode--null($null) {
+    @return "null";
+}
+
+@function json-encode($value) {
+    $type: type-of($value);
+    @if function_exists('_json-encode--#{$type}') {
+        @return call('_json-encode--#{$type}', $value);
+    }
+    @warn "Unknown type for #{$value} (#{$type}).";
+    @return false;
+}
+
+@mixin json-encode($value) {
+    $json: json-encode($value);
+    /*! customrule: #{$json} */
+}

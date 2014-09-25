@@ -1,0 +1,13 @@
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+.c1 {
+    @include align(left);
+}
+
+.c2 {
+    @include align(center);
+}
+
+.c3 {
+    @include align(right);
+}

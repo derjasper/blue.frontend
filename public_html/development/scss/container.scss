@@ -1,0 +1,54 @@
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+div {
+    background:blue;
+    border:green 0.25em dashed;
+    color:white;
+    font-weight:bold;
+}
+
+div > div {
+    background:red;
+    border:orange 0.25em dashed;
+}
+
+.c1 {
+    @include container((3 6),auto,left);
+}
+
+.c2 {
+    @include container((3 6),auto,center);
+}
+
+.c3 {
+    @include container((3 6),auto,right);
+}
+
+.c4 {
+    @include container();
+    height:45vh;
+    div {
+        @include container(auto,(1 2));
+    }
+}
+
+.c5 {
+    @include container(5,(3 3));
+    .d1 {
+        @include container(auto,auto,absolute,top,left);
+    }
+    .d2 {
+        @include container((1 1),(1 1),absolute,center,middle);
+    }
+    .d3 {
+        @include container(auto,auto,absolute,bottom,right);
+    }
+}
+
+.c6 {
+    @include container((1 1),auto,fixed,bottom,right);
+}
+
+.c7 {
+    @include container((1 1),(1 1),overflow-auto);
+}

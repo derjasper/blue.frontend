@@ -1,0 +1,100 @@
+@import "../libs/blueleaf/scss/blueleaf.scss";
+
+.clickdemo {
+    a {
+        color:blue;
+        
+        @include trigger(".clickdemo a","toggleclass",click,toggle);
+        @include bp-triggered("toggleclass") {
+            color:red;
+        }
+        @include bp-untriggered("toggleclass") {
+            //color:blue;
+        }
+    }
+}
+
+.hoverdemo {
+    a {
+        color:blue;
+        
+        @include trigger(".hoverdemo a","toggleclass",mouseover,on);
+        @include trigger(".hoverdemo a","toggleclass",mouseout,off);
+        @include bp-triggered("toggleclass") {
+            color:red;
+        }
+        @include bp-untriggered("toggleclass") {
+            //color:blue;
+        }
+    }
+}
+
+.offcanvasdemo {
+    a {        
+        @include trigger(".offcanvasdemo div");
+    }
+    
+    div {
+        height:0;
+        overflow:hidden;
+        transition: height 1s ease, height 1s ease;  
+        @include bp-triggered() {
+            height:50px;// TODO replace with own effects framework
+        }
+        @include bp-untriggered() {
+            //@include visibility(hide);
+        }
+    }
+}
+
+.groupdemo {
+    a {
+        @include trigger("{parent-1} a","trigger",click,off);
+        @include trigger("{parent-1} div","trigger",click,off);
+        
+        @include trigger("{this}","trigger",click,on);
+        @include trigger("{parent-1} div.tab{attr-data-tab}","trigger",click,on);
+                
+        @include bp-triggered() {
+            font-weight:bold;
+        }
+    }
+    
+    div {
+        @include visibility(hide);
+        @include bp-triggered() {
+            @include visibility(show);
+        }
+        @include bp-untriggered() {
+            //@include visibility(hide);
+        }
+    }
+    
+    a[data-tab="1"], div.tab1 {
+        @include triggered();
+    }
+}
+
+
+html {
+    @include trigger(".menudemo li div","trigger",click,off,0);
+}
+
+.menudemo {
+    li {
+        a {
+            @include trigger("{parent-2} li div:not({parent-1} div)","trigger",click,off,1);
+            @include trigger("{parent-1} div","trigger",click,toggle,2);
+        }
+        
+        div {
+            @include visibility(hide);
+            @include bp-triggered() {
+                @include visibility(show);
+            }
+            @include bp-untriggered() {
+                //@include visibility(hide);
+            }
+        }
+    }
+}
