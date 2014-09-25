@@ -1,20 +1,4 @@
-@import "../libs/blueleaf/scss/blueleaf.scss";
-
-div:not(.placeholder) {
-    background:blue;
-    border:green 0.25em dashed;
-    color:white;
-    font-weight:bold;
-}
-
-div:not(.placeholder) > div {
-    background:red;
-    border:orange 0.25em dashed;
-}
-
-.placeholder {
-    height:30em;
-}
+@import "demo.scss";
 
 .s2 {
     height:20em;

@@ -1,16 +1,4 @@
-@import "../libs/blueleaf/scss/blueleaf.scss";
-
-div {
-    background:blue;
-    border:green 0.25em dashed;
-    color:white;
-    font-weight:bold;
-}
-
-div > div {
-    background:red;
-    border:orange 0.25em dashed;
-}
+@import "demo.scss";
 
 .c1 {
     @include container((3 6),auto,left);

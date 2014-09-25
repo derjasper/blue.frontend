@@ -1,16 +1,15 @@
-@import "../libs/blueleaf/scss/blueleaf.scss";
+@import "demo.scss";
 
 div {
-    width:100px;
-    height:100px;
-    background:darkgreen;
+    width:20em;
+    height:20em;
 }
 
 .resizable {
     @include resizable();
     
     @include bp-resizing() {
-        background:green;
+        opacity:0.8;
     }
 }
 
