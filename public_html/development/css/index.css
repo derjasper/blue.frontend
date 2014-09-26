@@ -10,7 +10,11 @@ html, body {
   min-height: 100%;
   font-size: 100%; }
 
+html {
+  position: relative; }
+
 .container {
+  display: block;
   position: relative;
   *zoom: 1;
   margin-left: auto;
@@ -28,6 +32,7 @@ body {
   font-family: sans-serif; }
 
 .page-header {
+  display: block;
   position: relative;
   *zoom: 1;
   margin-left: auto;
@@ -46,6 +51,7 @@ body {
       display: none; } }
   .page-header .wrapper {
     text-align: center;
+    display: block;
     position: relative;
     *zoom: 1;
     width: 100%;
@@ -101,6 +107,7 @@ body {
     font-size: 1.3em; }
 
 .page-navi {
+  display: block;
   position: relative;
   *zoom: 1;
   margin-left: auto;
@@ -116,6 +123,7 @@ body {
     .page-navi {
       /*! customrule: {"sticky": {"zindex": 999, "directions": "t", "parent": "body", "scrollarea_offset": "t", "sticked_class": "sticked", "enabled": true}} */ } }
   .page-navi .wrapper {
+    display: block;
     position: relative;
     *zoom: 1;
     width: 100%;
@@ -177,7 +185,7 @@ body {
       color: white;
       text-decoration: none;
       height: 3rem;
-      /*! customrule: {"offcanvas-toggle": {"target": ".page-navi .menu", "enabled": true}} */ }
+      /*! customrule: {"trigger": {"target_expr": ".page-navi .menu", "trigger_class": "offcanvas-show", "type": "click", "trigger_mode": "toggle", "priority": 0, "enabled": true}} */ }
   @media only screen and (min-width: 0em) {
     .page-navi .menu {
       float: left;
@@ -190,54 +198,81 @@ body {
       width: 75%; } }
   @media only screen and (min-width: 0em) and (max-width: 40em) {
     .page-navi .menu {
-      /*! customrule: {"offcanvas": {"enabled": true}} */
-      /*! customrule: {"offcanvas-toggle": {"target": ".page-navi .menu", "enabled": true}} */ } }
-  .page-navi .menu ul, .page-navi .menu ul * {
-    margin: 0;
-    padding: 0;
+      display: none;
+      /*! customrule: {"trigger": {"target_expr": ".page-navi .menu", "trigger_class": "offcanvas-show", "type": "click", "trigger_mode": "toggle", "priority": 0, "enabled": true}} */ }
+      .page-navi .menu.offcanvas-show {
+        display: block;
+        visibility: visible; } }
+  .page-navi .menu ul {
     list-style: none; }
-    .page-navi .menu ul > li, .page-navi .menu ul * > li {
-      list-style: none; }
-    .page-navi .menu ul > li, .page-navi .menu ul * > li {
-      display: block; }
-  .page-navi .menu ul > li > a, .page-navi .menu ul * > li > a {
-    display: block; }
-  .page-navi .menu ul li a {
-    padding: 1rem; }
-  @media only screen and (min-width: 40.063em) {
-    .page-navi .menu ul {
+    .page-navi .menu ul, .page-navi .menu ul *, .page-navi .menu ul, .page-navi .menu ul * {
       margin: 0;
-      padding: 0;
-      list-style: none; }
-      .page-navi .menu ul > li {
+      padding: 0; }
+      .page-navi .menu ul > li, .page-navi .menu ul * > li, .page-navi .menu ul > li, .page-navi .menu ul * > li {
         list-style: none; }
-      .page-navi .menu ul > li {
-        display: inline-block; }
-    .page-navi .menu ul > li > ul, .page-navi .menu ul > li > ul * {
-      margin: 0;
-      padding: 0;
-      list-style: none; }
-      .page-navi .menu ul > li > ul > li, .page-navi .menu ul > li > ul * > li {
-        list-style: none; }
-      .page-navi .menu ul > li > ul > li, .page-navi .menu ul > li > ul * > li {
+      .page-navi .menu ul > li, .page-navi .menu ul * > li, .page-navi .menu ul > li, .page-navi .menu ul * > li {
         display: block; }
-    .page-navi .menu ul > li > a, .page-navi .menu ul * > li > a {
-      display: block; } }
-  @media only screen and (min-width: 64.063em) {
-    .page-navi .menu ul {
-      text-align: right; } }
-  .page-navi .menu ul a {
-    text-decoration: none;
-    color: white; }
-    .page-navi .menu ul a:hover {
-      background-color: #006785; }
-    .page-navi .menu ul a.scrolled {
-      background-color: #006785; }
+    .page-navi .menu ul > li > *, .page-navi .menu ul * > li > *, .page-navi .menu ul > li > *, .page-navi .menu ul * > li > * {
+      display: block; }
+    .page-navi .menu ul > li > *:not(ul):not(ol), .page-navi .menu ul * > li > *:not(ul):not(ol), .page-navi .menu ul > li > *:not(ul):not(ol), .page-navi .menu ul * > li > *:not(ul):not(ol) {
+      padding: 1rem; }
+    @media only screen and (min-width: 40.063em) {
+      .page-navi .menu ul {
+        list-style: none; }
+        .page-navi .menu ul, .page-navi .menu ul {
+          margin: 0;
+          padding: 0; }
+          .page-navi .menu ul > li, .page-navi .menu ul > li {
+            list-style: none; }
+          .page-navi .menu ul > li, .page-navi .menu ul > li {
+            display: inline-block;
+            margin-right: -4px !important; }
+            .page-navi .menu ul > li:last-child, .page-navi .menu ul > li:last-child {
+              margin-right: 0 !important; }
+        .page-navi .menu ul li, .page-navi .menu ul * li, .page-navi .menu ul li, .page-navi .menu ul * li {
+          position: relative; }
+        .page-navi .menu ul > li > ul, .page-navi .menu ul * > li > ul, .page-navi .menu ul > li > ol, .page-navi .menu ul * > li > ol {
+          margin: 0;
+          padding: 0;
+          display: block;
+          position: absolute;
+          *zoom: 1;
+          width: 10rem;
+          min-width: 10rem;
+          max-width: 10rem;
+          margin: 0 !important; }
+          .page-navi .menu ul > li > ul > li, .page-navi .menu ul * > li > ul > li, .page-navi .menu ul > li > ol > li, .page-navi .menu ul * > li > ol > li {
+            list-style: none; }
+          .page-navi .menu ul > li > ul > li, .page-navi .menu ul * > li > ul > li, .page-navi .menu ul > li > ol > li, .page-navi .menu ul * > li > ol > li {
+            display: block; }
+          .page-navi .menu ul > li > ul:before, .page-navi .menu ul > li > ul:after, .page-navi .menu ul * > li > ul:before, .page-navi .menu ul * > li > ul:after, .page-navi .menu ul > li > ol:before, .page-navi .menu ul > li > ol:after, .page-navi .menu ul * > li > ol:before, .page-navi .menu ul * > li > ol:after {
+            content: "";
+            display: table; }
+          .page-navi .menu ul > li > ul:after, .page-navi .menu ul * > li > ul:after, .page-navi .menu ul > li > ol:after, .page-navi .menu ul * > li > ol:after {
+            clear: both; }
+        .page-navi .menu ul > li > ul > li > ul, .page-navi .menu ul * > li > ul > li > ul, .page-navi .menu ul > li > ol > li > ol, .page-navi .menu ul * > li > ol > li > ol {
+          top: 0;
+          left: 10rem; }
+        .page-navi .menu ul > li > *, .page-navi .menu ul * > li > *, .page-navi .menu ul > li > *, .page-navi .menu ul * > li > * {
+          display: block; }
+        .page-navi .menu ul > li > *:not(ul):not(ol), .page-navi .menu ul * > li > *:not(ul):not(ol), .page-navi .menu ul > li > *:not(ul):not(ol), .page-navi .menu ul * > li > *:not(ul):not(ol) {
+          padding: 1rem; } }
+    @media only screen and (min-width: 64.063em) {
+      .page-navi .menu ul {
+        text-align: right; } }
+    .page-navi .menu ul a {
+      text-decoration: none;
+      color: white; }
+      .page-navi .menu ul a:hover {
+        background-color: #006785; }
+      .page-navi .menu ul a.scrolled {
+        background-color: #006785; }
   @media only screen and (min-width: 40.063em) {
     .page-navi a {
       /*! customrule: {"smoothscrolling": {"time": 1000, "enabled": true}} */ } }
 
 .page-footer {
+  display: block;
   position: relative;
   *zoom: 1;
   margin-left: auto;
@@ -251,6 +286,7 @@ body {
   .page-footer:after {
     clear: both; }
   .page-footer .wrapper {
+    display: block;
     position: relative;
     *zoom: 1;
     width: 100%;
@@ -262,42 +298,65 @@ body {
       display: table; }
     .page-footer .wrapper:after {
       clear: both; }
-  .page-footer .menu-left ul, .page-footer .menu-left ul *, .page-footer .menu-right ul, .page-footer .menu-right ul * {
-    margin: 0;
-    padding: 0;
+  .page-footer .menu-left ul, .page-footer .menu-right ul {
     list-style: none; }
-    .page-footer .menu-left ul > li, .page-footer .menu-left ul * > li, .page-footer .menu-right ul > li, .page-footer .menu-right ul * > li {
-      list-style: none; }
-    .page-footer .menu-left ul > li, .page-footer .menu-left ul * > li, .page-footer .menu-right ul > li, .page-footer .menu-right ul * > li {
-      display: block; }
-  .page-footer .menu-left ul > li > a, .page-footer .menu-left ul * > li > a, .page-footer .menu-right ul > li > a, .page-footer .menu-right ul * > li > a {
-    display: block; }
-  .page-footer .menu-left ul li a, .page-footer .menu-right ul li a {
-    padding: 1rem; }
-  @media only screen and (min-width: 40.063em) {
-    .page-footer .menu-left ul, .page-footer .menu-right ul {
+    .page-footer .menu-left ul, .page-footer .menu-left ul *, .page-footer .menu-left ul, .page-footer .menu-left ul *, .page-footer .menu-right ul, .page-footer .menu-right ul *, .page-footer .menu-right ul, .page-footer .menu-right ul * {
       margin: 0;
-      padding: 0;
-      list-style: none; }
-      .page-footer .menu-left ul > li, .page-footer .menu-right ul > li {
+      padding: 0; }
+      .page-footer .menu-left ul > li, .page-footer .menu-left ul * > li, .page-footer .menu-left ul > li, .page-footer .menu-left ul * > li, .page-footer .menu-right ul > li, .page-footer .menu-right ul * > li, .page-footer .menu-right ul > li, .page-footer .menu-right ul * > li {
         list-style: none; }
-      .page-footer .menu-left ul > li, .page-footer .menu-right ul > li {
-        display: inline-block; }
-    .page-footer .menu-left ul > li > ul, .page-footer .menu-left ul > li > ul *, .page-footer .menu-right ul > li > ul, .page-footer .menu-right ul > li > ul * {
-      margin: 0;
-      padding: 0;
-      list-style: none; }
-      .page-footer .menu-left ul > li > ul > li, .page-footer .menu-left ul > li > ul * > li, .page-footer .menu-right ul > li > ul > li, .page-footer .menu-right ul > li > ul * > li {
-        list-style: none; }
-      .page-footer .menu-left ul > li > ul > li, .page-footer .menu-left ul > li > ul * > li, .page-footer .menu-right ul > li > ul > li, .page-footer .menu-right ul > li > ul * > li {
+      .page-footer .menu-left ul > li, .page-footer .menu-left ul * > li, .page-footer .menu-left ul > li, .page-footer .menu-left ul * > li, .page-footer .menu-right ul > li, .page-footer .menu-right ul * > li, .page-footer .menu-right ul > li, .page-footer .menu-right ul * > li {
         display: block; }
-    .page-footer .menu-left ul > li > a, .page-footer .menu-left ul * > li > a, .page-footer .menu-right ul > li > a, .page-footer .menu-right ul * > li > a {
-      display: block; } }
-  .page-footer .menu-left ul a, .page-footer .menu-right ul a {
-    color: white;
-    text-decoration: none; }
-    .page-footer .menu-left ul a:hover, .page-footer .menu-right ul a:hover {
-      background-color: #575757; }
+    .page-footer .menu-left ul > li > *, .page-footer .menu-left ul * > li > *, .page-footer .menu-left ul > li > *, .page-footer .menu-left ul * > li > *, .page-footer .menu-right ul > li > *, .page-footer .menu-right ul * > li > *, .page-footer .menu-right ul > li > *, .page-footer .menu-right ul * > li > * {
+      display: block; }
+    .page-footer .menu-left ul > li > *:not(ul):not(ol), .page-footer .menu-left ul * > li > *:not(ul):not(ol), .page-footer .menu-left ul > li > *:not(ul):not(ol), .page-footer .menu-left ul * > li > *:not(ul):not(ol), .page-footer .menu-right ul > li > *:not(ul):not(ol), .page-footer .menu-right ul * > li > *:not(ul):not(ol), .page-footer .menu-right ul > li > *:not(ul):not(ol), .page-footer .menu-right ul * > li > *:not(ul):not(ol) {
+      padding: 1rem; }
+    @media only screen and (min-width: 40.063em) {
+      .page-footer .menu-left ul, .page-footer .menu-right ul {
+        list-style: none; }
+        .page-footer .menu-left ul, .page-footer .menu-left ul, .page-footer .menu-right ul, .page-footer .menu-right ul {
+          margin: 0;
+          padding: 0; }
+          .page-footer .menu-left ul > li, .page-footer .menu-left ul > li, .page-footer .menu-right ul > li, .page-footer .menu-right ul > li {
+            list-style: none; }
+          .page-footer .menu-left ul > li, .page-footer .menu-left ul > li, .page-footer .menu-right ul > li, .page-footer .menu-right ul > li {
+            display: inline-block;
+            margin-right: -4px !important; }
+            .page-footer .menu-left ul > li:last-child, .page-footer .menu-left ul > li:last-child, .page-footer .menu-right ul > li:last-child, .page-footer .menu-right ul > li:last-child {
+              margin-right: 0 !important; }
+        .page-footer .menu-left ul li, .page-footer .menu-left ul * li, .page-footer .menu-left ul li, .page-footer .menu-left ul * li, .page-footer .menu-right ul li, .page-footer .menu-right ul * li, .page-footer .menu-right ul li, .page-footer .menu-right ul * li {
+          position: relative; }
+        .page-footer .menu-left ul > li > ul, .page-footer .menu-left ul * > li > ul, .page-footer .menu-left ul > li > ol, .page-footer .menu-left ul * > li > ol, .page-footer .menu-right ul > li > ul, .page-footer .menu-right ul * > li > ul, .page-footer .menu-right ul > li > ol, .page-footer .menu-right ul * > li > ol {
+          margin: 0;
+          padding: 0;
+          display: block;
+          position: absolute;
+          *zoom: 1;
+          width: 10rem;
+          min-width: 10rem;
+          max-width: 10rem;
+          margin: 0 !important; }
+          .page-footer .menu-left ul > li > ul > li, .page-footer .menu-left ul * > li > ul > li, .page-footer .menu-left ul > li > ol > li, .page-footer .menu-left ul * > li > ol > li, .page-footer .menu-right ul > li > ul > li, .page-footer .menu-right ul * > li > ul > li, .page-footer .menu-right ul > li > ol > li, .page-footer .menu-right ul * > li > ol > li {
+            list-style: none; }
+          .page-footer .menu-left ul > li > ul > li, .page-footer .menu-left ul * > li > ul > li, .page-footer .menu-left ul > li > ol > li, .page-footer .menu-left ul * > li > ol > li, .page-footer .menu-right ul > li > ul > li, .page-footer .menu-right ul * > li > ul > li, .page-footer .menu-right ul > li > ol > li, .page-footer .menu-right ul * > li > ol > li {
+            display: block; }
+          .page-footer .menu-left ul > li > ul:before, .page-footer .menu-left ul > li > ul:after, .page-footer .menu-left ul * > li > ul:before, .page-footer .menu-left ul * > li > ul:after, .page-footer .menu-left ul > li > ol:before, .page-footer .menu-left ul > li > ol:after, .page-footer .menu-left ul * > li > ol:before, .page-footer .menu-left ul * > li > ol:after, .page-footer .menu-right ul > li > ul:before, .page-footer .menu-right ul > li > ul:after, .page-footer .menu-right ul * > li > ul:before, .page-footer .menu-right ul * > li > ul:after, .page-footer .menu-right ul > li > ol:before, .page-footer .menu-right ul > li > ol:after, .page-footer .menu-right ul * > li > ol:before, .page-footer .menu-right ul * > li > ol:after {
+            content: "";
+            display: table; }
+          .page-footer .menu-left ul > li > ul:after, .page-footer .menu-left ul * > li > ul:after, .page-footer .menu-left ul > li > ol:after, .page-footer .menu-left ul * > li > ol:after, .page-footer .menu-right ul > li > ul:after, .page-footer .menu-right ul * > li > ul:after, .page-footer .menu-right ul > li > ol:after, .page-footer .menu-right ul * > li > ol:after {
+            clear: both; }
+        .page-footer .menu-left ul > li > ul > li > ul, .page-footer .menu-left ul * > li > ul > li > ul, .page-footer .menu-left ul > li > ol > li > ol, .page-footer .menu-left ul * > li > ol > li > ol, .page-footer .menu-right ul > li > ul > li > ul, .page-footer .menu-right ul * > li > ul > li > ul, .page-footer .menu-right ul > li > ol > li > ol, .page-footer .menu-right ul * > li > ol > li > ol {
+          top: 0;
+          left: 10rem; }
+        .page-footer .menu-left ul > li > *, .page-footer .menu-left ul * > li > *, .page-footer .menu-left ul > li > *, .page-footer .menu-left ul * > li > *, .page-footer .menu-right ul > li > *, .page-footer .menu-right ul * > li > *, .page-footer .menu-right ul > li > *, .page-footer .menu-right ul * > li > * {
+          display: block; }
+        .page-footer .menu-left ul > li > *:not(ul):not(ol), .page-footer .menu-left ul * > li > *:not(ul):not(ol), .page-footer .menu-left ul > li > *:not(ul):not(ol), .page-footer .menu-left ul * > li > *:not(ul):not(ol), .page-footer .menu-right ul > li > *:not(ul):not(ol), .page-footer .menu-right ul * > li > *:not(ul):not(ol), .page-footer .menu-right ul > li > *:not(ul):not(ol), .page-footer .menu-right ul * > li > *:not(ul):not(ol) {
+          padding: 1rem; } }
+    .page-footer .menu-left ul a, .page-footer .menu-right ul a {
+      color: white;
+      text-decoration: none; }
+      .page-footer .menu-left ul a:hover, .page-footer .menu-right ul a:hover {
+        background-color: #575757; }
   .page-footer .menu-left {
     float: left;
     position: relative;
@@ -326,6 +385,7 @@ body {
 .page-content {
   line-height: 1.5em; }
   .page-content .wrapper {
+    display: block;
     position: relative;
     *zoom: 1;
     width: 100%;
@@ -405,45 +465,76 @@ body {
   .page-content .threebox h3 {
     color: #555;
     margin-top: 0.2em; }
-  .page-content .page-inline-menu, .page-content .page-inline-menu * {
-    margin: 0;
-    padding: 0;
+  .page-content .page-inline-menu {
     list-style: none; }
-    .page-content .page-inline-menu > li, .page-content .page-inline-menu * > li {
-      list-style: none; }
-    .page-content .page-inline-menu > li, .page-content .page-inline-menu * > li {
-      display: block; }
-  .page-content .page-inline-menu > li > a, .page-content .page-inline-menu * > li > a {
-    display: block; }
-  .page-content .page-inline-menu li a {
-    padding: 1rem; }
-  .page-content .page-inline-menu li {
-    padding: 0.4rem; }
-  @media only screen and (min-width: 40.063em) {
-    .page-content .page-inline-menu {
+    .page-content .page-inline-menu, .page-content .page-inline-menu *, .page-content .page-inline-menu, .page-content .page-inline-menu * {
       margin: 0;
-      padding: 0;
-      list-style: none; }
-      .page-content .page-inline-menu > li {
+      padding: 0; }
+      .page-content .page-inline-menu > li, .page-content .page-inline-menu * > li, .page-content .page-inline-menu > li, .page-content .page-inline-menu * > li {
         list-style: none; }
-      .page-content .page-inline-menu > li {
-        display: inline-block; }
-    .page-content .page-inline-menu > li > ul, .page-content .page-inline-menu > li > ul * {
-      margin: 0;
-      padding: 0;
-      list-style: none; }
-      .page-content .page-inline-menu > li > ul > li, .page-content .page-inline-menu > li > ul * > li {
-        list-style: none; }
-      .page-content .page-inline-menu > li > ul > li, .page-content .page-inline-menu > li > ul * > li {
+      .page-content .page-inline-menu > li, .page-content .page-inline-menu * > li, .page-content .page-inline-menu > li, .page-content .page-inline-menu * > li {
         display: block; }
-    .page-content .page-inline-menu > li > a, .page-content .page-inline-menu * > li > a {
-      display: block; } }
-  .page-content .page-inline-menu a {
-    color: white;
-    text-decoration: none;
-    background-color: #037698; }
-    .page-content .page-inline-menu a:hover {
-      background-color: #006785; }
+    .page-content .page-inline-menu > li > *, .page-content .page-inline-menu * > li > *, .page-content .page-inline-menu > li > *, .page-content .page-inline-menu * > li > * {
+      display: block; }
+    .page-content .page-inline-menu > li > *:not(ul):not(ol), .page-content .page-inline-menu * > li > *:not(ul):not(ol), .page-content .page-inline-menu > li > *:not(ul):not(ol), .page-content .page-inline-menu * > li > *:not(ul):not(ol) {
+      padding: 1rem; }
+    .page-content .page-inline-menu > li, .page-content .page-inline-menu * > li, .page-content .page-inline-menu > li, .page-content .page-inline-menu * > li {
+      padding: 0.4rem; }
+    .page-content .page-inline-menu > li > ul, .page-content .page-inline-menu > li > ol, .page-content .page-inline-menu * > li > ul, .page-content .page-inline-menu * > li > ol, .page-content .page-inline-menu > li > ul, .page-content .page-inline-menu > li > ol, .page-content .page-inline-menu * > li > ul, .page-content .page-inline-menu * > li > ol {
+      margin: -0.4rem;
+      margin-top: 0.4rem; }
+    @media only screen and (min-width: 40.063em) {
+      .page-content .page-inline-menu {
+        list-style: none; }
+        .page-content .page-inline-menu, .page-content .page-inline-menu {
+          margin: 0;
+          padding: 0; }
+          .page-content .page-inline-menu > li, .page-content .page-inline-menu > li {
+            list-style: none; }
+          .page-content .page-inline-menu > li, .page-content .page-inline-menu > li {
+            display: inline-block;
+            margin-right: -4px !important; }
+            .page-content .page-inline-menu > li:last-child, .page-content .page-inline-menu > li:last-child {
+              margin-right: 0 !important; }
+        .page-content .page-inline-menu li, .page-content .page-inline-menu * li, .page-content .page-inline-menu li, .page-content .page-inline-menu * li {
+          position: relative; }
+        .page-content .page-inline-menu > li > ul, .page-content .page-inline-menu * > li > ul, .page-content .page-inline-menu > li > ol, .page-content .page-inline-menu * > li > ol {
+          margin: 0;
+          padding: 0;
+          display: block;
+          position: absolute;
+          *zoom: 1;
+          width: 10rem;
+          min-width: 10rem;
+          max-width: 10rem;
+          margin: 0 !important; }
+          .page-content .page-inline-menu > li > ul > li, .page-content .page-inline-menu * > li > ul > li, .page-content .page-inline-menu > li > ol > li, .page-content .page-inline-menu * > li > ol > li {
+            list-style: none; }
+          .page-content .page-inline-menu > li > ul > li, .page-content .page-inline-menu * > li > ul > li, .page-content .page-inline-menu > li > ol > li, .page-content .page-inline-menu * > li > ol > li {
+            display: block; }
+          .page-content .page-inline-menu > li > ul:before, .page-content .page-inline-menu > li > ul:after, .page-content .page-inline-menu * > li > ul:before, .page-content .page-inline-menu * > li > ul:after, .page-content .page-inline-menu > li > ol:before, .page-content .page-inline-menu > li > ol:after, .page-content .page-inline-menu * > li > ol:before, .page-content .page-inline-menu * > li > ol:after {
+            content: "";
+            display: table; }
+          .page-content .page-inline-menu > li > ul:after, .page-content .page-inline-menu * > li > ul:after, .page-content .page-inline-menu > li > ol:after, .page-content .page-inline-menu * > li > ol:after {
+            clear: both; }
+        .page-content .page-inline-menu > li > ul > li > ul, .page-content .page-inline-menu * > li > ul > li > ul, .page-content .page-inline-menu > li > ol > li > ol, .page-content .page-inline-menu * > li > ol > li > ol {
+          top: 0;
+          left: 10rem; }
+        .page-content .page-inline-menu > li > *, .page-content .page-inline-menu * > li > *, .page-content .page-inline-menu > li > *, .page-content .page-inline-menu * > li > * {
+          display: block; }
+        .page-content .page-inline-menu > li > *:not(ul):not(ol), .page-content .page-inline-menu * > li > *:not(ul):not(ol), .page-content .page-inline-menu > li > *:not(ul):not(ol), .page-content .page-inline-menu * > li > *:not(ul):not(ol) {
+          padding: 1rem; }
+        .page-content .page-inline-menu > li, .page-content .page-inline-menu * > li, .page-content .page-inline-menu > li, .page-content .page-inline-menu * > li {
+          padding: 0.4rem; }
+        .page-content .page-inline-menu > li > ul, .page-content .page-inline-menu > li > ol, .page-content .page-inline-menu * > li > ul, .page-content .page-inline-menu * > li > ol, .page-content .page-inline-menu > li > ul, .page-content .page-inline-menu > li > ol, .page-content .page-inline-menu * > li > ul, .page-content .page-inline-menu * > li > ol {
+          margin: -0.4rem;
+          margin-top: 0.4rem; } }
+    .page-content .page-inline-menu a {
+      color: white;
+      text-decoration: none;
+      background-color: #037698; }
+      .page-content .page-inline-menu a:hover {
+        background-color: #006785; }
 
 .bluetreehouse {
   font-family: PinyonScript;

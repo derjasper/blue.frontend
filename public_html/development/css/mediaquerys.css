@@ -65,27 +65,27 @@ div {
 
 @media only screen and (min-width: 0em) {
   .color-up {
-    background: red; } }
+    color: red; } }
 @media only screen and (min-width: 40.063em) {
   .color-up {
-    background: green; } }
+    color: green; } }
 @media only screen and (min-width: 64.063em) {
   .color-up {
-    background: blue; } }
+    color: blue; } }
 
 @media only screen and (min-width: 40.063em) and (max-width: 64em) {
   .color-only {
-    background: red; } }
+    color: red; } }
 
 @media only screen and (max-width: 64em) {
   .color-down {
-    background: green; } }
+    color: green; } }
 
 @media only screen and (orientation: landscape) {
   .color-o {
-    background: orange; } }
+    color: orange; } }
 @media only screen and (orientation: portrait) {
   .color-o {
-    background: turquoise; } }
+    color: turquoise; } }
 
 /*# sourceMappingURL=mediaquerys.css.map */
