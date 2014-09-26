@@ -161,10 +161,9 @@ body {
         }
         
         ul {
-            @include menu(vertical);
-            @include menu-gutter(inner,5);
+            @include menu(vertical,(innrgttr: 5));
             @include bp(m) {
-                @include menu(horizontal);
+                @include menu(horizontal,(innrgttr:5));
             }
             @include bp(l) {
                 @include align(right);
@@ -203,10 +202,9 @@ body {
     
     .menu-left, .menu-right {
         ul {
-            @include menu(vertical);
-            @include menu-gutter(inner,5);
+            @include menu(vertical,(innrgttr:5));
             @include bp(m) {
-                @include menu(horizontal);
+                @include menu(horizontal,(innrgttr:5));
             }
 
             a {
@@ -352,12 +350,10 @@ body {
     }
     
     .page-inline-menu {
-        @include menu(vertical);
-        @include menu-gutter(inner,5);
-        @include menu-gutter(outer,2);
+        @include menu(vertical,(innrgttr:5,outrgttr:2));
 
         @include bp(m) {
-            @include menu(horizontal);
+            @include menu(horizontal,(innrgttr:5,outrgttr:2));
         }
 
         a {
