@@ -5,30 +5,30 @@ div {
 }
 .color-up {
     @include bp(s) { // corresponds to bp(s,up)
-        background:red;
+        color:red;
     }
     @include bp(m) {
-        background:green;
+        color:green;
     }
     @include bp(l) {
-        background:blue;
+        color:blue;
     }
 }
 .color-only {
     @include bp(m,onl) {
-        background:red;
+        color:red;
     }
 }
 .color-down {
     @include bp(m,down) {
-        background:green;
+        color:green;
     }
 }
 .color-o {
     @include bp-o(landscape) {
-        background:orange;
+        color:orange;
     }
     @include bp-o(portrait) {
-        background:turquoise;
+        color:turquoise;
     }
 }
