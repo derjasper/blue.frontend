@@ -53,6 +53,57 @@
             
   <div class="section" id="helper">
 <h1>Helper<a class="headerlink" href="#helper" title="Permalink to this headline">¶</a></h1>
+<p>These are helper functions which are intended for internal use and are subject
+to change, you may not rely on these functions. They are listed here for
+framework developers.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;function replace-nth($list, $index, $value)</tt></dt>
+<dd><p>Replaces the <tt class="docutils literal"><span class="pre">$index</span></tt> s entry of the list <tt class="docutils literal"><span class="pre">$list</span></tt> with <tt class="docutils literal"><span class="pre">$value</span></tt> and
+returns the result.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$list</tt></dt>
+<dd><p>The list.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$index</tt></dt>
+<dd><p>The index.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$value</tt></dt>
+<dd><p>The value.</p>
+</dd></dl>
+
+<p>Returns the result.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;function multiply-list($factor,$values)</tt></dt>
+<dd><p>Multiplys each entry of <tt class="docutils literal"><span class="pre">$values</span></tt> with <tt class="docutils literal"><span class="pre">$factor</span></tt> and returns the result.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$factor</tt></dt>
+<dd><p>The factor.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$values</tt></dt>
+<dd><p>The list.</p>
+</dd></dl>
+
+<p>Returns the result.</p>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +112,14 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Helper</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="gutter.html"
                         title="previous chapter">Gutter</a></p>
