@@ -1,175 +1,82 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>blue leaf - by blue treehouse</title>
+        <title>blue leaf Demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <script src="libs/jquery/jquery.js"></script>
         <script src="libs/enquire.js/enquire.js"></script>
         <script src="libs/blueleaf/js/blueleaf.js"></script>
         
-        <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.css" />
-        
-        <link rel="stylesheet" href="css/index.css" />
-        
-        <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-        
-        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+        <link rel="stylesheet" href="css/demobrowser.css" />
     </head>
     <body>
-        <div class="page-header">
-            <div class="wrapper">
-                <div class="logo-spacer"></div>
-                <div class="logo">
-                    <h1><img src="img/logo.svg" /> blue leaf</h1>
-                    <p><span class="bluetreehouse">by blue treehouse</span></p>
-                </div>
-                <div class="logo-sub">
-                    <p>Simple and powerful responsive Frontend-Framework with no limitations.</p>
-                </div>   
-                <div class="logo-sub2">
-                    <p>Designed to help you developing a website, not to preset your layout and styles.</p>
-                </div>
-            </div>
-        </div>
-        <div class="page-navi">
-            <div class="wrapper">
-                <div class="logo">
-                    <h1><a href="#"><img src="img/logo.svg" /> blue leaf</a></h1>
-                </div>
-                <div class="menu-button"><a class="fa fa-bars" href="#menu">&nbsp;</a></div>
-                <div class="menu">
-                    <ul>
-                        <li><a href="demobrowser.html">Demo Browser</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#references">References</a></li>
-                        <li><a href="#documentation">Documentation</a></li>
-                        <li><a href="#download">Download</a></li>
-                        <li><a href="#develop">Develop</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="page-content">
-            <div class="wrapper">
-                <a name="features"></a>
-                <h2 class="desc">blue leaf is a <em>frontend framework</em> for websites for use with SASS, extended by JavaScript.</h2>
-                <div class="container">
-                    <div class="threebox">
-                        <div class="icon"><i class="fa fa-angle-double-right"></i></div>
-                        <h3>Faster coding</h3>
-                        <p><em>blue leaf</em> is designed to <em>save time</em>. Build your layout using our predefined SASS mixins. You don't have to worry about floating, spaces or even JavaScript, we will give you everything you need for building your page. And did we mention that it's responsive?</p>
-                    </div>
-                    <div class="threebox">
-                        <div class="icon"><i class="fa fa-cog"></i></div>
-                        <h3>No limits</h3>
-                        <p>Other frontend framework such as Foundation by ZURB or Twitter's Bootstrap may have a wide variety of features, but they preset a specific layout or behaviour. We try to make our functions as general as possible to provide a high flexibility. Also, <em>blue leaf</em> does not contain any styles when it comes to colors, buttons, fonts and so on.</p>
-                    </div>
-                    <div class="threebox">
-                        <div class="icon"><i class="fa fa-mobile"></i><i class="fa fa-tablet"></i><i class="fa fa-laptop"></i></div>
-                        <h3>Responsive and feature rich</h3>
-                        <p>This framework can be used to build <em>mobile first</em> layouts, but you don't have to. During development we kept different devices and screen sizes in mind. The growing number of features build a solid ground for your next webapp. For features see below, for best pratices and feature usage please read our documentation.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="highlight highlight-1">
-                <div class="wrapper">
-                    <div class="fa fa-code"></div>
-                    <h2>Break the lines between SASS and JavaScript.</h2>
-                    <p class="sub">Unlimited features through our custom rules module.</p>
-                    <p>This may be the first frontend framework to expose metadata from SASS to JavaScript. This means, that specific behaviour can be defined by using SASS mixins.</p>
-                    <p>To achieve this, comments are stored in the generated CSS file containing a JSON object. The framework's JavaScript will parse these files for these comments.</p>
-                    <p>See below for details.</p>
-                </div>
-            </div>
-                
-            <div class="wrapper">
-                <h2>All your favourite features included.</h2>
-                <div class="container">
-                    <div class="threebox">
-                        <h3>Basic Layout</h3>
-                        <ul class="features">
-                            <li>Container</li>
-                            <li>Grid</li>
-                            <li>Gutter</li>
-                            <li>Visibility</li>
-                            <li>Alignment</li>
-                            <li>Menu</li>
+        <div class="header">
+            <div class="inner">
+                <ul>
+                    <li><h1>blue leaf Demo Browser</h1></li>
+                    <li>
+                        <a href="#">Examples &#9660;</a>
+                        <ul class="examples">
+                            <li><a href="#" data-file="alignment">Alignment</a></li>
+                            <li><a href="#" data-file="container">Container</a></li>
+                            <li><a href="#" data-file="grid">Grid</a></li>
+                            <li><a href="#" data-file="gutter">Gutter</a></li>
+                            <li><a href="#" data-file="list">List</a></li>
+                            <li><a href="#" data-file="mediaquerys">Media Querys</a></li>
+                            <li><a href="#" data-file="menu">Menu</a></li>
+                            <li><a href="#" data-file="offcanvas">Offcanvas</a></li>
+                            <li><a href="#" data-file="reset">Reset</a></li>
+                            <li><a href="#" data-file="resizable">Resizable</a></li>
+                            <li><a href="#" data-file="scrolling">Scrolling</a></li>
+                            <li><a href="#" data-file="scrollposition">Scrollposition</a></li>
+                            <li><a href="#" data-file="sticky">Sticky</a></li>
+                            <li><a href="#" data-file="stickyfooter">Stickyfooter</a></li>
+                            <li><a href="#" data-file="trigger">Trigger</a></li>
+                            <li><a href="#" data-file="utility">Utility</a></li>
+                            <li><a href="#" data-file="visibility">Visibility</a></li>
                         </ul>
-                    </div>
-                    <div class="threebox">
-                        <h3>Usability improvements</h3>
-                        <ul class="features">
-                            <li>Sticky Elements</li>
-                            <li>Offcanvas</li>
-                            <li>Scroll position response</li>
-                            <li>Smooth scrolling</li>
-                        </ul>
-                    </div>
-                    <div class="threebox">
-                        <h3>More useful things</h3>
-                        <ul class="features">
-                            <li>Breakpoints</li>
-                            <li>Custom rules</li>
-                            <li>Predefined CSS</li>
-                        </ul>
-                    </div>
-                </div>
-                <p>Please refer to our documentation for more details and a full list.</p>
-
-                <a name="references"></a>                
-                <h2>Who is using it?</h2>
-                <p>blue leaf has been prooved on small and medium size websites.</p>
-
-                 <a name="documentation"></a>
-                <h2>Getting started!</h2>
-
-                <a name="download"></a>
-                <div class="highlight-box highlight-2">
-                    <h2>How do I get this awesome piece of software?</h2>
-                    <p>Since there are already some frameworks out there, there is no need to publish this as open source.</p>
-
-                    <p>
-                        Because we want everyone to benefit from this project, we release this software for everyone, but under the following conditions:<br />
-                        You are allowed to use this software as long as you link to this website on a subpage and <strong>unless you are making money with it</strong>.<br />
-                        We're putting some time in this project. So if your are making money with projects using this software, we want to have a little piece of the cake ;). The pricing is as following:
-                        FREE
-                        PER PROJECT
-                        UNLIMITED
-                    </p>
-
-                    <ul class="page-inline-menu">
-                        <li><a href="#">Download compiled</a></li>
-                        <li><a href="#">Contact for a License</a></li>
-                    </ul>
-                </div>
-
-                <a name="develop"></a>
-                <h2>Help us to make this framework more perfect.</h2>
-                <p>Currently, we are not looking for developers. But yo are welcome to report bugs and add features to our wishlist.</p>
-
-                <ul class="page-inline-menu">
-                    <li><a href="#">Bug Tracker</a></li>
-                    <li><a href="#">Wishlist</a></li>
+                    </li>
+                    <li><a href="#" class="button tab-demo">View Demo</a></li>
+                    <li><a href="#" class="button tab-code">View Code</a></li>
+                    
+                    <li><a href="#" id="newwindow">Open demo in new window</a></li>
                 </ul>
             </div>
         </div>
-        
-        <div class="page-footer">
-            <div class="wrapper">
-                <div class="menu-left">
-                    <ul>
-                        <li><a href="#">&nbsp;<span class="bluetreehouse">made by blue treehouse</span></a>&nbsp;</li>
-                    </ul>
+        <div class="content">
+            <div class="tab tab-demo">
+                <div class="resizable">
+                    <iframe class="iframe"></iframe>
                 </div>
-                <div class="menu-right">
-                    <ul>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Legal notice</a></li>
-                    </ul>
-                </div>
-                <div class="copyright">&copy; Jasper Nalbach</div>
+            </div>
+            <div class="tab tab-code">
+                <div class="htmlcode"><div>HTML</div></div>
+                <div class="sasscode"><div>SASS</div></div>
             </div>
         </div>
+        <script>            
+            var currentExample="";
+            
+            $('.examples a').click(function() {
+                currentExample=$(this).data('file');
+                
+                $('.iframe').attr('src', 'html/'+currentExample+'.html');
+                
+                $.get( 'html/'+currentExample+'.html', function( data ) {
+                    $( ".htmlcode > div" ).text( data );
+                });
+                
+                $.get( 'scss/'+currentExample+'.scss', function( data ) {
+                    $( ".sasscode > div" ).text( data );
+                });
+            });
+            
+            $('#newwindow').click(function() {
+                if (currentExample!="")
+                    window.open('html/'+currentExample+'.html', '_blank');
+            });
+        </script>
     </body>
 </html>
