@@ -1,6 +1,3 @@
-// TODO RELEASEBLOCKER nur width oder height setzen, wenn w bzw h relativ zu elternelement ist
-
-
 (function($) {  
   $.fn.sticky_enable = function(opts) {
     var parent_selector, sticky_class, z_index, stick_directions, scrollarea_offset;
@@ -33,6 +30,7 @@
         var spacerEnabled=false;
         var element_top,element_height,parent_top,parent_height,viewport_height;
         var createSpacer,destroySpacer,setElementState,tick,recalc;
+        var observer;
         
         // mark as enabled
         if (elm.data("sticky_enabled")) return;
@@ -219,6 +217,8 @@
             $(window).off("resize", recalc);
             elm.off("sticky_detach", detach);
             
+            observer.disconnect();
+            
             setElementState(STATE.OFF);
             destroySpacer();
             spacer.remove();
@@ -230,6 +230,13 @@
         $(window).on("scroll", tick);
         $(window).on("resize", recalc);   
         elm.on("sticky_detach", detach);
+        
+        observer = new MutationObserver(function(mutations) {
+            recalc();
+        });
+        
+        elm.uniqueId();
+        observer.observe(document.getElementById(elm.attr('id')), { attributes:false,childList:true,characterData:true,subtree:true });
     };
     for (var _i = 0, _len = this.length; _i < _len; _i++) {
         var elm = this[_i];
