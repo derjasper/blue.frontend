@@ -14,7 +14,7 @@ div {
 
 .c3 {
     @include visibility(show);
-    border:none;
+    border:none !important;
 }
 
 .c4 {
