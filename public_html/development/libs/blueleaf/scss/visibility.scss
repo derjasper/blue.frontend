@@ -15,5 +15,7 @@
     }
     @else if $mode==hidecontent {
         text-indent: -99999999px;
+        color:transparent;
+        overflow: hidden;
     }
 }

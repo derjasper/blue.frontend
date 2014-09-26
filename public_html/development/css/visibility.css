@@ -81,13 +81,15 @@ div {
 .c3 {
   display: initial;
   visibility: visible;
-  border: none; }
+  border: none !important; }
 
 .c4 {
   display: block;
   visibility: visible; }
 
 .c5 {
-  text-indent: -99999999px; }
+  text-indent: -99999999px;
+  color: transparent;
+  overflow: hidden; }
 
 /*# sourceMappingURL=visibility.css.map */
