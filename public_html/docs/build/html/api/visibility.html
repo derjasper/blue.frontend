@@ -53,6 +53,54 @@
             
   <div class="section" id="visibility">
 <h1>Visibility<a class="headerlink" href="#visibility" title="Permalink to this headline">¶</a></h1>
+<p>The visibility module is intended to provide a simple API for visibility-related
+features.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin visibility($mode)</tt></dt>
+<dd><p>Sets the visibility of the current element.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$mode</tt></dt>
+<dd><p>The possible modes are:</p>
+<dl class="describe">
+<dt>
+<tt class="descname">hide</tt></dt>
+<dd><p>Excluded from the rendering tree, <tt class="docutils literal"><span class="pre">display:none;</span></tt></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">invisible</tt></dt>
+<dd><p>Invisible, but still uses the space, <tt class="docutils literal"><span class="pre">visibility:hidden;</span></tt></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">show</tt></dt>
+<dd><p>Show as (inline) element, <tt class="docutils literal"><span class="pre">display:initial;</span></tt></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">showblock</tt></dt>
+<dd><p>Show as block element, <tt class="docutils literal"><span class="pre">display:block;</span></tt></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">hidecontent</tt></dt>
+<dd><p>Hide (inline) content. May be used to replace text with images. Use
+with buttons, as seen in the demo.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +109,14 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Visibility</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="utility.html"
                         title="previous chapter">Utility</a></p>

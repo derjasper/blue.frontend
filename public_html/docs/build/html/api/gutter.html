@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="blue leaf 1.0 documentation" href="../index.html" />
     <link rel="up" title="API" href="../api.html" />
-    <link rel="next" title="&lt;no title&gt;" href="helper.html" />
+    <link rel="next" title="Helper" href="helper.html" />
     <link rel="prev" title="Grid" href="grid.html" /> 
   </head>
   <body>
@@ -36,7 +36,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="helper.html" title="&lt;no title&gt;"
+          <a href="helper.html" title="Helper"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="grid.html" title="Grid"
@@ -53,6 +53,26 @@
             
   <div class="section" id="gutter">
 <h1>Gutter<a class="headerlink" href="#gutter" title="Permalink to this headline">¶</a></h1>
+<p>The gutter module is there for consistent inner spacings of elements. The
+scaling can be configured via the <tt class="docutils literal"><span class="pre">$gutter</span></tt> variable in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin gutter($spacing...)</tt></dt>
+<dd><p>Adds an inner spacings to the given element. Can savely be applied to
+<a class="reference internal" href="container.html"><em>Container</em></a> and <a class="reference internal" href="grid.html"><em>Grid</em></a> elements. Optimized mixins are available for
+<a class="reference internal" href="menu.html"><em>Menu</em></a> and <a class="reference internal" href="list.html"><em>List</em></a>, please refer to the respective pages for details.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$spacing</tt></dt>
+<dd><p>Map or arguments with inner spacings, same as CSS&#8217;s padding/margin values
+(e.g. <tt class="docutils literal"><span class="pre">1,2,3,4</span></tt> or <tt class="docutils literal"><span class="pre">1,2,3</span></tt> or <tt class="docutils literal"><span class="pre">1,2</span></tt> or <tt class="docutils literal"><span class="pre">1</span></tt>).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,12 +81,20 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Gutter</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="grid.html"
                         title="previous chapter">Grid</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="helper.html"
-                        title="next chapter">&lt;no title&gt;</a></p>
+                        title="next chapter">Helper</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/api/gutter.txt"
@@ -96,7 +124,7 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="helper.html" title="&lt;no title&gt;"
+          <a href="helper.html" title="Helper"
              >next</a> |</li>
         <li class="right" >
           <a href="grid.html" title="Grid"

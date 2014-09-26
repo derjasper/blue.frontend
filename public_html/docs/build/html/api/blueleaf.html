@@ -23,7 +23,10 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="blue leaf 1.0 documentation" href="../index.html" /> 
+    <link rel="top" title="blue leaf 1.0 documentation" href="../index.html" />
+    <link rel="up" title="API" href="../api.html" />
+    <link rel="next" title="Container" href="container.html" />
+    <link rel="prev" title="Alignment" href="alignment.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,7 +35,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="container.html" title="Container"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="alignment.html" title="Alignment"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+          <li><a href="../api.html" accesskey="U">API</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -43,6 +53,82 @@
             
   <div class="section" id="blue-leaf-core">
 <h1>blue leaf Core<a class="headerlink" href="#blue-leaf-core" title="Permalink to this headline">¶</a></h1>
+<p>These are some core functionalities and settings which can normally left untouched.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">$gutter</tt></dt>
+<dd><p>gutter scaling (default: 0.2rem)</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$container</tt></dt>
+<dd><p>container scaling (default: 10rem)</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$columns</tt></dt>
+<dd><p>number of columns (default: 12)</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$rows</tt></dt>
+<dd><p>number of rows (default: 12)</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$screensizes</tt></dt>
+<dd><p>map of screen sizes with their ranges
+(default: (s: (0em 40em), m: (40.063em 64em), l: (64.063em)))</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$predefined</tt></dt>
+<dd><p>indicates whether predefined CSS rules should be generated or not (default: true)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="javascript">
+<h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="blueleaf.apply">
+<tt class="descclassname">blueleaf.</tt><tt class="descname">apply</tt><big>(</big><big>)</big><a class="headerlink" href="#blueleaf.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Re-applys JavaScript-based rules. Call it whenever DOM changes are made. (The
+plan is to automate this).</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="blueleaf.scrollarea.offset">
+<tt class="descclassname">blueleaf.scrollarea.</tt><tt class="descname">offset</tt><a class="headerlink" href="#blueleaf.scrollarea.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds information of the scrollarea&#8217;s offset (has attributes top,right,bottom,left).
+Used to correct jump links in combination with sticky elements.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="blueleaf.scrollarea.changeOffset">
+<tt class="descclassname">blueleaf.scrollarea.</tt><tt class="descname">changeOffset</tt><big>(</big><em>newoffset</em><big>)</big><a class="headerlink" href="#blueleaf.scrollarea.changeOffset" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>newoffset</strong> &#8211; Values to be added to the current offset, same structure
+as blueleaf.offset.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Change the scrollarea&#8217;s offset.</p>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -51,6 +137,21 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">blue leaf Core</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+<li><a class="reference internal" href="#javascript">JavaScript</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="alignment.html"
+                        title="previous chapter">Alignment</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="container.html"
+                        title="next chapter">Container</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/api/blueleaf.txt"
@@ -79,7 +180,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="container.html" title="Container"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="alignment.html" title="Alignment"
+             >previous</a> |</li>
+        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+          <li><a href="../api.html" >API</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
