@@ -53,6 +53,45 @@
             
   <div class="section" id="custom-rules">
 <h1>Custom Rules<a class="headerlink" href="#custom-rules" title="Permalink to this headline">¶</a></h1>
+<p>The custom rule feature is the most unique feature of this framework. It makes
+JavaScript code invocable from SASS depending on media querys.</p>
+<p>Note: This module is not intended for use from outside the framework. It is documented
+for framework developers.</p>
+<p><strong>How it works</strong></p>
+<p>The SASS mixin will create a CSS comment with an JSON object generated
+from SASS maps, which will look as follows:</p>
+<div class="highlight-css"><div class="highlight"><pre><span class="c">/*! customrule: {rulename: {option1: value, option2: value, enabled:true}} */</span>
+</pre></div>
+</div>
+<p>Now, blue leaf&#8217;s JavaScript will parse all CSS files beginning with <tt class="docutils literal"><span class="pre">/*!</span> <span class="pre">blueleaf</span> <span class="pre">*/</span></tt>
+for these comments and parse the JSON objects. The JSON objects will be stored
+in association with the current media query and the current CSS rule.</p>
+<p>These information will be given to enquire.js, which will call the delegated handler
+for each rule to enable/disable the specified feature (the functions get the selector
+and the options as a parameter). Handler can be registered by modules.</p>
+<p>The implementation and the JS part will not be documented as it will be updated
+(and documented) in future. Please study the source code for more details.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin customrule($rule,$map)</tt></dt>
+<dd><p>Defines a custom rule</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$rule</tt></dt>
+<dd><p>Name of the rule.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$map</tt></dt>
+<dd><p>Map with configuration.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +100,14 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Custom Rules</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="container.html"
                         title="previous chapter">Container</a></p>
