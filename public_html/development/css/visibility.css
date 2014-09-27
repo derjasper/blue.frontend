@@ -28,10 +28,11 @@ html {
 body {
   font-family: sans;
   color: white;
-  background: #222; }
+  background: #222;
+  padding: 0 4em 4em 4em; }
 
 h1, h2, h3 {
-  padding: 1em;
+  padding: 1em 0;
   margin: 0;
   font-weight: normal; }
 
