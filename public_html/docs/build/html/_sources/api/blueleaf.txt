@@ -52,8 +52,8 @@ JavaScript
 
 .. js:function:: blueleaf.scrollarea.changeOffset(newoffset)
 
+   Change the scrollarea's offset.
    
    :param newoffset: Values to be added to the current offset, same structure 
                      as blueleaf.offset.
 
-   Change the scrollarea's offset.
