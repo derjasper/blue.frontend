@@ -53,6 +53,51 @@
             
   <div class="section" id="sticky-footer">
 <h1>Sticky Footer<a class="headerlink" href="#sticky-footer" title="Permalink to this headline">¶</a></h1>
+<p>A footer with an background different from the body&#8217;s looks ugly if the content
+is too short and the footer is not at the bottom of the page. There are some CSS
+workarounds which are unflexible. This module is a solution based on JavaScript.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin stickyfooter($parent:&quot;html&quot;)</tt></dt>
+<dd><p>The current element &#8220;sticks&#8221; at the bottom of the <tt class="docutils literal"><span class="pre">$parent</span></tt> element if the
+content is too short.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$parent</tt></dt>
+<dd><p>Selector fot the parent element containing the content.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="javascript">
+<h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_S_.stickyfooter_enable">
+<tt class="descclassname">$.</tt><tt class="descname">stickyfooter_enable</tt><big>(</big><em>parent_selector</em><big>)</big><a class="headerlink" href="#_S_.stickyfooter_enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables the stickyfooter feature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parent_selector</strong> (<em>string</em>) &#8211; Selector for the parent element.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_S_.stickyfooter_disable">
+<tt class="descclassname">$.</tt><tt class="descname">stickyfooter_disable</tt><big>(</big><big>)</big><a class="headerlink" href="#_S_.stickyfooter_disable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables the stickyfooter feature.</p>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +106,15 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sticky Footer</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+<li><a class="reference internal" href="#javascript">JavaScript</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="sticky.html"
                         title="previous chapter">Sticky</a></p>
