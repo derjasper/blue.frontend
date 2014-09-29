@@ -53,6 +53,84 @@
             
   <div class="section" id="media-querys">
 <h1>Media Querys<a class="headerlink" href="#media-querys" title="Permalink to this headline">¶</a></h1>
+<p>Simple media query shorthands. The mixin <tt class="docutils literal"><span class="pre">bp</span></tt> is the one you will use most.
+Screen sizes can be configured via the <tt class="docutils literal"><span class="pre">$screensizes</span></tt> variable in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin bp($screen:s,$mode:up) { &#64;content }</tt></dt>
+<dd><p>The most important mixin. Define rules dependent on <tt class="docutils literal"><span class="pre">$screen</span></tt>. <tt class="docutils literal"><span class="pre">$mode</span></tt> indicates
+whether bigger/smaller screen sizes should be included or not.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$screen</tt></dt>
+<dd><p>See the <tt class="docutils literal"><span class="pre">$screensizes</span></tt> variable in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>. Normally <tt class="docutils literal"><span class="pre">s</span></tt>, <tt class="docutils literal"><span class="pre">m</span></tt> or <tt class="docutils literal"><span class="pre">l</span></tt>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$mode</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">up</span></tt>, <tt class="docutils literal"><span class="pre">down</span></tt> or <tt class="docutils literal"><span class="pre">onl</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin bp-o($orientation) { &#64;content }</tt></dt>
+<dd><p>Respond to device orientation.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$orientation</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">landscape</span></tt> or <tt class="docutils literal"><span class="pre">portrait</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>The following functions are used to construct advanced media querys. They can be used like this:</p>
+<div class="highlight-css"><div class="highlight"><pre>@media #{bpBase() and mediaQueryScreen(&quot;m&quot;,&quot;up&quot;)}, #{bpBase() and bpOrientation(&quot;portrait&quot;)} {
+    some: code;
+}
+</pre></div>
+</div>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;function bpBase()</tt></dt>
+<dd><p>Makes sure that styles are applied to screens only.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;function bpScreen($screen,$mode)</tt></dt>
+<dd><p>Respond to screen sizes.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$screen</tt></dt>
+<dd><p>See the <tt class="docutils literal"><span class="pre">$screensizes</span></tt> variable in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>. Normally <tt class="docutils literal"><span class="pre">s</span></tt>, <tt class="docutils literal"><span class="pre">m</span></tt> or <tt class="docutils literal"><span class="pre">l</span></tt>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$mode</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">up</span></tt>, <tt class="docutils literal"><span class="pre">down</span></tt> or <tt class="docutils literal"><span class="pre">onl</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;function bpOrientation($orientation)</tt></dt>
+<dd><p>Respond to orientation.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$orientation</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">landscape</span></tt> or <tt class="docutils literal"><span class="pre">portrait</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +139,14 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Media Querys</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="list.html"
                         title="previous chapter">List</a></p>
