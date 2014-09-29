@@ -53,6 +53,73 @@
             
   <div class="section" id="resizable">
 <h1>Resizable<a class="headerlink" href="#resizable" title="Permalink to this headline">¶</a></h1>
+<p>Elements that can be resized with the mouse.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin resizable($resize_class:&quot;resizing&quot;,$click_spacing:10)</tt></dt>
+<dd><p>Makes the current element resizable</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$resize_class</tt></dt>
+<dd><p>Class to be added to the element during the resizing process.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$click_spacing</tt></dt>
+<dd><p>Maximum spacing to the element&#8217;s border to initiate the resizing process.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin bp-resizing($resize_class:&quot;resizing&quot;) { &#64;content }</tt></dt>
+<dd><p>Styles to be applied during the resizing process.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$resize_class</tt></dt>
+<dd><p>Class.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;content</tt></dt>
+<dd><p>Styles.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="javascript">
+<h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_S_.resizable_enable">
+<tt class="descclassname">$.</tt><tt class="descname">resizable_enable</tt><big>(</big><em>resize_class</em>, <em>click_spacing</em><big>)</big><a class="headerlink" href="#_S_.resizable_enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable the resizable feature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>resize_class</strong> (<em>string</em>) &#8211; Class.</li>
+<li><strong>click_spacing</strong> (<em>int</em>) &#8211; Click spacing.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_S_.resizable_disable">
+<tt class="descclassname">$.</tt><tt class="descname">resizable_disable</tt><big>(</big><big>)</big><a class="headerlink" href="#_S_.resizable_disable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable the resizable feature.</p>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +128,15 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Resizable</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+<li><a class="reference internal" href="#javascript">JavaScript</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="reset.html"
                         title="previous chapter">Reset</a></p>
