@@ -53,6 +53,40 @@
             
   <div class="section" id="predefined-rules">
 <h1>Predefined Rules<a class="headerlink" href="#predefined-rules" title="Permalink to this headline">¶</a></h1>
+<p>Predefined rules are CSS classes defined by blue leaf.</p>
+<p>Normally, blue leaf does not create any CSS rules for specific classes. If a module
+defines such rules it should happen via the <tt class="docutils literal"><span class="pre">predefine</span></tt> mixin in order to allow site
+developers to disable these rules.</p>
+<p>Predefined rules can be turned off via the <tt class="docutils literal"><span class="pre">$predefined</span></tt> variable in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>.</p>
+<p>Note: These mixins are not for use from outside the framework. They are documented
+for framework developers.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin predefine($classname,$flags...) { &#64;content }</tt></dt>
+<dd><p>Predefines a CSS rule for the given <tt class="docutils literal"><span class="pre">$classname</span></tt>.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$classname</tt></dt>
+<dd><p>The CSS class name.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$flags...</tt></dt>
+<dd><p>Some flags to specify how the rules have to be defined. Currently, this has no function.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;content</tt></dt>
+<dd><p>CSS rules.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +95,14 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Predefined Rules</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="offcanvas.html"
                         title="previous chapter">Off Canvas</a></p>
