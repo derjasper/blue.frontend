@@ -53,6 +53,102 @@
             
   <div class="section" id="scrolling">
 <h1>Scrolling<a class="headerlink" href="#scrolling" title="Permalink to this headline">¶</a></h1>
+<p>This module provides some scrolling-related features.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin smoothscrolling($time:1000)</tt></dt>
+<dd><p>Can be applied to a link (<tt class="docutils literal"><span class="pre">a</span></tt> HTML tag) that points to a hash. When the link
+is clicked, the page is crolled to the target in <tt class="docutils literal"><span class="pre">$time</span></tt> ms. Note that this
+cannot be used in combination with <a class="reference internal" href="trigger.html"><em>Trigger</em></a> and the hash in the url will not
+be updated.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$time</tt></dt>
+<dd><p>The time in ms.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin scrollareaoffset($offset)</tt></dt>
+<dd><p>If there are fixed element at the top of the viewport (such as <a class="reference internal" href="sticky.html"><em>Sticky</em></a>),
+jumplinks does not work correctly. This mixin adds an offset to the jumplink.
+Jumplink correction will be automated in future.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$time</tt></dt>
+<dd><p>The offset as an CSS length.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="javascript">
+<h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_S_.smoothscrolling_enable">
+<tt class="descclassname">$.</tt><tt class="descname">smoothscrolling_enable</tt><big>(</big><em>time</em><big>)</big><a class="headerlink" href="#_S_.smoothscrolling_enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables the smooth scrolling feature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time</strong> (<em>int</em>) &#8211; Time in ms.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_S_.smoothscrolling_disable">
+<tt class="descclassname">$.</tt><tt class="descname">smoothscrolling_disable</tt><big>(</big><big>)</big><a class="headerlink" href="#_S_.smoothscrolling_disable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables the smooth scrolling feature.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_S_.scrollareaoffset_enable">
+<tt class="descclassname">$.</tt><tt class="descname">scrollareaoffset_enable</tt><big>(</big><em>offset</em><big>)</big><a class="headerlink" href="#_S_.scrollareaoffset_enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables the scroll area offset feature. (No function at this time.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time</strong> (<em>int</em>) &#8211; Offset.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_S_.scrollareaoffset_disable">
+<tt class="descclassname">$.</tt><tt class="descname">scrollareaoffset_disable</tt><big>(</big><big>)</big><a class="headerlink" href="#_S_.scrollareaoffset_disable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables the scroll area offset feature.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_S_.scrollareaoffset">
+<tt class="descclassname">$.</tt><tt class="descname">scrollareaoffset</tt><big>(</big><big>)</big><a class="headerlink" href="#_S_.scrollareaoffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the scroll area offset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Offset.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +157,15 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Scrolling</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+<li><a class="reference internal" href="#javascript">JavaScript</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="resizable.html"
                         title="previous chapter">Resizable</a></p>

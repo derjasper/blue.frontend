@@ -280,9 +280,9 @@ CSSParser.prototype.parse = function() {
 }(jQuery));
 
 (function($) {
-    $.fn.scrollareaoffset_enable = function(time) {        
+    $.fn.scrollareaoffset_enable = function(offset) {        
         _fn = function(elm) {
-            elm.data("scrollareaoffset",time);
+            elm.data("scrollareaoffset",offset);
         }
     
         for (_i = 0, _len = this.length; _i < _len; _i++) {
