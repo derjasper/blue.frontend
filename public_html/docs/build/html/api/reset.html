@@ -53,6 +53,41 @@
             
   <div class="section" id="reset">
 <h1>Reset<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h1>
+<p>Mixins for easily resetting CSS rules.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin reset($flags...)</tt></dt>
+<dd><p>Reset styles.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$flags...</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">all-initial</span></tt>, <tt class="docutils literal"><span class="pre">all-inherit</span></tt>, <tt class="docutils literal"><span class="pre">all-unset</span></tt>, <tt class="docutils literal"><span class="pre">margin</span></tt>, <tt class="docutils literal"><span class="pre">padding</span></tt>, <tt class="docutils literal"><span class="pre">display</span></tt>, <tt class="docutils literal"><span class="pre">text-align</span></tt></p>
+<p>Defaults to <tt class="docutils literal"><span class="pre">margin,padding</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin reset-p($mode,$properties...)</tt></dt>
+<dd><p>Resets <tt class="docutils literal"><span class="pre">$properties</span></tt> to <tt class="docutils literal"><span class="pre">$mode</span></tt>.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$mode</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">inherit</span></tt>, <tt class="docutils literal"><span class="pre">initial</span></tt> or <tt class="docutils literal"><span class="pre">unset</span></tt>. Same as in CSS.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$properties...</tt></dt>
+<dd><p>Properties to reset. <tt class="docutils literal"><span class="pre">all</span></tt> to reset all. (<tt class="docutils literal"><span class="pre">all</span></tt> is supported in Firefox only.)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +96,14 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Reset</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="predefinedrules.html"
                         title="previous chapter">Predefined Rules</a></p>
