@@ -53,6 +53,136 @@
             
   <div class="section" id="grid">
 <h1>Grid<a class="headerlink" href="#grid" title="Permalink to this headline">¶</a></h1>
+<p>A (responsive) grid similiar to Foundation&#8217;s one. Offers columns and rows.</p>
+<p>The number of cols/rows can be configured via the <tt class="docutils literal"><span class="pre">$columns</span></tt> / <tt class="docutils literal"><span class="pre">$rows</span></tt>
+variable in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>.</p>
+<p>Each element in the grid is a <em>box</em> and cannot be a <em>container</em> (see <a class="reference internal" href="container.html"><em>Container</em></a>).</p>
+<p>A group of <em>box</em> es should be wrapped in a <em>container</em>. This container must have a
+defined width to make the <em>col</em> s work properly. Same is true for <em>row</em> s and the container&#8217;s
+height.</p>
+<div class="section" id="offsets">
+<h2>Offsets<a class="headerlink" href="#offsets" title="Permalink to this headline">¶</a></h2>
+<p>A <em>col</em> can have an offset.</p>
+</div>
+<div class="section" id="source-ordering">
+<h2>Source ordering<a class="headerlink" href="#source-ordering" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>col*s can do source ordering (e.g. push and pull). For example, the code</p>
+<p>HTML:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;first&quot;</span><span class="nt">&gt;</span>1st<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;second&quot;</span><span class="nt">&gt;</span>2nd<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>SASS:</p>
+<div class="highlight-sass"><div class="highlight"><pre>.first {@include col(6);}
+.second {@include col(6);}
+</pre></div>
+</div>
+<p>has the same output as:</p>
+<p>HTML:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;second&quot;</span><span class="nt">&gt;</span>2nd<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;first&quot;</span><span class="nt">&gt;</span>1st<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>SASS:</p>
+<div class="highlight-sass"><div class="highlight"><pre>.second {@include col(6);@include col-push(6);}
+.first {@include col(6);@include col-pull(6);}
+</pre></div>
+</div>
+<p>For more information refer to the grid demo.</p>
+</div>
+<div class="section" id="direction">
+<h2>Direction<a class="headerlink" href="#direction" title="Permalink to this headline">¶</a></h2>
+<p>Each <em>box</em> has a direction indicating from which side the parent element will be
+filled (left or right).</p>
+</div>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin box($direction)</tt></dt>
+<dd><p>An element which is part of the grid. Will be used by <tt class="docutils literal"><span class="pre">col</span></tt> and <tt class="docutils literal"><span class="pre">row</span></tt>, no
+need to use this directly.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$direction</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">left</span></tt> or <tt class="docutils literal"><span class="pre">right</span></tt>, indicates the alignment of the grid.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin col($size,$direction:left)</tt></dt>
+<dd><p>An element with the width of <tt class="docutils literal"><span class="pre">$size</span></tt> cols.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$size</tt></dt>
+<dd><p>Width of the element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$direction</tt></dt>
+<dd><p>See <tt class="docutils literal"><span class="pre">box</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin row($size,$direction:left)</tt></dt>
+<dd><p>An element with the height of <tt class="docutils literal"><span class="pre">$size</span></tt> rows.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$size</tt></dt>
+<dd><p>Height of the element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$direction</tt></dt>
+<dd><p>See <tt class="docutils literal"><span class="pre">box</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">col-offset($x)</tt></dt>
+<dd><p>Offset to the left of <tt class="docutils literal"><span class="pre">$x</span></tt> cols.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$x</tt></dt>
+<dd><p>Width of the offset.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">col-push($x)</tt></dt>
+<dd><p>The element pushes itself <tt class="docutils literal"><span class="pre">$x</span></tt> cols to the right.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$x</tt></dt>
+<dd><p>Number of cols.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">col-pull($x)</tt></dt>
+<dd><p>The element pulls itself <tt class="docutils literal"><span class="pre">$x</span></tt> cols to the left.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$x</tt></dt>
+<dd><p>Number of cols.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +191,17 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Grid</a><ul>
+<li><a class="reference internal" href="#offsets">Offsets</a></li>
+<li><a class="reference internal" href="#source-ordering">Source ordering</a></li>
+<li><a class="reference internal" href="#direction">Direction</a></li>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="customrules.html"
                         title="previous chapter">Custom Rules</a></p>

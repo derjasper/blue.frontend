@@ -53,6 +53,176 @@
             
   <div class="section" id="trigger">
 <h1>Trigger<a class="headerlink" href="#trigger" title="Permalink to this headline">¶</a></h1>
+<p>The trigger module allows to define UI interactions from SASS. Events like clicks
+and mouseovers toggle a class of an element.</p>
+<p>A <em>trigger</em> (click,mouseover,mouseout) toggles, turns on or turns off a class of its <em>target</em>.
+Also, the handlers can have priorities which allows to control the order they are executed.</p>
+<div class="section" id="target-expressions">
+<h2>Target expressions<a class="headerlink" href="#target-expressions" title="Permalink to this headline">¶</a></h2>
+<p>The target is specified by a selector, which has some extended functionality explained below.</p>
+<p>Target expressions are jQuery selectors plus these ones:</p>
+<dl class="describe">
+<dt>
+<tt class="descname">{this}</tt></dt>
+<dd><p>Can be placed everywhere in the selector an will be replaced by the id of the current
+element (and NOT the selector).</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">{parent-x}</tt></dt>
+<dd><p>Can be placed everywhere in the selector an will be replaced by the id of the parent
+number x. {parent-1} will be the first parent, {parent-2} will be the element two levels
+higher.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">{attr-x}</tt></dt>
+<dd><p>Can be placed everywhere in the selector an will be replaced by the contents of the
+attribute of the current element. For example, it allows to put the target element
+in the attribute <tt class="docutils literal"><span class="pre">data-target</span></tt> by using <tt class="docutils literal"><span class="pre">{attr-data-target}</span></tt> as the target expression.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin trigger($target_expr,$trigger_class:&quot;trigger&quot;,$type:click,$trigger_mode:toggle,$priority:0)</tt></dt>
+<dd><p>Defines a trigger.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$target_expr</tt></dt>
+<dd><p>A target expression (see above) for the target to be triggered.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$trigger_class</tt></dt>
+<dd><p>Class to be triggered.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$type</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">click</span></tt>, <tt class="docutils literal"><span class="pre">mouseover</span></tt>, mouseout``; Type of the event of the current element to
+trigger the target.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$trigger_mode</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">toggle</span></tt>, <tt class="docutils literal"><span class="pre">on</span></tt>, <tt class="docutils literal"><span class="pre">off</span></tt>; Specifies if the class of the target will be toggled,
+turned on or off.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$priority</tt></dt>
+<dd><p>The handler&#8217;s priority. The higher the number the later the handler will be executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin triggered($trigger_class:&quot;trigger&quot;) { &#64;content; }</tt></dt>
+<dd><p>Sets class <tt class="docutils literal"><span class="pre">$trigger_class</span></tt> of the current element triggered at startup.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$trigger_class</tt></dt>
+<dd><p>Class to be set to <tt class="docutils literal"><span class="pre">on</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin bp-triggered($trigger_class:&quot;trigger&quot;) { &#64;content; }</tt></dt>
+<dd><p>Pseudo-breakpoint, valid when the <tt class="docutils literal"><span class="pre">$trigger_class</span></tt> is set to <tt class="docutils literal"><span class="pre">on</span></tt>.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$trigger_class</tt></dt>
+<dd><p>Class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin bp-untriggered($trigger_class:&quot;trigger&quot;) { &#64;content; }</tt></dt>
+<dd><p>Pseudo-breakpoint, valid when the <tt class="docutils literal"><span class="pre">$trigger_class</span></tt> is set to <tt class="docutils literal"><span class="pre">off</span></tt>.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$trigger_class</tt></dt>
+<dd><p>Class.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="javascript">
+<h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_S_.trigger_enable">
+<tt class="descclassname">$.</tt><tt class="descname">trigger_enable</tt><big>(</big><em>type</em>, <em>target_expr</em>, <em>trigger_class</em>, <em>trigger_mode</em>, <em>priority</em><big>)</big><a class="headerlink" href="#_S_.trigger_enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a trigger to the current element. See SASS docs for more details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>type</strong> (<em>string</em>) &#8211; Trigger type, <tt class="docutils literal"><span class="pre">click</span></tt>, <tt class="docutils literal"><span class="pre">mouseover</span></tt>, mouseout``.</li>
+<li><strong>target_expr</strong> (<em>string</em>) &#8211; Target expression.</li>
+<li><strong>trigger_class</strong> (<em>string</em>) &#8211; Class.</li>
+<li><strong>trigger_mode</strong> (<em>string</em>) &#8211; Trigger mode, <tt class="docutils literal"><span class="pre">toggle</span></tt>, <tt class="docutils literal"><span class="pre">on</span></tt>, <tt class="docutils literal"><span class="pre">off</span></tt>.</li>
+<li><strong>priority</strong> (<em>int</em>) &#8211; Priority.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_S_.trigger_disable">
+<tt class="descclassname">$.</tt><tt class="descname">trigger_disable</tt><big>(</big><em>type</em>, <em>target_expr</em>, <em>trigger_class</em><big>)</big><a class="headerlink" href="#_S_.trigger_disable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables the trigger matching to the given parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>type</strong> (<em>string</em>) &#8211; Trigger type.</li>
+<li><strong>target_expr</strong> (<em>string</em>) &#8211; Target expression.</li>
+<li><strong>trigger_class</strong> (<em>string</em>) &#8211; Class.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_S_.trigger_set">
+<tt class="descclassname">$.</tt><tt class="descname">trigger_set</tt><big>(</big><em>trigger_class</em>, <em>mode</em><big>)</big><a class="headerlink" href="#_S_.trigger_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triggers the class with the given mode on the current element directly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>trigger_class</strong> (<em>string</em>) &#8211; Class.</li>
+<li><strong>trigger_mode</strong> (<em>string</em>) &#8211; Trigger mode, <tt class="docutils literal"><span class="pre">toggle</span></tt>, <tt class="docutils literal"><span class="pre">on</span></tt>, <tt class="docutils literal"><span class="pre">off</span></tt>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +231,16 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Trigger</a><ul>
+<li><a class="reference internal" href="#target-expressions">Target expressions</a></li>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+<li><a class="reference internal" href="#javascript">JavaScript</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="stickyfooter.html"
                         title="previous chapter">Sticky Footer</a></p>
