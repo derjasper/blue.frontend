@@ -53,6 +53,30 @@
             
   <div class="section" id="off-canvas">
 <h1>Off Canvas<a class="headerlink" href="#off-canvas" title="Permalink to this headline">¶</a></h1>
+<p>The offcanvas module is - at the moment - a very basic shorthand for offcanvas elements.
+It supports toggling the visibility of the element and uses the <a class="reference internal" href="trigger.html"><em>Trigger</em></a> module.</p>
+<p>An <em>offcanvas</em> element is invisible at the start and can be toggled via an <em>offcanvas-toggle</em>.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin offcanvas()</tt></dt>
+<dd><p>An offcanvas element which is invisible until it its visibility is toggled by an <tt class="docutils literal"><span class="pre">offcanvas-toggle</span></tt>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin offcanvas-toggle($selector)</tt></dt>
+<dd><p>A toggle that toggles the visibility of the <tt class="docutils literal"><span class="pre">$selector</span></tt>.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$selector</tt></dt>
+<dd><p>The selector of the <tt class="docutils literal"><span class="pre">offcanvas</span></tt> element.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +85,14 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Off Canvas</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="menu.html"
                         title="previous chapter">Menu</a></p>

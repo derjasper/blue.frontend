@@ -157,7 +157,7 @@
 }
 
 // convience mixins, use with care
-@mixin container-outergutter($spacing...) {
+@mixin container-spacing($spacing...) {
     $spacing:multiply-list($gutter,$spacing);    
     margin:$spacing;
 }
