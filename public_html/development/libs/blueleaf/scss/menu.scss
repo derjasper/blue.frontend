@@ -1,6 +1,6 @@
 // menu works with ul only
 
-@mixin menu($type,$opt) {
+@mixin menu($type,$opt:()) {
     list-style:none;
     
     @if $type==horizontal {
@@ -97,7 +97,7 @@
                 }
             }
         }
-        @else if map-get($opt,submenutrggr)==click-superfish {
+        @else if map-get($opt,submenutrggr)==click-superfish { // TODO sass kann global code einfügen
             // Notice: You may want to add the following code to your stylesheet:
             // html {
             //     @include trigger("[path to your menu] li","menu-show",click,off,-1);

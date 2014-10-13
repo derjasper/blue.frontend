@@ -23,7 +23,10 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="blue leaf 1.0 documentation" href="../index.html" /> 
+    <link rel="top" title="blue leaf 1.0 documentation" href="../index.html" />
+    <link rel="up" title="API" href="../api.html" />
+    <link rel="next" title="Custom Rules" href="customrules.html" />
+    <link rel="prev" title="blue leaf Core" href="blueleaf.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,7 +35,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="customrules.html" title="Custom Rules"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="blueleaf.html" title="blue leaf Core"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+          <li><a href="../api.html" accesskey="U">API</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -43,6 +53,140 @@
             
   <div class="section" id="container">
 <h1>Container<a class="headerlink" href="#container" title="Permalink to this headline">¶</a></h1>
+<p>One of the most important modules. Containers are block elements with sizing,
+positioning, alignment and spacing options.</p>
+<p>All sizing options are multiplied by the <tt class="docutils literal"><span class="pre">$container</span></tt> factor, defined in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>.</p>
+<p>This module will be reworked in a future release.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin container($width:auto,$height:auto,$flags...)</tt></dt>
+<dd><p>Defines a <em>container</em>.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$width</tt></dt>
+<dd><p>If set to auto, no specific behaviour will be defined.</p>
+<p>If a map with 1 element or a simple number is given, this will be the maximum width.
+The container will have its parent&#8217;s width until this value is reached.</p>
+<p>If a map with 2 elements is given, the first will be the minimum width and the
+second the maximum width.
+The container will have its parent&#8217;s width unless these borders are reached.
+If the values are equal, this will be the (fixed) width of the element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$height</tt></dt>
+<dd><p>If set to auto, no specific behaviour will be defined.</p>
+<p>If a map with 1 element or a simple number is given, this will be the maximum height.
+The container will have its parent&#8217;s height until this value is reached.</p>
+<p>If a map with 2 elements is given, the first will be the minimum height and the
+second the maximum height.
+The container will have its parent&#8217;s height unless these borders are reached.
+If the values are equal, this will be the (fixed) height of the element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$flags...</tt></dt>
+<dd><p>There are flags available defining some more behaviour.</p>
+<p><em>Positioning</em></p>
+<p>The position will be <tt class="docutils literal"><span class="pre">position:relative</span></tt> unless one of these flags is set.
+Only one of them is possible:</p>
+<dl class="describe">
+<dt>
+<tt class="descname">absolute</tt></dt>
+<dd><p>Absolute positioning.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">fixed</tt></dt>
+<dd><p>Fixed positioning. Think about using <a class="reference internal" href="sticky.html"><em>Sticky</em></a> instead.</p>
+</dd></dl>
+
+<p><em>Alignment</em></p>
+<p>Only one flag per direction should be set (one vertical and one horizontal).</p>
+<dl class="describe">
+<dt>
+<tt class="descname">left</tt></dt>
+<dd><p>Left.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">center</tt></dt>
+<dd><p>Center (horizontal). If a positioning flag is set, a fixed width is required
+for this to work.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">right</tt></dt>
+<dd><p>Right.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">top</tt></dt>
+<dd><p>Top.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">middle</tt></dt>
+<dd><p>Middle (vertical). If a positioning flag is set, a fixed height is required
+for this to work.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">bottom</tt></dt>
+<dd><p>Bottom.</p>
+</dd></dl>
+
+<p><em>overflow</em></p>
+<p>The overflow flags should not be used since they are removed in a future release.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin container-spacing($spacing...)</tt></dt>
+<dd><p>Outer spacing. Should be used if a positioning flag is set.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$spacing...</tt></dt>
+<dd><p>Spacing (scaled by <tt class="docutils literal"><span class="pre">$gutter</span></tt> variable), see <a class="reference internal" href="gutter.html"><em>Gutter</em></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin container-breakout($spacing...)</tt></dt>
+<dd><p>Negative outer spacing.</p>
+<p>Will be removed in a future release. Maybe.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$spacing...</tt></dt>
+<dd><p>Spacing (scaled by <tt class="docutils literal"><span class="pre">$gutter</span></tt> variable), see <a class="reference internal" href="gutter.html"><em>Gutter</em></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="css-predefined-rules">
+<h2>CSS (Predefined Rules)<a class="headerlink" href="#css-predefined-rules" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">container</tt></dt>
+<dd><p>A simple container with default options.</p>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -51,6 +195,21 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Container</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+<li><a class="reference internal" href="#css-predefined-rules">CSS (Predefined Rules)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="blueleaf.html"
+                        title="previous chapter">blue leaf Core</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="customrules.html"
+                        title="next chapter">Custom Rules</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/api/container.txt"
@@ -79,7 +238,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="customrules.html" title="Custom Rules"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="blueleaf.html" title="blue leaf Core"
+             >previous</a> |</li>
+        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+          <li><a href="../api.html" >API</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

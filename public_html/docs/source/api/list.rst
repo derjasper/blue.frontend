@@ -14,8 +14,8 @@ SASS
 
 .. describe:: @mixin list-level($level,$up:true) { @content; }
 
-   Styles to be applied to the given ``$level``. If ``$up`` is set to true, styles
-   are also applied to sub-levels.
+   Styles will be applied to the given ``$level``. If ``$up`` is set to true, styles
+   are also applied to sub-levels. Should be applied to an ``ul`` or ``ol`` element.
 
    .. describe:: $level
 

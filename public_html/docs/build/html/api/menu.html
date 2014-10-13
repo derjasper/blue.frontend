@@ -53,6 +53,99 @@
             
   <div class="section" id="menu">
 <h1>Menu<a class="headerlink" href="#menu" title="Permalink to this headline">¶</a></h1>
+<p>The menu mixin provides a set of menu types defining layout and behaviour. They are
+mainly using <a class="reference internal" href="list.html"><em>List</em></a>, <a class="reference internal" href="trigger.html"><em>Trigger</em></a> and <a class="reference internal" href="container.html"><em>Container</em></a>.</p>
+<p>Please note that this module will be extended in future.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin menu($type,$opt:())</tt></dt>
+<dd><p>Creates a menu. Should be applied to an <tt class="docutils literal"><span class="pre">ul</span></tt> element.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$type</tt></dt>
+<dd><p>The menu type. The demo browser has examples for each type. The following types
+are available:</p>
+<dl class="describe">
+<dt>
+<tt class="descname">horizontal</tt></dt>
+<dd><p>The root level is horizontal, the following levels are vertical. Beginning
+with the 2nd level, the <tt class="docutils literal"><span class="pre">ul</span></tt> blocks are aside of their parents, it will
+look like a menu in desktop operating systems.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">vertical</tt></dt>
+<dd><p>All levels are vertical.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$opt</tt></dt>
+<dd><p>A map of options. Following keys are available:</p>
+<dl class="describe">
+<dt>
+<tt class="descname">submenuwdth</tt></dt>
+<dd><p>Horizontal menu only. With of the submenu containers.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">strctspac</tt></dt>
+<dd><p>Structure padding. See <a class="reference internal" href="list.html"><em>List</em></a> for more details.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">innrgttr</tt></dt>
+<dd><p>Inner gutter. See <a class="reference internal" href="list.html"><em>List</em></a> for more details.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">outrgttr</tt></dt>
+<dd><p>Outer gutter. See <a class="reference internal" href="list.html"><em>List</em></a> for more details.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">submenutrggr</tt></dt>
+<dd><p>Trigger type for opening submenus. The following trigger types are available:</p>
+<dl class="describe">
+<dt>
+<tt class="descname">hover</tt></dt>
+<dd><p>Submenu will be opened on hover.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">click</tt></dt>
+<dd><p>Submenu will be opened and closed on click on the parent element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">click-superfish</tt></dt>
+<dd><p>Same as click, but menu can be closed by clicking somewhere on the screen.</p>
+<p>To get this to work, you have to add these lines to your stylesheet:</p>
+<div class="highlight-sass"><div class="highlight"><pre>html {
+     @include trigger(&quot;[path to your menu] li&quot;,&quot;menu-show&quot;,click,off,-1);
+}
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +154,14 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Menu</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="mediaquerys.html"
                         title="previous chapter">Media Querys</a></p>

@@ -53,6 +53,100 @@
             
   <div class="section" id="scroll-position">
 <h1>Scroll Position<a class="headerlink" href="#scroll-position" title="Permalink to this headline">¶</a></h1>
+<p>Scroll position allows to respond to scroll positions.</p>
+<p>A trigger can be created for an element. This trigger has a target and will toggle
+a class at the target element when the trigger element is scrolled to the viewports
+top.
+Each trigger has a group, and only one trigger per group can be active. That means,
+when a trigger reaches the viewports top, the trigger is set to active and all other triggers
+are set to inactive.</p>
+<p>This module uses scroll area offsets (see <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>).</p>
+<p>The target expression is a jQuery selector OR one of these strings: <tt class="docutils literal"><span class="pre">_null</span></tt> for
+no target (useful for disabling all triggers of the group) or <tt class="docutils literal"><span class="pre">_link</span></tt> which can
+be applied to anchors (<tt class="docutils literal"><span class="pre">a[name]</span></tt>) and chooses all links pointing to this anchor
+as target (<tt class="docutils literal"><span class="pre">a[href=#...]</span></tt>) (useful for single page navigation).</p>
+<p>This module will be integrated into the trigger module in a future release.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin scrollposition($target:&quot;_null&quot;,$group:&quot;default&quot;,$scrolled_class:&quot;scrolled&quot;)</tt></dt>
+<dd><p>Creates a trigger.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$target</tt></dt>
+<dd><p>Target selector.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$group</tt></dt>
+<dd><p>Trigger group.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$scrolled_class</tt></dt>
+<dd><p>Class to be applied to the target if the trigger is active. Useful for different
+triggers with the same target.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin bp-scrolled($scrolled_class:&quot;scrolled&quot;)</tt></dt>
+<dd><p>Pseudo-breakpoint valid if the target is triggered.
+This mixin should be applied to targets.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$scrolled_class</tt></dt>
+<dd><p>Class.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="js">
+<h2>JS<a class="headerlink" href="#js" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_S_.scrollposition_enable">
+<tt class="descclassname">$.</tt><tt class="descname">scrollposition_enable</tt><big>(</big><em>target_expr</em>, <em>group</em>, <em>scrolled_class</em><big>)</big><a class="headerlink" href="#_S_.scrollposition_enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a trigger with the given parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>target_expr</strong> (<em>string</em>) &#8211; Target selector.</li>
+<li><strong>group</strong> (<em>string</em>) &#8211; Group.</li>
+<li><strong>scrolled_class</strong> (<em>string</em>) &#8211; Class.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="_S_.scrollposition_disable">
+<tt class="descclassname">$.</tt><tt class="descname">scrollposition_disable</tt><big>(</big><em>target_expr</em>, <em>group</em><big>)</big><a class="headerlink" href="#_S_.scrollposition_disable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a trigger identified by the given parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>target_expr</strong> (<em>string</em>) &#8211; Target selector.</li>
+<li><strong>group</strong> (<em>string</em>) &#8211; Group.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -61,6 +155,15 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Scroll Position</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+<li><a class="reference internal" href="#js">JS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="scrolling.html"
                         title="previous chapter">Scrolling</a></p>

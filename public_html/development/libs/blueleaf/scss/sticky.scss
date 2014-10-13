@@ -8,8 +8,8 @@
     }
 }
 
-@mixin sticky-spacing($margin...) {
+@mixin sticky-spacing($spacing...) {
     @include bp-sticked() {
-        margin:$margin;
+        margin:$spacing;
     }
 }
