@@ -1,2 +1,118 @@
 Container
 =========
+
+One of the most important modules. Containers are block elements with sizing, 
+positioning, alignment and spacing options.
+
+All sizing options are multiplied by the ``$container`` factor, defined in :doc:`blueleaf`.
+
+This module will be reworked in a future release.
+
+
+SASS
+----
+
+.. describe:: @mixin container($width:auto,$height:auto,$flags...)
+
+   Defines a *container*.
+
+   .. describe:: $width
+
+      If set to auto, no specific behaviour will be defined.
+
+      If a map with 1 element or a simple number is given, this will be the maximum width.
+      The container will have its parent's width until this value is reached.
+
+      If a map with 2 elements is given, the first will be the minimum width and the
+      second the maximum width.
+      The container will have its parent's width unless these borders are reached.
+      If the values are equal, this will be the (fixed) width of the element.
+
+   .. describe:: $height
+
+      If set to auto, no specific behaviour will be defined.
+
+      If a map with 1 element or a simple number is given, this will be the maximum height.
+      The container will have its parent's height until this value is reached.
+
+      If a map with 2 elements is given, the first will be the minimum height and the
+      second the maximum height.
+      The container will have its parent's height unless these borders are reached.
+      If the values are equal, this will be the (fixed) height of the element.
+
+   .. describe:: $flags...
+
+      There are flags available defining some more behaviour.
+
+      *Positioning*
+
+      The position will be ``position:relative`` unless one of these flags is set.
+      Only one of them is possible:
+
+      .. describe:: absolute
+
+         Absolute positioning.
+
+      .. describe:: fixed
+
+         Fixed positioning. Think about using :doc:`sticky` instead.
+
+      *Alignment*
+
+      Only one flag per direction should be set (one vertical and one horizontal).
+
+      .. describe:: left
+
+         Left.
+
+      .. describe:: center
+
+         Center (horizontal). If a positioning flag is set, a fixed width is required
+         for this to work.
+
+      .. describe:: right
+
+         Right.
+
+      .. describe:: top
+
+         Top.
+
+      .. describe:: middle
+
+         Middle (vertical). If a positioning flag is set, a fixed height is required
+         for this to work.
+
+      .. describe:: bottom
+
+         Bottom.
+
+      *overflow*
+
+      The overflow flags should not be used since they are removed in a future release.
+
+.. describe:: @mixin container-spacing($spacing...)
+
+   Outer spacing. Should be used if a positioning flag is set.
+
+   .. describe:: $spacing...
+
+      Spacing (scaled by ``$gutter`` variable), see :doc:`gutter`.
+
+.. describe:: @mixin container-breakout($spacing...)
+
+   Negative outer spacing.
+
+   Will be removed in a future release. Maybe.
+
+   .. describe:: $spacing...
+
+      Spacing (scaled by ``$gutter`` variable), see :doc:`gutter`.
+
+
+CSS (Predefined Rules)
+----------------------
+
+.. describe:: container
+
+   A simple container with default options. 
