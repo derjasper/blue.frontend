@@ -25,9 +25,8 @@
             margin:0 !important;
         }
         @include list-level(2,true) {
-            // TODO replace with an extension of the container module:
-            top:0;
-            left:$container*$menuwidth;
+            @include container(($menuwidth $menuwidth),auto,absolute,outer-right,top);
+            margin:0 !important;
         }
     }
     @else if $type==vertical {
