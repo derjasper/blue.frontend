@@ -100,8 +100,7 @@ html, body {
         top: 0;
         bottom: auto;
         left: 100%;
-        right: auto;
-        margin: 0 !important; }
+        right: auto; }
         .header .inner > ul > li > ul > li > ul:before, .header .inner > ul > li > ul > li > ul:after, .header .inner > ul * > li > ul > li > ul:before, .header .inner > ul * > li > ul > li > ul:after, .header .inner > ul > li > ol > li > ol:before, .header .inner > ul > li > ol > li > ol:after, .header .inner > ul * > li > ol > li > ol:before, .header .inner > ul * > li > ol > li > ol:after {
           content: "";
           display: table; }
@@ -119,6 +118,8 @@ html, body {
         .header .inner > ul li.menu-show > ul, .header .inner > ul * li.menu-show > ul, .header .inner > ul li.menu-show > ul, .header .inner > ul * li.menu-show > ul {
           display: block;
           visibility: visible; }
+      .header .inner > ul > li > ul > li > ul, .header .inner > ul * > li > ul > li > ul, .header .inner > ul > li > ol > li > ul, .header .inner > ul * > li > ol > li > ul {
+        display: none; }
       .header .inner > ul > li, .header .inner > ul > li {
         padding: 0rem 1rem; }
       .header .inner > ul > li > ul, .header .inner > ul > li > ol, .header .inner > ul > li > ul, .header .inner > ul > li > ol {

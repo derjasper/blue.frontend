@@ -104,8 +104,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     top: 0;
     bottom: auto;
     left: 100%;
-    right: auto;
-    margin: 0 !important; }
+    right: auto; }
     .horizontal > li > ul > li > ul:before, .horizontal > li > ul > li > ul:after, .horizontal * > li > ul > li > ul:before, .horizontal * > li > ul > li > ul:after, .horizontal > li > ol > li > ol:before, .horizontal > li > ol > li > ol:after, .horizontal * > li > ol > li > ol:before, .horizontal * > li > ol > li > ol:after {
       content: "";
       display: table; }
@@ -123,6 +122,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .horizontal li.menu-show > ul, .horizontal * li.menu-show > ul, .horizontal li.menu-show > ul, .horizontal * li.menu-show > ul {
       display: block;
       visibility: visible; }
+  .horizontal > li > ul > li > ul, .horizontal * > li > ul > li > ul, .horizontal > li > ol > li > ul, .horizontal * > li > ol > li > ul {
+    display: none; }
 
 .horizontal-click {
   list-style: none; }
@@ -167,8 +168,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     top: 0;
     bottom: auto;
     left: 100%;
-    right: auto;
-    margin: 0 !important; }
+    right: auto; }
     .horizontal-click > li > ul > li > ul:before, .horizontal-click > li > ul > li > ul:after, .horizontal-click * > li > ul > li > ul:before, .horizontal-click * > li > ul > li > ul:after, .horizontal-click > li > ol > li > ol:before, .horizontal-click > li > ol > li > ol:after, .horizontal-click * > li > ol > li > ol:before, .horizontal-click * > li > ol > li > ol:after {
       content: "";
       display: table; }
@@ -187,6 +187,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .horizontal-click > li.menu-show > ul, .horizontal-click * > li.menu-show > ul, .horizontal-click > li.menu-show > ul, .horizontal-click * > li.menu-show > ul {
     display: block;
     visibility: visible; }
+  .horizontal-click > li > ul > li > ul, .horizontal-click * > li > ul > li > ul, .horizontal-click > li > ol > li > ul, .horizontal-click * > li > ol > li > ul {
+    display: none; }
 
 html {
   /*! customrule: {"trigger": {"target_expr": ".horizontal-click li", "trigger_class": "menu-show", "type": "click", "trigger_mode": "off", "priority": -1, "enabled": true}} */ }
@@ -219,5 +221,7 @@ html {
   .vertical > li.menu-show > ul, .vertical * > li.menu-show > ul, .vertical > li.menu-show > ul, .vertical * > li.menu-show > ul {
     display: block;
     visibility: visible; }
+  .vertical > li > ul > li > ul, .vertical * > li > ul > li > ul, .vertical > li > ol > li > ul, .vertical * > li > ol > li > ul {
+    display: none; }
 
 /*# sourceMappingURL=menu.css.map */
