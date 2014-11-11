@@ -136,7 +136,7 @@
             bottom:0;
         }
     }
-    @if index($flags,outer-top) { // TODO testen
+    @if index($flags,outer-top) {
         @if $positionType==regular {
         }
         @else {
