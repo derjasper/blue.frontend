@@ -15,7 +15,7 @@ function CSSParser (css) {
         'COMMENT_CLOSE': /^\*\//,
         'COMMENT_CONTENT': /^((?!\*\/)[^])+/,
         
-        'RULE': /^([^{}:;\n]+:[^{}:;\n]+;)/,
+        'RULE': /^([^\/{}:;\n]+:[^\/{}:;\n]+;)/, // TODO hier ist der übeltätig, erkennt auch comment-anfänge
         
         'COMMENT_CONTENT_JSON_DATA': /^! customrule: /
     };
