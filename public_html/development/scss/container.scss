@@ -36,7 +36,3 @@
 .c6 {
     @include container((1 1),auto,fixed,bottom,right);
 }
-
-.c7 {
-    @include container((1 1),(1 1),overflow-auto);
-}

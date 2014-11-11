@@ -216,21 +216,4 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .c6:after {
     clear: both; }
 
-.c7 {
-  display: block;
-  position: relative;
-  *zoom: 1;
-  width: 10rem;
-  height: 10rem;
-  min-width: 10rem;
-  max-width: 10rem;
-  min-height: 10rem;
-  max-height: 10rem;
-  overflow: auto; }
-  .c7:before, .c7:after {
-    content: "";
-    display: table; }
-  .c7:after {
-    clear: both; }
-
 /*# sourceMappingURL=container.css.map */

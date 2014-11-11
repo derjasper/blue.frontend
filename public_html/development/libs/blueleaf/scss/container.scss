@@ -136,20 +136,6 @@
             bottom:0;
         }
     }
-    
-    // overflow
-    @if index($flags,overflow-visible) {
-        overflow:visible;
-    }
-    @else if index($flags,overflow-hidden) {
-        overflow:hidden;
-    }
-    @else if index($flags,overflow-scroll) {
-        overflow:scroll;
-    }
-    @else if index($flags,overflow-auto) {
-        overflow:auto;
-    }
 }
 
 @include predefine("container") {
