@@ -52,8 +52,8 @@ html, body {
     .header .inner:after {
       clear: both; }
     .header .inner h1 {
-      margin: 0;
-      padding: 0;
+      padding: initial;
+      margin: initial;
       font-size: 1em;
       font-weight: bold;
       color: white; }

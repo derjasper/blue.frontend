@@ -20,7 +20,7 @@ html,body {
         font-size:1rem;
 
         h1 {
-            @include reset();
+            @include reset(margin,padding);
             font-size:1em;
             font-weight:bold;
             color:white;
@@ -63,7 +63,6 @@ html,body {
         @include gutter(4);
         max-width:100%;
         max-height:100%;
-        //resize:both;
         @include resizable();
         overflow:hidden;
         width:100%;
