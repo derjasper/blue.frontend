@@ -15,7 +15,7 @@ function CSSParser (css) {
         'COMMENT_CLOSE': /^\*\//,
         'COMMENT_CONTENT': /^((?!\*\/)[^])+/,
         
-        'RULE': /^([^{}:;\n]+:[^{}:;\n]+;)/,
+        'RULE': /^([^\/{}:;\n]+:[^\/{}:;\n]+;)/,
         
         'COMMENT_CONTENT_JSON_DATA': /^! customrule: /
     };
