@@ -87,9 +87,21 @@ SASS
 
          Bottom.
 
-      *overflow*
+      .. describe:: outer-top
 
-      The overflow flags should not be used since they are removed in a future release.
+         Above the parents element. Will be placed outside of the parents element. Only if a positioning flag is set.
+
+      .. describe:: outer-bottom
+
+         Underneath the parents element. Will be placed outside of the parents element. Only if a positioning flag is set.
+
+      .. describe:: outer-left
+
+         Left to the parents element. Will be placed outside of the parents element. Only if a positioning flag is set.
+
+      .. describe:: outer-right
+
+         Right to the parents element. Will be placed outside of the parents element. Only if a positioning flag is set.
 
 .. describe:: @mixin container-spacing($spacing...)
 

@@ -36,3 +36,17 @@
 .c6 {
     @include container((1 1),auto,fixed,bottom,right);
 }
+
+.outer-demo {
+    @include container(5,(3 3));
+    .d1 {
+        @include container(auto,auto,absolute,outer-top,outer-right);
+    }
+    .d2 {
+        @include container(auto,auto,absolute,outer-right);
+        margin-left:0.5em;
+    }
+    .d3 {
+        @include container(auto,auto,absolute,outer-bottom,right);
+    }
+}
