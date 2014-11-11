@@ -26,7 +26,6 @@
         }
         @include list-level(2,true) {
             @include container(($menuwidth $menuwidth),auto,absolute,outer-right,top);
-            margin:0 !important;
         }
     }
     @else if $type==vertical {
@@ -75,6 +74,12 @@
                     }
                 }
             }
+            
+            @include list-level(1,true) {
+                & > li > ul {
+                    @include visibility(hide);
+                }
+            }
         }
         @else if map-get($opt,submenutrggr)==click {            
             @include list-level(0,true) {
@@ -93,6 +98,12 @@
                             @include visibility(showblock);
                         }
                     }
+                }
+            }
+            
+            @include list-level(1,true) {
+                & > li > ul {
+                    @include visibility(hide);
                 }
             }
         }
@@ -119,6 +130,12 @@
                             @include visibility(showblock);
                         }
                     }
+                }
+            }
+            
+            @include list-level(1,true) {
+                & > li > ul {
+                    @include visibility(hide);
                 }
             }
         }
