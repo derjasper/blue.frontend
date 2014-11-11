@@ -67,9 +67,9 @@ ol:not(.nostyle), ul:not(.nostyle) {
   text-align: right; }
 
 .somestyles .reset {
-  margin: 0;
-  padding: 0;
+  padding: initial;
   text-align: initial;
-  color: initial; }
+  margin: initial;
+  color: unset; }
 
 /*# sourceMappingURL=reset.css.map */
