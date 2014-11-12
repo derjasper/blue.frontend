@@ -17,3 +17,10 @@ SASS
    .. describe:: $flags
 
       ``left``,``center``,``right`` (for horizontal alignment)
+
+      ``top``,``middle``,``bottom`` (for vertical alignment)
+
+      Note that only wrapped content can be aligned vertically.
+      Use vertical alignment with care, as it applies ``display:inline-block;``
+      to all inline elements. (Except for ``top`` as it will reset all inline
+      elements to ``display:inline;``.)
