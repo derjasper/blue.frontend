@@ -1,4 +1,4 @@
-@mixin align($flags...) { // left,center,right;[top,middle,bottom]
+@mixin align($flags...) { // left,center,right;top,middle,bottom
     @if index($flags,left) {
         text-align:left;
     }
@@ -7,5 +7,34 @@
     }
     @if index($flags,right) {
         text-align:right;
+    }
+    
+    // Note that only wrapped content can be aligned vertically.
+    @if index($flags,top) {
+        #{$inline-elements} {
+            display:inline;
+            position: relative;
+            top: 0%;
+        }
+    }
+    @if index($flags,middle) {
+        #{$inline-elements} {
+            display:inline-block;
+            position: relative;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    }
+    @if index($flags,bottom) {
+        #{$inline-elements} {
+            display:inline-block;
+            position: relative;
+            top: 100%;
+            -webkit-transform: translateY(-100%);
+            -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
+        }
     }
 }

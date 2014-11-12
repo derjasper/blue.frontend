@@ -6,6 +6,8 @@ These are some core functionalities and settings which can normally left untouch
 SASS
 ----
 
+*config*
+
 .. describe:: $gutter
 
    gutter scaling (default: 0.2rem)
@@ -35,6 +37,13 @@ SASS
 .. describe:: $predefined
 
    indicates whether predefined CSS rules should be generated or not (default: true)
+
+
+*CSS constants*
+
+.. describe:: $inline-elements
+
+   Contains a selector for all inline elements.   
 
 
 JavaScript
