@@ -126,7 +126,7 @@ SASS
 
 .. describe:: @mixin row-offset($x)
 
-   Offset to the top of ``$x`` rows.
+   Offset to the top of ``$x`` rows. This mixin uses JavaScript.
 
    .. describe:: $x
 
