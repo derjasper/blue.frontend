@@ -40,7 +40,7 @@ SASS
       The container will have its parent's height unless these borders are reached.
       If the values are equal, this will be the (fixed) height of the element.
 
-   .. describe:: $flags...
+   .. describe:: $flags...:(center)
 
       There are flags available defining some more behaviour.
 
@@ -61,14 +61,16 @@ SASS
 
       Only one flag per direction should be set (one vertical and one horizontal).
 
+      Alignment should work with each positioning model and independent from the
+      size (it will work with width or height set to ``auto``, too).
+
       .. describe:: left
 
          Left.
 
       .. describe:: center
 
-         Center (horizontal). If a positioning flag is set, a fixed width is required
-         for this to work.
+         Center (horizontal).
 
       .. describe:: right
 
@@ -80,8 +82,7 @@ SASS
 
       .. describe:: middle
 
-         Middle (vertical). If a positioning flag is set, a fixed height is required
-         for this to work.
+         Middle (vertical).
 
       .. describe:: bottom
 
@@ -89,19 +90,19 @@ SASS
 
       .. describe:: outer-top
 
-         Above the parents element. Will be placed outside of the parents element. Only if a positioning flag is set.
+         Above the parents element. Will be placed outside of the parents element.
 
       .. describe:: outer-bottom
 
-         Underneath the parents element. Will be placed outside of the parents element. Only if a positioning flag is set.
+         Underneath the parents element. Will be placed outside of the parents element.
 
       .. describe:: outer-left
 
-         Left to the parents element. Will be placed outside of the parents element. Only if a positioning flag is set.
+         Left to the parents element. Will be placed outside of the parents element.
 
       .. describe:: outer-right
 
-         Right to the parents element. Will be placed outside of the parents element. Only if a positioning flag is set.
+         Right to the parents element. Will be placed outside of the parents element.
 
 .. describe:: @mixin container-spacing($spacing...)
 

@@ -78,12 +78,16 @@
     }  
     
     // alignment
+    $align-transform-x:0;
+    $align-transform-y:0;
+    
     @if index($flags,left) {
         @if $positionType==regular {
             margin-left:0;
             margin-right:auto;
         }
         @else {
+            $align-transform-x: 0;
             left:0;
             right:auto;
         }
@@ -93,11 +97,15 @@
             margin-left:auto;
             margin-right:auto;
         }
-        @else { // only works with fixed width
-            left:0;
-            right:0;
-            margin-left:auto;
-            margin-right:auto;
+        @else {
+            left: 50%;
+            $align-transform-x: -50%;
+            
+            // unused alternative; only works with fixed width
+            //left:0;
+            //right:0;
+            //margin-left:auto;
+            //margin-right:auto;
         }
     }
     @if index($flags,right) {
@@ -106,38 +114,48 @@
             margin-right:0;
         }
         @else {
+            $align-transform-x: 0;
             left:auto;
             right:0;
         }
     }
     @if index($flags,top) {
         @if $positionType==regular {
+            $align-transform-y: 0%;
+            top:0%;
         }
         @else {
+            $align-transform-y: 0;
             top:0;
             bottom:auto;
         }
     } 
     @if index($flags,middle) {
-        @if $positionType==regular {
-        }
-        @else { // only works with fixed height
-            top:0;
-            bottom:0;
-            margin-top:auto;
-            margin-bottom:auto;
-        }
+        top: 50%;
+        $align-transform-y: -50%;
+        
+        // unused alternative; only works with fixed height and not for regular positioning
+        //top:0;
+        //bottom:0;
+        //margin-top:auto;
+        //margin-bottom:auto;
     } 
     @if index($flags,bottom) {
         @if $positionType==regular {
+            top:100%;
+            $align-transform-y: -100%;
         }
         @else {
+            $align-transform-y: 0%;
             top:auto;
             bottom:0;
         }
     }
     @if index($flags,outer-top) {
         @if $positionType==regular {
+            top:auto;
+            bottom:auto;
+            $align-transform-y: -100%;
         }
         @else {
             top:auto;
@@ -146,6 +164,8 @@
     }
     @if index($flags,outer-bottom) {
         @if $positionType==regular {
+            top:100%;
+            bottom:auto;
         }
         @else {
             top:100%;
@@ -154,6 +174,9 @@
     }
     @if index($flags,outer-left) {
         @if $positionType==regular {
+            left:auto;
+            right:auto;
+            $align-transform-x: -100%;
         }
         @else {
             left:auto;
@@ -161,13 +184,17 @@
         }
     }
     @if index($flags,outer-right) {
-        @if $positionType==regular {
+        @if $positionType==regular {//TODO
+            left:100%;
+            right:auto;
         }
         @else {
             left:100%;
             right:auto;
         }
     }
+    
+    @include vendor-prefix(transform,translate(#{$align-transform-x},#{$align-transform-y}));
 }
 
 @include predefine("container") {

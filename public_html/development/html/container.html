@@ -14,28 +14,58 @@
     <body>
         <h1>Container Demo</h1>
         <div>normal</div>
-        <div class="c1">min and max width, left</div>
-        <div class="c2">min and max width, center</div>
-        <div class="c3">min and max width, right</div>
-        <div class="c4">
-            <div>min and max height, top (outer div has height:45vh;)</div>
+        
+        <h2>Alignment</h2>
+        
+        <h3>normal positioning model</h3>
+        
+        <div class="alignment-relative">
+            <div class="topleft">top left</div>
         </div>
-        <div class="c5">
-            <div class="d1">absolute top left</div>
-            <div class="d2">absolute middle center</div>
-            <div class="d3">absolute bottom right</div>
-            I'm a very boring and long text.<br />
-            This is a new line so that you can see<br />
-            that this div is overlayed by some other divs.
+        
+        <div class="alignment-relative">
+            <div class="middlecenter">middle center</div>
         </div>
-        <div class="c6">
+        
+        <div class="alignment-relative">
+            <div class="bottomright">bottom right</div>
+        </div>
+        
+        <div class="alignment-relative">
+            <div class="outertopouterright">outer-top outer-right</div>
+        </div>
+        
+        <div class="alignment-relative">
+            <div class="outerright">outer-right and margin set to compensate border</div>
+        </div>
+        
+        <div class="alignment-relative">
+            <div class="outerbottom">outer-bottom right</div>
+        </div>
+        
+        
+        <h3>absolute positioning model</h3>
+        
+        <div class="alignment-absolute">
+            <div class="topleft">absolute top left</div>
+            <div class="middlecenter">absolute middle center</div>
+            <div class="bottomright">absolute bottom right</div>
+            <div class="outertopouterright">absolute outer-top outer-right</div>
+            <div class="outerright">absolute outer-right and margin set to compensate border</div>
+            <div class="outerbottom">absolute outer-bottom right</div>
+        </div>
+        <div class="alignment-fixed-bottomright">
             fixed bottom right
         </div>
-        <div class="placeholder"></div>
-        <div class="outer-demo">
-            <div class="d1">absolute outer-top outer-right</div>
-            <div class="d2">absolute outer-right and margin set to compensate border</div>
-            <div class="d3">absolute outer-bottom right</div>
+        
+        <h2>Sizing</h2>
+        <div class="c1">min and max width</div>
+        <div class="c4">
+            <div>min and max height (outer div has height:45vh;)</div>
         </div>
+        
+        
+        <h2>Container spacing</h2>
+        TODO
     </body>
 </html>

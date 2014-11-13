@@ -18,7 +18,12 @@ html {
   position: relative;
   *zoom: 1;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0); }
   .container:before, .container:after {
     content: "";
     display: table; }
@@ -66,7 +71,12 @@ div {
   position: relative;
   *zoom: 1;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0); }
   div:before, div:after {
     content: "";
     display: table; }
