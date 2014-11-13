@@ -191,6 +191,18 @@ var blueleaf = {
         });
     });
     
+    // Grid
+    $(function() {
+        registerModuleQuery("grid-offset", {
+            match: function(sel,options) {
+                $(sel).grid_offset_enable(options.width,options.height);
+            },
+            unmatch: function(sel,options) {
+                $(sel).grid_offset_disable();
+            }
+        });
+    });
+    
     
     
     // get JSON data from CSS, and enable media querys

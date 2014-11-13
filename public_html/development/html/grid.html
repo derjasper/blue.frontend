@@ -13,33 +13,58 @@
     </head>
     <body>
         <h1>Grid Demo</h1>
-        <div class="c1">
-            <div>col</div>
-            <div>col</div>
-            <div>col</div>
+        <h2>cols</h2>
+        <h3>basic</h3>
+        <div class="col-basic">
+            <div>col(4)</div>
+            <div>col(4)</div>
+            <div>col(4)</div>
         </div>
-        <div class="c2">
+        
+        <h3>offsets</h3>
+        <div class="col-offset">
             <div>col</div>
             <div class="o">col with offset</div>
         </div>
-        <div class="c3">
+        
+        <h3>direction</h3>
+        <div class="col-right">
             <div>1st col with direction set to right</div>
             <div>2nd col with direction set to right</div>
         </div>
-        <div class="c4">
+        
+        <h3>source ordering</h3>
+        <div class="col-pushpull">
             <div>1st col</div>
             <div class="ps">2nd col with push (pushes itself 4 cols to the right)</div>
             <div class="pl">3rd col with pull (pulls itself 4 cols to the left)</div>
         </div>
-        <div class="c5">
+        <div class="col-right-pushpull">
             <div>1st col (direction right)</div>
             <div class="pl">2nd col with push (direction right)</div>
             <div class="ps">3rd col with pull (direction right)</div>
         </div>
-        <div class="c6">
+        
+        <h2>rows</h2>
+        <h3>basic</h3>
+        <div class="row-basic">
             <div>fixed height container can contain rows</div>
+            <div>row(4)</div>
+            <div>row(4)</div>
+        </div>
+        
+        <h3>offsets</h3>
+        <div class="row-offset">
             <div>row</div>
+            <div class="o">row with offset</div>
             <div>row</div>
+        </div>
+        
+        <h3>source ordering</h3>
+        <div class="row-pushpull">
+            <div>1st row</div>
+            <div class="ps">2nd row with push (pushes itself 4 rows to the bottom)</div>
+            <div class="pl">3rd row with pull (pulls itself 4 rows to the top)</div>
         </div>
     </body>
 </html>

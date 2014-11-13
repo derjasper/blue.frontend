@@ -1,6 +1,6 @@
 @import "demo.scss";
 
-.c1 {
+.col-basic {
     @include container();
     
     div {
@@ -8,7 +8,7 @@
     }
 }
 
-.c2 {
+.col-offset {
     @include container();
     
     div {
@@ -20,7 +20,7 @@
     }
 }
 
-.c3 {
+.col-right {
     @include container();
     
     div {
@@ -28,7 +28,7 @@
     }
 }
 
-.c4 {
+.col-pushpull {
     @include container();
     
     div {
@@ -44,7 +44,7 @@
     }
 }
 
-.c5 {
+.col-right-pushpull {
     @include container();
     
     div {
@@ -60,11 +60,41 @@
     }
 }
 
-.c6 {
+.row-basic {
     @include container(auto,(2 2));
      
     div {
         @include col(12);
         @include row(4);
+    }
+}
+
+.row-offset {
+    @include container(auto,(2 2));
+    
+    div {
+        @include col(12);
+        @include row(3);
+    }
+    
+    .o {
+        @include row-offset(3);
+    }
+}
+
+.row-pushpull {
+    @include container(auto,(2 2));
+    
+    div {
+        @include col(12);
+        @include row(4);
+    }
+    
+    .pl {
+        @include row-pull(4);
+    }
+    
+    .ps {
+        @include row-push(4);
     }
 }
