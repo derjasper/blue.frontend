@@ -1,5 +1,5 @@
 @import "../libs/blueleaf/scss/blueleaf.scss";
-
+// TODO menu is not accessible
 html,body {
     font-family: sans;
     height:100%;
@@ -88,7 +88,8 @@ html,body {
         background:#006785;
         
         & > div {
-            @include container(auto,auto,width,height,overflow-scroll);
+            @include container(auto,auto,width,height);
+            overflow:scroll;
             background:white;
             font-family: monospace;
             font-size:1.2rem;
