@@ -16,6 +16,7 @@ blue leaf has the following dependencies, please add them to your project:
 - `jQuery <http://jquery.com/>`_
 - `enquire.js <http://wicky.nillia.ms/enquire.js/>`_
 
+
 To run a blueleaf project, the CSS files must be load via HTTP, because JavaScript
 is not allowed to access local files. If you want to develop on your computer,
 you have to setup a local web server. Some IDEs have a simple webserver
