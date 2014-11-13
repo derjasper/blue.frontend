@@ -1,52 +1,69 @@
 @import "demo.scss";
 
-.c1 {
-    @include container((3 6),auto,left);
+.alignment-relative {
+    @include container(2,(1 1));
+    
+    .topleft {
+        @include container((1 1),auto,top,left);
+    }
+    .middlecenter {
+        @include container((1 1),auto,center,middle);
+    }
+    .bottomright {
+        @include container((1 1),auto,bottom,right);
+    }
+    .outertopouterright {
+        @include container((1 1),auto,outer-top,outer-right);
+    }
+    .outerright {
+        @include container((1 1),auto,outer-right);
+        margin-left:0.5em;
+    }
+    .outerbottom {
+        @include container((1 1),auto,outer-bottom,right);
+    }
 }
 
-.c2 {
-    @include container((3 6),auto,center);
+.alignment-absolute {
+    @include container(5,(3 3));
+    
+    .topleft {
+        @include container(auto,auto,absolute,top,left);
+    }
+    .middlecenter {
+        @include container(auto,auto,absolute,center,middle);
+    }
+    .bottomright {
+        @include container(auto,auto,absolute,bottom,right);
+    }
+    .outertopouterright {
+        @include container(auto,auto,absolute,outer-top,outer-right);
+    }
+    .outerright {
+        @include container(auto,auto,absolute,outer-right);
+        margin-left:0.5em;
+    }
+    .outerbottom {
+        @include container(auto,auto,absolute,outer-bottom,right);
+    }
 }
 
-.c3 {
-    @include container((3 6),auto,right);
+.alignment-fixed-bottomright {
+    @include container((1 1),auto,fixed,bottom,right);
 }
 
-.c4 {
+
+.c4 {/*TODO*/
     @include container();
     height:45vh;
     div {
         @include container(auto,(1 2));
     }
 }
-
-.c5 {
-    @include container(5,(3 3));
-    .d1 {
-        @include container(auto,auto,absolute,top,left);
-    }
-    .d2 {
-        @include container((1 1),(1 1),absolute,center,middle);
-    }
-    .d3 {
-        @include container(auto,auto,absolute,bottom,right);
-    }
+.c1 {/*TODO*/
+    @include container((3 6),auto);
 }
 
-.c6 {
-    @include container((1 1),auto,fixed,bottom,right);
-}
 
-.outer-demo {
-    @include container(5,(3 3));
-    .d1 {
-        @include container(auto,auto,absolute,outer-top,outer-right);
-    }
-    .d2 {
-        @include container(auto,auto,absolute,outer-right);
-        margin-left:0.5em;
-    }
-    .d3 {
-        @include container(auto,auto,absolute,outer-bottom,right);
-    }
-}
+
+
