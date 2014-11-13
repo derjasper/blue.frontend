@@ -184,7 +184,7 @@
         }
     }
     @if index($flags,outer-right) {
-        @if $positionType==regular {//TODO
+        @if $positionType==regular {
             left:100%;
             right:auto;
         }
