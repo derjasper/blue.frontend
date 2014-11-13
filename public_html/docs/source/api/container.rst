@@ -63,6 +63,8 @@ SASS
 
       Alignment should work with each positioning model and independent from the
       size (it will work with width or height set to ``auto``, too).
+      Note that relative positioned elements may be aligned unexpected. In those
+      cases use the absolute positioning model.
 
       .. describe:: left
 
