@@ -6,7 +6,11 @@ positioning, alignment and spacing options.
 
 All sizing options are multiplied by the ``$container`` factor, defined in :doc:`blueleaf`.
 
-This module will be reworked in a future release.
+This module will be reworked in a very future release.
+
+Note: Due to the fact that CSS ``transform`` property creates a new stacking context,
+z-index may not work as expected (by most devs). We have applied a workaround, but if
+you are experiencing problems with rendering layers, please submit a bug report.
 
 
 SASS

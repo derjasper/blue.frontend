@@ -19,11 +19,8 @@ html {
   *zoom: 1;
   margin-left: auto;
   margin-right: auto;
-  -webkit-transform: translate(0, 0);
-  -ms-transform: translate(0, 0);
-  -moz-transform: translate(0, 0);
-  -o-transform: translate(0, 0);
-  transform: translate(0, 0); }
+  transform: translate3D(0, 0, -1px);
+  transform-style: flat; }
   .container:before, .container:after {
     content: "";
     display: table; }
@@ -75,11 +72,8 @@ div {
   max-height: 10rem;
   margin-left: auto;
   margin-right: auto;
-  -webkit-transform: translate(0, 0);
-  -ms-transform: translate(0, 0);
-  -moz-transform: translate(0, 0);
-  -o-transform: translate(0, 0);
-  transform: translate(0, 0); }
+  transform: translate3D(0, 0, -1px);
+  transform-style: flat; }
   div:before, div:after {
     content: "";
     display: table; }
