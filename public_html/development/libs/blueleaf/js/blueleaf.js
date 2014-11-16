@@ -971,7 +971,16 @@ function getFirstKeyInArray(data) {
   for (var prop in data) return prop;
 }
 
-// shared data
+var uuid = 0;
+$.fn.uniqueId = function() {
+    return this.each(function() {
+        if (!this.id) {
+            this.id = "uuid-" + (++uuid);
+        }
+    });
+};
+
+// blue leaf object
 var blueleaf = {
     scrollarea: {
         offset: {
@@ -995,71 +1004,45 @@ var blueleaf = {
         for(var key in enquire.queries){
             enquire.queries[key].assess();
         }  
-    }
-};
+    },
+    cutomrules: {
+        ruleslist: {},
+        registerModuleQuery: function (rule,options) { // options: match(sel,options) + unmatch(sel,options)
+            this.ruleslist[rule]=options;
+        },
+        parseStyleSheet: function (css) {
+            var parser = new CSSParser(css);
+            if (!parser.parse()) return;
 
-(function($){
-    var customclasses=new Object();
-    
-    function getStyleSheets() {
-        var links = document.getElementsByTagName('link');
-
-        var stylesheets = [];
-
-        for (var i = 0; i < links.length; i++) {
-            if (links[i].rel.match(/stylesheet/)) {
-                stylesheets.push(links[i].href);
-            }
-        }
-
-        return stylesheets;
-    }
-    
-    function parseStyleSheet(css) {
-        var parser = new CSSParser(css);
-        if (!parser.parse()) return;
-        
-        for (var mq in parser.tree) {
-            for (var sel in parser.tree[mq]) {
-                for (var i=0;i<parser.tree[mq][sel].length;i++) {
-                    var cl=getFirstKeyInArray(parser.tree[mq][sel][i]);
-                    (function(mq1,sel1,cl1,tree1){
-                        enquire.register(mq1, {
-                            match: function() {
-                                if (customclasses[cl1]!=undefined)
-                                    customclasses[cl1]['match'](sel1,tree1);
-                            },
-                            unmatch: function() {
-                                if (customclasses[cl1]!=undefined)
-                                    customclasses[cl1]['unmatch'](sel1,tree1);
-                            }
-                        });
-                    })(mq,sel,cl,parser.tree[mq][sel][i][cl]);
+            for (var mq in parser.tree) {
+                for (var sel in parser.tree[mq]) {
+                    for (var i=0;i<parser.tree[mq][sel].length;i++) {
+                        var cl=getFirstKeyInArray(parser.tree[mq][sel][i]);
+                        (function(mq1,sel1,cl1,tree1,ruleslist){
+                            enquire.register(mq1, {
+                                match: function() {
+                                    if (ruleslist[cl1]!=undefined)
+                                        ruleslist[cl1]['match'](sel1,tree1);
+                                },
+                                unmatch: function() {
+                                    if (ruleslist[cl1]!=undefined)
+                                        ruleslist[cl1]['unmatch'](sel1,tree1);
+                                }
+                            });
+                        })(mq,sel,cl,parser.tree[mq][sel][i][cl],this.ruleslist);
+                    }
                 }
             }
         }
     }
     
-    function registerModuleQuery(rule,options) { // options: match(sel,options) + unmatch(sel,options)
-        customclasses[rule]=options;
-    }
+};
 
+(function($){
     
-
-    // utility functions
-    var uuid = 0;
-    $.fn.uniqueId = function() {
-        return this.each(function() {
-            if (!this.id) {
-                this.id = "uuid-" + (++uuid);
-            }
-        });
-    };
-
-
     // Sticky
     $(function() {
-        registerModuleQuery("sticky", {
+        blueleaf.cutomrules.registerModuleQuery("sticky", {
             match: function(sel,options) {
                 $(sel).sticky_enable({
                     parent:options.parent,
@@ -1077,7 +1060,7 @@ var blueleaf = {
     
     // Trigger
     $(function() {
-        registerModuleQuery("trigger", {
+        blueleaf.cutomrules.registerModuleQuery("trigger", {
             match: function(sel,options) {
                 $(sel).trigger_enable(options.type,options.target_expr,options.trigger_class,options.trigger_mode,options.priority);
             },
@@ -1089,7 +1072,7 @@ var blueleaf = {
     
     // Triggered
     $(function() {
-        registerModuleQuery("triggered", {
+        blueleaf.cutomrules.registerModuleQuery("triggered", {
             match: function(sel,options) {
                 $(sel).trigger_set(options.trigger_class,"on");
             },
@@ -1101,7 +1084,7 @@ var blueleaf = {
     
     // Scrollposition
     $(function() {
-        registerModuleQuery("scrollposition", {
+        blueleaf.cutomrules.registerModuleQuery("scrollposition", {
             match: function(sel,options) {
                 $(sel).scrollposition_enable(options.target,options.group,options.scrolled_class);
             },
@@ -1113,7 +1096,7 @@ var blueleaf = {
     
     // Smoothscrolling
     $(function() {
-        registerModuleQuery("smoothscrolling", {
+        blueleaf.cutomrules.registerModuleQuery("smoothscrolling", {
             match: function(sel,options) {
                 $(sel).smoothscrolling_enable(options.time);
             },
@@ -1125,7 +1108,7 @@ var blueleaf = {
     
     // Scrollareaoffset
     $(function() {
-        registerModuleQuery("scrollareaoffset", {
+        blueleaf.cutomrules.registerModuleQuery("scrollareaoffset", {
             match: function(sel,options) {
                 $(sel).scrollareaoffset_enable(options.offset);
             },
@@ -1137,7 +1120,7 @@ var blueleaf = {
     
     // Resizeable
     $(function() {
-        registerModuleQuery("resizable", {
+        blueleaf.cutomrules.registerModuleQuery("resizable", {
             match: function(sel,options) {
                 $(sel).resizable_enable(options.resize_class,options.click_spacing);
             },
@@ -1149,7 +1132,7 @@ var blueleaf = {
     
     // Stickfooter
     $(function() {
-        registerModuleQuery("stickyfooter", {
+        blueleaf.cutomrules.registerModuleQuery("stickyfooter", {
             match: function(sel,options) {
                 $(sel).stickyfooter_enable(options.parent);
             },
@@ -1161,7 +1144,7 @@ var blueleaf = {
     
     // Grid
     $(function() {
-        registerModuleQuery("grid-offset", {
+        blueleaf.cutomrules.registerModuleQuery("grid-offset", {
             match: function(sel,options) {
                 $(sel).grid_offset_enable(options.width,options.height);
             },
@@ -1172,13 +1155,25 @@ var blueleaf = {
     });
     
     
-    
     // get JSON data from CSS, and enable media querys
     $(function() {
+        function getStyleSheets() {
+            var links = document.getElementsByTagName('link');
+            var stylesheets = [];
+
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].rel.match(/stylesheet/)) {
+                    stylesheets.push(links[i].href);
+                }
+            }
+
+            return stylesheets;
+        }
+        
         var stylesheets=getStyleSheets();
         for (var i=0; i<stylesheets.length; i++) {
             jQuery.get(stylesheets[i], null, function(data) {
-                parseStyleSheet(data);
+                blueleaf.cutomrules.parseStyleSheet(data);
             });
         }
     });
