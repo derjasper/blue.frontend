@@ -2,7 +2,9 @@
 *, *:before, *:after {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+  transform: translate3d(0, 0, 0);
+  position: relative; }
 
 html, body {
   margin: 0;
@@ -19,8 +21,7 @@ html {
   *zoom: 1;
   margin-left: auto;
   margin-right: auto;
-  transform: translate3D(0, 0, -1px);
-  transform-style: flat; }
+  transform: translate3d(0, 0, 0); }
   .container:before, .container:after {
     content: "";
     display: table; }
@@ -72,8 +73,7 @@ div {
   max-height: 10rem;
   margin-left: auto;
   margin-right: auto;
-  transform: translate3D(0, 0, -1px);
-  transform-style: flat; }
+  transform: translate3d(0, 0, 0); }
   div:before, div:after {
     content: "";
     display: table; }
