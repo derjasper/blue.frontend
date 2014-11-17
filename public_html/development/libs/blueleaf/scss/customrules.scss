@@ -1,3 +1,5 @@
+// The character " is not allowed in $rule and $map.
+
 @mixin customrule($rule,$map) {
     $map: map_merge($map, (enabled: true));
     @include json-encode(($rule: $map));
@@ -11,6 +13,7 @@
 
 @function _proof-quote($value) {
     @return '"' + $value + '"';
+    //@return quote($value);
 }
 
 @function _json-encode--bool($boolean) {
