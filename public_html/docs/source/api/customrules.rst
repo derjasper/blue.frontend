@@ -35,7 +35,7 @@ SASS
 
 .. describe:: @mixin customrule($rule,$map)
 
-   Defines a custom rule
+   Defines a custom rule. The character ``"`` is not allowed in $rule and $map.
 
    .. describe:: $rule
 
