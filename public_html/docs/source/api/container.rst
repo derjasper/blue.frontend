@@ -9,8 +9,8 @@ All sizing options are multiplied by the ``$container`` factor, defined in :doc:
 This module will be reworked in a very future release.
 
 Note: Due to the fact that CSS ``transform`` property creates a new stacking context,
-z-index may not work as expected (by most devs). We have applied a workaround, but if
-you are experiencing problems with rendering layers, please submit a bug report.
+z-index may not work as expected (by most devs). Please read :doc:`stacking`
+for more details.
 
 
 SASS
