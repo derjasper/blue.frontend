@@ -30,6 +30,8 @@ $inline-elements: "
     box-sizing: border-box; 
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    transform:translate3d(0,0,0);
+    position:relative;
 }
 
 html,body {

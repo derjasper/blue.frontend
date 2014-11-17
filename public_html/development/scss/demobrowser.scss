@@ -11,6 +11,8 @@ html,body {
     background-size:auto 120%;
     border-bottom:0.2rem #037698 solid;
     
+    z-index:10;
+    
     @include col(12);
     height:2rem;
     
@@ -46,7 +48,6 @@ html,body {
             
             ul {
                 background:#006785;
-                z-index:9999;
             }
         }
     }

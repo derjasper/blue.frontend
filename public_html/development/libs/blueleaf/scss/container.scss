@@ -194,11 +194,7 @@
         }
     }
     
-    // translate; includes a workaround that transform creates a new stacking context and z-index does not work as most devs expect
-    // don't know why it works, it may happen that behaviour is unexpected (please submit a bug report if this applies)
-    // we will look for a better solution in a future release
-    transform:translate3D($align-transform-x,$align-transform-y,-1px);
-    transform-style: flat;
+    transform:translate3d($align-transform-x,$align-transform-y,0);
 }
 
 @include predefine("container") {
