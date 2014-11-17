@@ -2,7 +2,9 @@
 *, *:before, *:after {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+  transform: translate3d(0, 0, 0);
+  position: relative; }
 
 html, body {
   margin: 0;
@@ -19,8 +21,7 @@ html {
   *zoom: 1;
   margin-left: auto;
   margin-right: auto;
-  transform: translate3D(0, 0, -1px);
-  transform-style: flat; }
+  transform: translate3d(0, 0, 0); }
   .container:before, .container:after {
     content: "";
     display: table; }
@@ -74,8 +75,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   max-height: 10rem;
   margin-left: auto;
   margin-right: auto;
-  transform: translate3D(0, 0, -1px);
-  transform-style: flat; }
+  transform: translate3d(0, 0, 0); }
   .alignment-relative:before, .alignment-relative:after {
     content: "";
     display: table; }
@@ -91,8 +91,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     margin-left: 0;
     margin-right: auto;
     top: 0%;
-    transform: translate3D(0, 0%, -1px);
-    transform-style: flat; }
+    transform: translate3d(0, 0%, 0); }
     .alignment-relative .topleft:before, .alignment-relative .topleft:after {
       content: "";
       display: table; }
@@ -108,8 +107,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     margin-left: auto;
     margin-right: auto;
     top: 50%;
-    transform: translate3D(0, -50%, -1px);
-    transform-style: flat; }
+    transform: translate3d(0, -50%, 0); }
     .alignment-relative .middlecenter:before, .alignment-relative .middlecenter:after {
       content: "";
       display: table; }
@@ -125,8 +123,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     margin-left: auto;
     margin-right: 0;
     top: 100%;
-    transform: translate3D(0, -100%, -1px);
-    transform-style: flat; }
+    transform: translate3d(0, -100%, 0); }
     .alignment-relative .bottomright:before, .alignment-relative .bottomright:after {
       content: "";
       display: table; }
@@ -143,8 +140,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     bottom: auto;
     left: 100%;
     right: auto;
-    transform: translate3D(0, -100%, -1px);
-    transform-style: flat; }
+    transform: translate3d(0, -100%, 0); }
     .alignment-relative .outertopouterright:before, .alignment-relative .outertopouterright:after {
       content: "";
       display: table; }
@@ -159,8 +155,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     max-width: 10rem;
     left: 100%;
     right: auto;
-    transform: translate3D(0, 0, -1px);
-    transform-style: flat;
+    transform: translate3d(0, 0, 0);
     margin-left: 0.5em; }
     .alignment-relative .outerright:before, .alignment-relative .outerright:after {
       content: "";
@@ -178,8 +173,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     margin-right: 0;
     top: 100%;
     bottom: auto;
-    transform: translate3D(0, 0, -1px);
-    transform-style: flat; }
+    transform: translate3d(0, 0, 0); }
     .alignment-relative .outerbottom:before, .alignment-relative .outerbottom:after {
       content: "";
       display: table; }
@@ -197,8 +191,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   max-height: 30rem;
   margin-left: auto;
   margin-right: auto;
-  transform: translate3D(0, 0, -1px);
-  transform-style: flat; }
+  transform: translate3d(0, 0, 0); }
   .alignment-absolute:before, .alignment-absolute:after {
     content: "";
     display: table; }
@@ -212,8 +205,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     right: auto;
     top: 0;
     bottom: auto;
-    transform: translate3D(0, 0, -1px);
-    transform-style: flat; }
+    transform: translate3d(0, 0, 0); }
     .alignment-absolute .topleft:before, .alignment-absolute .topleft:after {
       content: "";
       display: table; }
@@ -225,8 +217,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     *zoom: 1;
     left: 50%;
     top: 50%;
-    transform: translate3D(-50%, -50%, -1px);
-    transform-style: flat; }
+    transform: translate3d(-50%, -50%, 0); }
     .alignment-absolute .middlecenter:before, .alignment-absolute .middlecenter:after {
       content: "";
       display: table; }
@@ -240,8 +231,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     right: 0;
     top: auto;
     bottom: 0;
-    transform: translate3D(0, 0%, -1px);
-    transform-style: flat; }
+    transform: translate3d(0, 0%, 0); }
     .alignment-absolute .bottomright:before, .alignment-absolute .bottomright:after {
       content: "";
       display: table; }
@@ -255,8 +245,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     bottom: 100%;
     left: 100%;
     right: auto;
-    transform: translate3D(0, 0, -1px);
-    transform-style: flat; }
+    transform: translate3d(0, 0, 0); }
     .alignment-absolute .outertopouterright:before, .alignment-absolute .outertopouterright:after {
       content: "";
       display: table; }
@@ -268,8 +257,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     *zoom: 1;
     left: 100%;
     right: auto;
-    transform: translate3D(0, 0, -1px);
-    transform-style: flat;
+    transform: translate3d(0, 0, 0);
     margin-left: 0.5em; }
     .alignment-absolute .outerright:before, .alignment-absolute .outerright:after {
       content: "";
@@ -284,8 +272,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     right: 0;
     top: 100%;
     bottom: auto;
-    transform: translate3D(0, 0, -1px);
-    transform-style: flat; }
+    transform: translate3d(0, 0, 0); }
     .alignment-absolute .outerbottom:before, .alignment-absolute .outerbottom:after {
       content: "";
       display: table; }
@@ -303,8 +290,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   right: 0;
   top: auto;
   bottom: 0;
-  transform: translate3D(0, 0%, -1px);
-  transform-style: flat; }
+  transform: translate3d(0, 0%, 0); }
   .alignment-fixed-bottomright:before, .alignment-fixed-bottomright:after {
     content: "";
     display: table; }
@@ -318,8 +304,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   *zoom: 1;
   margin-left: auto;
   margin-right: auto;
-  transform: translate3D(0, 0, -1px);
-  transform-style: flat;
+  transform: translate3d(0, 0, 0);
   height: 45vh; }
   .c4:before, .c4:after {
     content: "";
@@ -335,8 +320,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     max-height: 20rem;
     margin-left: auto;
     margin-right: auto;
-    transform: translate3D(0, 0, -1px);
-    transform-style: flat; }
+    transform: translate3d(0, 0, 0); }
     .c4 div:before, .c4 div:after {
       content: "";
       display: table; }
@@ -353,8 +337,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
-  transform: translate3D(0, 0, -1px);
-  transform-style: flat; }
+  transform: translate3d(0, 0, 0); }
   .c1:before, .c1:after {
     content: "";
     display: table; }
