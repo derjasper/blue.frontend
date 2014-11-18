@@ -66,3 +66,23 @@ JavaScript
    :param newoffset: Values to be added to the current offset, same structure 
                      as blueleaf.offset.
 
+.. js:data:: blueleaf.customrules.ruleslist
+
+   A list of defined custom rules.
+
+.. js:function:: blueleaf.customrules.registerModuleQuery(rule,options)
+
+   Registers a new rule.
+
+   :param string rule: Identifier of the rule.
+
+   :param options: An object containing two functions: ``{match:function(sel,options){...}, unmatch:function(sel,options){...}}``.
+                   The ``match`` function will be called whenever a rule should be applied to a selector(``sel``) with the given
+                   ``options`` (usually defined via SASS). This happens for example if a media query gets true.
+                   The same is for ``unmatch``.
+
+.. js:function:: blueleaf.customrules.parseStyleSheet(css)
+
+   A style sheet to be parsed. Custom rules and/or media querys will be applied instantly.
+
+   :param string css: The stylesheet.
