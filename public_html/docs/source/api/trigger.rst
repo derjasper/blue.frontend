@@ -48,7 +48,7 @@ SASS
 
    .. describe:: $type
 
-      ``click``, ``mouseover``, mouseout``; Type of the event of the current element to 
+      ``click``, ``mouseover``, ``mouseout``; Type of the event of the current element to 
       trigger the target.
 
    .. describe:: $trigger_mode
