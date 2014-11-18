@@ -25,9 +25,7 @@ These information will be given to enquire.js, which will call the delegated han
 for each rule to enable/disable the specified feature (the functions get the selector
 and the options as a parameter). Handler can be registered by modules.
 
-
-The implementation and the JS part will not be documented as it will be updated
-(and documented) in future. Please study the source code for more details. 
+Please study the source code for more details. 
 
 
 SASS
@@ -45,3 +43,21 @@ SASS
 
       Map with configuration.
 
+
+JavaScript
+----------
+
+.. js:class:: CSSParser(css)
+
+   :param string css: A string containing the CSS stylesheets.
+
+.. js:function:: CSSParser.parse()
+
+   Parses the ``CSSParser``s CSS.
+
+   :returns: ``true`` if parsing was successful, otherwise ``false``.
+
+.. js:attribute:: CSSParser.tree
+
+   Contains a tree containing custom rules with their selectors and media querys.
+   Only valid if ``CSSParser.parse()`` has returned ``true``.
