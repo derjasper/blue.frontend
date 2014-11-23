@@ -7,11 +7,14 @@
 html, body {
   margin: 0;
   padding: 0;
-  min-height: 100%;
   font-size: 100%; }
 
 html {
+  height: 100%;
   position: relative; }
+
+body {
+  min-height: 100%; }
 
 .container {
   display: block;
@@ -63,6 +66,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
       color: white; }
 
 .stickyfooter {
-  /*! customrule: {"stickyfooter": {"parent": "html", "enabled": true}} */ }
+  /*! customrule: {"stickyfooter": {"parent": "body", "enabled": true}} */ }
 
 /*# sourceMappingURL=stickyfooter.css.map */
