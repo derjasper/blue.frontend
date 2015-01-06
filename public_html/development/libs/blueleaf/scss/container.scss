@@ -1,5 +1,5 @@
 @mixin container($width:auto,$height:auto,$flags...) {
-    display:block;
+    //display:block; // TODO TEST REGRESSIONS
     
     @if (length($flags)==0) {
         $flags:(center);
@@ -30,7 +30,7 @@
         clear:both;
     }
     
-    // width and height
+    // width and height // TODO überarbeiten (auto, full, min/max, absolute, ...)
     @if $width!=auto or index($flags,width) {
         @if length($width)==2 and nth($width,1)==nth($width,2) {
             width: $container*nth($width,1);
