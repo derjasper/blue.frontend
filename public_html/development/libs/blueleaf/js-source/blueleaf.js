@@ -78,6 +78,7 @@ var blueleaf = {
             match: function(sel,options) {
                 $(sel).sticky_enable({
                     parent:options.parent,
+                    stick_in:options.stick_in,
                     z_index: options.zindex,
                     stick_directions:options.directions,
                     sticky_class:options.sticked_class,
@@ -212,14 +213,16 @@ var blueleaf = {
     
     
     // listen for DOM changes and apply handler
+    // TODO plugin-architektur überarbeiten: plugins brauchen "refresh" methode, die DOM änderungen behandelt
+    // TODO weniger dom änderungen bei sticky
     /*
     $(function() {
         var observer = new MutationObserver(function(mutations) {
             // TODO make sure that DOM mutation is not caused by blueleaf (otherwise there is an endless loop)
-            console.log("mutation observed");
-            blueleaf.apply(); 
+            console.log(mutations);
+            //blueleaf.apply(); 
         });
         observer.observe(document, { attributes:true,childList:true,characterData:true,subtree:true });
-    });
-    */
+    });*/
+    
 }(jQuery));
