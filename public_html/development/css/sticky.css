@@ -17,7 +17,6 @@ body {
   min-height: 100%; }
 
 .container {
-  display: block;
   position: relative;
   *zoom: 1;
   margin-left: auto;
@@ -68,17 +67,17 @@ ol:not(.nostyle), ul:not(.nostyle) {
 .s2 {
   height: 20em; }
   .s2 div {
-    /*! customrule: {"sticky": {"zindex": 999, "directions": "t", "parent": ".s2", "scrollarea_offset": "", "sticked_class": "sticked", "enabled": true}} */ }
+    /*! customrule: {"sticky": {"stick_in": "viewport", "zindex": 999, "directions": "t", "parent": ".s2", "scrollarea_offset": "", "sticked_class": "sticked", "enabled": true}} */ }
 
 .s3 {
   height: 20em; }
   .s3 div {
-    /*! customrule: {"sticky": {"zindex": 999, "directions": "tb", "parent": ".s3", "scrollarea_offset": "", "sticked_class": "sticked", "enabled": true}} */ }
+    /*! customrule: {"sticky": {"stick_in": "viewport", "zindex": 999, "directions": "tb", "parent": ".s3", "scrollarea_offset": "", "sticked_class": "sticked", "enabled": true}} */ }
 
 .s4 {
   height: 20em; }
   .s4 div {
-    /*! customrule: {"sticky": {"zindex": 999, "directions": "tb", "parent": ".s4", "scrollarea_offset": "", "sticked_class": "sticked", "enabled": true}} */ }
+    /*! customrule: {"sticky": {"stick_in": "viewport", "zindex": 999, "directions": "tb", "parent": ".s4", "scrollarea_offset": "", "sticked_class": "sticked", "enabled": true}} */ }
     .s4 div span {
       visibility: hidden; }
     .s4 div.sticked span {
@@ -88,12 +87,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
 .s5 {
   height: 20em; }
   .s5 div {
-    /*! customrule: {"sticky": {"zindex": 999, "directions": "t", "parent": ".s5", "scrollarea_offset": "", "sticked_class": "sticked", "enabled": true}} */ }
+    /*! customrule: {"sticky": {"stick_in": "viewport", "zindex": 999, "directions": "t", "parent": ".s5", "scrollarea_offset": "", "sticked_class": "sticked", "enabled": true}} */ }
     .s5 div.sticked {
       margin: 5em 0; }
 
 .s1 {
-  /*! customrule: {"sticky": {"zindex": 999, "directions": "t", "parent": "body", "scrollarea_offset": "t", "sticked_class": "sticked", "enabled": true}} */
+  /*! customrule: {"sticky": {"stick_in": "viewport", "zindex": 999, "directions": "t", "parent": "body", "scrollarea_offset": "t", "sticked_class": "sticked", "enabled": true}} */
   padding: 1em; }
 
 a[name] {
@@ -106,9 +105,27 @@ a[name] {
 .s6 {
   height: 20em; }
   .s6 div {
-    /*! customrule: {"sticky": {"zindex": 0, "directions": "t", "parent": ".s6", "scrollarea_offset": "t", "sticked_class": "sticked", "enabled": true}} */
+    /*! customrule: {"sticky": {"stick_in": "viewport", "zindex": 0, "directions": "t", "parent": ".s6", "scrollarea_offset": "t", "sticked_class": "sticked", "enabled": true}} */
     padding: 1em; }
     .s6 div.sticked {
       margin-top: 3.6em; }
+
+.overflowdemo {
+  position: relative;
+  *zoom: 1;
+  height: 20rem;
+  min-height: 20rem;
+  max-height: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translate3d(0, 0, 0);
+  overflow: auto; }
+  .overflowdemo:before, .overflowdemo:after {
+    content: "";
+    display: table; }
+  .overflowdemo:after {
+    clear: both; }
+  .overflowdemo .stick {
+    /*! customrule: {"sticky": {"stick_in": ".overflowdemo", "zindex": 0, "directions": "tb", "parent": "body", "scrollarea_offset": "tb", "sticked_class": "sticked", "enabled": true}} */ }
 
 /*# sourceMappingURL=sticky.css.map */

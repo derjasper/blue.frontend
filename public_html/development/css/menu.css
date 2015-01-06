@@ -17,7 +17,6 @@ body {
   min-height: 100%; }
 
 .container {
-  display: block;
   position: relative;
   *zoom: 1;
   margin-left: auto;
@@ -82,7 +81,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .horizontal > li > ul, .horizontal * > li > ul, .horizontal > li > ol, .horizontal * > li > ol {
     margin: 0;
     padding: 0;
-    display: block;
     position: absolute;
     *zoom: 1;
     width: 10rem;
@@ -100,7 +98,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .horizontal > li > ul:after, .horizontal * > li > ul:after, .horizontal > li > ol:after, .horizontal * > li > ol:after {
       clear: both; }
   .horizontal > li > ul > li > ul, .horizontal * > li > ul > li > ul, .horizontal > li > ol > li > ol, .horizontal * > li > ol > li > ol {
-    display: block;
     position: absolute;
     *zoom: 1;
     width: 10rem;
@@ -148,7 +145,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .horizontal-click > li > ul, .horizontal-click * > li > ul, .horizontal-click > li > ol, .horizontal-click * > li > ol {
     margin: 0;
     padding: 0;
-    display: block;
     position: absolute;
     *zoom: 1;
     width: 10rem;
@@ -166,7 +162,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .horizontal-click > li > ul:after, .horizontal-click * > li > ul:after, .horizontal-click > li > ol:after, .horizontal-click * > li > ol:after {
       clear: both; }
   .horizontal-click > li > ul > li > ul, .horizontal-click * > li > ul > li > ul, .horizontal-click > li > ol > li > ol, .horizontal-click * > li > ol > li > ol {
-    display: block;
     position: absolute;
     *zoom: 1;
     width: 10rem;

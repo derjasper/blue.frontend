@@ -471,14 +471,14 @@ CSSParser.prototype.parse = function() {
         return this;
     };
 })(jQuery);
-(function($) {  
+(function($) {  // TODO komplett überarbeiten + DOCS
   $.fn.sticky_enable = function(opts) {
-    var parent_selector, sticky_class, z_index, stick_directions, scrollarea_offset;
+    var parent_selector, sticky_class, z_index, stick_directions, scrollarea_offset, stick_in;
     var _fn;
     if (opts == null) {
       opts = {};
     }
-    sticky_class = opts.sticky_class, parent_selector = opts.parent, z_index = opts.z_index, stick_directions = opts.stick_directions, scrollarea_offset=opts.scrollarea_offset;
+    stick_in = opts.stick_in, sticky_class = opts.sticky_class, parent_selector = opts.parent, z_index = opts.z_index, stick_directions = opts.stick_directions, scrollarea_offset=opts.scrollarea_offset;
 
     if (parent_selector == null) {
       parent_selector = void 0;
@@ -495,13 +495,16 @@ CSSParser.prototype.parse = function() {
     if (z_index == null) {
         z_index=1;
     }
+    if (stick_in == null) {
+        stick_in="viewport";
+    }
     
     _fn = function(elm) {
-        var parent,spacer;
+        var parent,spacer,container;
         var STATE={OFF: 0, VIEWPORT_TOP:1, VIEWPORT_BOTTOM: 2, PARENT_TOP: 3, PARENT_BOTTOM: 4};
         var state=STATE.OFF;
         var spacerEnabled=false;
-        var element_top,element_height,parent_top,parent_height,viewport_height;
+        var element_top,element_height,parent_top,parent_height,viewport_height,viewport_top;
         var createSpacer,destroySpacer,setElementState,tick,recalc;
         var observer;
         
@@ -513,6 +516,12 @@ CSSParser.prototype.parse = function() {
         parent = elm.parent();
         if (parent_selector !== null) parent = parent.closest(parent_selector);
         if (!parent.length) throw "failed to find sticky_parent";
+        
+        // determine stick_in
+        container = elm.parent();
+        if (stick_in=="viewport") container = $(window);
+        else if (stick_in !== null) container = container.closest(stick_in);
+        if (!container.length) throw "failed to find stick_in";
         
         // check conditions
         if (elm.outerHeight(true) === parent.height()) {
@@ -583,7 +592,7 @@ CSSParser.prototype.parse = function() {
                     }
                     
                     elm.css ({
-                        position: "fixed",
+                        position: ((stick_in=="viewport") ? "fixed" : "absolute"),
                         "z-index": z_index,
                         top: 0,
                         bottom: "",
@@ -597,7 +606,7 @@ CSSParser.prototype.parse = function() {
                     }
                     
                     elm.css ({
-                        position: "fixed",
+                        position: ((stick_in=="viewport") ? "fixed" : "absolute"),
                         "z-index": z_index,
                         top: "",
                         bottom: 0,
@@ -636,16 +645,22 @@ CSSParser.prototype.parse = function() {
             destroySpacer();
             setElementState(STATE.OFF);
             
-            element_top = elm.offset().top;
+            var scrolltop=container.scrollTop();
+            container.scrollTop(0);
+            
+            viewport_top = ((stick_in=="viewport") ? 0 : container.offset().top + parseInt(container.css("border-top-width")) + parseInt(container.css("padding-top")));
+            viewport_height = container.height();
+            element_top = elm.offset().top - viewport_top;
             element_height = elm.outerHeight(true);
             parent_top = parent.offset().top + parseInt(parent.css("border-top-width")) + parseInt(parent.css("padding-top"));
             parent_height = parent.height();
-            viewport_height = $(window).height();
             
             elm.addClass(sticky_class);
             element_top-=parseInt(elm.css("margin-top"));
             element_height+=parseInt(elm.css("margin-top"))+parseInt(elm.css("margin-bottom"));
             elm.removeClass(sticky_class);
+            
+            container.scrollTop(scrolltop);
                    
             tick();
         };
@@ -653,8 +668,9 @@ CSSParser.prototype.parse = function() {
         tick = function() {
             if (!elm.data("sticky_enabled")) return;
             
-            var scroll = $(window).scrollTop();
+            var scroll = container.scrollTop();
             
+           
             if (scroll>element_top && stick_directions.indexOf("t")!==-1) {
                 if (scroll+element_height>parent_top+parent_height) {
                     createSpacer();
@@ -663,6 +679,9 @@ CSSParser.prototype.parse = function() {
                 else {
                     createSpacer();
                     setElementState(STATE.VIEWPORT_TOP);
+                    if (stick_in!="viewport") {
+                        elm.css("top",scroll);
+                    }
                 }
             }
             else if (scroll+viewport_height<element_top+element_height && stick_directions.indexOf("b")!==-1) {
@@ -673,6 +692,9 @@ CSSParser.prototype.parse = function() {
                 else {
                     createSpacer();
                     setElementState(STATE.VIEWPORT_BOTTOM);
+                    if (stick_in!="viewport") {
+                        elm.css("top",viewport_height-element_height+scroll);
+                    }
                 }
             }
             else {
@@ -685,8 +707,8 @@ CSSParser.prototype.parse = function() {
             if (!elm.data("sticky_enabled")) return;
             elm.removeData("sticky_enabled");
             
-            $(window).off("scroll", tick);
-            $(window).off("touchmove", tick);
+            container.off("scroll", tick);
+            container.off("touchmove", tick);
             $(window).off("resize", recalc);
             elm.off("sticky_detach", detach);
             
@@ -699,17 +721,10 @@ CSSParser.prototype.parse = function() {
       
         recalc();
         
-        $(window).on("touchmove", tick);
-        $(window).on("scroll", tick);
+        container.on("touchmove", tick);
+        container.on("scroll", tick);
         $(window).on("resize", recalc);   
         elm.on("sticky_detach", detach);
-        
-        observer = new MutationObserver(function(mutations) {
-            recalc();
-        });
-        
-        elm.uniqueId();
-        observer.observe(document.getElementById(elm.attr('id')), { attributes:false,childList:true,characterData:true,subtree:true });
     };
     for (var _i = 0, _len = this.length; _i < _len; _i++) {
         var elm = this[_i];
@@ -1046,6 +1061,7 @@ var blueleaf = {
             match: function(sel,options) {
                 $(sel).sticky_enable({
                     parent:options.parent,
+                    stick_in:options.stick_in,
                     z_index: options.zindex,
                     stick_directions:options.directions,
                     sticky_class:options.sticked_class,
@@ -1180,14 +1196,20 @@ var blueleaf = {
     
     
     // listen for DOM changes and apply handler
-    /*
+    // TODO testen
+    
     $(function() {
+        var lock = false;
         var observer = new MutationObserver(function(mutations) {
             // TODO make sure that DOM mutation is not caused by blueleaf (otherwise there is an endless loop)
-            console.log("mutation observed");
-            blueleaf.apply(); 
+            console.log(mutations);
+            if (!lock) {
+                lock=true;
+                //blueleaf.apply(); 
+                lock=false;
+            }
         });
         observer.observe(document, { attributes:true,childList:true,characterData:true,subtree:true });
     });
-    */
+    
 }(jQuery));
