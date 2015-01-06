@@ -17,7 +17,6 @@ body {
   min-height: 100%; }
 
 .container {
-  display: block;
   position: relative;
   *zoom: 1;
   margin-left: auto;
@@ -66,7 +65,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
       color: white; }
 
 .alignment-relative {
-  display: block;
   position: relative;
   *zoom: 1;
   width: 100%;
@@ -83,7 +81,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .alignment-relative:after {
     clear: both; }
   .alignment-relative .topleft {
-    display: block;
     position: relative;
     *zoom: 1;
     width: 10rem;
@@ -99,7 +96,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-relative .topleft:after {
       clear: both; }
   .alignment-relative .middlecenter {
-    display: block;
     position: relative;
     *zoom: 1;
     width: 10rem;
@@ -115,7 +111,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-relative .middlecenter:after {
       clear: both; }
   .alignment-relative .bottomright {
-    display: block;
     position: relative;
     *zoom: 1;
     width: 10rem;
@@ -131,7 +126,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-relative .bottomright:after {
       clear: both; }
   .alignment-relative .outertopouterright {
-    display: block;
     position: relative;
     *zoom: 1;
     width: 10rem;
@@ -148,7 +142,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-relative .outertopouterright:after {
       clear: both; }
   .alignment-relative .outerright {
-    display: block;
     position: relative;
     *zoom: 1;
     width: 10rem;
@@ -164,7 +157,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-relative .outerright:after {
       clear: both; }
   .alignment-relative .outerbottom {
-    display: block;
     position: relative;
     *zoom: 1;
     width: 10rem;
@@ -182,7 +174,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
       clear: both; }
 
 .alignment-absolute {
-  display: block;
   position: relative;
   *zoom: 1;
   width: 100%;
@@ -199,7 +190,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .alignment-absolute:after {
     clear: both; }
   .alignment-absolute .topleft {
-    display: block;
     position: absolute;
     *zoom: 1;
     left: 0;
@@ -213,7 +203,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-absolute .topleft:after {
       clear: both; }
   .alignment-absolute .middlecenter {
-    display: block;
     position: absolute;
     *zoom: 1;
     left: 50%;
@@ -225,7 +214,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-absolute .middlecenter:after {
       clear: both; }
   .alignment-absolute .bottomright {
-    display: block;
     position: absolute;
     *zoom: 1;
     left: auto;
@@ -239,7 +227,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-absolute .bottomright:after {
       clear: both; }
   .alignment-absolute .outertopouterright {
-    display: block;
     position: absolute;
     *zoom: 1;
     top: auto;
@@ -253,7 +240,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-absolute .outertopouterright:after {
       clear: both; }
   .alignment-absolute .outerright {
-    display: block;
     position: absolute;
     *zoom: 1;
     left: 100%;
@@ -266,7 +252,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-absolute .outerright:after {
       clear: both; }
   .alignment-absolute .outerbottom {
-    display: block;
     position: absolute;
     *zoom: 1;
     left: auto;
@@ -281,7 +266,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
       clear: both; }
 
 .alignment-fixed-bottomright {
-  display: block;
   position: fixed;
   *zoom: 1;
   width: 10rem;
@@ -300,7 +284,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
 
 .c4 {
   /*TODO*/
-  display: block;
   position: relative;
   *zoom: 1;
   margin-left: auto;
@@ -313,7 +296,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .c4:after {
     clear: both; }
   .c4 div {
-    display: block;
     position: relative;
     *zoom: 1;
     height: 100%;
@@ -330,7 +312,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
 
 .c1 {
   /*TODO*/
-  display: block;
   position: relative;
   *zoom: 1;
   width: 100%;

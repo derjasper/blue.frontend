@@ -17,7 +17,6 @@ body {
   min-height: 100%; }
 
 .container {
-  display: block;
   position: relative;
   *zoom: 1;
   margin-left: auto;
@@ -70,7 +69,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   position: relative;
   width: 25%; }
   .left .inner {
-    /*! customrule: {"sticky": {"zindex": 999, "directions": "tb", "parent": "body", "scrollarea_offset": "", "sticked_class": "sticked", "enabled": true}} */ }
+    /*! customrule: {"sticky": {"stick_in": "viewport", "zindex": 999, "directions": "tb", "parent": "body", "scrollarea_offset": "", "sticked_class": "sticked", "enabled": true}} */ }
 
 .right {
   float: left;

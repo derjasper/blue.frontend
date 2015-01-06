@@ -59,3 +59,11 @@ a[name] {
     }
 }
 
+.overflowdemo {
+    @include container(auto,(2,2));
+    overflow:auto;
+    .stick {
+        @include sticky("body","tb","tb",0,".overflowdemo");
+    }
+}
+
