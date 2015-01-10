@@ -23,8 +23,7 @@
     @include box($direction);
     height: 100%/$rows*$size;
 }
-@mixin row-offset($x) { // TODO
-    //TODO
+@mixin row-offset($x) {
     @include customrule(grid-offset, (width:100%,height:100%/$rows*$x));
 }
 @mixin row-push($x) {
