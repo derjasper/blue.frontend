@@ -1,3 +1,33 @@
+(function($) {
+    $.fn.container_aspectratio_enable = function(adjust,factor) {        
+        _fn = function(elm) {
+            if (elm.data("container-aspectratio-enabled")) return;
+            elm.data("container-aspectratio-enabled",true);
+            
+            // TODO listener
+        }
+    
+        for (_i = 0, _len = this.length; _i < _len; _i++) {
+            elm = this[_i];
+            _fn($(elm));
+        }
+        return this;
+    };
+    
+    
+    $.fn.container_aspectratio_disable = function() {
+        _fn = function(elm) {
+            if (!elm.data("container-aspectratio-enabled")) return;
+            elm.removeData("container-aspectratio-enabled");
+        }
+        
+        for (_i = 0, _len = this.length; _i < _len; _i++) {
+            elm = this[_i];
+            _fn($(elm));
+        }
+        return this;
+    };
+}(jQuery));
 function CSSParser (css) {
     this.css=css;
     this.token={
@@ -471,7 +501,7 @@ CSSParser.prototype.parse = function() {
         return this;
     };
 })(jQuery);
-(function($) {  // TODO komplett überarbeiten + DOCS
+(function($) {
   $.fn.sticky_enable = function(opts) {
     var parent_selector, sticky_class, z_index, stick_directions, scrollarea_offset, stick_in;
     var _fn;
@@ -1196,20 +1226,13 @@ var blueleaf = {
     
     
     // listen for DOM changes and apply handler
-    // TODO testen
-    
+    /*
+    // Warning: Uncommenting this code CAN cause endless loops and crashing browsers. Use with care. Fix is work in progress. 
     $(function() {
-        var lock = false;
         var observer = new MutationObserver(function(mutations) {
-            // TODO make sure that DOM mutation is not caused by blueleaf (otherwise there is an endless loop)
-            console.log(mutations);
-            if (!lock) {
-                lock=true;
-                //blueleaf.apply(); 
-                lock=false;
-            }
+            blueleaf.apply(); 
         });
         observer.observe(document, { attributes:true,childList:true,characterData:true,subtree:true });
-    });
+    });*/
     
 }(jQuery));
