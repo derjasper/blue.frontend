@@ -1,4 +1,4 @@
-(function($) {  // TODO komplett überarbeiten + DOCS
+(function($) {
   $.fn.sticky_enable = function(opts) {
     var parent_selector, sticky_class, z_index, stick_directions, scrollarea_offset, stick_in;
     var _fn;

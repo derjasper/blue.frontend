@@ -12,7 +12,7 @@ browser for details). Also, this module integrates with scrollarea offsets
 SASS
 ----
 
-.. describe:: @mixin sticky($parent:"body",$directions:"tb",$scrollarea_offset:"",$zindex:999)
+.. describe:: @mixin sticky($parent:"body",$directions:"tb",$scrollarea_offset:"",$zindex:999,$stick_in:"viewport")
 
    Creates a sticky element.
 
@@ -35,6 +35,13 @@ SASS
    .. describe:: $zindex
 
       The elements ``z-index`` when it is sticked.
+      
+   .. describe:: $stick_in
+   
+      Selector a parent element in which the element will stick in. This is not the 
+      same as ``parent`` as this is the container which is scrolled. You should
+      use anything else than ``overflow:visible`` to make this to work. Defaults
+      to the window's scroll area.
 
 .. describe:: @mixin bp-sticked() { @content; }
 
