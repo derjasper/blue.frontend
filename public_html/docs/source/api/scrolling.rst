@@ -25,7 +25,7 @@ SASS
    jumplinks does not work correctly. This mixin adds an offset to the jumplink.
    Jumplink correction will be automated in future.
 
-   .. describe:: $time
+   .. describe:: $offset
 
       The offset as an CSS length.
 
