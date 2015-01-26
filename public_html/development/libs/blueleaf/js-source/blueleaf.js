@@ -213,14 +213,11 @@ var blueleaf = {
     
     
     // listen for DOM changes and apply handler
-    // TODO plugin-architektur überarbeiten: plugins brauchen "refresh" methode, die DOM änderungen behandelt
-    // TODO weniger dom änderungen bei sticky
     /*
+    // Warning: Uncommenting this code CAN cause endless loops and crashing browsers. Use with care. Fix is work in progress. 
     $(function() {
         var observer = new MutationObserver(function(mutations) {
-            // TODO make sure that DOM mutation is not caused by blueleaf (otherwise there is an endless loop)
-            console.log(mutations);
-            //blueleaf.apply(); 
+            blueleaf.apply(); 
         });
         observer.observe(document, { attributes:true,childList:true,characterData:true,subtree:true });
     });*/
