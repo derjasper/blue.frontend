@@ -17,8 +17,10 @@ body {
   min-height: 100%; }
 
 .container {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
@@ -65,8 +67,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
       color: white; }
 
 div {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
@@ -76,24 +80,34 @@ div {
   div:after {
     clear: both; }
 
-.c1 {
+.hide {
   display: none; }
 
-.c2 {
+.invisible {
   visibility: hidden; }
 
-.c3 {
+.show {
   display: initial;
   visibility: visible;
   border: none !important; }
 
-.c4 {
+.showblock {
   display: block;
   visibility: visible; }
 
-.c5 {
+.hidecontent {
   text-indent: -99999999px;
   color: transparent;
   overflow: hidden; }
+
+.visuallyhidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute; }
 
 /*# sourceMappingURL=visibility.css.map */
