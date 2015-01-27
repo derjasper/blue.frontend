@@ -187,6 +187,18 @@ var blueleaf = {
         });
     });
     
+    // Container
+    $(function() {
+        blueleaf.cutomrules.registerModuleQuery("container-aspectratio", {
+            match: function(sel,options) {
+                $(sel).container_aspectratio_enable(options.adjust,options.factor);
+            },
+            unmatch: function(sel,options) {
+                $(sel).container_aspectratio_disable();
+            }
+        });
+    });
+    
     
     // get JSON data from CSS, and enable media querys
     $(function() {
