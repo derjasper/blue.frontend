@@ -52,18 +52,29 @@
     @include container((1 1),auto,fixed,bottom,right);
 }
 
-
-.c4 {/*TODO*/
+.sizing-width-min-max {
+    @include container((3 6),auto);
+}
+.sizing-width-min-max-parent {
     @include container();
-    height:45vh;
+    div {
+        @include container((50% 50%),auto);
+    }
+}
+.sizing-height-min-max {
+    @include container(auto,(45vh 45vh));
     div {
         @include container(auto,(1 2));
     }
 }
-.c1 {/*TODO*/
-    @include container((3 6),auto);
+.aspectratio-width { // resizes on window resize only
+    @include container((3.5 ar),(15vh 15vh));
+}
+.aspectratio-height {
+    @include container((10vw 10vw),(2 ar));
 }
 
-
-
-
+.spacing {
+    @include container();
+    @include container-spacing(5);
+}

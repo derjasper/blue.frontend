@@ -25,6 +25,9 @@ These information will be given to enquire.js, which will call the delegated han
 for each rule to enable/disable the specified feature (the functions get the selector
 and the options as a parameter). Handler can be registered by modules.
 
+For now, rules cannot be overwritten (use media querys to disable them)
+and they do not work as expected with DOM manipulations. (Will be improved in future.)
+
 Please study the source code for more details. 
 
 
