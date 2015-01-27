@@ -17,8 +17,10 @@ body {
   min-height: 100%; }
 
 .container {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
@@ -65,11 +67,11 @@ ol:not(.nostyle), ul:not(.nostyle) {
       color: white; }
 
 .alignment-relative {
-  position: relative;
   *zoom: 1;
+  position: relative;
   width: 100%;
-  height: 10rem;
   max-width: 20rem;
+  height: 10rem;
   min-height: 10rem;
   max-height: 10rem;
   margin-left: auto;
@@ -81,11 +83,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .alignment-relative:after {
     clear: both; }
   .alignment-relative .topleft {
-    position: relative;
     *zoom: 1;
+    position: relative;
     width: 10rem;
     min-width: 10rem;
     max-width: 10rem;
+    height: auto;
     margin-left: 0;
     margin-right: auto;
     top: 0%;
@@ -96,11 +99,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-relative .topleft:after {
       clear: both; }
   .alignment-relative .middlecenter {
-    position: relative;
     *zoom: 1;
+    position: relative;
     width: 10rem;
     min-width: 10rem;
     max-width: 10rem;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
     top: 50%;
@@ -111,11 +115,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-relative .middlecenter:after {
       clear: both; }
   .alignment-relative .bottomright {
-    position: relative;
     *zoom: 1;
+    position: relative;
     width: 10rem;
     min-width: 10rem;
     max-width: 10rem;
+    height: auto;
     margin-left: auto;
     margin-right: 0;
     top: 100%;
@@ -126,11 +131,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-relative .bottomright:after {
       clear: both; }
   .alignment-relative .outertopouterright {
-    position: relative;
     *zoom: 1;
+    position: relative;
     width: 10rem;
     min-width: 10rem;
     max-width: 10rem;
+    height: auto;
     top: auto;
     bottom: auto;
     left: 100%;
@@ -142,11 +148,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-relative .outertopouterright:after {
       clear: both; }
   .alignment-relative .outerright {
-    position: relative;
     *zoom: 1;
+    position: relative;
     width: 10rem;
     min-width: 10rem;
     max-width: 10rem;
+    height: auto;
     left: 100%;
     right: auto;
     transform: translate3d(0, 0, 0);
@@ -157,11 +164,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-relative .outerright:after {
       clear: both; }
   .alignment-relative .outerbottom {
-    position: relative;
     *zoom: 1;
+    position: relative;
     width: 10rem;
     min-width: 10rem;
     max-width: 10rem;
+    height: auto;
     margin-left: auto;
     margin-right: 0;
     top: 100%;
@@ -174,11 +182,11 @@ ol:not(.nostyle), ul:not(.nostyle) {
       clear: both; }
 
 .alignment-absolute {
-  position: relative;
   *zoom: 1;
+  position: relative;
   width: 100%;
-  height: 30rem;
   max-width: 50rem;
+  height: 30rem;
   min-height: 30rem;
   max-height: 30rem;
   margin-left: auto;
@@ -190,8 +198,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .alignment-absolute:after {
     clear: both; }
   .alignment-absolute .topleft {
-    position: absolute;
     *zoom: 1;
+    position: absolute;
+    width: auto;
+    height: auto;
     left: 0;
     right: auto;
     top: 0;
@@ -203,8 +213,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-absolute .topleft:after {
       clear: both; }
   .alignment-absolute .middlecenter {
-    position: absolute;
     *zoom: 1;
+    position: absolute;
+    width: auto;
+    height: auto;
     left: 50%;
     top: 50%;
     transform: translate3d(-50%, -50%, 0); }
@@ -214,8 +226,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-absolute .middlecenter:after {
       clear: both; }
   .alignment-absolute .bottomright {
-    position: absolute;
     *zoom: 1;
+    position: absolute;
+    width: auto;
+    height: auto;
     left: auto;
     right: 0;
     top: auto;
@@ -227,8 +241,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-absolute .bottomright:after {
       clear: both; }
   .alignment-absolute .outertopouterright {
-    position: absolute;
     *zoom: 1;
+    position: absolute;
+    width: auto;
+    height: auto;
     top: auto;
     bottom: 100%;
     left: 100%;
@@ -240,8 +256,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-absolute .outertopouterright:after {
       clear: both; }
   .alignment-absolute .outerright {
-    position: absolute;
     *zoom: 1;
+    position: absolute;
+    width: auto;
+    height: auto;
     left: 100%;
     right: auto;
     transform: translate3d(0, 0, 0);
@@ -252,8 +270,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .alignment-absolute .outerright:after {
       clear: both; }
   .alignment-absolute .outerbottom {
-    position: absolute;
     *zoom: 1;
+    position: absolute;
+    width: auto;
+    height: auto;
     left: auto;
     right: 0;
     top: 100%;
@@ -266,11 +286,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
       clear: both; }
 
 .alignment-fixed-bottomright {
-  position: fixed;
   *zoom: 1;
+  position: fixed;
   width: 10rem;
   min-width: 10rem;
   max-width: 10rem;
+  height: auto;
   left: auto;
   right: 0;
   top: auto;
@@ -282,48 +303,127 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .alignment-fixed-bottomright:after {
     clear: both; }
 
-.c4 {
-  /*TODO*/
-  position: relative;
+.sizing-width-min-max {
   *zoom: 1;
+  position: relative;
+  width: 100%;
+  min-width: 30rem;
+  max-width: 60rem;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
-  transform: translate3d(0, 0, 0);
-  height: 45vh; }
-  .c4:before, .c4:after {
+  transform: translate3d(0, 0, 0); }
+  .sizing-width-min-max:before, .sizing-width-min-max:after {
     content: "";
     display: table; }
-  .c4:after {
+  .sizing-width-min-max:after {
     clear: both; }
-  .c4 div {
-    position: relative;
+
+.sizing-width-min-max-parent {
+  *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translate3d(0, 0, 0); }
+  .sizing-width-min-max-parent:before, .sizing-width-min-max-parent:after {
+    content: "";
+    display: table; }
+  .sizing-width-min-max-parent:after {
+    clear: both; }
+  .sizing-width-min-max-parent div {
     *zoom: 1;
+    position: relative;
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translate3d(0, 0, 0); }
+    .sizing-width-min-max-parent div:before, .sizing-width-min-max-parent div:after {
+      content: "";
+      display: table; }
+    .sizing-width-min-max-parent div:after {
+      clear: both; }
+
+.sizing-height-min-max {
+  *zoom: 1;
+  position: relative;
+  width: auto;
+  height: 45vh;
+  min-height: 45vh;
+  max-height: 45vh;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translate3d(0, 0, 0); }
+  .sizing-height-min-max:before, .sizing-height-min-max:after {
+    content: "";
+    display: table; }
+  .sizing-height-min-max:after {
+    clear: both; }
+  .sizing-height-min-max div {
+    *zoom: 1;
+    position: relative;
+    width: auto;
     height: 100%;
     min-height: 10rem;
     max-height: 20rem;
     margin-left: auto;
     margin-right: auto;
     transform: translate3d(0, 0, 0); }
-    .c4 div:before, .c4 div:after {
+    .sizing-height-min-max div:before, .sizing-height-min-max div:after {
       content: "";
       display: table; }
-    .c4 div:after {
+    .sizing-height-min-max div:after {
       clear: both; }
 
-.c1 {
-  /*TODO*/
-  position: relative;
+.aspectratio-width {
   *zoom: 1;
-  width: 100%;
-  min-width: 30rem;
-  max-width: 60rem;
+  position: relative;
+  /*! customrule: {"container-aspectratio": {"adjust": "width", "factor": 3.5, "enabled": true}} */
+  height: 15vh;
+  min-height: 15vh;
+  max-height: 15vh;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
-  .c1:before, .c1:after {
+  .aspectratio-width:before, .aspectratio-width:after {
     content: "";
     display: table; }
-  .c1:after {
+  .aspectratio-width:after {
+    clear: both; }
+
+.aspectratio-height {
+  *zoom: 1;
+  position: relative;
+  width: 10vw;
+  min-width: 10vw;
+  max-width: 10vw;
+  /*! customrule: {"container-aspectratio": {"adjust": "height", "factor": 2, "enabled": true}} */
+  margin-left: auto;
+  margin-right: auto;
+  transform: translate3d(0, 0, 0); }
+  .aspectratio-height:before, .aspectratio-height:after {
+    content: "";
+    display: table; }
+  .aspectratio-height:after {
+    clear: both; }
+
+.spacing {
+  *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translate3d(0, 0, 0);
+  margin: 1rem; }
+  .spacing:before, .spacing:after {
+    content: "";
+    display: table; }
+  .spacing:after {
     clear: both; }
 
 /*# sourceMappingURL=container.css.map */

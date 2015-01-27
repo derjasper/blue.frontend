@@ -17,8 +17,10 @@ body {
   min-height: 100%; }
 
 .container {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
@@ -81,11 +83,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .horizontal > li > ul, .horizontal * > li > ul, .horizontal > li > ol, .horizontal * > li > ol {
     margin: 0;
     padding: 0;
-    position: absolute;
     *zoom: 1;
+    position: absolute;
     width: 10rem;
     min-width: 10rem;
     max-width: 10rem;
+    height: auto;
     transform: translate3d(0, 0, 0);
     margin: 0 !important; }
     .horizontal > li > ul > li, .horizontal * > li > ul > li, .horizontal > li > ol > li, .horizontal * > li > ol > li {
@@ -98,11 +101,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .horizontal > li > ul:after, .horizontal * > li > ul:after, .horizontal > li > ol:after, .horizontal * > li > ol:after {
       clear: both; }
   .horizontal > li > ul > li > ul, .horizontal * > li > ul > li > ul, .horizontal > li > ol > li > ol, .horizontal * > li > ol > li > ol {
-    position: absolute;
     *zoom: 1;
+    position: absolute;
     width: 10rem;
     min-width: 10rem;
     max-width: 10rem;
+    height: auto;
     top: 0;
     bottom: auto;
     left: 100%;
@@ -145,11 +149,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .horizontal-click > li > ul, .horizontal-click * > li > ul, .horizontal-click > li > ol, .horizontal-click * > li > ol {
     margin: 0;
     padding: 0;
-    position: absolute;
     *zoom: 1;
+    position: absolute;
     width: 10rem;
     min-width: 10rem;
     max-width: 10rem;
+    height: auto;
     transform: translate3d(0, 0, 0);
     margin: 0 !important; }
     .horizontal-click > li > ul > li, .horizontal-click * > li > ul > li, .horizontal-click > li > ol > li, .horizontal-click * > li > ol > li {
@@ -162,11 +167,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
     .horizontal-click > li > ul:after, .horizontal-click * > li > ul:after, .horizontal-click > li > ol:after, .horizontal-click * > li > ol:after {
       clear: both; }
   .horizontal-click > li > ul > li > ul, .horizontal-click * > li > ul > li > ul, .horizontal-click > li > ol > li > ol, .horizontal-click * > li > ol > li > ol {
-    position: absolute;
     *zoom: 1;
+    position: absolute;
     width: 10rem;
     min-width: 10rem;
     max-width: 10rem;
+    height: auto;
     top: 0;
     bottom: auto;
     left: 100%;

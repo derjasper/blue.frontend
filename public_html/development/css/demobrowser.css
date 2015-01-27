@@ -17,8 +17,10 @@ body {
   min-height: 100%; }
 
 .container {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
@@ -43,9 +45,10 @@ html, body {
   width: 100%;
   height: 2rem; }
   .header .inner {
-    position: absolute;
     *zoom: 1;
-    width: 100%;
+    position: absolute;
+    width: auto;
+    height: auto;
     top: auto;
     bottom: 0;
     transform: translate3d(0, 0%, 0);
@@ -78,11 +81,12 @@ html, body {
       .header .inner > ul > li > ul, .header .inner > ul * > li > ul, .header .inner > ul > li > ol, .header .inner > ul * > li > ol {
         margin: 0;
         padding: 0;
-        position: absolute;
         *zoom: 1;
+        position: absolute;
         width: 10rem;
         min-width: 10rem;
         max-width: 10rem;
+        height: auto;
         transform: translate3d(0, 0, 0);
         margin: 0 !important; }
         .header .inner > ul > li > ul > li, .header .inner > ul * > li > ul > li, .header .inner > ul > li > ol > li, .header .inner > ul * > li > ol > li {
@@ -95,11 +99,12 @@ html, body {
         .header .inner > ul > li > ul:after, .header .inner > ul * > li > ul:after, .header .inner > ul > li > ol:after, .header .inner > ul * > li > ol:after {
           clear: both; }
       .header .inner > ul > li > ul > li > ul, .header .inner > ul * > li > ul > li > ul, .header .inner > ul > li > ol > li > ol, .header .inner > ul * > li > ol > li > ol {
-        position: absolute;
         *zoom: 1;
+        position: absolute;
         width: 10rem;
         min-width: 10rem;
         max-width: 10rem;
+        height: auto;
         top: 0;
         bottom: auto;
         left: 100%;
@@ -172,10 +177,10 @@ html, body {
     padding: 0.8rem;
     background: #006785; }
     .content .htmlcode > div, .content .sasscode > div {
-      position: relative;
       *zoom: 1;
-      width: 100%;
-      height: 100%;
+      position: relative;
+      width: auto;
+      height: auto;
       transform: translate3d(0, 0, 0);
       overflow: scroll;
       background: white;

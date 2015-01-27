@@ -17,8 +17,10 @@ body {
   min-height: 100%; }
 
 .container {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
@@ -65,8 +67,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
       color: white; }
 
 .col-basic {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
@@ -81,8 +85,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
     width: 33.33333%; }
 
 .col-offset {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
@@ -99,8 +105,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
     margin-left: 33.33333%; }
 
 .col-right {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
@@ -115,8 +123,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
     width: 33.33333%; }
 
 .col-pushpull {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
@@ -137,8 +147,10 @@ ol:not(.nostyle), ul:not(.nostyle) {
     right: auto; }
 
 .col-right-pushpull {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   transform: translate3d(0, 0, 0); }
@@ -159,8 +171,9 @@ ol:not(.nostyle), ul:not(.nostyle) {
     right: auto; }
 
 .row-basic {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
   height: 20rem;
   min-height: 20rem;
   max-height: 20rem;
@@ -181,8 +194,9 @@ ol:not(.nostyle), ul:not(.nostyle) {
     height: 33.33333%; }
 
 .row-offset {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
   height: 20rem;
   min-height: 20rem;
   max-height: 20rem;
@@ -205,8 +219,9 @@ ol:not(.nostyle), ul:not(.nostyle) {
     /*! customrule: {"grid-offset": {"width": "100%", "height": "25%", "enabled": true}} */ }
 
 .row-pushpull {
-  position: relative;
   *zoom: 1;
+  position: relative;
+  width: auto;
   height: 20rem;
   min-height: 20rem;
   max-height: 20rem;
