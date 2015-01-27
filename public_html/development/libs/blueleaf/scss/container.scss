@@ -57,7 +57,7 @@
 
 // only apply to block elements
 @mixin container($width:auto,$height:auto,$flags...) {
-    //display:block; // TODO TEST REGRESSIONS
+    //display:block; // commented because this causes incompatibility with the visibility module
     
     // default flags
     @if (length($flags)==0) {
