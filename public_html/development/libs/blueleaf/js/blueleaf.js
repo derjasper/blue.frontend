@@ -331,18 +331,23 @@ CSSParser.prototype.parse = function() {
             
             elm.data("smoothscrolling-listener",function() {
                 if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                    var lehash=this.hash;
                     var target = $(this.hash);
                     target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
                     if (target.length) {
                         $('html,body').animate({
                             scrollTop: target.offset().top
-                        }, time);
+                        }, time,"swing",function() {
+                            location.hash=lehash;
+                        });
                         return false;
                     }
                     else if(this.hash=="") {
                         $('html,body').animate({
                             scrollTop: 0
-                        }, time);
+                        }, time,"swing",function() {
+                            location.hash=lehash;
+                        });
                         return false;
                     }
                 }
