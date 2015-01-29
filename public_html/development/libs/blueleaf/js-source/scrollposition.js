@@ -57,7 +57,7 @@
             
             var target=target_expr;
             if (target=="_link") {
-                target="a[href=#"+elm.attr("name")+"]";
+                target="a[href$=#"+elm.attr("name")+"]";
             }
                         
             if (groups[group]==undefined) groups[group]=new Object();
