@@ -2,7 +2,8 @@
 *, *:before, *:after {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box; }
 
 html, body {
   margin: 0;
@@ -22,8 +23,7 @@ body {
   width: auto;
   height: auto;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   .container:before, .container:after {
     content: "";
     display: table; }
@@ -89,7 +89,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     min-width: 10rem;
     max-width: 10rem;
     height: auto;
-    transform: translate3d(0, 0, 0);
     margin: 0 !important; }
     .horizontal > li > ul > li, .horizontal * > li > ul > li, .horizontal > li > ol > li, .horizontal * > li > ol > li {
       list-style: none; }
@@ -110,8 +109,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     top: 0;
     bottom: auto;
     left: 100%;
-    right: auto;
-    transform: translate3d(0, 0, 0); }
+    right: auto; }
     .horizontal > li > ul > li > ul:before, .horizontal > li > ul > li > ul:after, .horizontal * > li > ul > li > ul:before, .horizontal * > li > ul > li > ul:after, .horizontal > li > ol > li > ol:before, .horizontal > li > ol > li > ol:after, .horizontal * > li > ol > li > ol:before, .horizontal * > li > ol > li > ol:after {
       content: "";
       display: table; }
@@ -155,7 +153,6 @@ ol:not(.nostyle), ul:not(.nostyle) {
     min-width: 10rem;
     max-width: 10rem;
     height: auto;
-    transform: translate3d(0, 0, 0);
     margin: 0 !important; }
     .horizontal-click > li > ul > li, .horizontal-click * > li > ul > li, .horizontal-click > li > ol > li, .horizontal-click * > li > ol > li {
       list-style: none; }
@@ -176,8 +173,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     top: 0;
     bottom: auto;
     left: 100%;
-    right: auto;
-    transform: translate3d(0, 0, 0); }
+    right: auto; }
     .horizontal-click > li > ul > li > ul:before, .horizontal-click > li > ul > li > ul:after, .horizontal-click * > li > ul > li > ul:before, .horizontal-click * > li > ul > li > ul:after, .horizontal-click > li > ol > li > ol:before, .horizontal-click > li > ol > li > ol:after, .horizontal-click * > li > ol > li > ol:before, .horizontal-click * > li > ol > li > ol:after {
       content: "";
       display: table; }
