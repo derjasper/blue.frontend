@@ -24,3 +24,6 @@ SASS
       Use vertical alignment with care, as it applies ``display:inline-block;``
       to all inline elements. (Except for ``top`` as it will reset all inline
       elements to ``display:inline;``.)
+
+      Also be aware that all vertical alignment flags use ``transform`` which may
+      be a cause for unexpected behaviour in some cases.
