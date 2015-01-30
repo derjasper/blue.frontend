@@ -2,7 +2,8 @@
 *, *:before, *:after {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box; }
 
 html, body {
   margin: 0;
@@ -22,8 +23,7 @@ body {
   width: auto;
   height: auto;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   .container:before, .container:after {
     content: "";
     display: table; }
@@ -72,8 +72,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   width: auto;
   height: auto;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   .col-basic:before, .col-basic:after {
     content: "";
     display: table; }
@@ -90,8 +89,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   width: auto;
   height: auto;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   .col-offset:before, .col-offset:after {
     content: "";
     display: table; }
@@ -110,8 +108,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   width: auto;
   height: auto;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   .col-right:before, .col-right:after {
     content: "";
     display: table; }
@@ -128,8 +125,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   width: auto;
   height: auto;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   .col-pushpull:before, .col-pushpull:after {
     content: "";
     display: table; }
@@ -152,8 +148,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   width: auto;
   height: auto;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   .col-right-pushpull:before, .col-right-pushpull:after {
     content: "";
     display: table; }
@@ -178,8 +173,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   min-height: 20rem;
   max-height: 20rem;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   .row-basic:before, .row-basic:after {
     content: "";
     display: table; }
@@ -201,8 +195,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   min-height: 20rem;
   max-height: 20rem;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   .row-offset:before, .row-offset:after {
     content: "";
     display: table; }
@@ -226,8 +219,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   min-height: 20rem;
   max-height: 20rem;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   .row-pushpull:before, .row-pushpull:after {
     content: "";
     display: table; }

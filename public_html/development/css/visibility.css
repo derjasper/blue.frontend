@@ -2,7 +2,8 @@
 *, *:before, *:after {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box; }
 
 html, body {
   margin: 0;
@@ -22,8 +23,7 @@ body {
   width: auto;
   height: auto;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   .container:before, .container:after {
     content: "";
     display: table; }
@@ -72,8 +72,7 @@ div {
   width: auto;
   height: auto;
   margin-left: auto;
-  margin-right: auto;
-  transform: translate3d(0, 0, 0); }
+  margin-right: auto; }
   div:before, div:after {
     content: "";
     display: table; }
