@@ -65,7 +65,7 @@ SASS
 
       *Positioning*
 
-      The position will be ``position:relative`` unless one of these flags is set.
+      The position will be ``position:relative`` (``relative``) unless one of these flags is set.
       Only one of them is possible:
 
       .. describe:: absolute
@@ -76,14 +76,23 @@ SASS
 
          Fixed positioning. Think about using :doc:`sticky` instead.
 
+      .. describe:: static
+
+         Static positioning. Not recommended, rare use cases.
+
+      Additionally, the keyword ``extended`` (alias ``xt``) can be used to enable
+      extended algorithms width more aligning options (see below for details).
+      Extended algorithms use ``transform`` which lead to unwanted behaviour in some
+      cases. Note that containers using ``extended`` can only be overwritten by
+      containers using ``extended``. To overwrite properties, use media querys where
+      possible.
+
       *Alignment*
 
       Only one flag per direction should be set (one vertical and one horizontal).
 
-      Alignment should work with each positioning model and independent from the
-      size (it will work with width or height set to ``auto``, too).
-      Note that relative positioned elements may be aligned unexpected. In those
-      cases use the absolute positioning model.
+      Please read the note at the end of this list.
+
 
       .. describe:: left
 
@@ -124,10 +133,27 @@ SASS
       .. describe:: outer-right
 
          Right to the parents element. Will be placed outside of the parents element.
+
+
+      Note that the availability of alignment flags is heavily dependent from the
+      positioning model.
+
+      ``static`` works with ``left``,``center``,``right`` when a ``width`` is specified.
+
+      ``relative`` works with ``left``,``center``,``right``.
+
+      ``absolute`` and ``fixed`` works width everything. But: For using ``center`` or
+      ``middle``, ``ẁidth`` respectively ``height`` has to be specified.
+
+      With ``extended`` flag set, everything will work as expected for ``relative``,
+      ``absolute`` and ``fixed``; independent from ``width`` and ``height``.
+      Note that relative positioned my have unexpected vertical alignment. In those
+      cases use the absolute positioning model.
          
       *Floating*
       
       Adds floating to the container. Do not use in combination with alignment.
+      Use with static and relative positioning is supported.
       
       .. describe:: float-none
       

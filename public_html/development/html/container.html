@@ -13,11 +13,11 @@
     </head>
     <body>
         <h1>Container Demo</h1>
-        <div>normal</div>
+        <div>default container</div>
         
         <h2>Alignment</h2>
         
-        <h3>normal positioning model</h3>
+        <h3>normal positioning model (extended mode)</h3>
         
         <div class="alignment-relative">
             <div class="topleft">top left</div>
@@ -44,7 +44,7 @@
         </div>
         
         
-        <h3>absolute positioning model</h3>
+        <h3>absolute positioning model (extended mode)</h3>
         
         <div class="alignment-absolute">
             <div class="topleft">absolute top left</div>
@@ -54,8 +54,22 @@
             <div class="outerright">absolute outer-right and margin set to compensate border</div>
             <div class="outerbottom">absolute outer-bottom right</div>
         </div>
+        
+        <h3>absolute positioning model (non-extended mode)</h3>
+
+        <div class="alignment-absolute-noxt">
+            <div class="middlecenter">absolute middle center (noxt) width fixed width and height</div>
+        </div>
+        
+        
         <div class="alignment-fixed-bottomright">
             fixed bottom right
+        </div>
+        
+        <h2>Floating</h2>
+        <div class="floating">
+            <div class="float-left">float-left</div>
+            <div class="float-right">float-right</div>
         </div>
         
         <h2>Sizing</h2>

@@ -4,23 +4,23 @@
     @include container(2,(1 1));
     
     .topleft {
-        @include container((1 1),auto,top,left);
+        @include container((1 1),auto,xt,top,left);
     }
     .middlecenter {
-        @include container((1 1),auto,center,middle);
+        @include container((1 1),auto,xt,center,middle);
     }
     .bottomright {
-        @include container((1 1),auto,bottom,right);
+        @include container((1 1),auto,xt,bottom,right);
     }
     .outertopouterright {
-        @include container((1 1),auto,outer-top,outer-right);
+        @include container((1 1),auto,xt,outer-top,outer-right);
     }
     .outerright {
-        @include container((1 1),auto,outer-right);
+        @include container((1 1),auto,xt,outer-right);
         margin-left:0.5em;
     }
     .outerbottom {
-        @include container((1 1),auto,outer-bottom,right);
+        @include container((1 1),auto,xt,outer-bottom,right);
     }
 }
 
@@ -28,28 +28,45 @@
     @include container(5,(3 3));
     
     .topleft {
-        @include container(auto,auto,absolute,top,left);
+        @include container(auto,auto,xt,absolute,top,left);
     }
     .middlecenter {
-        @include container(auto,auto,absolute,center,middle);
+        @include container(auto,auto,xt,absolute,center,middle);
     }
     .bottomright {
-        @include container(auto,auto,absolute,bottom,right);
+        @include container(auto,auto,xt,absolute,bottom,right);
     }
     .outertopouterright {
-        @include container(auto,auto,absolute,outer-top,outer-right);
+        @include container(auto,auto,xt,absolute,outer-top,outer-right);
     }
     .outerright {
-        @include container(auto,auto,absolute,outer-right);
+        @include container(auto,auto,xt,absolute,outer-right);
         margin-left:0.5em;
     }
     .outerbottom {
-        @include container(auto,auto,absolute,outer-bottom,right);
+        @include container(auto,auto,xt,absolute,outer-bottom,right);
+    }
+}
+
+.alignment-absolute-noxt {
+    @include container(5,(3 3));
+    .middlecenter {
+        @include container((1 1),(1 1),absolute,center,middle);
     }
 }
 
 .alignment-fixed-bottomright {
     @include container((1 1),auto,fixed,bottom,right);
+}
+
+.floating {
+    @include container(5,(3 3));
+    .float-left {
+        @include container(auto,auto,float-left);
+    }
+    .float-right {
+        @include container(auto,auto,float-right);
+    }
 }
 
 .sizing-width-min-max {
