@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Visibility &mdash; blue leaf 1.0 documentation</title>
+    <title>Visibility &mdash; blue leaf 1.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="blue leaf 1.0 documentation" href="../index.html" />
+    <link rel="top" title="blue leaf 1.1 documentation" href="../index.html" />
     <link rel="up" title="API" href="../api.html" />
     <link rel="next" title="Cookbook" href="../cookbook.html" />
     <link rel="prev" title="Utility" href="utility.html" /> 
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="utility.html" title="Utility"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue leaf 1.1 documentation</a> &raquo;</li>
           <li><a href="../api.html" accesskey="U">API</a> &raquo;</li> 
       </ul>
     </div>  
@@ -59,8 +59,9 @@ features.</p>
 <h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">&#64;mixin visibility($mode)</tt></dt>
-<dd><p>Sets the visibility of the current element.</p>
+<tt class="descname">&#64;mixin visible($mode)</tt></dt>
+<dd><p>Sets the visibility of the current element. Old mixin <tt class="docutils literal"><span class="pre">visibility</span></tt> is available
+as alias for legacy support.</p>
 <dl class="describe">
 <dt>
 <tt class="descname">$mode</tt></dt>
@@ -94,6 +95,12 @@ features.</p>
 <tt class="descname">hidecontent</tt></dt>
 <dd><p>Hide (inline) content. May be used to replace text with images. Use
 with buttons, as seen in the demo.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">visuallyhidden</tt></dt>
+<dd><p>Hide element visually, but show them for screen readers.</p>
 </dd></dl>
 
 </dd></dl>
@@ -157,7 +164,7 @@ with buttons, as seen in the demo.</p>
         <li class="right" >
           <a href="utility.html" title="Utility"
              >previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue leaf 1.1 documentation</a> &raquo;</li>
           <li><a href="../api.html" >API</a> &raquo;</li> 
       </ul>
     </div>

@@ -15,12 +15,12 @@ height.
 Offsets
 -------
 
-A *col* can have an offset.
+A *col* or a *row* can have an offset.
 
 Source ordering
 ---------------
 
-*col*s can do source ordering (e.g. push and pull). For example, the code
+*col*s and *row*s can do source ordering (e.g. push and pull). For example, the code
 
 HTML:
 
@@ -74,6 +74,7 @@ SASS
 
       ``left`` or ``right``, indicates the alignment of the grid.
 
+
 .. describe:: @mixin col($size,$direction:left)
    
    An element with the width of ``$size`` cols.
@@ -85,6 +86,31 @@ SASS
    .. describe:: $direction
     
       See ``box``.
+
+.. describe:: @mixin col-offset($x)
+
+   Offset to the left of ``$x`` cols.
+
+   .. describe:: $x
+
+      Width of the offset.
+
+.. describe:: @mixin col-push($x)
+
+   The element pushes itself ``$x`` cols to the right.
+
+   .. describe:: $x
+
+      Number of cols.
+
+.. describe:: @mixin col-pull($x)
+
+   The element pulls itself ``$x`` cols to the left.
+
+   .. describe:: $x
+
+      Number of cols.
+
 
 .. describe:: @mixin row($size,$direction:left)
    
@@ -98,27 +124,26 @@ SASS
     
       See ``box``.
 
-.. describe:: col-offset($x)
+.. describe:: @mixin row-offset($x)
 
-   Offset to the left of ``$x`` cols.
-
-   .. describe:: $x
-
-      Width of the offset.
-
-.. describe:: col-push($x)
-
-   The element pushes itself ``$x`` cols to the right.
+   Offset to the top of ``$x`` rows. This mixin uses JavaScript.
 
    .. describe:: $x
 
-      Number of cols.
+      Height of the offset.
 
+.. describe:: @mixin row-push($x)
 
-.. describe:: col-pull($x)
-
-   The element pulls itself ``$x`` cols to the left.
+   The element pushes itself ``$x`` rows to the bottom.
 
    .. describe:: $x
 
-      Number of cols.
+      Number of rows.
+
+.. describe:: @mixin row-pull($x)
+
+   The element pulls itself ``$x`` rows to the top.
+
+   .. describe:: $x
+
+      Number of rows.

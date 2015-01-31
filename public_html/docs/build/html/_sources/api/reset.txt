@@ -7,18 +7,7 @@ Mixins for easily resetting CSS rules.
 SASS
 ----
 
-.. describe:: @mixin reset($flags...)
-
-   Reset styles.
-
-   .. describe:: $flags...
-
-      ``all-initial``, ``all-inherit``, ``all-unset``, ``margin``, ``padding``, ``display``, ``text-align``
-
-      Defaults to ``margin,padding``.
-
-
-.. describe:: @mixin reset-p($mode,$properties...)
+.. describe:: @mixin reset($mode:initial,$properties...:(all))
 
    Resets ``$properties`` to ``$mode``.
 
@@ -29,3 +18,10 @@ SASS
    .. describe:: $properties...
 
       Properties to reset. ``all`` to reset all. (``all`` is supported in Firefox only.)
+
+
+    Some Examples:
+
+    - ``@include reset(margin, padding, text-align);`` resets the given properties to initial (implicit)
+    - ``@include reset(unset, color);`` unsets the color (explicit)
+    - ``@include reset();`` is the same as ``@include reset(all);`` and ``@include reset(initial,all);``

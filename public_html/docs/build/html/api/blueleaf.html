@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>blue leaf Core &mdash; blue leaf 1.0 documentation</title>
+    <title>blue leaf Core &mdash; blue leaf 1.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="blue leaf 1.0 documentation" href="../index.html" />
+    <link rel="top" title="blue leaf 1.1 documentation" href="../index.html" />
     <link rel="up" title="API" href="../api.html" />
     <link rel="next" title="Container" href="container.html" />
     <link rel="prev" title="Alignment" href="alignment.html" /> 
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="alignment.html" title="Alignment"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue leaf 1.1 documentation</a> &raquo;</li>
           <li><a href="../api.html" accesskey="U">API</a> &raquo;</li> 
       </ul>
     </div>  
@@ -56,6 +56,7 @@
 <p>These are some core functionalities and settings which can normally left untouched.</p>
 <div class="section" id="sass">
 <h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<p><em>config</em></p>
 <dl class="describe">
 <dt>
 <tt class="descname">$gutter</tt></dt>
@@ -93,6 +94,13 @@
 <dd><p>indicates whether predefined CSS rules should be generated or not (default: true)</p>
 </dd></dl>
 
+<p><em>CSS constants</em></p>
+<dl class="describe">
+<dt>
+<tt class="descname">$inline-elements</tt></dt>
+<dd><p>Contains a selector for all inline elements.</p>
+</dd></dl>
+
 </div>
 <div class="section" id="javascript">
 <h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
@@ -121,6 +129,50 @@ Used to correct jump links in combination with sticky elements.</p>
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
 <li><strong>newoffset</strong> &#8211; Values to be added to the current offset, same structure
 as blueleaf.offset.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="data">
+<dt id="blueleaf.customrules.ruleslist">
+<tt class="descclassname">blueleaf.customrules.</tt><tt class="descname">ruleslist</tt><a class="headerlink" href="#blueleaf.customrules.ruleslist" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of defined custom rules.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="blueleaf.customrules.registerModuleQuery">
+<tt class="descclassname">blueleaf.customrules.</tt><tt class="descname">registerModuleQuery</tt><big>(</big><em>rule</em>, <em>options</em><big>)</big><a class="headerlink" href="#blueleaf.customrules.registerModuleQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers a new rule.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>rule</strong> (<em>string</em>) &#8211; Identifier of the rule.</li>
+<li><strong>options</strong> &#8211; An object containing two functions: <tt class="docutils literal"><span class="pre">{match:function(sel,options){...},</span> <span class="pre">unmatch:function(sel,options){...}}</span></tt>.
+The <tt class="docutils literal"><span class="pre">match</span></tt> function will be called whenever a rule should be applied to a selector(<tt class="docutils literal"><span class="pre">sel</span></tt>) with the given
+<tt class="docutils literal"><span class="pre">options</span></tt> (usually defined via SASS). This happens for example if a media query gets true.
+The same is for <tt class="docutils literal"><span class="pre">unmatch</span></tt>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="blueleaf.customrules.parseStyleSheet">
+<tt class="descclassname">blueleaf.customrules.</tt><tt class="descname">parseStyleSheet</tt><big>(</big><em>css</em><big>)</big><a class="headerlink" href="#blueleaf.customrules.parseStyleSheet" title="Permalink to this definition">¶</a></dt>
+<dd><p>A style sheet to be parsed. Custom rules and/or media querys will be applied instantly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>css</strong> (<em>string</em>) &#8211; The stylesheet.</li>
 </ul>
 </td>
 </tr>
@@ -186,7 +238,7 @@ as blueleaf.offset.</li>
         <li class="right" >
           <a href="alignment.html" title="Alignment"
              >previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue leaf 1.1 documentation</a> &raquo;</li>
           <li><a href="../api.html" >API</a> &raquo;</li> 
       </ul>
     </div>
