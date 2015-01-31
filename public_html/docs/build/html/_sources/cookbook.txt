@@ -1,9 +1,10 @@
 Cookbook
 ========
 
-Now we'll show you what you can do with this API.
+Now we'll show you what you can do with this API and give you some tips and tricks
+how to use blue leaf.
 
-The cookbook is empty and will be filled in following releases.
+The cookbook is very small and will be filled with more content in following releases.
 
 
 Contents:

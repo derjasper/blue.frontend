@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Custom Rules &mdash; blue leaf 1.0 documentation</title>
+    <title>Custom Rules &mdash; blue leaf 1.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="blue leaf 1.0 documentation" href="../index.html" />
+    <link rel="top" title="blue leaf 1.1 documentation" href="../index.html" />
     <link rel="up" title="API" href="../api.html" />
     <link rel="next" title="Grid" href="grid.html" />
     <link rel="prev" title="Container" href="container.html" /> 
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="container.html" title="Container"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue leaf 1.1 documentation</a> &raquo;</li>
           <li><a href="../api.html" accesskey="U">API</a> &raquo;</li> 
       </ul>
     </div>  
@@ -69,14 +69,15 @@ in association with the current media query and the current CSS rule.</p>
 <p>These information will be given to enquire.js, which will call the delegated handler
 for each rule to enable/disable the specified feature (the functions get the selector
 and the options as a parameter). Handler can be registered by modules.</p>
-<p>The implementation and the JS part will not be documented as it will be updated
-(and documented) in future. Please study the source code for more details.</p>
+<p>For now, rules cannot be overwritten (use media querys to disable them)
+and they do not work as expected with DOM manipulations. (Will be improved in future.)</p>
+<p>Please study the source code for more details.</p>
 <div class="section" id="sass">
 <h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
 <tt class="descname">&#64;mixin customrule($rule,$map)</tt></dt>
-<dd><p>Defines a custom rule</p>
+<dd><p>Defines a custom rule. The character <tt class="docutils literal"><span class="pre">&quot;</span></tt> is not allowed in $rule and $map.</p>
 <dl class="describe">
 <dt>
 <tt class="descname">$rule</tt></dt>
@@ -92,6 +93,46 @@ and the options as a parameter). Handler can be registered by modules.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="javascript">
+<h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="CSSParser">
+<em class="property">class </em><tt class="descname">CSSParser</tt><big>(</big><em>css</em><big>)</big><a class="headerlink" href="#CSSParser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>css</strong> (<em>string</em>) &#8211; A string containing the CSS stylesheets.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="CSSParser.parse">
+<tt class="descclassname">CSSParser.</tt><tt class="descname">parse</tt><big>(</big><big>)</big><a class="headerlink" href="#CSSParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the <a href="#id1"><span class="problematic" id="id2">``</span></a>CSSParser``s CSS.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">true</span></tt> if parsing was successful, otherwise <tt class="docutils literal"><span class="pre">false</span></tt>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="CSSParser.tree">
+<tt class="descclassname">CSSParser.</tt><tt class="descname">tree</tt><a class="headerlink" href="#CSSParser.tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains a tree containing custom rules with their selectors and media querys.
+Only valid if <tt class="docutils literal"><span class="pre">CSSParser.parse()</span></tt> has returned <tt class="docutils literal"><span class="pre">true</span></tt>.</p>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -104,6 +145,7 @@ and the options as a parameter). Handler can be registered by modules.</p>
   <ul>
 <li><a class="reference internal" href="#">Custom Rules</a><ul>
 <li><a class="reference internal" href="#sass">SASS</a></li>
+<li><a class="reference internal" href="#javascript">JavaScript</a></li>
 </ul>
 </li>
 </ul>
@@ -148,7 +190,7 @@ and the options as a parameter). Handler can be registered by modules.</p>
         <li class="right" >
           <a href="container.html" title="Container"
              >previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue leaf 1.1 documentation</a> &raquo;</li>
           <li><a href="../api.html" >API</a> &raquo;</li> 
       </ul>
     </div>

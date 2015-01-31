@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Container &mdash; blue leaf 1.0 documentation</title>
+    <title>Container &mdash; blue leaf 1.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="blue leaf 1.0 documentation" href="../index.html" />
+    <link rel="top" title="blue leaf 1.1 documentation" href="../index.html" />
     <link rel="up" title="API" href="../api.html" />
     <link rel="next" title="Custom Rules" href="customrules.html" />
     <link rel="prev" title="blue leaf Core" href="blueleaf.html" /> 
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="blueleaf.html" title="blue leaf Core"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue leaf 1.1 documentation</a> &raquo;</li>
           <li><a href="../api.html" accesskey="U">API</a> &raquo;</li> 
       </ul>
     </div>  
@@ -55,8 +55,11 @@
 <h1>Container<a class="headerlink" href="#container" title="Permalink to this headline">¶</a></h1>
 <p>One of the most important modules. Containers are block elements with sizing,
 positioning, alignment and spacing options.</p>
-<p>All sizing options are multiplied by the <tt class="docutils literal"><span class="pre">$container</span></tt> factor, defined in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>.</p>
-<p>This module will be reworked in a future release.</p>
+<p>Some sizing options are multiplied by the <tt class="docutils literal"><span class="pre">$container</span></tt> factor, defined in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>.</p>
+<p>This module will be reworked in a very future release.</p>
+<p>Note: Due to the fact that CSS <tt class="docutils literal"><span class="pre">transform</span></tt> property creates a new stacking context,
+z-index may not work as expected (by most devs). Please read <a class="reference internal" href="stacking.html"><em>Stacking</em></a>
+for more details.</p>
 <div class="section" id="sass">
 <h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
@@ -66,33 +69,45 @@ positioning, alignment and spacing options.</p>
 <dl class="describe">
 <dt>
 <tt class="descname">$width</tt></dt>
-<dd><p>If set to auto, no specific behaviour will be defined.</p>
+<dd><p><em>Keywords</em></p>
+<p>The following keywords can be used:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">auto</span></tt>: browser default sizing</li>
+<li><tt class="docutils literal"><span class="pre">full</span></tt>: 100% of parent&#8217;s width</li>
+<li><tt class="docutils literal"><span class="pre">screen</span></tt>: 100% of screen&#8217;s width</li>
+</ul>
+<p><em>Specify a width</em></p>
+<p>Width&#8217;s can be specified without an unit which are scaled by the <tt class="docutils literal"><span class="pre">$container</span></tt>
+factor (in <tt class="docutils literal"><span class="pre">rem</span></tt>). Supported units are <tt class="docutils literal"><span class="pre">%</span></tt>, <tt class="docutils literal"><span class="pre">vh</span></tt>, <tt class="docutils literal"><span class="pre">vw</span></tt>, <tt class="docutils literal"><span class="pre">vmin</span></tt>, <tt class="docutils literal"><span class="pre">vmax</span></tt>.
+Other units are not recommended and are not supported.</p>
 <p>If a map with 1 element or a simple number is given, this will be the maximum width.
 The container will have its parent&#8217;s width until this value is reached.</p>
 <p>If a map with 2 elements is given, the first will be the minimum width and the
 second the maximum width.
 The container will have its parent&#8217;s width unless these borders are reached.
 If the values are equal, this will be the (fixed) width of the element.</p>
+<p><em>Aspect ratio</em></p>
+<p>If a list with 2 elements is given, the first element is a number and the second
+element <tt class="docutils literal"><span class="pre">ar</span></tt>, then the width is is relative to the element&#8217;s height. The
+first element of the list will be used as the scaling factor.</p>
+<p>Do not use aspect ratio on width and height on the same element as this will
+lead to undefined behaviour. Since this feature uses JavaScript, <em>this rule
+cannot be overwritten</em> (this will lead to undefined behaviour). Use <a class="reference internal" href="mediaquerys.html"><em>Media Querys</em></a>
+to disable aspect ratio.</p>
 </dd></dl>
 
 <dl class="describe">
 <dt>
 <tt class="descname">$height</tt></dt>
-<dd><p>If set to auto, no specific behaviour will be defined.</p>
-<p>If a map with 1 element or a simple number is given, this will be the maximum height.
-The container will have its parent&#8217;s height until this value is reached.</p>
-<p>If a map with 2 elements is given, the first will be the minimum height and the
-second the maximum height.
-The container will have its parent&#8217;s height unless these borders are reached.
-If the values are equal, this will be the (fixed) height of the element.</p>
+<dd><p>Same as <tt class="docutils literal"><span class="pre">$width</span></tt>.</p>
 </dd></dl>
 
 <dl class="describe">
 <dt>
-<tt class="descname">$flags...</tt></dt>
+<tt class="descname">$flags...:(center)</tt></dt>
 <dd><p>There are flags available defining some more behaviour.</p>
 <p><em>Positioning</em></p>
-<p>The position will be <tt class="docutils literal"><span class="pre">position:relative</span></tt> unless one of these flags is set.
+<p>The position will be <tt class="docutils literal"><span class="pre">position:relative</span></tt> (<tt class="docutils literal"><span class="pre">relative</span></tt>) unless one of these flags is set.
 Only one of them is possible:</p>
 <dl class="describe">
 <dt>
@@ -106,8 +121,21 @@ Only one of them is possible:</p>
 <dd><p>Fixed positioning. Think about using <a class="reference internal" href="sticky.html"><em>Sticky</em></a> instead.</p>
 </dd></dl>
 
+<dl class="describe">
+<dt>
+<tt class="descname">static</tt></dt>
+<dd><p>Static positioning. Not recommended, rare use cases.</p>
+</dd></dl>
+
+<p>Additionally, the keyword <tt class="docutils literal"><span class="pre">extended</span></tt> (alias <tt class="docutils literal"><span class="pre">xt</span></tt>) can be used to enable
+extended algorithms width more aligning options (see below for details).
+Extended algorithms use <tt class="docutils literal"><span class="pre">transform</span></tt> which lead to unwanted behaviour in some
+cases. Note that containers using <tt class="docutils literal"><span class="pre">extended</span></tt> can only be overwritten by
+containers using <tt class="docutils literal"><span class="pre">extended</span></tt>. To overwrite properties, use media querys where
+possible.</p>
 <p><em>Alignment</em></p>
 <p>Only one flag per direction should be set (one vertical and one horizontal).</p>
+<p>Please read the note at the end of this list.</p>
 <dl class="describe">
 <dt>
 <tt class="descname">left</tt></dt>
@@ -117,8 +145,7 @@ Only one of them is possible:</p>
 <dl class="describe">
 <dt>
 <tt class="descname">center</tt></dt>
-<dd><p>Center (horizontal). If a positioning flag is set, a fixed width is required
-for this to work.</p>
+<dd><p>Center (horizontal).</p>
 </dd></dl>
 
 <dl class="describe">
@@ -136,8 +163,7 @@ for this to work.</p>
 <dl class="describe">
 <dt>
 <tt class="descname">middle</tt></dt>
-<dd><p>Middle (vertical). If a positioning flag is set, a fixed height is required
-for this to work.</p>
+<dd><p>Middle (vertical).</p>
 </dd></dl>
 
 <dl class="describe">
@@ -146,8 +172,61 @@ for this to work.</p>
 <dd><p>Bottom.</p>
 </dd></dl>
 
-<p><em>overflow</em></p>
-<p>The overflow flags should not be used since they are removed in a future release.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">outer-top</tt></dt>
+<dd><p>Above the parents element. Will be placed outside of the parents element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">outer-bottom</tt></dt>
+<dd><p>Underneath the parents element. Will be placed outside of the parents element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">outer-left</tt></dt>
+<dd><p>Left to the parents element. Will be placed outside of the parents element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">outer-right</tt></dt>
+<dd><p>Right to the parents element. Will be placed outside of the parents element.</p>
+</dd></dl>
+
+<p>Note that the availability of alignment flags is heavily dependent from the
+positioning model.</p>
+<p><tt class="docutils literal"><span class="pre">static</span></tt> works with <tt class="docutils literal"><span class="pre">left</span></tt>,``center``,``right`` when a <tt class="docutils literal"><span class="pre">width</span></tt> is specified.</p>
+<p><tt class="docutils literal"><span class="pre">relative</span></tt> works with <tt class="docutils literal"><span class="pre">left</span></tt>,``center``,``right``.</p>
+<p><tt class="docutils literal"><span class="pre">absolute</span></tt> and <tt class="docutils literal"><span class="pre">fixed</span></tt> works width everything. But: For using <tt class="docutils literal"><span class="pre">center</span></tt> or
+<tt class="docutils literal"><span class="pre">middle</span></tt>, <tt class="docutils literal"><span class="pre">ẁidth</span></tt> respectively <tt class="docutils literal"><span class="pre">height</span></tt> has to be specified.</p>
+<p>With <tt class="docutils literal"><span class="pre">extended</span></tt> flag set, everything will work as expected for <tt class="docutils literal"><span class="pre">relative</span></tt>,
+<tt class="docutils literal"><span class="pre">absolute</span></tt> and <tt class="docutils literal"><span class="pre">fixed</span></tt>; independent from <tt class="docutils literal"><span class="pre">width</span></tt> and <tt class="docutils literal"><span class="pre">height</span></tt>.
+Note that relative positioned my have unexpected vertical alignment. In those
+cases use the absolute positioning model.</p>
+<p><em>Floating</em></p>
+<p>Adds floating to the container. Do not use in combination with alignment.
+Use with static and relative positioning is supported.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">float-none</tt></dt>
+<dd><p>Explicitly disalbes floating.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">float-left</tt></dt>
+<dd><p>Float left.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">float-right</tt></dt>
+<dd><p>Float right.</p>
+</dd></dl>
+
 </dd></dl>
 
 </dd></dl>
@@ -244,7 +323,7 @@ for this to work.</p>
         <li class="right" >
           <a href="blueleaf.html" title="blue leaf Core"
              >previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue leaf 1.1 documentation</a> &raquo;</li>
           <li><a href="../api.html" >API</a> &raquo;</li> 
       </ul>
     </div>

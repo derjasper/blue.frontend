@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Reset &mdash; blue leaf 1.0 documentation</title>
+    <title>Reset &mdash; blue leaf 1.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="blue leaf 1.0 documentation" href="../index.html" />
+    <link rel="top" title="blue leaf 1.1 documentation" href="../index.html" />
     <link rel="up" title="API" href="../api.html" />
     <link rel="next" title="Resizable" href="resizable.html" />
     <link rel="prev" title="Predefined Rules" href="predefinedrules.html" /> 
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="predefinedrules.html" title="Predefined Rules"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue leaf 1.1 documentation</a> &raquo;</li>
           <li><a href="../api.html" accesskey="U">API</a> &raquo;</li> 
       </ul>
     </div>  
@@ -58,20 +58,7 @@
 <h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">&#64;mixin reset($flags...)</tt></dt>
-<dd><p>Reset styles.</p>
-<dl class="describe">
-<dt>
-<tt class="descname">$flags...</tt></dt>
-<dd><p><tt class="docutils literal"><span class="pre">all-initial</span></tt>, <tt class="docutils literal"><span class="pre">all-inherit</span></tt>, <tt class="docutils literal"><span class="pre">all-unset</span></tt>, <tt class="docutils literal"><span class="pre">margin</span></tt>, <tt class="docutils literal"><span class="pre">padding</span></tt>, <tt class="docutils literal"><span class="pre">display</span></tt>, <tt class="docutils literal"><span class="pre">text-align</span></tt></p>
-<p>Defaults to <tt class="docutils literal"><span class="pre">margin,padding</span></tt>.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="describe">
-<dt>
-<tt class="descname">&#64;mixin reset-p($mode,$properties...)</tt></dt>
+<tt class="descname">&#64;mixin reset($mode:initial,$properties...:(all))</tt></dt>
 <dd><p>Resets <tt class="docutils literal"><span class="pre">$properties</span></tt> to <tt class="docutils literal"><span class="pre">$mode</span></tt>.</p>
 <dl class="describe">
 <dt>
@@ -82,7 +69,14 @@
 <dl class="describe">
 <dt>
 <tt class="descname">$properties...</tt></dt>
-<dd><p>Properties to reset. <tt class="docutils literal"><span class="pre">all</span></tt> to reset all. (<tt class="docutils literal"><span class="pre">all</span></tt> is supported in Firefox only.)</p>
+<dd><blockquote>
+<div>Properties to reset. <tt class="docutils literal"><span class="pre">all</span></tt> to reset all. (<tt class="docutils literal"><span class="pre">all</span></tt> is supported in Firefox only.)</div></blockquote>
+<p>Some Examples:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">&#64;include</span> <span class="pre">reset(margin,</span> <span class="pre">padding,</span> <span class="pre">text-align);</span></tt> resets the given properties to initial (implicit)</li>
+<li><tt class="docutils literal"><span class="pre">&#64;include</span> <span class="pre">reset(unset,</span> <span class="pre">color);</span></tt> unsets the color (explicit)</li>
+<li><tt class="docutils literal"><span class="pre">&#64;include</span> <span class="pre">reset();</span></tt> is the same as <tt class="docutils literal"><span class="pre">&#64;include</span> <span class="pre">reset(all);</span></tt> and <tt class="docutils literal"><span class="pre">&#64;include</span> <span class="pre">reset(initial,all);</span></tt></li>
+</ul>
 </dd></dl>
 
 </dd></dl>
@@ -144,7 +138,7 @@
         <li class="right" >
           <a href="predefinedrules.html" title="Predefined Rules"
              >previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue leaf 1.1 documentation</a> &raquo;</li>
           <li><a href="../api.html" >API</a> &raquo;</li> 
       </ul>
     </div>

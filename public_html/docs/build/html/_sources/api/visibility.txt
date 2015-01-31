@@ -8,9 +8,10 @@ features.
 SASS
 ----
 
-.. describe:: @mixin visibility($mode)
+.. describe:: @mixin visible($mode)
 
-   Sets the visibility of the current element.
+   Sets the visibility of the current element. Old mixin ``visibility`` is available
+   as alias for legacy support.
 
    .. describe:: $mode
 
@@ -36,3 +37,7 @@ SASS
 
          Hide (inline) content. May be used to replace text with images. Use
          with buttons, as seen in the demo.
+         
+      .. describe:: visuallyhidden
+
+         Hide element visually, but show them for screen readers.
