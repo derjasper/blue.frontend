@@ -8,7 +8,9 @@ $rows: 12;
 $screensizes: (
     s: (0em 40em),
     m: (40.063em 64em),
-    l: (64.063em)
+    l: (64.063em 90em),
+    xl: (90.063em 120em),
+    xxl: (120.063em)
 );
 $predefined:true;
 
