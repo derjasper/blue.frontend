@@ -229,7 +229,9 @@ var blueleaf = {
     // Warning: Uncommenting this code CAN cause endless loops and crashing browsers. Use with care. Fix is work in progress. 
     $(function() {
         var observer = new MutationObserver(function(mutations) {
+            observer.disconnect();
             blueleaf.apply(); 
+            observer.observe(document, { attributes:true,childList:true,characterData:true,subtree:true });
         });
         observer.observe(document, { attributes:true,childList:true,characterData:true,subtree:true });
     });*/
