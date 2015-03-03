@@ -3,9 +3,9 @@ function CSSParser (css) {
     this.token={
         'ENABLE': /\/\*! blueleaf \*\//,
         
-        'SELECTOR': /^([^{}@\/]+)/,
-        'MEDIA_DIRECTIVE': /^@media ([^{}\/]+)/,
-        'IGNORE': /^@[^{}@\/]+/,
+        'SELECTOR': /^([^{}@\/]+)(?={)/,
+        'MEDIA_DIRECTIVE': /^@media ([^{}\/]+)(?={)/,
+        'IGNORE': /^@[^{}@\/]+(?={)/,
         
         'BLOCK_OPEN': /^{/,
         'BLOCK_CLOSE': /^}/,
@@ -81,6 +81,20 @@ CSSParser.prototype.parse = function() {
         return true;
     }
     
+    function requireBlockContentXT(that) {
+        var current;
+        
+        while((current=that.requireToken(['SELECTOR','IGNORE','BLOCK_CONTENT']))!=null) {
+            if (current.type=='BLOCK_CONTENT') {return true;}
+            
+            if (that.requireToken('BLOCK_OPEN')==null) {return false;}
+            if (!requireBlockContentXT(that)) {return false;}
+            if (that.requireToken('BLOCK_CLOSE')==null) {return false;}
+        }
+                
+        return true;
+    }
+    
     if (this.requireToken('ENABLE')==null) {
         return false;
     }
@@ -109,7 +123,7 @@ CSSParser.prototype.parse = function() {
                 }
                 else if (current2.type=='IGNORE') {
                     if (this.requireToken('BLOCK_OPEN')==null) {this.error=true; return false;}
-                    if (this.requireToken('BLOCK_CONTENT')==null) {this.error=true; return false;}
+                    if (!requireBlockContentXT(this)) {this.error=true; return false;}
                     if (this.requireToken('BLOCK_CLOSE')==null) {this.error=true; return false;}
                 }
                 else if (current2.type=='COMMENT_OPEN') {
@@ -123,7 +137,7 @@ CSSParser.prototype.parse = function() {
         }
         else if (current.type=='IGNORE') {
             if (this.requireToken('BLOCK_OPEN')==null) {this.error=true; return false;}
-            if (this.requireToken('BLOCK_CONTENT')==null) {this.error=true; return false;}
+            if (!requireBlockContentXT(this)) {this.error=true; return false;}
             if (this.requireToken('BLOCK_CLOSE')==null) {this.error=true; return false;}
         }
         else if (current.type=='COMMENT_OPEN') {
