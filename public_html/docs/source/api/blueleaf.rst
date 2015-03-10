@@ -31,7 +31,8 @@ SASS
 .. describe:: $screensizes
 
    map of screen sizes with their ranges
-   (default: (s: (0em 40em), m: (40.063em 64em), l: (64.063em)))
+
+   default: (s: (0em 40em), m: (40.063em 64em), l: (64.063em 90em), xl: (90.063em 120em), xxl: (120.063em))
 
 
 .. describe:: $predefined

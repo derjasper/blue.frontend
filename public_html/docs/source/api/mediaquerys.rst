@@ -8,18 +8,23 @@ Screen sizes can be configured via the ``$screensizes`` variable in :doc:`bluele
 SASS
 ----
 
-.. describe:: @mixin bp($screen:s,$mode:up) { @content }
+.. describe:: @mixin bp($screen:s,$mode:up,$screen2:"") { @content }
 
    The most important mixin. Define rules dependent on ``$screen``. ``$mode`` indicates
    whether bigger/smaller screen sizes should be included or not.
 
    .. describe:: $screen
 
-      See the ``$screensizes`` variable in :doc:`blueleaf`. Normally ``s``, ``m`` or ``l``.
+      See the ``$screensizes`` variable in :doc:`blueleaf`. By default ``s``, ``m``, ``l``, ``xl`` or ``xxl``.
 
    .. describe:: $mode
 
-      ``up``, ``down`` or ``onl``.
+      ``up``, ``down``, ``to`` or ``onl``.
+
+   .. describe:: $screen2
+     
+      If ``$mode`` is set to ``to``, the media query is true for breakpoints from
+      ``$screen`` to ``$screen2``.
 
 .. describe:: @mixin bp-o($orientation) { @content }
 
@@ -42,17 +47,23 @@ The following functions are used to construct advanced media querys. They can be
 
    Makes sure that styles are applied to screens only.
 
-.. describe:: @function bpScreen($screen,$mode)
+.. describe:: @function bpScreen($screen,$mode,$screen2:"")
 
    Respond to screen sizes.
 
    .. describe:: $screen
 
-      See the ``$screensizes`` variable in :doc:`blueleaf`. Normally ``s``, ``m`` or ``l``.
+      See the ``$screensizes`` variable in :doc:`blueleaf`.
 
    .. describe:: $mode
 
-      ``up``, ``down`` or ``onl``.
+      ``up``, ``down``, ``to`` or ``onl``.
+
+   .. describe:: $screen2
+     
+      If ``$mode`` is set to ``to``, the media query is true for breakpoints from
+      ``$screen`` to ``$screen2``. ``$screen`` needs to contain a smaller (or equal)
+      screen size than ``$screen2``.
 
 .. describe:: @function bpOrientation($orientation)
 
