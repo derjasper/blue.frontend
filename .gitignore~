@@ -1,5 +1,0 @@
-/config/*
-/nbproject/*
-/node_modules/*
-/.sass-cache/*
-.gitignore
