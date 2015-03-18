@@ -1,41 +1,65 @@
-// TODO docs build action
-// TODO scss mit grunt
-// TODO dist-ordner mit komprimierten libs, demos, docs erstellen
-// TODO netbeans metadata zu gitignore
+// TODO dist-ordner mit komprimierten libs, demos, docs erstellen (clean + copy)
 
 module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        sass: {
+            demo: {
+                files: [{
+                    expand: true,
+                    cwd: 'development/framework/scss',
+                    src: ['*.scss'],
+                    dest: 'development/framework/css',
+                    ext: '.css'
+                }]
+            }
+        },
         concat: {
-            'public_html/development/libs/blueleaf/js/blueleaf.js': [
-                'public_html/development/libs/blueleaf/js-source/pluginapi.js',
-                'public_html/development/libs/blueleaf/js-source/plugins/*.js',
-                'public_html/development/libs/blueleaf/js-source/cssparser.js',
-                'public_html/development/libs/blueleaf/js-source/core.js',
-            ]
+            js: {
+                dest: 'development/framework/libs/blueleaf/js/blueleaf.js',
+                src: [
+                    'development/framework/libs/blueleaf/js-source/pluginapi.js',
+                    'development/framework/libs/blueleaf/js-source/plugins/*.js',
+                    'development/framework/libs/blueleaf/js-source/cssparser.js',
+                    'development/framework/libs/blueleaf/js-source/core.js',
+                ]
+            }
         },
         uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-            },
-            dist: {
+            js: {
+                options: {
+                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+                },
                 files: {
-                    'public_html/development/libs/blueleaf/js/blueleaf.js': ['public_html/development/libs/blueleaf/js/blueleaf.js']
+                    'development/framework/libs/blueleaf/js/blueleaf.js': ['development/framework/libs/blueleaf/js/blueleaf.js']
                 }
+            }
+        },
+        shell: {
+            docs: {
+                options: {
+                    stderr: false,
+                    execOptions: {
+                        cwd: 'development/docs'
+                    }
+                },
+                command: 'make html'
             }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-shell');
 
     grunt.registerTask(
             'build',
-            'Compiles all the assets and copies the files to the build directory.',
-            ['concat']
+            'Compiles javascript for testing.',
+            ['sass:demo','concat:js']
             );
     grunt.registerTask(
             'cleanbuild',
-            'Compiles all the assets and copies the files to the build directory.',
-            ['concat', 'uglify']
+            'Compiles javascript, sass and docs and copies the files to the dist directory.',
+            ['sass:demo','concat:js', 'uglify:js', 'shell:docs']
             );
 };
