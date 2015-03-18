@@ -30,6 +30,9 @@ body {
   .container:after {
     clear: both; }
 
+html {
+  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple", "enabled": true}} */
+  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0, "enabled": true}} */ }
 body {
   font-family: sans;
   color: white;
@@ -67,11 +70,12 @@ ol:not(.nostyle), ul:not(.nostyle) {
       color: white; }
 
 .toggle {
-  /*! customrule: {"trigger": {"target_expr": ".offcanvas", "trigger_class": "offcanvas-show", "type": "click", "trigger_mode": "toggle", "priority": 0, "enabled": true}} */ }
+  /*! customrule: {"trigger": {"key": "bl-offcanvas-offcanvas", "event_type": "click", "value_expression": "!bl-offcanvas-offcanvas", "priority": 0, "enabled": true}} */ }
 
 .offcanvas {
-  display: none; }
-  .offcanvas.offcanvas-show {
+  display: none;
+  /*! customrule: {"expressionlistener_class": {"expression": "bl-offcanvas-offcanvas", "element_class": "bl-offcanvas-show", "enabled": true}} */ }
+  .offcanvas.bl-offcanvas-show {
     display: block;
     visibility: visible; }
 

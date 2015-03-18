@@ -17,7 +17,7 @@ html,body {
     height:2rem;
     
     .inner {
-        @include container(auto,auto,absolute,width,bottom);
+        @include container(full,auto,absolute,bottom);
         
         font-size:1rem;
 
@@ -34,7 +34,7 @@ html,body {
                 @include list-gutter(outer,0,5);
             }
             
-            & > li.menu-show > a {
+            & > li.bl-menu-show > a {
                 background:#037698;
             }
                         
@@ -89,7 +89,7 @@ html,body {
         background:#006785;
         
         & > div {
-            @include container(auto,auto,width,height);
+            @include container(full,full);
             overflow:scroll;
             background:white;
             font-family: monospace;
@@ -100,23 +100,34 @@ html,body {
     }
 }
 
+html {
+    @include initvar("tab","demo","group");
+}
+
 .button.tab-demo {
-    @include trigger(".tab-demo","active",click,on);
-    @include trigger(".tab-code","active",click,off);
+    @include trigger("tab.demo");
+    @include listen("tab.demo","active");
 }
-
 .button.tab-code {
-    @include trigger(".tab-demo","active",click,off);
-    @include trigger(".tab-code","active",click,on);
-}
-
-.tab-demo {
-    @include triggered("active");
+    @include trigger("tab.code");
+    @include listen("tab.code","active");
 }
 
 .tab {
     @include visibility(hide);
+}
+.tab.tab-demo {
+    @include listen("tab.demo","active");
     @include bp-triggered("active") {
         @include visibility(show);
     }
 }
+.tab.tab-code {
+    @include listen("tab.code","active");
+    @include bp-triggered("active") {
+        @include visibility(show);
+    }
+}
+
+
+

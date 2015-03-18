@@ -11,8 +11,7 @@ please create an issue.
 One striking feature is that **SASS mixins can define behaviour that is not
 possible with CSS**, such as sticky elements or trigger. The blue leaf's core
 script parses JavaScript comments for JSON data and applys the features on the
-given selectors. See :doc:`api/customrules` for more information.
-
+given selectors. See :doc:`api/sassmodules/customrules` for more information.
 
 
 Contents:

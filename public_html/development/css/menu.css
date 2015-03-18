@@ -30,6 +30,9 @@ body {
   .container:after {
     clear: both; }
 
+html {
+  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple", "enabled": true}} */
+  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0, "enabled": true}} */ }
 body {
   font-family: sans;
   color: white;
@@ -78,9 +81,9 @@ ol:not(.nostyle), ul:not(.nostyle) {
       margin-right: -4px !important; }
       .horizontal > li:last-child, .horizontal > li:last-child {
         margin-right: 0 !important; }
-  .horizontal li, .horizontal * li, .horizontal li, .horizontal * li {
+  .horizontal li, .horizontal ul li, .horizontal li, .horizontal ol li {
     position: relative; }
-  .horizontal > li > ul, .horizontal * > li > ul, .horizontal > li > ol, .horizontal * > li > ol {
+  .horizontal > li > ul, .horizontal ul > li > ul, .horizontal > li > ol, .horizontal ol > li > ol {
     margin: 0;
     padding: 0;
     *zoom: 1;
@@ -90,16 +93,16 @@ ol:not(.nostyle), ul:not(.nostyle) {
     max-width: 10rem;
     height: auto;
     margin: 0 !important; }
-    .horizontal > li > ul > li, .horizontal * > li > ul > li, .horizontal > li > ol > li, .horizontal * > li > ol > li {
+    .horizontal > li > ul > li, .horizontal ul > li > ul > li, .horizontal > li > ol > li, .horizontal ol > li > ol > li {
       list-style: none; }
-    .horizontal > li > ul > li, .horizontal * > li > ul > li, .horizontal > li > ol > li, .horizontal * > li > ol > li {
+    .horizontal > li > ul > li, .horizontal ul > li > ul > li, .horizontal > li > ol > li, .horizontal ol > li > ol > li {
       display: block; }
-    .horizontal > li > ul:before, .horizontal > li > ul:after, .horizontal * > li > ul:before, .horizontal * > li > ul:after, .horizontal > li > ol:before, .horizontal > li > ol:after, .horizontal * > li > ol:before, .horizontal * > li > ol:after {
+    .horizontal > li > ul:before, .horizontal > li > ul:after, .horizontal ul > li > ul:before, .horizontal ul > li > ul:after, .horizontal > li > ol:before, .horizontal > li > ol:after, .horizontal ol > li > ol:before, .horizontal ol > li > ol:after {
       content: "";
       display: table; }
-    .horizontal > li > ul:after, .horizontal * > li > ul:after, .horizontal > li > ol:after, .horizontal * > li > ol:after {
+    .horizontal > li > ul:after, .horizontal ul > li > ul:after, .horizontal > li > ol:after, .horizontal ol > li > ol:after {
       clear: both; }
-  .horizontal > li > ul > li > ul, .horizontal * > li > ul > li > ul, .horizontal > li > ol > li > ol, .horizontal * > li > ol > li > ol {
+  .horizontal > li > ul > li > ul, .horizontal ul > li > ul > li > ul, .horizontal > li > ol > li > ol, .horizontal ol > li > ol > li > ol {
     *zoom: 1;
     position: absolute;
     width: 10rem;
@@ -110,25 +113,26 @@ ol:not(.nostyle), ul:not(.nostyle) {
     bottom: auto;
     left: 100%;
     right: auto; }
-    .horizontal > li > ul > li > ul:before, .horizontal > li > ul > li > ul:after, .horizontal * > li > ul > li > ul:before, .horizontal * > li > ul > li > ul:after, .horizontal > li > ol > li > ol:before, .horizontal > li > ol > li > ol:after, .horizontal * > li > ol > li > ol:before, .horizontal * > li > ol > li > ol:after {
+    .horizontal > li > ul > li > ul:before, .horizontal > li > ul > li > ul:after, .horizontal ul > li > ul > li > ul:before, .horizontal ul > li > ul > li > ul:after, .horizontal > li > ol > li > ol:before, .horizontal > li > ol > li > ol:after, .horizontal ol > li > ol > li > ol:before, .horizontal ol > li > ol > li > ol:after {
       content: "";
       display: table; }
-    .horizontal > li > ul > li > ul:after, .horizontal * > li > ul > li > ul:after, .horizontal > li > ol > li > ol:after, .horizontal * > li > ol > li > ol:after {
+    .horizontal > li > ul > li > ul:after, .horizontal ul > li > ul > li > ul:after, .horizontal > li > ol > li > ol:after, .horizontal ol > li > ol > li > ol:after {
       clear: both; }
-  .horizontal > li > *, .horizontal * > li > *, .horizontal > li > *, .horizontal * > li > * {
+  .horizontal > li > ul > li > ul, .horizontal ul > li > ul > li > ul, .horizontal > li > ol > li > ul, .horizontal ol > li > ol > li > ul {
+    display: none; }
+  .horizontal > li > *, .horizontal ul > li > *, .horizontal > li > *, .horizontal ol > li > * {
     display: block; }
-  .horizontal > li > *:not(ul):not(ol), .horizontal * > li > *:not(ul):not(ol), .horizontal > li > *:not(ul):not(ol), .horizontal * > li > *:not(ul):not(ol) {
+  .horizontal > li > *:not(ul):not(ol), .horizontal ul > li > *:not(ul):not(ol), .horizontal > li > *:not(ul):not(ol), .horizontal ol > li > *:not(ul):not(ol) {
     padding: 0.4rem; }
-  .horizontal li, .horizontal * li, .horizontal li, .horizontal * li {
-    /*! customrule: {"trigger": {"target_expr": "{this}", "trigger_class": "menu-show", "type": "mouseover", "trigger_mode": "on", "priority": 0, "enabled": true}} */
-    /*! customrule: {"trigger": {"target_expr": "{this}", "trigger_class": "menu-show", "type": "mouseout", "trigger_mode": "off", "priority": 0, "enabled": true}} */ }
-    .horizontal li > ul, .horizontal * li > ul, .horizontal li > ul, .horizontal * li > ul {
+  .horizontal li, .horizontal ul li, .horizontal li, .horizontal ol li {
+    /*! customrule: {"variable_init": {"variable": "show", "value": false, "type": "simple", "enabled": true}} */
+    /*! customrule: {"trigger_bind": {"key": "show", "status_type": "hover", "enabled": true}} */
+    /*! customrule: {"expressionlistener_class": {"expression": "show", "element_class": "bl-menu-show", "enabled": true}} */ }
+    .horizontal li > ul, .horizontal ul li > ul, .horizontal li > ul, .horizontal ol li > ul {
       display: none; }
-    .horizontal li.menu-show > ul, .horizontal * li.menu-show > ul, .horizontal li.menu-show > ul, .horizontal * li.menu-show > ul {
+    .horizontal li.bl-menu-show > ul, .horizontal ul li.bl-menu-show > ul, .horizontal li.bl-menu-show > ul, .horizontal ol li.bl-menu-show > ul {
       display: block;
       visibility: visible; }
-  .horizontal > li > ul > li > ul, .horizontal * > li > ul > li > ul, .horizontal > li > ol > li > ul, .horizontal * > li > ol > li > ul {
-    display: none; }
 
 .horizontal-click {
   list-style: none; }
@@ -142,9 +146,9 @@ ol:not(.nostyle), ul:not(.nostyle) {
       margin-right: -4px !important; }
       .horizontal-click > li:last-child, .horizontal-click > li:last-child {
         margin-right: 0 !important; }
-  .horizontal-click li, .horizontal-click * li, .horizontal-click li, .horizontal-click * li {
+  .horizontal-click li, .horizontal-click ul li, .horizontal-click li, .horizontal-click ol li {
     position: relative; }
-  .horizontal-click > li > ul, .horizontal-click * > li > ul, .horizontal-click > li > ol, .horizontal-click * > li > ol {
+  .horizontal-click > li > ul, .horizontal-click ul > li > ul, .horizontal-click > li > ol, .horizontal-click ol > li > ol {
     margin: 0;
     padding: 0;
     *zoom: 1;
@@ -154,16 +158,16 @@ ol:not(.nostyle), ul:not(.nostyle) {
     max-width: 10rem;
     height: auto;
     margin: 0 !important; }
-    .horizontal-click > li > ul > li, .horizontal-click * > li > ul > li, .horizontal-click > li > ol > li, .horizontal-click * > li > ol > li {
+    .horizontal-click > li > ul > li, .horizontal-click ul > li > ul > li, .horizontal-click > li > ol > li, .horizontal-click ol > li > ol > li {
       list-style: none; }
-    .horizontal-click > li > ul > li, .horizontal-click * > li > ul > li, .horizontal-click > li > ol > li, .horizontal-click * > li > ol > li {
+    .horizontal-click > li > ul > li, .horizontal-click ul > li > ul > li, .horizontal-click > li > ol > li, .horizontal-click ol > li > ol > li {
       display: block; }
-    .horizontal-click > li > ul:before, .horizontal-click > li > ul:after, .horizontal-click * > li > ul:before, .horizontal-click * > li > ul:after, .horizontal-click > li > ol:before, .horizontal-click > li > ol:after, .horizontal-click * > li > ol:before, .horizontal-click * > li > ol:after {
+    .horizontal-click > li > ul:before, .horizontal-click > li > ul:after, .horizontal-click ul > li > ul:before, .horizontal-click ul > li > ul:after, .horizontal-click > li > ol:before, .horizontal-click > li > ol:after, .horizontal-click ol > li > ol:before, .horizontal-click ol > li > ol:after {
       content: "";
       display: table; }
-    .horizontal-click > li > ul:after, .horizontal-click * > li > ul:after, .horizontal-click > li > ol:after, .horizontal-click * > li > ol:after {
+    .horizontal-click > li > ul:after, .horizontal-click ul > li > ul:after, .horizontal-click > li > ol:after, .horizontal-click ol > li > ol:after {
       clear: both; }
-  .horizontal-click > li > ul > li > ul, .horizontal-click * > li > ul > li > ul, .horizontal-click > li > ol > li > ol, .horizontal-click * > li > ol > li > ol {
+  .horizontal-click > li > ul > li > ul, .horizontal-click ul > li > ul > li > ul, .horizontal-click > li > ol > li > ol, .horizontal-click ol > li > ol > li > ol {
     *zoom: 1;
     position: absolute;
     width: 10rem;
@@ -174,59 +178,59 @@ ol:not(.nostyle), ul:not(.nostyle) {
     bottom: auto;
     left: 100%;
     right: auto; }
-    .horizontal-click > li > ul > li > ul:before, .horizontal-click > li > ul > li > ul:after, .horizontal-click * > li > ul > li > ul:before, .horizontal-click * > li > ul > li > ul:after, .horizontal-click > li > ol > li > ol:before, .horizontal-click > li > ol > li > ol:after, .horizontal-click * > li > ol > li > ol:before, .horizontal-click * > li > ol > li > ol:after {
+    .horizontal-click > li > ul > li > ul:before, .horizontal-click > li > ul > li > ul:after, .horizontal-click ul > li > ul > li > ul:before, .horizontal-click ul > li > ul > li > ul:after, .horizontal-click > li > ol > li > ol:before, .horizontal-click > li > ol > li > ol:after, .horizontal-click ol > li > ol > li > ol:before, .horizontal-click ol > li > ol > li > ol:after {
       content: "";
       display: table; }
-    .horizontal-click > li > ul > li > ul:after, .horizontal-click * > li > ul > li > ul:after, .horizontal-click > li > ol > li > ol:after, .horizontal-click * > li > ol > li > ol:after {
+    .horizontal-click > li > ul > li > ul:after, .horizontal-click ul > li > ul > li > ul:after, .horizontal-click > li > ol > li > ol:after, .horizontal-click ol > li > ol > li > ol:after {
       clear: both; }
-  .horizontal-click > li > *, .horizontal-click * > li > *, .horizontal-click > li > *, .horizontal-click * > li > * {
+  .horizontal-click > li > ul > li > ul, .horizontal-click ul > li > ul > li > ul, .horizontal-click > li > ol > li > ul, .horizontal-click ol > li > ol > li > ul {
+    display: none; }
+  .horizontal-click > li > *, .horizontal-click ul > li > *, .horizontal-click > li > *, .horizontal-click ol > li > * {
     display: block; }
-  .horizontal-click > li > *:not(ul):not(ol), .horizontal-click * > li > *:not(ul):not(ol), .horizontal-click > li > *:not(ul):not(ol), .horizontal-click * > li > *:not(ul):not(ol) {
+  .horizontal-click > li > *:not(ul):not(ol), .horizontal-click ul > li > *:not(ul):not(ol), .horizontal-click > li > *:not(ul):not(ol), .horizontal-click ol > li > *:not(ul):not(ol) {
     padding: 0.4rem; }
-  .horizontal-click > li > a, .horizontal-click * > li > a, .horizontal-click > li > a, .horizontal-click * > li > a {
-    /*! customrule: {"trigger": {"target_expr": "{parent-3}", "trigger_class": "menu-show", "type": "click", "trigger_mode": "on", "priority": 0, "enabled": true}} */
-    /*! customrule: {"trigger": {"target_expr": "{parent-1}", "trigger_class": "menu-show", "type": "click", "trigger_mode": "toggle", "priority": 0, "enabled": true}} */
-    /*! customrule: {"trigger": {"target_expr": "{parent-1} li", "trigger_class": "menu-show", "type": "click", "trigger_mode": "off", "priority": 0, "enabled": true}} */ }
-  .horizontal-click > li > ul, .horizontal-click * > li > ul, .horizontal-click > li > ul, .horizontal-click * > li > ul {
-    display: none; }
-  .horizontal-click > li.menu-show > ul, .horizontal-click * > li.menu-show > ul, .horizontal-click > li.menu-show > ul, .horizontal-click * > li.menu-show > ul {
-    display: block;
-    visibility: visible; }
-  .horizontal-click > li > ul > li > ul, .horizontal-click * > li > ul > li > ul, .horizontal-click > li > ol > li > ul, .horizontal-click * > li > ol > li > ul {
-    display: none; }
-
-html {
-  /*! customrule: {"trigger": {"target_expr": ".horizontal-click li", "trigger_class": "menu-show", "type": "click", "trigger_mode": "off", "priority": -1, "enabled": true}} */ }
+  .horizontal-click, .horizontal-click ul, .horizontal-click, .horizontal-click ol {
+    /*! customrule: {"variable_init": {"variable": "show{this}", "value": "none", "type": "group", "enabled": true}} */
+    /*! customrule: {"expressionlistener_set": {"expression": "bl-menu-hide", "key": "show{this}", "value_expression": "false", "enabled": true}} */
+    /*! customrule: {"expressionlistener_set": {"expression": "show{this}.none", "key": "show{parent-2}.{parent-1}", "value_expression": "!show{this}.none", "enabled": true}} */ }
+    .horizontal-click > li > a, .horizontal-click ul > li > a, .horizontal-click > li > a, .horizontal-click ol > li > a {
+      /*! customrule: {"trigger": {"key": "show{parent-2}.{parent-1}", "event_type": "click", "value_expression": "true", "priority": 1, "enabled": true}} */ }
+    .horizontal-click > li > ul, .horizontal-click ul > li > ul, .horizontal-click > li > ul, .horizontal-click ol > li > ul {
+      display: none;
+      /*! customrule: {"expressionlistener_class": {"expression": "show{parent-2}.{parent-1}", "element_class": "bl-menu-show", "enabled": true}} */ }
+      .horizontal-click > li > ul.bl-menu-show, .horizontal-click ul > li > ul.bl-menu-show, .horizontal-click > li > ul.bl-menu-show, .horizontal-click ol > li > ul.bl-menu-show {
+        display: block;
+        visibility: visible; }
 
 .vertical {
   list-style: none; }
-  .vertical, .vertical *, .vertical, .vertical * {
+  .vertical, .vertical ul, .vertical, .vertical ol {
     margin: 0;
     padding: 0; }
-    .vertical > li, .vertical * > li, .vertical > li, .vertical * > li {
+    .vertical > li, .vertical ul > li, .vertical > li, .vertical ol > li {
       list-style: none; }
-    .vertical > li, .vertical * > li, .vertical > li, .vertical * > li {
+    .vertical > li, .vertical ul > li, .vertical > li, .vertical ol > li {
       display: block; }
-  .vertical > li > *, .vertical * > li > *, .vertical > li > *, .vertical * > li > * {
+  .vertical > li > *, .vertical ul > li > *, .vertical > li > *, .vertical ol > li > * {
     display: block; }
-  .vertical > li > ul, .vertical * > li > ul, .vertical > li > ol, .vertical * > li > ol {
+  .vertical > li > ul, .vertical ul > li > ul, .vertical > li > ol, .vertical ol > li > ol {
     padding: 0rem 0rem 0rem 1rem; }
-  .vertical > li > *:not(ul):not(ol), .vertical * > li > *:not(ul):not(ol), .vertical > li > *:not(ul):not(ol), .vertical * > li > *:not(ul):not(ol) {
+  .vertical > li > *:not(ul):not(ol), .vertical ul > li > *:not(ul):not(ol), .vertical > li > *:not(ul):not(ol), .vertical ol > li > *:not(ul):not(ol) {
     padding: 0.4rem; }
-  .vertical > li, .vertical * > li, .vertical > li, .vertical * > li {
+  .vertical > li, .vertical ul > li, .vertical > li, .vertical ol > li {
     padding: 0.4rem; }
-  .vertical > li > ul, .vertical > li > ol, .vertical * > li > ul, .vertical * > li > ol, .vertical > li > ul, .vertical > li > ol, .vertical * > li > ul, .vertical * > li > ol {
+  .vertical > li > ul, .vertical > li > ol, .vertical ul > li > ul, .vertical ul > li > ol, .vertical > li > ul, .vertical > li > ol, .vertical ol > li > ul, .vertical ol > li > ol {
     margin: -0.4rem;
     margin-top: 0.4rem; }
-  .vertical > li > a, .vertical * > li > a, .vertical > li > a, .vertical * > li > a {
-    /*! customrule: {"trigger": {"target_expr": "{parent-1}", "trigger_class": "menu-show", "type": "click", "trigger_mode": "toggle", "priority": 0, "enabled": true}} */
-    /*! customrule: {"trigger": {"target_expr": "{parent-1} li", "trigger_class": "menu-show", "type": "click", "trigger_mode": "off", "priority": 0, "enabled": true}} */ }
-  .vertical > li > ul, .vertical * > li > ul, .vertical > li > ul, .vertical * > li > ul {
-    display: none; }
-  .vertical > li.menu-show > ul, .vertical * > li.menu-show > ul, .vertical > li.menu-show > ul, .vertical * > li.menu-show > ul {
-    display: block;
-    visibility: visible; }
-  .vertical > li > ul > li > ul, .vertical * > li > ul > li > ul, .vertical > li > ol > li > ul, .vertical * > li > ol > li > ul {
-    display: none; }
+  .vertical > li, .vertical ul > li, .vertical > li, .vertical ol > li {
+    /*! customrule: {"variable_init": {"variable": "show", "value": false, "type": "simple", "enabled": true}} */
+    /*! customrule: {"expressionlistener_class": {"expression": "show", "element_class": "bl-menu-show", "enabled": true}} */ }
+    .vertical > li > a, .vertical ul > li > a, .vertical > li > a, .vertical ol > li > a {
+      /*! customrule: {"trigger": {"key": "show", "event_type": "click", "value_expression": "!show", "priority": 0, "enabled": true}} */ }
+    .vertical > li > ul, .vertical ul > li > ul, .vertical > li > ul, .vertical ol > li > ul {
+      display: none; }
+    .vertical > li.bl-menu-show > ul, .vertical ul > li.bl-menu-show > ul, .vertical > li.bl-menu-show > ul, .vertical ol > li.bl-menu-show > ul {
+      display: block;
+      visibility: visible; }
 
 /*# sourceMappingURL=menu.css.map */

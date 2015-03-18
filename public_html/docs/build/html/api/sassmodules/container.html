@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Container &mdash; blue leaf 1.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="blue leaf 1.2.0 documentation" href="../../index.html" />
+    <link rel="up" title="API" href="../../api.html" />
+    <link rel="next" title="Custom Rules" href="customrules.html" />
+    <link rel="prev" title="blue leaf Core" href="blueleaf.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="customrules.html" title="Custom Rules"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="blueleaf.html" title="blue leaf Core"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">blue leaf 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" accesskey="U">API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="container">
+<h1>Container<a class="headerlink" href="#container" title="Permalink to this headline">¶</a></h1>
+<p>One of the most important modules. Containers are block elements with sizing,
+positioning, alignment and spacing options.</p>
+<p>Some sizing options are multiplied by the <tt class="docutils literal"><span class="pre">$container</span></tt> factor, defined in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>.</p>
+<p>This module will be reworked in a very future release.</p>
+<p>Note: Due to the fact that CSS <tt class="docutils literal"><span class="pre">transform</span></tt> property creates a new stacking context,
+z-index may not work as expected (by most devs). Please read <a class="reference internal" href="stacking.html"><em>Stacking</em></a>
+for more details.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin container($width:auto,$height:auto,$flags...)</tt></dt>
+<dd><p>Defines a <em>container</em>.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$width</tt></dt>
+<dd><p><em>Keywords</em></p>
+<p>The following keywords can be used:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">auto</span></tt>: browser default sizing</li>
+<li><tt class="docutils literal"><span class="pre">full</span></tt>: 100% of parent&#8217;s width</li>
+<li><tt class="docutils literal"><span class="pre">screen</span></tt>: 100% of screen&#8217;s width</li>
+</ul>
+<p><em>Specify a width</em></p>
+<p>Width&#8217;s can be specified without an unit which are scaled by the <tt class="docutils literal"><span class="pre">$container</span></tt>
+factor (in <tt class="docutils literal"><span class="pre">rem</span></tt>). Supported units are <tt class="docutils literal"><span class="pre">%</span></tt>, <tt class="docutils literal"><span class="pre">vh</span></tt>, <tt class="docutils literal"><span class="pre">vw</span></tt>, <tt class="docutils literal"><span class="pre">vmin</span></tt>, <tt class="docutils literal"><span class="pre">vmax</span></tt>.
+Other units are not recommended and are not supported.</p>
+<p>If a map with 1 element or a simple number is given, this will be the maximum width.
+The container will have its parent&#8217;s width until this value is reached.</p>
+<p>If a map with 2 elements is given, the first will be the minimum width and the
+second the maximum width.
+The container will have its parent&#8217;s width unless these borders are reached.
+If the values are equal, this will be the (fixed) width of the element.</p>
+<p><em>Aspect ratio</em></p>
+<p>If a list with 2 elements is given, the first element is a number and the second
+element <tt class="docutils literal"><span class="pre">ar</span></tt>, then the width is is relative to the element&#8217;s height. The
+first element of the list will be used as the scaling factor.</p>
+<p>Do not use aspect ratio on width and height on the same element as this will
+lead to undefined behaviour. Since this feature uses JavaScript, <em>this rule
+cannot be overwritten</em> (this will lead to undefined behaviour). Use <a class="reference internal" href="mediaquerys.html"><em>Media Querys</em></a>
+to disable aspect ratio.</p>
+<p>Aspect ration uses <a class="reference internal" href="../jsplugins/container.html"><em>Container</em></a>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$height</tt></dt>
+<dd><p>Same as <tt class="docutils literal"><span class="pre">$width</span></tt>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$flags...:(center)</tt></dt>
+<dd><p>There are flags available defining some more behaviour.</p>
+<p><em>Positioning</em></p>
+<p>The position will be <tt class="docutils literal"><span class="pre">position:relative</span></tt> (<tt class="docutils literal"><span class="pre">relative</span></tt>) unless one of these flags is set.
+Only one of them is possible:</p>
+<dl class="describe">
+<dt>
+<tt class="descname">absolute</tt></dt>
+<dd><p>Absolute positioning.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">fixed</tt></dt>
+<dd><p>Fixed positioning. Think about using <a class="reference internal" href="sticky.html"><em>Sticky</em></a> instead.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">static</tt></dt>
+<dd><p>Static positioning. Not recommended, rare use cases.</p>
+</dd></dl>
+
+<p>Additionally, the keyword <tt class="docutils literal"><span class="pre">extended</span></tt> (alias <tt class="docutils literal"><span class="pre">xt</span></tt>) can be used to enable
+extended algorithms width more aligning options (see below for details).
+Extended algorithms use <tt class="docutils literal"><span class="pre">transform</span></tt> which lead to unwanted behaviour in some
+cases. Note that containers using <tt class="docutils literal"><span class="pre">extended</span></tt> can only be overwritten by
+containers using <tt class="docutils literal"><span class="pre">extended</span></tt>. To overwrite properties, use media querys where
+possible.</p>
+<p><em>Alignment</em></p>
+<p>Only one flag per direction should be set (one vertical and one horizontal).</p>
+<p>Please read the note at the end of this list.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">left</tt></dt>
+<dd><p>Left.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">center</tt></dt>
+<dd><p>Center (horizontal).</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">right</tt></dt>
+<dd><p>Right.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">top</tt></dt>
+<dd><p>Top.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">middle</tt></dt>
+<dd><p>Middle (vertical).</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">bottom</tt></dt>
+<dd><p>Bottom.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">outer-top</tt></dt>
+<dd><p>Above the parents element. Will be placed outside of the parents element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">outer-bottom</tt></dt>
+<dd><p>Underneath the parents element. Will be placed outside of the parents element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">outer-left</tt></dt>
+<dd><p>Left to the parents element. Will be placed outside of the parents element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">outer-right</tt></dt>
+<dd><p>Right to the parents element. Will be placed outside of the parents element.</p>
+</dd></dl>
+
+<p>Note that the availability of alignment flags is heavily dependent from the
+positioning model.</p>
+<p><tt class="docutils literal"><span class="pre">static</span></tt> works with <tt class="docutils literal"><span class="pre">left</span></tt>,``center``,``right`` when a <tt class="docutils literal"><span class="pre">width</span></tt> is specified.</p>
+<p><tt class="docutils literal"><span class="pre">relative</span></tt> works with <tt class="docutils literal"><span class="pre">left</span></tt>,``center``,``right``.</p>
+<p><tt class="docutils literal"><span class="pre">absolute</span></tt> and <tt class="docutils literal"><span class="pre">fixed</span></tt> works width everything. But: For using <tt class="docutils literal"><span class="pre">center</span></tt> or
+<tt class="docutils literal"><span class="pre">middle</span></tt>, <tt class="docutils literal"><span class="pre">ẁidth</span></tt> respectively <tt class="docutils literal"><span class="pre">height</span></tt> has to be specified.</p>
+<p>With <tt class="docutils literal"><span class="pre">extended</span></tt> flag set, everything will work as expected for <tt class="docutils literal"><span class="pre">relative</span></tt>,
+<tt class="docutils literal"><span class="pre">absolute</span></tt> and <tt class="docutils literal"><span class="pre">fixed</span></tt>; independent from <tt class="docutils literal"><span class="pre">width</span></tt> and <tt class="docutils literal"><span class="pre">height</span></tt>.
+Note that relative positioned my have unexpected vertical alignment. In those
+cases use the absolute positioning model.</p>
+<p><em>Floating</em></p>
+<p>Adds floating to the container. Do not use in combination with alignment.
+Use with static and relative positioning is supported.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">float-none</tt></dt>
+<dd><p>Explicitly disalbes floating.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">float-left</tt></dt>
+<dd><p>Float left.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">float-right</tt></dt>
+<dd><p>Float right.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin container-spacing($spacing...)</tt></dt>
+<dd><p>Outer spacing. Should be used if a positioning flag is set.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$spacing...</tt></dt>
+<dd><p>Spacing (scaled by <tt class="docutils literal"><span class="pre">$gutter</span></tt> variable), see <a class="reference internal" href="gutter.html"><em>Gutter</em></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin container-breakout($spacing...)</tt></dt>
+<dd><p>Negative outer spacing.</p>
+<p>Will be removed in a future release. Maybe.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$spacing...</tt></dt>
+<dd><p>Spacing (scaled by <tt class="docutils literal"><span class="pre">$gutter</span></tt> variable), see <a class="reference internal" href="gutter.html"><em>Gutter</em></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="css-predefined-rules">
+<h2>CSS (Predefined Rules)<a class="headerlink" href="#css-predefined-rules" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">container</tt></dt>
+<dd><p>A simple container with default options.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Container</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+<li><a class="reference internal" href="#css-predefined-rules">CSS (Predefined Rules)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="blueleaf.html"
+                        title="previous chapter">blue leaf Core</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="customrules.html"
+                        title="next chapter">Custom Rules</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/api/sassmodules/container.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="customrules.html" title="Custom Rules"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="blueleaf.html" title="blue leaf Core"
+             >previous</a> |</li>
+        <li><a href="../../index.html">blue leaf 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" >API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright blue treehouse, bluetreehouse.de. blue leaf is released under the MIT licence.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

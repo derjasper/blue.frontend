@@ -1,3 +1,5 @@
+// TODO sticky scss
+
 @mixin sticky($parent:"body",$directions:"tb",$scrollarea_offset:"",$zindex:999,$stick_in:"viewport") {
     @include customrule(sticky, (stick_in: $stick_in,zindex: $zindex, directions: $directions, parent:$parent, scrollarea_offset:$scrollarea_offset, sticked_class: sticked));
 }

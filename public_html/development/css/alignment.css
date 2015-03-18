@@ -30,6 +30,9 @@ body {
   .container:after {
     clear: both; }
 
+html {
+  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple", "enabled": true}} */
+  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0, "enabled": true}} */ }
 body {
   font-family: sans;
   color: white;
@@ -102,7 +105,7 @@ div {
   transform: translateY(0); }
 
 .middle b, .middle big, .middle i, .middle small, .middle tt, .middle abbr, .middle acronym, .middle cite, .middle code, .middle dfn, .middle em, .middle kbd, .middle strong, .middle samp, .middle var, .middle a, .middle bdo, .middle br, .middle img, .middle map, .middle object, .middle q, .middle script, .middle span, .middle sub, .middle sup, .middle button, .middle input, .middle label, .middle select, .middle textarea {
-  display: inline-block;
+  display: block;
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -112,7 +115,7 @@ div {
   transform: translateY(-50%); }
 
 .bottom b, .bottom big, .bottom i, .bottom small, .bottom tt, .bottom abbr, .bottom acronym, .bottom cite, .bottom code, .bottom dfn, .bottom em, .bottom kbd, .bottom strong, .bottom samp, .bottom var, .bottom a, .bottom bdo, .bottom br, .bottom img, .bottom map, .bottom object, .bottom q, .bottom script, .bottom span, .bottom sub, .bottom sup, .bottom button, .bottom input, .bottom label, .bottom select, .bottom textarea {
-  display: inline-block;
+  display: block;
   position: relative;
   top: 100%;
   -webkit-transform: translateY(-100%);
@@ -124,7 +127,7 @@ div {
 .bottomright {
   text-align: right; }
   .bottomright b, .bottomright big, .bottomright i, .bottomright small, .bottomright tt, .bottomright abbr, .bottomright acronym, .bottomright cite, .bottomright code, .bottomright dfn, .bottomright em, .bottomright kbd, .bottomright strong, .bottomright samp, .bottomright var, .bottomright a, .bottomright bdo, .bottomright br, .bottomright img, .bottomright map, .bottomright object, .bottomright q, .bottomright script, .bottomright span, .bottomright sub, .bottomright sup, .bottomright button, .bottomright input, .bottomright label, .bottomright select, .bottomright textarea {
-    display: inline-block;
+    display: block;
     position: relative;
     top: 100%;
     -webkit-transform: translateY(-100%);

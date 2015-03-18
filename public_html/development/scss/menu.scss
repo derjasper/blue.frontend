@@ -3,12 +3,9 @@
 .horizontal {
     @include menu(horizontal,(innrgttr:2,submenutrggr:hover)); 
 }
- 
+
 .horizontal-click {
     @include menu(horizontal,(innrgttr:2,submenutrggr:click-superfish)); 
-}
-html {
-    @include trigger(".horizontal-click li","menu-show",click,off,-1);
 }
 
 .vertical {

@@ -1,5 +1,12 @@
 // menu works with ul only
 
+@at-root { // used for hiding superfish menus
+    html {
+        @include initvar("bl-menu-hide");
+        @include trigger("bl-menu-hide",click,"!bl-menu-hide",0);
+    }
+}
+
 @mixin menu($type,$opt:()) {
     list-style:none;
     
@@ -26,6 +33,12 @@
         }
         @include list-level(2,true) {
             @include container(($menuwidth $menuwidth),auto,absolute,outer-right,top);
+        }
+        
+        @include list-level(1,true) {
+            & > li > ul {
+                @include visibility(hide);
+            }
         }
     }
     @else if $type==vertical {
@@ -60,82 +73,63 @@
         @if map-get($opt,submenutrggr)==hover {
             @include list-level(0,true) {
                 li {
-                    @include trigger("{this}","menu-show",mouseover,on);
-                    @include trigger("{this}","menu-show",mouseout,off);
+                    @include initvar("show");
+                    @include trigger_bind("show",hover);
                     
                     & > ul {
                         @include visibility(hide);
                     }
-                        
-                    @include bp-triggered("menu-show") {
+                    @include listen("show","bl-menu-show");
+                    @include bp-triggered("bl-menu-show") {
                         & > ul {
                             @include visibility(showblock);
                         }
                     }
-                }
-            }
-            
-            @include list-level(1,true) {
-                & > li > ul {
-                    @include visibility(hide);
                 }
             }
         }
         @else if map-get($opt,submenutrggr)==click {            
             @include list-level(0,true) {
                 & > li {
+                    @include initvar("show");
                     & > a {
-                        @include trigger("{parent-1}","menu-show",click,toggle);
-                        @include trigger("{parent-1} li","menu-show",click,off);
+                        @include trigger("show","click","!show");    
                     } 
                     
                     & > ul { 
                         @include visibility(hide);
                     }
 
-                    @include bp-triggered("menu-show") {
+                    @include listen("show","bl-menu-show");
+                    @include bp-triggered("bl-menu-show") {
                         & > ul {
                             @include visibility(showblock);
                         }
                     }
-                }
-            }
-            
-            @include list-level(1,true) {
-                & > li > ul {
-                    @include visibility(hide);
                 }
             }
         }
-        @else if map-get($opt,submenutrggr)==click-superfish { // TODO sass kann global code einfügen
-            // Notice: You may want to add the following code to your stylesheet:
-            // html {
-            //     @include trigger("[path to your menu] li","menu-show",click,off,-1);
-            // }
-            
+        @else if map-get($opt,submenutrggr)==click-superfish {
             @include list-level(0,true) {
+                @include initvar("show{this}","none","group");
+                
+                @include listen_set("bl-menu-hide","show{this}","false");
+                
+                @include listen_set("show{this}.none","show{parent-2}.{parent-1}","!show{this}.none");
+                
+                                          
                 & > li {
                     & > a {
-                        @include trigger("{parent-3}","menu-show",click,on);
-                        @include trigger("{parent-1}","menu-show",click,toggle);
-                        @include trigger("{parent-1} li","menu-show",click,off);
-                    } 
+                        @include trigger("show{parent-2}.{parent-1}",click,"true",1);
+                    }
                     
                     & > ul { 
                         @include visibility(hide);
-                    }
-
-                    @include bp-triggered("menu-show") {
-                        & > ul {
+                        @include listen("show{parent-2}.{parent-1}","bl-menu-show");
+                        @include bp-triggered("bl-menu-show") {
                             @include visibility(showblock);
                         }
                     }
-                }
-            }
-            
-            @include list-level(1,true) {
-                & > li > ul {
-                    @include visibility(hide);
                 }
             }
         }
