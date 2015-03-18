@@ -98,8 +98,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
 .binddemo a.hover {
   /*! customrule: {"variable_init": {"variable": "hovered", "value": false, "type": "simple", "enabled": true}} */
   /*! customrule: {"trigger_bind": {"key": "hovered", "status_type": "hover", "enabled": true}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "hovered", "element_class": "uugw8knth", "enabled": true}} */ }
-  .binddemo a.hover.uugw8knth {
+  /*! customrule: {"expressionlistener_class": {"expression": "hovered", "element_class": "ulz003kyd", "enabled": true}} */ }
+  .binddemo a.hover.ulz003kyd {
     font-weight: bold; }
 .binddemo a.focus {
   /*! customrule: {"variable_init": {"variable": "focussed", "value": false, "type": "simple", "enabled": true}} */
@@ -122,8 +122,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .mulvar a {
     /*! customrule: {"trigger": {"key": "var1,var2", "event_type": "click", "value_expression": "!var1", "priority": 0, "enabled": true}} */ }
   .mulvar span {
-    /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "uugw8knto", "enabled": true}} */ }
-    .mulvar span.uugw8knto {
+    /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "ulz003kyf", "enabled": true}} */ }
+    .mulvar span.ulz003kyf {
       font-weight: bold; }
 
 .expressions {
