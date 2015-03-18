@@ -1,0 +1,33 @@
+@mixin listen($expression,$element_class:"triggered") {
+    @include customrule(expressionlistener_class, (expression: $expression, element_class: $element_class));
+}
+
+@mixin bp-triggered($element_class:"triggered") {
+    &.#{$element_class} {
+        @content;
+    }
+}
+
+@mixin bp-untriggered($element_class:"triggered") {
+    &.#{$element_class}_off {
+        @content;
+    }
+}
+
+@mixin bp-listen($expression,$element_class:"") {
+    @if($element_class=="") {
+        $element_class: unique_id();
+    }
+    @include listen($expression,$element_class);
+    &.#{$element_class} {
+        @content;
+    }
+}
+
+@mixin listen_focus($expression) {
+    @include customrule(expressionlistener_focus, (expression: $expression));
+}
+
+@mixin listen_set($expression,$key,$value_expression) {
+    @include customrule(expressionlistener_set, (expression:$expression,key:$key,value_expression:$value_expression));
+}

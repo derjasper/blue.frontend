@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Media Querys &mdash; blue leaf 1.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="blue leaf 1.2.0 documentation" href="../../index.html" />
+    <link rel="up" title="API" href="../../api.html" />
+    <link rel="next" title="Menu" href="menu.html" />
+    <link rel="prev" title="List" href="list.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="menu.html" title="Menu"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="list.html" title="List"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">blue leaf 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" accesskey="U">API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="media-querys">
+<h1>Media Querys<a class="headerlink" href="#media-querys" title="Permalink to this headline">¶</a></h1>
+<p>Simple media query shorthands. The mixin <tt class="docutils literal"><span class="pre">bp</span></tt> is the one you will use most.
+Screen sizes can be configured via the <tt class="docutils literal"><span class="pre">$screensizes</span></tt> variable in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin bp($screen:s,$mode:up,$screen2:&quot;&quot;) { &#64;content }</tt></dt>
+<dd><p>The most important mixin. Define rules dependent on <tt class="docutils literal"><span class="pre">$screen</span></tt>. <tt class="docutils literal"><span class="pre">$mode</span></tt> indicates
+whether bigger/smaller screen sizes should be included or not.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$screen</tt></dt>
+<dd><p>See the <tt class="docutils literal"><span class="pre">$screensizes</span></tt> variable in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>. By default <tt class="docutils literal"><span class="pre">s</span></tt>, <tt class="docutils literal"><span class="pre">m</span></tt>, <tt class="docutils literal"><span class="pre">l</span></tt>, <tt class="docutils literal"><span class="pre">xl</span></tt> or <tt class="docutils literal"><span class="pre">xxl</span></tt>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$mode</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">up</span></tt>, <tt class="docutils literal"><span class="pre">down</span></tt>, <tt class="docutils literal"><span class="pre">to</span></tt> or <tt class="docutils literal"><span class="pre">onl</span></tt>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$screen2</tt></dt>
+<dd><p>If <tt class="docutils literal"><span class="pre">$mode</span></tt> is set to <tt class="docutils literal"><span class="pre">to</span></tt>, the media query is true for breakpoints from
+<tt class="docutils literal"><span class="pre">$screen</span></tt> to <tt class="docutils literal"><span class="pre">$screen2</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin bp-o($orientation) { &#64;content }</tt></dt>
+<dd><p>Respond to device orientation.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$orientation</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">landscape</span></tt> or <tt class="docutils literal"><span class="pre">portrait</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>The following functions are used to construct advanced media querys. They can be used like this:</p>
+<div class="highlight-css"><div class="highlight"><pre>@media #{bpBase() and mediaQueryScreen(&quot;m&quot;,&quot;up&quot;)}, #{bpBase() and bpOrientation(&quot;portrait&quot;)} {
+    some: code;
+}
+</pre></div>
+</div>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;function bpBase()</tt></dt>
+<dd><p>Makes sure that styles are applied to screens only.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;function bpScreen($screen,$mode,$screen2:&quot;&quot;)</tt></dt>
+<dd><p>Respond to screen sizes.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$screen</tt></dt>
+<dd><p>See the <tt class="docutils literal"><span class="pre">$screensizes</span></tt> variable in <a class="reference internal" href="blueleaf.html"><em>blue leaf Core</em></a>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$mode</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">up</span></tt>, <tt class="docutils literal"><span class="pre">down</span></tt>, <tt class="docutils literal"><span class="pre">to</span></tt> or <tt class="docutils literal"><span class="pre">onl</span></tt>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$screen2</tt></dt>
+<dd><p>If <tt class="docutils literal"><span class="pre">$mode</span></tt> is set to <tt class="docutils literal"><span class="pre">to</span></tt>, the media query is true for breakpoints from
+<tt class="docutils literal"><span class="pre">$screen</span></tt> to <tt class="docutils literal"><span class="pre">$screen2</span></tt>. <tt class="docutils literal"><span class="pre">$screen</span></tt> needs to contain a smaller (or equal)
+screen size than <tt class="docutils literal"><span class="pre">$screen2</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;function bpOrientation($orientation)</tt></dt>
+<dd><p>Respond to orientation.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$orientation</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">landscape</span></tt> or <tt class="docutils literal"><span class="pre">portrait</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Media Querys</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="list.html"
+                        title="previous chapter">List</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="menu.html"
+                        title="next chapter">Menu</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/api/sassmodules/mediaquerys.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="menu.html" title="Menu"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="list.html" title="List"
+             >previous</a> |</li>
+        <li><a href="../../index.html">blue leaf 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" >API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright blue treehouse, bluetreehouse.de. blue leaf is released under the MIT licence.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

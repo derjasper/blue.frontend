@@ -1,0 +1,13 @@
+@import "demo.scss";
+
+.c1 {
+    @include gutter(10);
+}
+
+.c2 {
+    @include gutter(10, 0);
+}
+
+.c3 {
+    @include gutter(10, 0, 0, 0);
+}

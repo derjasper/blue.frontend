@@ -1,0 +1,100 @@
+@import "demo.scss";
+
+.col-basic {
+    @include container();
+    
+    div {
+        @include col(4);
+    }
+}
+
+.col-offset {
+    @include container();
+    
+    div {
+        @include col(4);
+    }
+    
+    .o {
+        @include col-offset(4);
+    }
+}
+
+.col-right {
+    @include container();
+    
+    div {
+        @include col(4,right);
+    }
+}
+
+.col-pushpull {
+    @include container();
+    
+    div {
+        @include col(4);
+    }
+    
+    .pl {
+        @include col-pull(4);
+    }
+    
+    .ps {
+        @include col-push(4);
+    }
+}
+
+.col-right-pushpull {
+    @include container();
+    
+    div {
+        @include col(4,right);
+    }
+    
+    .pl {
+        @include col-pull(4);
+    }
+    
+    .ps {
+        @include col-push(4);
+    }
+}
+
+.row-basic {
+    @include container(auto,(2 2));
+     
+    div {
+        @include col(12);
+        @include row(4);
+    }
+}
+
+.row-offset {
+    @include container(auto,(2 2));
+    
+    div {
+        @include col(12);
+        @include row(3);
+    }
+    
+    .o {
+        @include row-offset(3);
+    }
+}
+
+.row-pushpull {
+    @include container(auto,(2 2));
+    
+    div {
+        @include col(12);
+        @include row(4);
+    }
+    
+    .pl {
+        @include row-pull(4);
+    }
+    
+    .ps {
+        @include row-push(4);
+    }
+}

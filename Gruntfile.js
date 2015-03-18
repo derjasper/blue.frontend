@@ -1,18 +1,15 @@
-// TODO dist-ordner mit komprimierten libs, demos, docs erstellen (clean + copy)
-// TODO gitignore etc
-
 module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         sass: {
             demo: {
                 files: [{
-                    expand: true,
-                    cwd: 'development/framework/scss',
-                    src: ['*.scss'],
-                    dest: 'development/framework/css',
-                    ext: '.css'
-                }]
+                        expand: true,
+                        cwd: 'development/framework/scss',
+                        src: ['*.scss'],
+                        dest: 'development/framework/css',
+                        ext: '.css'
+                    }]
             }
         },
         concat: {
@@ -46,21 +43,55 @@ module.exports = function (grunt) {
                 },
                 command: 'make html'
             }
+        },
+        clean: {
+            dist: {
+                src: ["dist"]
+            }
+        },
+        copy: {
+            dist: {
+                files: [
+                    {expand: true, cwd: 'development/docs/build/html/', src: ['**'], dest: 'dist/docs'},
+                    {
+                        expand: true,
+                        cwd: 'development/framework/', 
+                        src: [
+                            '**'
+                        ], 
+                        dest: 'dist/demo'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'development/framework/libs', 
+                        src: [
+                            'enquire.js/**',
+                            'jquery/**',
+                            'modernizr/**',
+                            'blueleaf/js/**',
+                            'blueleaf/scss/**'
+                        ], 
+                        dest: 'dist/libs'
+                    },
+                ]
+            }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.registerTask(
             'build',
             'Compiles javascript for testing.',
-            ['sass:demo','concat:js']
+            ['sass:demo', 'concat:js']
             );
     grunt.registerTask(
             'cleanbuild',
             'Compiles javascript, sass and docs and copies the files to the dist directory.',
-            ['sass:demo','concat:js', 'uglify:js', 'shell:docs']
+            ['sass:demo', 'concat:js', 'uglify:js', 'shell:docs', 'clean:dist', 'copy:dist']
             );
 };

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>blue leaf Demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="libs/jquery/jquery.js"></script>
+        <script src="libs/enquire.js/enquire.js"></script>
+        <script src="libs/blueleaf/js/blueleaf.js"></script>
+        
+        <link rel="stylesheet" href="css/demobrowser.css" />
+    </head>
+    <body>
+        <div class="header">
+            <div class="inner">
+                <ul>
+                    <li><h1>blue leaf Demo Browser</h1></li>
+                    <li>
+                        <a href="#">Examples &#9660;</a>
+                        <ul class="examples">
+                            <li><a href="#" data-file="alignment">Alignment</a></li>
+                            <li><a href="#" data-file="container">Container</a></li>
+                            <li><a href="#" data-file="grid">Grid</a></li>
+                            <li><a href="#" data-file="gutter">Gutter</a></li>
+                            <li><a href="#" data-file="list">List</a></li>
+                            <li><a href="#" data-file="mediaquerys">Media Querys</a></li>
+                            <li><a href="#" data-file="menu">Menu</a></li>
+                            <li><a href="#" data-file="offcanvas">Offcanvas</a></li>
+                            <li><a href="#" data-file="reset">Reset</a></li>
+                            <li><a href="#" data-file="resizable">Resizable</a></li>
+                            <li><a href="#" data-file="smoothscrolling">Smoothscrolling</a></li>
+                            <li><a href="#" data-file="sticky">Sticky</a></li>
+                            <li><a href="#" data-file="stickyfooter">Stickyfooter</a></li>
+                            <li><a href="#" data-file="trigger">Trigger, Variables, Expressionlistener</a></li>
+                            <li><a href="#" data-file="scrollposition">Trigger Scrollposition</a></li>
+                            <li><a href="#" data-file="utility">Utility</a></li>
+                            <li><a href="#" data-file="visibility">Visibility</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="button tab-demo">View Demo</a></li>
+                    <li><a href="#" class="button tab-code">View Code</a></li>
+                    
+                    <li><a href="#" id="newwindow">Open demo in new window</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="tab tab-demo">
+                <div class="resizable">
+                    <iframe class="iframe"></iframe>
+                </div>
+            </div>
+            <div class="tab tab-code">
+                <div class="htmlcode"><div>HTML</div></div>
+                <div class="sasscode"><div>SASS</div></div>
+            </div>
+        </div>
+        <script>            
+            var currentExample="";
+            
+            $('.examples a').click(function() {
+                currentExample=$(this).data('file');
+                
+                $('.iframe').attr('src', 'html/'+currentExample+'.html');
+                
+                $.get( 'html/'+currentExample+'.html', function( data ) {
+                    $( ".htmlcode > div" ).text( data );
+                });
+                
+                $.get( 'scss/'+currentExample+'.scss', function( data ) {
+                    $( ".sasscode > div" ).text( data );
+                });
+            });
+            
+            $('#newwindow').click(function() {
+                if (currentExample!="")
+                    window.open('html/'+currentExample+'.html', '_blank');
+            });
+        </script>
+    </body>
+</html>

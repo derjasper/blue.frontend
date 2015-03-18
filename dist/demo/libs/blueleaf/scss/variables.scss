@@ -1,0 +1,3 @@
+@mixin initvar($variable,$value:false,$type:"simple") { // $type: simple, group, stack
+    @include customrule(variable_init, (variable:$variable,value:$value,type:$type));
+}

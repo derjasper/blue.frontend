@@ -1,0 +1,9 @@
+@mixin resizable($resize_class:"resizing",$click_spacing:10) { // $click_spacing: in pixels
+    @include customrule(resizable, (resize_class:$resize_class,click_spacing:$click_spacing));
+}
+
+@mixin bp-resizing($resize_class:"resizing") {
+    &.#{$resize_class} {
+        @content;
+    }
+}

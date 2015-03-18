@@ -1,0 +1,17 @@
+@mixin trigger($key,$event_type:"click",$value_expression:"true",$priority:0) {
+    // $event_type: click, mouseover, mouseout, focus, blur; $value_expression: expression; $priority: number [the higher the number the later the handler will be executed]
+
+    @include customrule(trigger, (key:$key,event_type:$event_type,value_expression:$value_expression,priority:$priority));
+}
+
+@mixin trigger_bind($key,$status_type:"hover") {
+    // $status_type: hover, focus
+    
+    @include customrule(trigger_bind, (key:$key,status_type:$status_type));
+}
+
+@mixin scrollposition($key,$scroll_status:"top",$scrollarea:"window",$offset:()) {
+    // $scroll_status: visible, top, bottom, left, right; $offset: (){top:,right:,bottom:,left:)
+    
+    @include customrule(trigger_bind_scrollposition, (key:$key,scroll_status:$scroll_status,scrollarea:$scrollarea,offset:$offset));
+}
