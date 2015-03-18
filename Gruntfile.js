@@ -1,4 +1,5 @@
 // TODO dist-ordner mit komprimierten libs, demos, docs erstellen (clean + copy)
+// TODO gitignore etc
 
 module.exports = function (grunt) {
     grunt.initConfig({

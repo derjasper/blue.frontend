@@ -1,4 +1,5 @@
-/config
-/nbproject
-/node_modules
-/.sass-cache
+/config/*
+/nbproject/*
+/node_modules/*
+/.sass-cache/*
+/.gitignore
