@@ -1,0 +1,35 @@
+@import "demo.scss";
+
+div {
+    @include container(auto, (1 1));
+}
+
+.left {
+    @include align(left);
+}
+
+.center {
+    @include align(center);
+}
+
+.right {
+    @include align(right);
+}
+
+/* Note that only wrapped content can be aligned vertically. */
+
+.top {
+    @include align(top);
+}
+
+.middle {
+    @include align(middle);
+}
+
+.bottom {
+    @include align(bottom);
+}
+
+.bottomright {
+    @include align(bottom, right);
+}

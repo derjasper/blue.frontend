@@ -1,0 +1,225 @@
+/*! blueleaf */
+*, *:before, *:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 100%; }
+
+html {
+  height: 100%;
+  position: relative; }
+
+body {
+  min-height: 100%; }
+
+.container {
+  *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto; }
+  .container:before, .container:after {
+    content: "";
+    display: table; }
+  .container:after {
+    clear: both; }
+
+html {
+  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple", "enabled": true}} */
+  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0, "enabled": true}} */ }
+html, body {
+  font-family: sans;
+  height: 100%; }
+
+.header {
+  background: #006785 url(../img/logo.svg) no-repeat;
+  background-position: left center;
+  background-size: auto 120%;
+  border-bottom: 0.2rem #037698 solid;
+  z-index: 10;
+  float: left;
+  position: relative;
+  width: 100%;
+  height: 2rem; }
+  .header .inner {
+    *zoom: 1;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: auto;
+    bottom: 0;
+    font-size: 1rem; }
+    .header .inner:before, .header .inner:after {
+      content: "";
+      display: table; }
+    .header .inner:after {
+      clear: both; }
+    .header .inner h1 {
+      padding: initial;
+      margin: initial;
+      font-size: 1em;
+      font-weight: bold;
+      color: white; }
+    .header .inner > ul {
+      list-style: none; }
+      .header .inner > ul, .header .inner > ul {
+        margin: 0;
+        padding: 0; }
+        .header .inner > ul > li, .header .inner > ul > li {
+          list-style: none; }
+        .header .inner > ul > li, .header .inner > ul > li {
+          display: inline-block;
+          margin-right: -4px !important; }
+          .header .inner > ul > li:last-child, .header .inner > ul > li:last-child {
+            margin-right: 0 !important; }
+      .header .inner > ul li, .header .inner > ul ul li, .header .inner > ul li, .header .inner > ul ol li {
+        position: relative; }
+      .header .inner > ul > li > ul, .header .inner > ul ul > li > ul, .header .inner > ul > li > ol, .header .inner > ul ol > li > ol {
+        margin: 0;
+        padding: 0;
+        *zoom: 1;
+        position: absolute;
+        width: 10rem;
+        min-width: 10rem;
+        max-width: 10rem;
+        height: auto;
+        margin: 0 !important; }
+        .header .inner > ul > li > ul > li, .header .inner > ul ul > li > ul > li, .header .inner > ul > li > ol > li, .header .inner > ul ol > li > ol > li {
+          list-style: none; }
+        .header .inner > ul > li > ul > li, .header .inner > ul ul > li > ul > li, .header .inner > ul > li > ol > li, .header .inner > ul ol > li > ol > li {
+          display: block; }
+        .header .inner > ul > li > ul:before, .header .inner > ul > li > ul:after, .header .inner > ul ul > li > ul:before, .header .inner > ul ul > li > ul:after, .header .inner > ul > li > ol:before, .header .inner > ul > li > ol:after, .header .inner > ul ol > li > ol:before, .header .inner > ul ol > li > ol:after {
+          content: "";
+          display: table; }
+        .header .inner > ul > li > ul:after, .header .inner > ul ul > li > ul:after, .header .inner > ul > li > ol:after, .header .inner > ul ol > li > ol:after {
+          clear: both; }
+      .header .inner > ul > li > ul > li > ul, .header .inner > ul ul > li > ul > li > ul, .header .inner > ul > li > ol > li > ol, .header .inner > ul ol > li > ol > li > ol {
+        *zoom: 1;
+        position: absolute;
+        width: 10rem;
+        min-width: 10rem;
+        max-width: 10rem;
+        height: auto;
+        top: 0;
+        bottom: auto;
+        left: 100%;
+        right: auto; }
+        .header .inner > ul > li > ul > li > ul:before, .header .inner > ul > li > ul > li > ul:after, .header .inner > ul ul > li > ul > li > ul:before, .header .inner > ul ul > li > ul > li > ul:after, .header .inner > ul > li > ol > li > ol:before, .header .inner > ul > li > ol > li > ol:after, .header .inner > ul ol > li > ol > li > ol:before, .header .inner > ul ol > li > ol > li > ol:after {
+          content: "";
+          display: table; }
+        .header .inner > ul > li > ul > li > ul:after, .header .inner > ul ul > li > ul > li > ul:after, .header .inner > ul > li > ol > li > ol:after, .header .inner > ul ol > li > ol > li > ol:after {
+          clear: both; }
+      .header .inner > ul > li > ul > li > ul, .header .inner > ul ul > li > ul > li > ul, .header .inner > ul > li > ol > li > ul, .header .inner > ul ol > li > ol > li > ul {
+        display: none; }
+      .header .inner > ul > li > *, .header .inner > ul ul > li > *, .header .inner > ul > li > *, .header .inner > ul ol > li > * {
+        display: block; }
+      .header .inner > ul > li > *:not(ul):not(ol), .header .inner > ul ul > li > *:not(ul):not(ol), .header .inner > ul > li > *:not(ul):not(ol), .header .inner > ul ol > li > *:not(ul):not(ol) {
+        padding: 0.4rem; }
+      .header .inner > ul li, .header .inner > ul ul li, .header .inner > ul li, .header .inner > ul ol li {
+        /*! customrule: {"variable_init": {"variable": "show", "value": false, "type": "simple", "enabled": true}} */
+        /*! customrule: {"trigger_bind": {"key": "show", "status_type": "hover", "enabled": true}} */
+        /*! customrule: {"expressionlistener_class": {"expression": "show", "element_class": "bl-menu-show", "enabled": true}} */ }
+        .header .inner > ul li > ul, .header .inner > ul ul li > ul, .header .inner > ul li > ul, .header .inner > ul ol li > ul {
+          display: none; }
+        .header .inner > ul li.bl-menu-show > ul, .header .inner > ul ul li.bl-menu-show > ul, .header .inner > ul li.bl-menu-show > ul, .header .inner > ul ol li.bl-menu-show > ul {
+          display: block;
+          visibility: visible; }
+      .header .inner > ul > li, .header .inner > ul > li {
+        padding: 0rem 1rem; }
+      .header .inner > ul > li > ul, .header .inner > ul > li > ol, .header .inner > ul > li > ul, .header .inner > ul > li > ol {
+        margin: 0rem -1rem;
+        margin-top: 0rem; }
+      .header .inner > ul > li.bl-menu-show > a {
+        background: #037698; }
+      .header .inner > ul a {
+        color: white;
+        text-decoration: none; }
+        .header .inner > ul a:hover, .header .inner > ul a.active {
+          background: #037698; }
+      .header .inner > ul ul {
+        background: #006785; }
+
+.content {
+  float: left;
+  position: relative;
+  width: 100%;
+  height: calc(100% - 2rem);
+  background: #037698; }
+  .content .resizable {
+    background: #006785;
+    padding: 0.8rem;
+    max-width: 100%;
+    max-height: 100%;
+    /*! customrule: {"resizable": {"resize_class": "resizing", "click_spacing": 10, "enabled": true}} */
+    overflow: hidden;
+    width: 100%;
+    height: 100%; }
+    .content .resizable.resizing .iframe {
+      display: none; }
+  .content .iframe {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border: none;
+    resize: none; }
+  .content .htmlcode, .content .sasscode {
+    float: left;
+    position: relative;
+    width: 50%;
+    float: left;
+    position: relative;
+    height: 100%;
+    padding: 0.8rem;
+    background: #006785; }
+    .content .htmlcode > div, .content .sasscode > div {
+      *zoom: 1;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      overflow: scroll;
+      background: white;
+      font-family: monospace;
+      font-size: 1.2rem;
+      white-space: pre;
+      padding: 1rem; }
+      .content .htmlcode > div:before, .content .htmlcode > div:after, .content .sasscode > div:before, .content .sasscode > div:after {
+        content: "";
+        display: table; }
+      .content .htmlcode > div:after, .content .sasscode > div:after {
+        clear: both; }
+
+html {
+  /*! customrule: {"variable_init": {"variable": "tab", "value": "demo", "type": "group", "enabled": true}} */ }
+
+.button.tab-demo {
+  /*! customrule: {"trigger": {"key": "tab.demo", "event_type": "click", "value_expression": "true", "priority": 0, "enabled": true}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.demo", "element_class": "active", "enabled": true}} */ }
+
+.button.tab-code {
+  /*! customrule: {"trigger": {"key": "tab.code", "event_type": "click", "value_expression": "true", "priority": 0, "enabled": true}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.code", "element_class": "active", "enabled": true}} */ }
+
+.tab {
+  display: none; }
+
+.tab.tab-demo {
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.demo", "element_class": "active", "enabled": true}} */ }
+  .tab.tab-demo.active {
+    display: initial;
+    visibility: visible; }
+
+.tab.tab-code {
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.code", "element_class": "active", "enabled": true}} */ }
+  .tab.tab-code.active {
+    display: initial;
+    visibility: visible; }
+
+/*# sourceMappingURL=demobrowser.css.map */

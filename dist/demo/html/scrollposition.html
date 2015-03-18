@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>blue leaf Demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="../libs/jquery/jquery.js"></script>
+        <script src="../libs/enquire.js/enquire.js"></script>
+        <script src="../libs/blueleaf/js/blueleaf.js"></script>
+        
+        <link rel="stylesheet" href="../css/scrollposition.css" />
+    </head>
+    <body>
+        <h1>Trigger Scrollposition Demo</h1>
+        
+        <h2>Simple trigger</h2>
+        <div class="simple">
+            <div class="trigger">This element triggers a variable when reaching the top.</div>
+            <br /><br />
+            <div class="listener">This element listens to the variable.</div>
+        </div>
+        
+        <h2>Scroll areas, multiple directions</h2>
+        <div class="scrollarea">
+            <div class="largecontainer">
+                <div class="trigger">
+                    This is the trigger<br />
+                    <span data-listen="visible">visible</span>
+                    <span data-listen="top">top</span>
+                    <span data-listen="right">right</span>
+                    <span data-listen="bottom">bottom</span>
+                    <span data-listen="left">left</span>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Offsets</h2>
+        <div class="offsets">
+            <div class="largecontainer">
+                <div class="trigger">
+                    This is the trigger (offset: 20px)<br />
+                    <span data-listen="visible">visible</span>
+                    <span data-listen="top">top</span>
+                    <span data-listen="right">right</span>
+                    <span data-listen="bottom">bottom</span>
+                    <span data-listen="left">left</span>
+                </div>
+            </div>
+        </div>
+        
+        <h2>works with scrolling-offset</h2>
+        <div class="scrolling-offset">
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <a name="blub"></a>
+            <div>
+                the trigger link is above this element (with scrolling-offset of 100px)
+            </div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+        </div>
+        
+        <h2>Navigation example (using stacks)</h2>
+        <div class="navigation">
+            <div class="nav nostyle">
+                <ul>
+                    <li><a href="#entry1">Entry 1</a></li>
+                    <li><a href="#entry2">Entry 2</a></li>
+                    <li><a href="#entry3">Entry 3</a></li>
+                </ul>
+            </div>
+            <div class="content nostyle">
+                <a name="entry1">Entry #1</a>
+                <div class="placeholder"></div>
+                <a name="entry2">Entry #2</a>
+                <div class="placeholder"></div>
+                <a name="entry3">Entry #3</a>
+                <div class="placeholder"></div>
+                <a name="none"></a>
+                <div class="placeholder"></div>
+                <div class="placeholder"></div>
+                <div class="placeholder"></div>
+                <div class="placeholder"></div>
+                <div class="placeholder"></div>
+            </div>
+        </div>
+    </body>
+</html>

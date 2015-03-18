@@ -1,0 +1,13 @@
+@import "demo.scss";
+
+.horizontal {
+    @include menu(horizontal,(innrgttr:2,submenutrggr:hover)); 
+}
+
+.horizontal-click {
+    @include menu(horizontal,(innrgttr:2,submenutrggr:click-superfish)); 
+}
+
+.vertical {
+    @include menu(vertical,(strctspac:5,innrgttr:2,outrgttr:2,submenutrggr:click)); 
+}

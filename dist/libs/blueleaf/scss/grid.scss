@@ -1,0 +1,36 @@
+@mixin box($direction) {
+    float: $direction;
+    position: relative;
+}
+
+@mixin col($size,$direction:left) {
+    @include box($direction);
+    width: 100%/$columns*$size;
+}
+@mixin col-offset($x) {
+    margin-left: 100%/$columns*$x;
+}
+@mixin col-push($x) {
+    left:100%/$columns*$x;
+    right:auto;
+}
+@mixin col-pull($x) {
+    left:auto;
+    right:100%/$columns*$x;
+}
+
+@mixin row($size,$direction:left) {
+    @include box($direction);
+    height: 100%/$rows*$size;
+}
+@mixin row-offset($x) {
+    @include customrule(grid-offset, (width:100%,height:100%/$rows*$x));
+}
+@mixin row-push($x) {
+    top:100%/$columns*$x;
+    bottom:auto;
+}
+@mixin row-pull($x) {
+    top:auto;
+    bottom:100%/$columns*$x;
+}

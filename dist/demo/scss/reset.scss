@@ -1,0 +1,14 @@
+@import "demo.scss";
+
+
+.somestyles div {
+    color:green;
+    padding:5rem;
+    text-align:right;
+}
+
+.somestyles .reset {
+    @include reset(margin, padding, text-align); // reset these values to their initial values (implicit)
+    @include reset(unset, color); // unset color (explicit)
+    //@include reset(all); // uses the CSS3 all property, which has very weak browser support
+}

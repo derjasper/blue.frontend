@@ -1,0 +1,5 @@
+@import "demo.scss";
+
+.stickyfooter {
+    @include stickyfooter();
+}
