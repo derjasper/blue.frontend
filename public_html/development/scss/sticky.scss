@@ -45,7 +45,7 @@
 }
 
 a[name] {
-    @include scrollareaoffset(3em); // invisible jumplink offset
+    @include scroll-offset(3em); // invisible jumplink offset
 }
 
 .s6 {

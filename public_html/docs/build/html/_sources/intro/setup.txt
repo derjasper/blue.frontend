@@ -9,12 +9,12 @@ Download & extract the files of the lib/blueleaf folder to your project.
 We assume that you have set up SASS with your development environment and know
 how to use it:
 
-- `SASS <http://sass-lang.com/>`_
+- `SASS <http://sass-lang.com/>`_ (latest)
 
 blue leaf has the following dependencies, please add them to your project:
 
-- `jQuery <http://jquery.com/>`_
-- `enquire.js <http://wicky.nillia.ms/enquire.js/>`_
+- `jQuery <http://jquery.com/>`_ (1.9 is recommended)
+- `enquire.js <http://wicky.nillia.ms/enquire.js/>`_ (latest)
 
 
 To run a blueleaf project, the CSS files must be load via HTTP, because JavaScript

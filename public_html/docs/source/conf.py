@@ -47,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'blue leaf'
-copyright = u'2014, blue treehouse'
+copyright = u'blue treehouse, bluetreehouse.de. blue leaf is released under the MIT licence'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

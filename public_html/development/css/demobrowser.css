@@ -30,6 +30,9 @@ body {
   .container:after {
     clear: both; }
 
+html {
+  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple", "enabled": true}} */
+  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0, "enabled": true}} */ }
 html, body {
   font-family: sans;
   height: 100%; }
@@ -47,7 +50,7 @@ html, body {
   .header .inner {
     *zoom: 1;
     position: absolute;
-    width: auto;
+    width: 100%;
     height: auto;
     top: auto;
     bottom: 0;
@@ -75,9 +78,9 @@ html, body {
           margin-right: -4px !important; }
           .header .inner > ul > li:last-child, .header .inner > ul > li:last-child {
             margin-right: 0 !important; }
-      .header .inner > ul li, .header .inner > ul * li, .header .inner > ul li, .header .inner > ul * li {
+      .header .inner > ul li, .header .inner > ul ul li, .header .inner > ul li, .header .inner > ul ol li {
         position: relative; }
-      .header .inner > ul > li > ul, .header .inner > ul * > li > ul, .header .inner > ul > li > ol, .header .inner > ul * > li > ol {
+      .header .inner > ul > li > ul, .header .inner > ul ul > li > ul, .header .inner > ul > li > ol, .header .inner > ul ol > li > ol {
         margin: 0;
         padding: 0;
         *zoom: 1;
@@ -87,16 +90,16 @@ html, body {
         max-width: 10rem;
         height: auto;
         margin: 0 !important; }
-        .header .inner > ul > li > ul > li, .header .inner > ul * > li > ul > li, .header .inner > ul > li > ol > li, .header .inner > ul * > li > ol > li {
+        .header .inner > ul > li > ul > li, .header .inner > ul ul > li > ul > li, .header .inner > ul > li > ol > li, .header .inner > ul ol > li > ol > li {
           list-style: none; }
-        .header .inner > ul > li > ul > li, .header .inner > ul * > li > ul > li, .header .inner > ul > li > ol > li, .header .inner > ul * > li > ol > li {
+        .header .inner > ul > li > ul > li, .header .inner > ul ul > li > ul > li, .header .inner > ul > li > ol > li, .header .inner > ul ol > li > ol > li {
           display: block; }
-        .header .inner > ul > li > ul:before, .header .inner > ul > li > ul:after, .header .inner > ul * > li > ul:before, .header .inner > ul * > li > ul:after, .header .inner > ul > li > ol:before, .header .inner > ul > li > ol:after, .header .inner > ul * > li > ol:before, .header .inner > ul * > li > ol:after {
+        .header .inner > ul > li > ul:before, .header .inner > ul > li > ul:after, .header .inner > ul ul > li > ul:before, .header .inner > ul ul > li > ul:after, .header .inner > ul > li > ol:before, .header .inner > ul > li > ol:after, .header .inner > ul ol > li > ol:before, .header .inner > ul ol > li > ol:after {
           content: "";
           display: table; }
-        .header .inner > ul > li > ul:after, .header .inner > ul * > li > ul:after, .header .inner > ul > li > ol:after, .header .inner > ul * > li > ol:after {
+        .header .inner > ul > li > ul:after, .header .inner > ul ul > li > ul:after, .header .inner > ul > li > ol:after, .header .inner > ul ol > li > ol:after {
           clear: both; }
-      .header .inner > ul > li > ul > li > ul, .header .inner > ul * > li > ul > li > ul, .header .inner > ul > li > ol > li > ol, .header .inner > ul * > li > ol > li > ol {
+      .header .inner > ul > li > ul > li > ul, .header .inner > ul ul > li > ul > li > ul, .header .inner > ul > li > ol > li > ol, .header .inner > ul ol > li > ol > li > ol {
         *zoom: 1;
         position: absolute;
         width: 10rem;
@@ -107,31 +110,32 @@ html, body {
         bottom: auto;
         left: 100%;
         right: auto; }
-        .header .inner > ul > li > ul > li > ul:before, .header .inner > ul > li > ul > li > ul:after, .header .inner > ul * > li > ul > li > ul:before, .header .inner > ul * > li > ul > li > ul:after, .header .inner > ul > li > ol > li > ol:before, .header .inner > ul > li > ol > li > ol:after, .header .inner > ul * > li > ol > li > ol:before, .header .inner > ul * > li > ol > li > ol:after {
+        .header .inner > ul > li > ul > li > ul:before, .header .inner > ul > li > ul > li > ul:after, .header .inner > ul ul > li > ul > li > ul:before, .header .inner > ul ul > li > ul > li > ul:after, .header .inner > ul > li > ol > li > ol:before, .header .inner > ul > li > ol > li > ol:after, .header .inner > ul ol > li > ol > li > ol:before, .header .inner > ul ol > li > ol > li > ol:after {
           content: "";
           display: table; }
-        .header .inner > ul > li > ul > li > ul:after, .header .inner > ul * > li > ul > li > ul:after, .header .inner > ul > li > ol > li > ol:after, .header .inner > ul * > li > ol > li > ol:after {
+        .header .inner > ul > li > ul > li > ul:after, .header .inner > ul ul > li > ul > li > ul:after, .header .inner > ul > li > ol > li > ol:after, .header .inner > ul ol > li > ol > li > ol:after {
           clear: both; }
-      .header .inner > ul > li > *, .header .inner > ul * > li > *, .header .inner > ul > li > *, .header .inner > ul * > li > * {
+      .header .inner > ul > li > ul > li > ul, .header .inner > ul ul > li > ul > li > ul, .header .inner > ul > li > ol > li > ul, .header .inner > ul ol > li > ol > li > ul {
+        display: none; }
+      .header .inner > ul > li > *, .header .inner > ul ul > li > *, .header .inner > ul > li > *, .header .inner > ul ol > li > * {
         display: block; }
-      .header .inner > ul > li > *:not(ul):not(ol), .header .inner > ul * > li > *:not(ul):not(ol), .header .inner > ul > li > *:not(ul):not(ol), .header .inner > ul * > li > *:not(ul):not(ol) {
+      .header .inner > ul > li > *:not(ul):not(ol), .header .inner > ul ul > li > *:not(ul):not(ol), .header .inner > ul > li > *:not(ul):not(ol), .header .inner > ul ol > li > *:not(ul):not(ol) {
         padding: 0.4rem; }
-      .header .inner > ul li, .header .inner > ul * li, .header .inner > ul li, .header .inner > ul * li {
-        /*! customrule: {"trigger": {"target_expr": "{this}", "trigger_class": "menu-show", "type": "mouseover", "trigger_mode": "on", "priority": 0, "enabled": true}} */
-        /*! customrule: {"trigger": {"target_expr": "{this}", "trigger_class": "menu-show", "type": "mouseout", "trigger_mode": "off", "priority": 0, "enabled": true}} */ }
-        .header .inner > ul li > ul, .header .inner > ul * li > ul, .header .inner > ul li > ul, .header .inner > ul * li > ul {
+      .header .inner > ul li, .header .inner > ul ul li, .header .inner > ul li, .header .inner > ul ol li {
+        /*! customrule: {"variable_init": {"variable": "show", "value": false, "type": "simple", "enabled": true}} */
+        /*! customrule: {"trigger_bind": {"key": "show", "status_type": "hover", "enabled": true}} */
+        /*! customrule: {"expressionlistener_class": {"expression": "show", "element_class": "bl-menu-show", "enabled": true}} */ }
+        .header .inner > ul li > ul, .header .inner > ul ul li > ul, .header .inner > ul li > ul, .header .inner > ul ol li > ul {
           display: none; }
-        .header .inner > ul li.menu-show > ul, .header .inner > ul * li.menu-show > ul, .header .inner > ul li.menu-show > ul, .header .inner > ul * li.menu-show > ul {
+        .header .inner > ul li.bl-menu-show > ul, .header .inner > ul ul li.bl-menu-show > ul, .header .inner > ul li.bl-menu-show > ul, .header .inner > ul ol li.bl-menu-show > ul {
           display: block;
           visibility: visible; }
-      .header .inner > ul > li > ul > li > ul, .header .inner > ul * > li > ul > li > ul, .header .inner > ul > li > ol > li > ul, .header .inner > ul * > li > ol > li > ul {
-        display: none; }
       .header .inner > ul > li, .header .inner > ul > li {
         padding: 0rem 1rem; }
       .header .inner > ul > li > ul, .header .inner > ul > li > ol, .header .inner > ul > li > ul, .header .inner > ul > li > ol {
         margin: 0rem -1rem;
         margin-top: 0rem; }
-      .header .inner > ul > li.menu-show > a {
+      .header .inner > ul > li.bl-menu-show > a {
         background: #037698; }
       .header .inner > ul a {
         color: white;
@@ -176,8 +180,10 @@ html, body {
     .content .htmlcode > div, .content .sasscode > div {
       *zoom: 1;
       position: relative;
-      width: auto;
-      height: auto;
+      width: 100%;
+      height: 100%;
+      margin-left: auto;
+      margin-right: auto;
       overflow: scroll;
       background: white;
       font-family: monospace;
@@ -190,20 +196,29 @@ html, body {
       .content .htmlcode > div:after, .content .sasscode > div:after {
         clear: both; }
 
+html {
+  /*! customrule: {"variable_init": {"variable": "tab", "value": "demo", "type": "group", "enabled": true}} */ }
+
 .button.tab-demo {
-  /*! customrule: {"trigger": {"target_expr": ".tab-demo", "trigger_class": "active", "type": "click", "trigger_mode": "on", "priority": 0, "enabled": true}} */
-  /*! customrule: {"trigger": {"target_expr": ".tab-code", "trigger_class": "active", "type": "click", "trigger_mode": "off", "priority": 0, "enabled": true}} */ }
+  /*! customrule: {"trigger": {"key": "tab.demo", "event_type": "click", "value_expression": "true", "priority": 0, "enabled": true}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.demo", "element_class": "active", "enabled": true}} */ }
 
 .button.tab-code {
-  /*! customrule: {"trigger": {"target_expr": ".tab-demo", "trigger_class": "active", "type": "click", "trigger_mode": "off", "priority": 0, "enabled": true}} */
-  /*! customrule: {"trigger": {"target_expr": ".tab-code", "trigger_class": "active", "type": "click", "trigger_mode": "on", "priority": 0, "enabled": true}} */ }
-
-.tab-demo {
-  /*! customrule: {"triggered": {"trigger_class": "active", "enabled": true}} */ }
+  /*! customrule: {"trigger": {"key": "tab.code", "event_type": "click", "value_expression": "true", "priority": 0, "enabled": true}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.code", "element_class": "active", "enabled": true}} */ }
 
 .tab {
   display: none; }
-  .tab.active {
+
+.tab.tab-demo {
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.demo", "element_class": "active", "enabled": true}} */ }
+  .tab.tab-demo.active {
+    display: initial;
+    visibility: visible; }
+
+.tab.tab-code {
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.code", "element_class": "active", "enabled": true}} */ }
+  .tab.tab-code.active {
     display: initial;
     visibility: visible; }
 

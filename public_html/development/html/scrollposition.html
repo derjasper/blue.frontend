@@ -12,54 +12,75 @@
         <link rel="stylesheet" href="../css/scrollposition.css" />
     </head>
     <body>
-        <h1>Scrollposition Demo</h1>
-        <div class="container nostyle">
-            <div class="left nostyle">
-                <div class="inner">
-                    <div class="r1">receiver 1</div>
-                    <div class="r21">receiver 2.1</div>
-                    <div class="r22">receiver 2.2</div>
-                    <div class="r23">receiver 2.3</div>
-                    <div class="r24">receiver 2.4</div>
-                    
-                    <ul class="nostyle">
-                        <li><a href="#test1">Test 1</a></li>
-                        <li><a href="#test2">Test 2</a></li>
-                        <li><a href="#test3">Test 3</a></li>
-                    </ul>
+        <h1>Trigger Scrollposition Demo</h1>
+        
+        <h2>Simple trigger</h2>
+        <div class="simple">
+            <div class="trigger">This element triggers a variable when reaching the top.</div>
+            <br /><br />
+            <div class="listener">This element listens to the variable.</div>
+        </div>
+        
+        <h2>Scroll areas, multiple directions</h2>
+        <div class="scrollarea">
+            <div class="largecontainer">
+                <div class="trigger">
+                    This is the trigger<br />
+                    <span data-listen="visible">visible</span>
+                    <span data-listen="top">top</span>
+                    <span data-listen="right">right</span>
+                    <span data-listen="bottom">bottom</span>
+                    <span data-listen="left">left</span>
                 </div>
             </div>
-            <div class="right">
-                <h2>Simple Test</h2>
-                <div class="placeholder"></div>
-                <div class="s1">sender 1</div>
-                <div class="placeholder"></div>
-                <div class="s1-1">sender 1.1 pointing to _null</div>
-                <div class="placeholder"></div>
-                
-                <h2>Groups</h2>
-                <div class="container test2">
-                    <div class="inner">
-                        <div class="s21">sender 2.1 (group A)</div>
-                        <div class="placeholder"></div>
-                        <div class="s23">sender 2.3 (group A)</div>
-                        <div class="placeholder"></div>
-                    </div>
-                    <div class="inner">
-                        <div class="s22">sender 2.2 (group B)</div>
-                        <div class="s24">sender 2.4 (group B)</div>
-                    </div>
+        </div>
+        
+        <h2>Offsets</h2>
+        <div class="offsets">
+            <div class="largecontainer">
+                <div class="trigger">
+                    This is the trigger (offset: 20px)<br />
+                    <span data-listen="visible">visible</span>
+                    <span data-listen="top">top</span>
+                    <span data-listen="right">right</span>
+                    <span data-listen="bottom">bottom</span>
+                    <span data-listen="left">left</span>
                 </div>
-                
-                <h2>Anchors and links</h2>
-                <a name="test1"></a>
-                <h3>Test 1</h3>
+            </div>
+        </div>
+        
+        <h2>works with scrolling-offset</h2>
+        <div class="scrolling-offset">
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <a name="blub"></a>
+            <div>
+                the trigger link is above this element (with scrolling-offset of 100px)
+            </div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+        </div>
+        
+        <h2>Navigation example (using stacks)</h2>
+        <div class="navigation">
+            <div class="nav nostyle">
+                <ul>
+                    <li><a href="#entry1">Entry 1</a></li>
+                    <li><a href="#entry2">Entry 2</a></li>
+                    <li><a href="#entry3">Entry 3</a></li>
+                </ul>
+            </div>
+            <div class="content nostyle">
+                <a name="entry1">Entry #1</a>
                 <div class="placeholder"></div>
-                <a name="test2"></a>
-                <h3>Test 2</h3>
+                <a name="entry2">Entry #2</a>
                 <div class="placeholder"></div>
-                <a name="test3"></a>
-                <h3>Test 3</h3>
+                <a name="entry3">Entry #3</a>
+                <div class="placeholder"></div>
+                <a name="none"></a>
+                <div class="placeholder"></div>
+                <div class="placeholder"></div>
+                <div class="placeholder"></div>
                 <div class="placeholder"></div>
                 <div class="placeholder"></div>
             </div>

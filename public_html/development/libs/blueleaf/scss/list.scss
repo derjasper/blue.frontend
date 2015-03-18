@@ -77,8 +77,8 @@
 
 @mixin list-level($level,$up:true) {
     @if $up {
-        & #{_list-level-helper($level,"ul")}, & * #{_list-level-helper($level,"ul")},
-        & #{_list-level-helper($level,"ol")}, & * #{_list-level-helper($level,"ol")}{
+        & #{_list-level-helper($level,"ul")}, & ul #{_list-level-helper($level,"ul")},
+        & #{_list-level-helper($level,"ol")}, & ol #{_list-level-helper($level,"ol")}{
             @content;
         }
     }

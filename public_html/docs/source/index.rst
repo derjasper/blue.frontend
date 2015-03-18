@@ -22,6 +22,11 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 
+
+Side note: the documentation is very basic. Some texts are written in very bad
+English, that's because I never write docs before midnight. And I hate writing docs,
+I don't like to invest too much time in it.
+Please file a bug if something cannot be understood, I'll do my best do improve
+the docs whereever you want.

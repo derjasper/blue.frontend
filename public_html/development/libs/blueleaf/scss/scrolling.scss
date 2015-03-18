@@ -1,12 +1,8 @@
-@mixin smoothscrolling($time:1000) {
-    @include customrule(smoothscrolling, (time: $time));
-}
+// TODO demo (mit sticky verwursten)
 
-@mixin scrollareaoffset($offset) {
-    @include customrule(scrollareaoffset, (offset: $offset));
-    
+@mixin scroll-offset($offset) {
     display: block;
     position: relative;
-    top: -$offset;
+    top: -#{$offset}px;
     visibility: hidden;
 }

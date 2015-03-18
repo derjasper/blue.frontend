@@ -1,56 +1,120 @@
 @import "demo.scss";
 
-.left {
-    .inner {
-        @include sticky();
+.simple {
+    @include initvar("scrolled_top");
+    .trigger {
+        @include scrollposition("scrolled_top","top");
+    }
+    .listener {
+        @include bp-listen("scrolled_top") {
+            font-weight:bold;
+        }
+    }
+}
+
+.scrollarea {
+    @include initvar("visible");
+    @include initvar("top");
+    @include initvar("right");
+    @include initvar("bottom");
+    @include initvar("left");
+    
+    @include container((6 6),(3 3));
+    overflow:auto;
+    
+    .largecontainer {
+        @include container((200% 200%),(200% 200%));
+        
+        .trigger {
+            @include container((2 2),(2 2),absolute,center,middle);
+            @include scrollposition("visible","visible",".scrollarea");
+            @include scrollposition("top","top",".scrollarea");
+            @include scrollposition("right","right",".scrollarea");
+            @include scrollposition("bottom","bottom",".scrollarea");
+            @include scrollposition("left","left",".scrollarea");
+            
+            span {
+                @include bp-listen("{attr-data-listen}") {
+                    color:red;
+                }
+            }
+        }
+    }
+}
+
+.offsets {
+    @include initvar("visible");
+    @include initvar("top");
+    @include initvar("right");
+    @include initvar("bottom");
+    @include initvar("left");
+    
+    @include container((6 6),(3 3));
+    overflow:auto;
+    
+    .largecontainer {
+        @include container((200% 200%),(200% 200%));
+        
+        .trigger {
+            @include container((2 2),(2 2),absolute,center,middle);
+            @include scrollposition("visible","visible",".offsets",(top:20,left:20,bottom:20,right:20));
+            @include scrollposition("top","top",".offsets",(top:20));
+            @include scrollposition("right","right",".offsets",(right:20));
+            @include scrollposition("bottom","bottom",".offsets",(bottom:20));
+            @include scrollposition("left","left",".offsets",(left:20));
+            
+            span {
+                @include bp-listen("{attr-data-listen}") {
+                    color:red;
+                }
+            }
+        }
+    }
+}
+
+.scrolling-offset {
+    @include initvar("top");
+    @include initvar("bottom");
+    
+    @include container((6 6),(3 3));
+    overflow:auto;
+    
+    a {
+        @include scrollposition("top","top",".scrolling-offset");
+        @include scrollposition("bottom","bottom",".scrolling-offset");
+        
+        @include scroll-offset(100);
     }
     
-    @include col(3);
-}
-.right {
-    @include col(9);
-}
-.test2 {
-    .inner {
-        @include col(6);
+    @include bp-listen("top") {
+        background-color:red;
+    }
+    @include bp-listen("bottom") {
+        background-color:green;
     }
 }
 
-
-.r1,.r21,.r22,.r23,.r24 {
-    @include bp-scrolled() {
-        font-weight:bold;
+.navigation {
+    @include container();
+    
+    @include initvar("nav","#none","stack");
+    
+    .nav {
+        @include col(3);
+        
+        // TODO sticky
+        
+        a {
+            @include bp-listen("nav.{attr-href}") {
+                font-weight: bold;
+            }
+        }
     }
-}
-
-
-.s1 {
-    @include scrollposition(".r1");
-}
-.s1-1 {
-    @include scrollposition();
-}
-
-
-.s21 {
-    @include scrollposition(".r21",A);
-}
-.s22 {
-    @include scrollposition(".r22",B);
-}
-.s23 {
-    @include scrollposition(".r23",A);
-}
-.s24 {
-    @include scrollposition(".r24",B);
-}
-
-
-a[name] {
-    @include scrollposition("_link",B);
-}
-a[href] {
-    @include bp-scrolled() {
-        font-weight:bold;
+    .content {
+        @include col(9);
+        
+        a {
+            @include scrollposition("nav.\#{attr-name}"); // backslash is needed because of SASS syntax
+        }
     }
 }

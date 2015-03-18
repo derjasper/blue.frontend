@@ -1,9 +1,9 @@
 @import "demo.scss";
 
 .toggle {
-    @include offcanvas-toggle(".offcanvas");
+    @include offcanvas-toggle("offcanvas");
 }
 
 .offcanvas {
-    @include offcanvas();
+    @include offcanvas("offcanvas");
 }

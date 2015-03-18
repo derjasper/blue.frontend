@@ -15,11 +15,11 @@ $screensizes: (
 $predefined:true;
 
 // some constants to predict CSS behaviour (even it's an impossible task...)
-$inline-elements: "
-    b, big, i, small, tt,
-    abbr, acronym, cite, code, dfn, em, kbd, strong, samp, var,
-    a, bdo, br, img, map, object, q, script, span, sub, sup,
-    button, input, label, select, textarea
+$inline-elements: "\
+    b, big, i, small, tt,\
+    abbr, acronym, cite, code, dfn, em, kbd, strong, samp, var,\
+    a, bdo, br, img, map, object, q, script, span, sub, sup,\
+    button, input, label, select, textarea\
 ";
 
 
@@ -57,6 +57,9 @@ body {
 // modules
 @import "helper.scss";
 @import "customrules.scss";
+@import "variables.scss";
+@import "expressionlistener.scss";
+@import "trigger.scss";
 @import "mediaquerys.scss";
 @import "predefinedrules.scss";
 @import "container.scss";
@@ -67,8 +70,7 @@ body {
 @import "visibility.scss";
 @import "utility.scss";
 @import "sticky.scss";
-@import "trigger.scss";
-@import "scrollposition.scss";
+@import "smoothscrolling.scss";
 @import "scrolling.scss";
 @import "reset.scss";
 @import "list.scss";
