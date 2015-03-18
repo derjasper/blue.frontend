@@ -1,12 +1,21 @@
 Welcome to blue leaf's documentation!
 =====================================
 
-Useful links:
+Useful weblinks:
 
-- `homepage <http://blueleaf.bluetreehouse.de/>`_
+- `website <http://blueleaf.bluetreehouse.de/>`_
 - `demo browser <http://blueleaf.bluetreehouse.de/demo>`_
-- `documentation <http://blueleaf.bluetreehouse.de/docs>`_ (same as this doc)
+- `documentation <http://blueleaf.bluetreehouse.de/docs>`_
 - `git access & downloads <http://gitlab.bluetreehouse.de/blueleaf/blueleaf>`_
+
+Demo browser:
+
+This documentation is bundeld with a demo browser. You need to set up a local
+web server to run the demos. (This is because javascript cannot access local
+files. This issue will be resolved in a future release.)
+
+- `demo browser <../demo/index.html>`_ (local)
+
 
 Contents:
 
