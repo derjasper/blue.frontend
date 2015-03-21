@@ -15,4 +15,4 @@ SASS
 
    .. describe:: $offset
 
-      The offset as an CSS length.
+      The offset as an CSS length (any unit).
