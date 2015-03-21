@@ -83,7 +83,7 @@
         @include scrollposition("top","top",".scrolling-offset");
         @include scrollposition("bottom","bottom",".scrolling-offset");
         
-        @include scroll-offset(100);
+        @include scroll-offset(100px);
     }
     
     @include bp-listen("top") {
@@ -102,7 +102,9 @@
     .nav {
         @include col(3);
         
-        // TODO sticky
+        ul {
+            @include sticky();
+        }
         
         a {
             @include bp-listen("nav.{attr-href}") {
