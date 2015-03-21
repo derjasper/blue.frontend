@@ -15,9 +15,9 @@
     }
 }
 
-@mixin sticky-offset($spacing,$sticky_class: "bl-sticked") {
+@mixin sticky-offset($offsets,$sticky_class: "bl-sticked") {
     @include bp-sticked($sticky_class) {
-        margin:$spacing;
+        margin:$offsets;
     }
 }
 
