@@ -282,29 +282,15 @@ var blueleaf = {
         }
     });
     
-    
-    // TODO sticky anpassen an APIs und enable/disable
-/*
     // Sticky
     blueleaf.cutomrules.addRule("sticky", {
-        match: function (sel, options) {
-            $(sel).sticky_enable({
-                parent: options.parent,
-                stick_in: options.stick_in,
-                z_index: options.zindex,
-                stick_directions: options.directions,
-                sticky_class: options.sticked_class,
-                scrollarea_offset: options.scrollarea_offset
-            });
+        enable: function (elm, options) {
+            Plugins(elm).sticky(options.directions, options.scrollarea_sel, options.container_sel, options.sticky_class).enable();
         },
-        unmatch: function (sel, options) {
-            $(sel).sticky_disable();
+        disable: function (elm, options) {
+            Plugins(elm).sticky().disable();
         }
     });
-    
-
-    
-*/
 
     // get JSON data from CSS, and enable media querys
     $(function () {
