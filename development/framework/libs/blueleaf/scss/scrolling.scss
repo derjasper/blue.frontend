@@ -1,8 +1,6 @@
-// TODO demo (mit sticky verwursten)
-
 @mixin scroll-offset($offset) {
     display: block;
     position: relative;
-    top: -#{$offset}px;
+    top: -#{$offset};
     visibility: hidden;
 }
