@@ -1,5 +1,5 @@
 (function ($) { 
-    Plugins.fn.expressionlistener_class = function (element_class,expression) {
+    Plugins.fn.expressionlistener_class = function (element_class,expression) { // TODO buggy?
         var elm = this.elm;
         return {
             enable: function () {
@@ -24,6 +24,8 @@
             disable: function () {
                 var data = $.data(elm,"expressionlistener_class-"+element_class);
                 if (data==undefined) return;
+                $.removeData(elm,"expressionlistener_class-"+element_class); // TODO überall removedata überprüfen!!!
+                
                 Variables.off(elm,data.expression,data.listener);
             }
         }
@@ -47,10 +49,12 @@
             disable: function () {
                 var listener = $.data(elm,"expressionlistener_focus-"+expression);
                 if (listener==undefined) return;
+                $.removeData(elm,"expressionlistener_focus-"+expression);
                 
                 expression = Selectors.generate(expression,elm);
                 
                 Variables.off(elm,expression,listener);
+                
             }
         }
     }
@@ -85,6 +89,7 @@
             disable: function () {
                 var listener = $.data(elm,"expressionlistener_set-"+expression+"-"+key);
                 if (listener==undefined) return;
+                $.removeData(elm,"expressionlistener_set-"+expression+"-"+key);
                                 
                 Variables.off(elm,expression,listener);
             }

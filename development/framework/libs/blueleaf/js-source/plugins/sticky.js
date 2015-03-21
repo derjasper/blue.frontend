@@ -221,6 +221,7 @@
             disable: function () {
                 var detach = $.data(rawElm,"sticky");
                 if (detach==undefined) return;
+                $.removeData(rawElm,"sticky");
                 detach();
             }
         }
