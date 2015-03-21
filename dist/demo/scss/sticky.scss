@@ -1,69 +1,79 @@
 @import "demo.scss";
 
-.s2 {
-    height:20em;
-    div {
-        @include sticky(".s2","t");
+.defaultdemo {
+    @include sticky();
+}
+
+.scrollareademo {
+    @include container(auto, (2 2));
+    overflow:auto;
+    .sticky {
+        @include sticky("_default",".scrollareademo");
     }
 }
 
-.s3 {
-    height:20em;
-    div {
-        @include sticky(".s3","tb");
+.containerdemo {
+    @include container();
+    .sticky {
+        @include sticky("_default","viewport",".containerdemo");
     }
 }
 
-.s4 {
-    height:20em;
-    div {
-        @include sticky(".s4","tb");
-        
+.topbottomdemo {
+    @include container();
+    .sticky {
+        @include sticky((top:true,bottom:true),"viewport",".topbottomdemo");
+    }
+}
+
+.classdemo {
+    @include container();
+    .sticky {
+        @include sticky("_default","viewport",".classdemo","classname"); // classname is bl-sticked by default
+
         span {
-            @include visibility("invisible");
+            @include visible(invisible);
         }
-        
-        @include bp-sticked() {
+        @include bp-sticked("classname") { // classname does not need to be defined until it is left to default
             span {
-                @include visibility("show");
+                @include visible(show);
             }
         }
     }
 }
 
-.s5 {
-    height:20em;
-    div {
-        @include sticky(".s5","t");
-        @include sticky-spacing(5em 0);
+.offsetdemo {
+    @include container();
+    .sticky {
+        @include sticky((top:true, bottom:true),"viewport",".offsetdemo");
+        @include sticky-offset(5rem 0 5rem 0); // we are using margins for specifing offsets to provide flexibility with units
     }
 }
 
-.s1 {
-    @include sticky("body","t","t"); // $scrollarea_offset adds this to the current offset
-    padding:1em;
-}
-
-a[name] {
-    @include scroll-offset(3em); // invisible jumplink offset
-}
-
-.s6 {
-    height:20em;
-    div {
-        @include sticky(".s6","t","t",0);
-        padding:1em;
-        @include bp-sticked {
-            margin-top:3.6em;
-        }
+.jumplinkdemo {
+    @include container();
+    .sticky {
+        @include sticky((top:true),"viewport",".jumplinkdemo");
+        height:3rem;
+    }
+    a[href] {
+        @include smoothscrolling();
+    }
+    a[name] {
+        @include scroll-offset(3rem);
     }
 }
 
-.overflowdemo {
-    @include container(auto,(2,2));
-    overflow:auto;
-    .stick {
-        @include sticky("body","tb","tb",0,".overflowdemo");
+.multipledemo {
+    @include container();
+    .sticky1 {
+        @include sticky((top:true),"viewport",".multipledemo");
+        @include sticky-zindex(9); // default z-index is 5
+    }
+    .sticky2 {
+        z-index:10;
+        @include sticky((top:true),"viewport",".multipledemo");
+        @include sticky-zindex(10);
+        @include sticky-offset(1rem 0 0 0);
     }
 }
-

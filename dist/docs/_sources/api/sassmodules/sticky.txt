@@ -1,77 +1,49 @@
 Sticky
 ======
 
-OUTDATED DOCS: This is a development version. The sticky plugin is currently NOT
-avaiable.
-
-TODO
-
 The sticky mixin allows to create elements which stick at the top or bottom of
-the viewport when they are scrolled to these borders. Also, sticky elements can
-have a parent element they will not leave. That means, that sticky elements will
-stop sticking when the parent element is scrolled out of the viewport (see demo
-browser for details). Also, this module integrates with scrollarea offsets
-(see :doc:`blueleaf`).
+the viewport (or another scroll area) when they are scrolled to these borders.
+Also, sticky elements can have a parent element they will never leave (see demo
+browser for details). 
+
+This module works with :doc:`scrolling`. It uses the :doc:`../jsplugins/sticky`
+JavaScript plugin.
 
 
 SASS
 ----
 
-.. describe:: @mixin sticky($parent:"body",$directions:"tb",$scrollarea_offset:"",$zindex:999,$stick_in:"viewport")
+.. describe:: @mixin sticky($directions:"_default", $scrollarea_sel:"viewport", $container_sel:"_null", $sticky_class: "bl-sticked")
 
    Creates a sticky element.
 
-   .. describe:: $parent
-   
-      Selector for the parent element to stick in.
-
    .. describe:: $directions
-
-      Defines whether the element should stick at the top and/or the bottom of the
-      page. The parameter is a ``string``. If ``t`` is included, the element will
-      stick at the top, if ``b`` is included in the string, the element will stick
-      at the bottom of the viewport.
-
-   .. describe:: $scrollarea_offset
-
-      Same syntax as ``$directions``, but this parameter defines when the
-      scrollarea offset should be updated.
-
-   .. describe:: $zindex
-
-      The elements ``z-index`` when it is sticked.
-      
-   .. describe:: $stick_in
    
-      Selector a parent element in which the element will stick in. This is not the 
-      same as ``parent`` as this is the container which is scrolled. You should
-      use anything else than ``overflow:visible`` to make this to work. Defaults
-      to the window's scroll area.
+      A map containing boolean values for ``top`` and ``bottom`` keys. ``"_default"``
+      equals ``(top: true)``.
 
-.. describe:: @mixin bp-sticked() { @content; }
+   .. describe:: $scrollarea_sel
+
+      Selector for the scroll area (jQuery selector, looks for the first parent 
+      matching the selector).
+
+   .. describe:: $container_sel
+
+      Selector for the parent container (jQuery selector, looks for the first parent 
+      matching the selector).
+      
+   .. describe:: $sticky_class
+   
+      Class to be applied when the element is sticked.
+
+.. describe:: @mixin bp-sticked($sticky_class: "bl-sticked") { @content; }
 
    Pseudo-breakpoint valid when the current element is sticked.
 
-.. describe:: @mixin sticky-spacing($spacing...)
+.. describe:: @mixin sticky-offset($offsets,$sticky_class: "bl-sticked")
 
-   Offset for the element to stick.
+   Offset for the element.
 
-JS
---
+.. describe:: @mixin sticky-zindex($z-index,$sticky_class: "bl-sticked")
 
-.. js:function:: $.sticky_enable(opts)
-
-   Enables the sticky feature.
-
-   :param object opts: Some options.
-
-                       sticky_class: Class to be applied if sticked.
-
-                       parent_selector, z_index, stick_directions, scrollarea_offset: See SASS mixin.
-
-                       The sticky spacing/offset is set via the margin in sticked state
-                       (``.sticked { margin:5; }``).
-
-.. js:function:: $.sticky_disable()
-
-   Disables the sticky feature.
+   Z-index to be applied when sticked.
