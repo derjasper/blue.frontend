@@ -1,17 +1,28 @@
-// TODO sticky scss
+@mixin sticky($directions:"_default", $scrollarea_sel:"viewport", $container_sel:"_null", $sticky_class: "bl-sticked") {
+    @if $directions=="_default" {
+        $directions: (top: true);
+    }
+    @include customrule(sticky, (directions: $directions, scrollarea_sel: $scrollarea_sel, container_sel: $container_sel, sticky_class: $sticky_class));
 
-@mixin sticky($parent:"body",$directions:"tb",$scrollarea_offset:"",$zindex:999,$stick_in:"viewport") {
-    @include customrule(sticky, (stick_in: $stick_in,zindex: $zindex, directions: $directions, parent:$parent, scrollarea_offset:$scrollarea_offset, sticked_class: sticked));
+    @include bp-sticked($sticky_class) {
+        z-index:5;
+    }
 }
 
-@mixin bp-sticked() {
-    &.sticked {
+@mixin bp-sticked($sticky_class: "bl-sticked") {
+    &.#{$sticky_class} {
         @content;
     }
 }
 
-@mixin sticky-spacing($spacing...) {
-    @include bp-sticked() {
+@mixin sticky-offset($spacing,$sticky_class: "bl-sticked") {
+    @include bp-sticked($sticky_class) {
         margin:$spacing;
+    }
+}
+
+@mixin sticky-zindex($z-index,$sticky_class: "bl-sticked") {
+    @include bp-sticked($sticky_class) {
+        z-index:$z-index;
     }
 }
