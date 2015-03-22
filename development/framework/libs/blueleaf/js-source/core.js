@@ -131,35 +131,48 @@ var blueleaf = {
                     }
                     else if (mutations[i].type=="childList") {
                         for (var j=0; j<mutations[i].addedNodes.length; j++) {
-                            var elm = mutations[i].addedNodes.item(j);
-                            for(var mq in that.properties) {
-                                if (that.properties[mq].active==true) {
-                                    for (var sel in that.properties[mq].selectors) {
-                                        if (jQuery(elm).is(sel)) {
-                                            for (var idx=0; idx<that.properties[mq].selectors[sel].length; idx++) {
-                                                that.enableProperty(elm,mq,sel,idx);
+                            
+                            traverseChildElements(mutations[i].addedNodes.item(j),function(elm) {
+                                for(var mq in that.properties) {
+                                    if (that.properties[mq].active==true) {
+                                        for (var sel in that.properties[mq].selectors) {
+                                            if (jQuery(elm).is(sel)) {
+                                                for (var idx=0; idx<that.properties[mq].selectors[sel].length; idx++) {
+                                                    that.enableProperty(elm,mq,sel,idx);
+                                                }
                                             }
                                         }
                                     }
                                 }
-                            }
+                            });
                         }
                         
                         for (var j=0; j<mutations[i].removedNodes.length; j++) {
-                            var elm = mutations[i].removedNodes.item(j);
-                            var enProps = that.enabledProperties.get(elm);
-                            if (enProps!=undefined) {
-                                for (var idx=0; idx<enProps.length; idx++) {
-                                    var prop = enProps[idx].split("~");
-                                    that.disableProperty(elm,prop[0],prop[1],prop[2]);
+                            traverseChildElements(mutations[i].removedNodes.item(j),function(elm) {
+                                var enProps = that.enabledProperties.get(elm);
+                                if (enProps!=undefined) {
+                                    for (var idx=0; idx<enProps.length; idx++) {
+                                        var prop = enProps[idx].split("~");
+                                        that.disableProperty(elm,prop[0],prop[1],prop[2]);
+                                    }
                                 }
-                            }
+                            });
                         }
                     }
                 }
 
             });
             observer.observe(document, { attributes:true,childList:true,subtree:true });
+            
+            // helper function
+            function traverseChildElements(elm,fn) {
+                fn(elm);
+                var children = elm.children;
+                if (children==undefined) return;
+                for (var i=0;i<children.length;i++) {
+                    traverseChildElements(children[i],fn);
+                }
+            }
         }
     }
 

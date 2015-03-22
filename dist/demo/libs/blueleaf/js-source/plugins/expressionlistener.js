@@ -24,7 +24,7 @@
             disable: function () {
                 var data = $.data(elm,"expressionlistener_class-"+element_class);
                 if (data==undefined) return;
-                $.removeData(elm,"expressionlistener_class-"+element_class); // TODO überall removedata überprüfen!!!
+                $.removeData(elm,"expressionlistener_class-"+element_class);
                 
                 Variables.off(elm,data.expression,data.listener);
             }
