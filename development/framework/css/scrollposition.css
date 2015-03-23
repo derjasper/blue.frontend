@@ -74,8 +74,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .simple .trigger {
     /*! customrule: {"trigger_bind_scrollposition": {"key": "scrolled_top", "scroll_status": "top", "scrollarea": "window", "offset": [], "enabled": true}} */ }
   .simple .listener {
-    /*! customrule: {"expressionlistener_class": {"expression": "scrolled_top", "element_class": "ught76aec", "enabled": true}} */ }
-    .simple .listener.ught76aec {
+    /*! customrule: {"expressionlistener_class": {"expression": "scrolled_top", "element_class": "ulpu20tuv", "enabled": true}} */ }
+    .simple .listener.ulpu20tuv {
       font-weight: bold; }
 
 .scrollarea {
@@ -144,8 +144,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .scrollarea .largecontainer .trigger:after {
         clear: both; }
       .scrollarea .largecontainer .trigger span {
-        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "ught76aeh", "enabled": true}} */ }
-        .scrollarea .largecontainer .trigger span.ught76aeh {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "ulpu20tv4", "enabled": true}} */ }
+        .scrollarea .largecontainer .trigger span.ulpu20tv4 {
           color: red; }
 
 .offsets {
@@ -214,8 +214,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .offsets .largecontainer .trigger:after {
         clear: both; }
       .offsets .largecontainer .trigger span {
-        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "ught76aek", "enabled": true}} */ }
-        .offsets .largecontainer .trigger span.ught76aek {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "ulpu20tv6", "enabled": true}} */ }
+        .offsets .largecontainer .trigger span.ulpu20tv6 {
           color: red; }
 
 .scrolling-offset {
@@ -232,8 +232,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
-  /*! customrule: {"expressionlistener_class": {"expression": "top", "element_class": "ught76aem", "enabled": true}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "bottom", "element_class": "ught76aes", "enabled": true}} */ }
+  /*! customrule: {"expressionlistener_class": {"expression": "top", "element_class": "ulpu20tvf", "enabled": true}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "bottom", "element_class": "ulpu20tvn", "enabled": true}} */ }
   .scrolling-offset:before, .scrolling-offset:after {
     content: "";
     display: table; }
@@ -246,9 +246,9 @@ ol:not(.nostyle), ul:not(.nostyle) {
     position: relative;
     top: -100px;
     visibility: hidden; }
-  .scrolling-offset.ught76aem {
+  .scrolling-offset.ulpu20tvf {
     background-color: red; }
-  .scrolling-offset.ught76aes {
+  .scrolling-offset.ulpu20tvn {
     background-color: green; }
 
 .navigation {
@@ -273,8 +273,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .navigation .nav ul.bl-sticked {
         z-index: 5; }
     .navigation .nav a {
-      /*! customrule: {"expressionlistener_class": {"expression": "nav.{attr-href}", "element_class": "ught76aey", "enabled": true}} */ }
-      .navigation .nav a.ught76aey {
+      /*! customrule: {"expressionlistener_class": {"expression": "nav.{attr-href}", "element_class": "ulpu20tvq", "enabled": true}} */ }
+      .navigation .nav a.ulpu20tvq {
         font-weight: bold; }
   .navigation .content {
     float: left;

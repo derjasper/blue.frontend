@@ -76,7 +76,7 @@ Private functions (not for use from outside)
 
    Call all handlers related to the given parameters.
 
-.. js:function:: ElementProperty.getProptery(element, property)
+.. js:function:: ElementProperty.getProperty(element, property)
 
    Get the property of the element.
 

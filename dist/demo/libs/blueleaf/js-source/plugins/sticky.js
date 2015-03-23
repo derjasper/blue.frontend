@@ -201,7 +201,14 @@
                 function detach () {
                     scrollarea.off("scroll", tick);
                     scrollarea.off("touchmove", tick);
-                    $(window).off("resize", recalc);
+                    
+                    if (scrollarea_sel == "viewport") {
+                        $(window).off("resize", recalc);
+                    }
+                    else {
+                        ElementProperty.off(scrollarea,"width",recalc);
+                        ElementProperty.off(scrollarea,"height",recalc);
+                    }
 
                     setElementState(STATE.OFF);
                     destroySpacer();
@@ -212,8 +219,14 @@
 
                 scrollarea.on("touchmove", tick);
                 scrollarea.on("scroll", tick);
-                $(window).on("resize", recalc);
-                // TODO listen to DOM mutations / use Element Property Listener; save less variables in recalc
+                
+                if (scrollarea_sel == "viewport") {
+                    $(window).on("resize", recalc);
+                }
+                else {
+                    ElementProperty.on(scrollarea,"width",recalc);
+                    ElementProperty.on(scrollarea,"height",recalc);
+                }
                 
                 $.data(rawElm,"sticky",detach);
 
