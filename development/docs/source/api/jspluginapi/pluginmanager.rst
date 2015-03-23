@@ -28,6 +28,12 @@ A plugin must make sure that a rule cannot be applied twice. It has to check if
 a rule has already be applied. This has to be decided dependent on the given
 parameters.
 
+Also, when disabling a plugin, the plugin must not assume that the current Element is
+inserted in the DOM tree, it may be removed already. For example, the Selectors
+API cannot be used in the ``disable`` function of the plugin since die Selectors
+API needs to know about the parents. But it is important, that everything the
+``enable`` function does is made undone by the ``disable`` function.
+
 A plugin can be used like this:
 
 .. code-block:: javascript
