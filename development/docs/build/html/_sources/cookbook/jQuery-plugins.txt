@@ -6,9 +6,9 @@ Creating a jQuery-Plugin from the Plugin API is traight forward:
 .. code-block:: javascript
 
     (function($) {
-        $.fn.plugin_name_enable = function(time) {        
+        $.fn.plugin_name_enable = function(args_obj) {        
             _fn = function(elm) {
-                Plugins(elm).plugin_name(param1,param2).enable();
+                Plugins.use(elm,plugin_name,args_obj,true);
             }
 
             for (_i = 0, _len = this.length; _i < _len; _i++) {
@@ -19,9 +19,9 @@ Creating a jQuery-Plugin from the Plugin API is traight forward:
         };
 
 
-        $.fn.plugin_name_disable = function() {
+        $.fn.plugin_name_disable = function(args_obj) {
             _fn = function(elm) {
-                Plugins(elm).plugin_name(param1,param2).disable();
+                Plugins.use(elm,plugin_name,args_obj,false);
             }
 
             for (_i = 0, _len = this.length; _i < _len; _i++) {
@@ -33,3 +33,7 @@ Creating a jQuery-Plugin from the Plugin API is traight forward:
     }(jQuery));
 
 Thats it. Feel free to automate this.
+
+Note that this is a very basic bridge. You need to dis- and enable all the plugins
+if an element is moved in the DOM tree (see :doc:`../api/jspluginapi/pluginmanager`), and disable all plugins 
+whenever an element is destroyed.

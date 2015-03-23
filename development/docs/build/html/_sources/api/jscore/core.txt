@@ -4,6 +4,8 @@ blue leaf JavaScript core
 The core scans all CSS files for custom rules, listens on DOM changes and media
 querys and en-/disables the rules.
 
+The core automatically registers all plugins using the :doc:`../jspluginapi/pluginmanager`.
+
 On how the custom rules magic works, read :doc:`../sassmodules/customrules`.
 
 

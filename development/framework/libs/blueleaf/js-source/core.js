@@ -58,7 +58,7 @@ var blueleaf = {
             this.ruleslist[this.properties[mq].selectors[sel][index].rule].disable(elm, this.properties[mq].selectors[sel][index].options);
             
             this.enabledProperties.put(elm,jQuery.grep(enProps, function(value) {
-                return value != mq+"~"+sel+"~"+index;
+                return value !== mq+"~"+sel+"~"+index;
             }));
         },
         apply: function () { // re-applys custom rules (if you need this, it's a bug)
@@ -179,131 +179,19 @@ var blueleaf = {
 };
 
 (function ($) {
-    // Container
-    blueleaf.cutomrules.addRule("container-aspectratio", {
-        enable: function (elm, options) {
-            Plugins(elm).container_aspectratio(options.adjust, options.factor).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).container_aspectratio().disable();
-        }
-    });
-    
-    // Grid
-    blueleaf.cutomrules.addRule("grid-offset", {
-        enable: function (elm, options) {
-            Plugins(elm).grid_offset(options.width, options.height).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).grid_offset().disable();
-        }
-    });
-    
-    // Resizeable
-    blueleaf.cutomrules.addRule("resizable", {
-        enable: function (elm, options) {
-            Plugins(elm).resizable(options.resize_class, options.click_spacing).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).resizable().disable();
-        }
-    });
-    
-    // Variables
-    blueleaf.cutomrules.addRule("variable_init", {
-        enable: function (elm, options) {
-            Plugins(elm).variable_init(options.variable,options.value,options.type).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).variable_init(options.variable).disable();
-        }
-    });
-    
-    // Expressionlistener
-    blueleaf.cutomrules.addRule("expressionlistener_class", {
-        enable: function (elm, options) {
-            Plugins(elm).expressionlistener_class(options.element_class,options.expression).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).expressionlistener_class(options.element_class).disable();
-        }
-    });
-    
-    blueleaf.cutomrules.addRule("expressionlistener_focus", {
-        enable: function (elm, options) {
-            Plugins(elm).expressionlistener_focus(options.expression).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).expressionlistener_focus(options.expression).disable();
-        }
-    });
-    
-    blueleaf.cutomrules.addRule("expressionlistener_set", {
-        enable: function (elm, options) {
-            Plugins(elm).expressionlistener_set(options.expression,options.key,options.value_expression).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).expressionlistener_set(options.expression,options.key).disable();
-        }
-    });
-    
-    // Trigger
-    blueleaf.cutomrules.addRule("trigger", {
-        enable: function (elm, options) {
-            Plugins(elm).trigger(options.key,options.event_type,options.value_expression,options.priority).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).trigger(options.key,options.event_type).disable();
-        }
-    });
-    
-    blueleaf.cutomrules.addRule("trigger_bind", {
-        enable: function (elm, options) {
-            Plugins(elm).trigger_bind(options.key,options.status_type).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).trigger_bind(options.key,options.status_type).disable();
-        }
-    });
-    
-    blueleaf.cutomrules.addRule("trigger_bind_scrollposition", {
-        enable: function (elm, options) {
-            Plugins(elm).trigger_bind_scrollposition(options.key,options.scroll_status,options.scrollarea,options.offset).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).trigger_bind_scrollposition(options.key).disable();
-        }
-    });
-    
-    // Smoothscrolling
-    blueleaf.cutomrules.addRule("smoothscrolling", {
-        enable: function (elm, options) {
-            Plugins(elm).smoothscrolling(options.time).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).smoothscrolling().disable();
-        }
-    });
-    
-    // Stickfooter
-    blueleaf.cutomrules.addRule("stickyfooter", {
-        enable: function (elm, options) {
-            Plugins(elm).stickyfooter(options.parent).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).stickyfooter(options.parent).disable();
-        }
-    });
-    
-    // Sticky
-    blueleaf.cutomrules.addRule("sticky", {
-        enable: function (elm, options) {
-            Plugins(elm).sticky(options.directions, options.scrollarea_sel, options.container_sel, options.sticky_class).enable();
-        },
-        disable: function (elm, options) {
-            Plugins(elm).sticky().disable();
-        }
-    });
+    // add plugins
+    for (var key in Plugins.fn) {
+        (function(rule) {
+            blueleaf.cutomrules.addRule(rule, {
+                enable: function (elm, options) {
+                    Plugins.use(elm,rule,options,true);
+                },
+                disable: function (elm, options) {
+                    Plugins.use(elm,rule,options,false);
+                }
+            });
+        })(key);
+    }
 
     // get JSON data from CSS, and enable media querys
     $(function () {

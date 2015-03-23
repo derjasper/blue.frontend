@@ -212,7 +212,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     position: relative;
     height: 25%; }
   .row-offset .o {
-    /*! customrule: {"grid-offset": {"width": "100%", "height": "25%", "enabled": true}} */ }
+    /*! customrule: {"grid_offset": {"width": "100%", "height": "25%", "enabled": true}} */ }
 
 .row-pushpull {
   *zoom: 1;

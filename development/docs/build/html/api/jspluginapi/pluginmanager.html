@@ -55,42 +55,66 @@
 <h1>Plugin Manager<a class="headerlink" href="#plugin-manager" title="Permalink to this headline">¶</a></h1>
 <p>The plugin manager which hosts all plugins.</p>
 <p>An plugin should be created like this:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">Plugins</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">param1</span><span class="p">,</span><span class="nx">param2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">elm</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">elm</span><span class="p">;</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">Plugins</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">elm</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// the function is called in the context of the current DOM Element</span>
+
+    <span class="c1">// do preprocessing of parameters here (determine DOM Elements, calculate values, define helper functions)</span>
+
     <span class="k">return</span> <span class="p">{</span>
         <span class="nx">enable</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
+            <span class="c1">// enable the plugin</span>
         <span class="p">},</span>
         <span class="nx">disable</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// ...</span>
+            <span class="c1">// undo everything the enable function does</span>
         <span class="p">}</span>
     <span class="p">}</span>
+    <span class="c1">// return null if the args are invalid</span>
 <span class="p">}</span>
+
+<span class="nx">Plugins</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name</span><span class="p">.</span><span class="nx">args</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">// default arguments</span>
+    <span class="nx">required_param</span><span class="o">:</span> <span class="nx">Plugins</span><span class="p">.</span><span class="nx">REQUIRED</span><span class="p">,</span> <span class="c1">// required param</span>
+    <span class="nx">param2</span><span class="o">:</span> <span class="nx">value</span><span class="p">,</span> <span class="c1">// default value</span>
+    <span class="nx">param3</span><span class="o">:</span> <span class="nx">value</span>
+<span class="p">};</span>
+<span class="nx">Plugins</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name</span><span class="p">.</span><span class="nx">key</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;required_param&quot;</span><span class="p">,</span><span class="s2">&quot;param1&quot;</span><span class="p">];</span> <span class="c1">// list of arguments to identify an instance</span>
 </pre></div>
 </div>
 <p>A plugin is a function with parameters and returns an object with an enable and
-disable function. Use jQuery.data to store element related stuff, because the
-object is not stored all the time, the plugin function is called every time it is
-needed. <tt class="docutils literal"><span class="pre">this.elm</span></tt> is the current context and contains a DOM Element.</p>
-<p>A plugin must make sure that a rule cannot be applied twice. It has to check if
-a rule has already be applied. This has to be decided dependent on the given
-parameters.</p>
+disable function. An argument list and a key definition as seen in the example is
+required, too.</p>
+<p>The plugin manager makes sure that the plugin instance (identified by the key) is
+not applied twice to a DOM Element. The returned object is created when a plugin
+is enabled an an Element end will be destroyed after it has been disabled.</p>
+<p>The disable function must not assume that the current DOM Element is inserted in
+the DOM tree.</p>
+<p>Whenever a DOM Element is moved in the DOM tree, the library using the Plugin API
+has to disable and re-enable the plugin; so the plugins and the Plugin Manager
+do not care about this.</p>
+<p>The args parameter of the factory function is used one time only. Default values
+are automatically added if keys are undefined. The Plugin Manager throws an
+error if required parameters are not set. Each used argument must be defined
+in the arguments list.</p>
 <p>A plugin can be used like this:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">Plugins</span><span class="p">(</span><span class="nx">elm</span><span class="p">).</span><span class="nx">plugin_name</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span><span class="nx">param2</span><span class="p">).</span><span class="nx">enable</span><span class="p">();</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">Plugins</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">elm</span><span class="p">,</span><span class="nx">plugin_name</span><span class="p">,</span><span class="nx">args_obj</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// enable</span>
+<span class="nx">Plugins</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">elm</span><span class="p">,</span><span class="nx">plugin_name</span><span class="p">,</span><span class="nx">args_obj</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// disable</span>
 </pre></div>
 </div>
 <div class="section" id="javascript">
 <h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="Plugins">
-<tt class="descname">Plugins</tt><big>(</big><em>elm</em><big>)</big><a class="headerlink" href="#Plugins" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns an object with the elements context for use in plugin functions.</p>
+<tt class="descname">Plugins</tt><big>(</big><em>elm</em>, <em>plugin</em>, <em>args</em>, <em>setEnabled</em><big>)</big><a class="headerlink" href="#Plugins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the <tt class="docutils literal"><span class="pre">plugin</span></tt> with the given <tt class="docutils literal"><span class="pre">args</span></tt> for <tt class="docutils literal"><span class="pre">elm</span></tt> enabled or disabled
+depending on <tt class="docutils literal"><span class="pre">setEnabled</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
 <li><strong>elm</strong> (<em>Element</em>) &#8211; A DOM Element.</li>
+<li><strong>plugin</strong> (<em>string</em>) &#8211; Plugin name.</li>
+<li><strong>args</strong> (<em>object</em>) &#8211; Associative array of arguments.</li>
+<li><strong>setEnabled</strong> (<em>boolean</em>) &#8211; <tt class="docutils literal"><span class="pre">treu</span></tt> for enabled, <tt class="docutils literal"><span class="pre">false</span></tt> for disabled.</li>
 </ul>
 </td>
 </tr>
@@ -101,7 +125,13 @@ parameters.</p>
 <dl class="data">
 <dt id="Plugins.fn">
 <tt class="descclassname">Plugins.</tt><tt class="descname">fn</tt><a class="headerlink" href="#Plugins.fn" title="Permalink to this definition">¶</a></dt>
-<dd><p>An object containing all plugin functions.</p>
+<dd><p>An object containing all plugins.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="Plugins.REQUIRED">
+<tt class="descclassname">Plugins.</tt><tt class="descname">REQUIRED</tt><a class="headerlink" href="#Plugins.REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constant for marking an argument as required.</p>
 </dd></dl>
 
 </div>
