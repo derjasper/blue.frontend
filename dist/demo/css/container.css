@@ -501,7 +501,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
 .aspectratio-width {
   *zoom: 1;
   position: relative;
-  /*! customrule: {"container-aspectratio": {"adjust": "width", "factor": 3.5, "enabled": true}} */
+  /*! customrule: {"container_aspectratio": {"adjust": "width", "factor": 3.5, "enabled": true}} */
   height: 15vh;
   min-height: 15vh;
   max-height: 15vh;
@@ -519,7 +519,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   width: 10vw;
   min-width: 10vw;
   max-width: 10vw;
-  /*! customrule: {"container-aspectratio": {"adjust": "height", "factor": 2, "enabled": true}} */
+  /*! customrule: {"container_aspectratio": {"adjust": "height", "factor": 2, "enabled": true}} */
   margin-left: auto;
   margin-right: auto; }
   .aspectratio-height:before, .aspectratio-height:after {

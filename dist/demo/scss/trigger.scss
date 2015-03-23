@@ -141,7 +141,7 @@
 .offcanvasdemo {
     // if no variable is initialized, a (simple) global variable will be used
     a {        
-        @include trigger("offcanvas");
+        @include trigger("offcanvas",click,"!offcanvas");
     }
     
     div {

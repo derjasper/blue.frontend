@@ -25,7 +25,7 @@
         
         // aspect ratio
         @else if (length($val)==2 and nth($val,2)=="ar") {
-            @include customrule(container-aspectratio, (adjust:$mode,factor:nth($val,1)));
+            @include customrule(container_aspectratio, (adjust:$mode,factor:nth($val,1)));
         }
         
         // min/max width

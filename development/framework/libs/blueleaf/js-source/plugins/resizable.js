@@ -39,15 +39,14 @@
         $(document).off("mousemove",mousemove);
     }
     
-    Plugins.fn.resizable = function (resize_class, click_spacing) {
-        var elm = $(this.elm);
+    Plugins.fn.resizable = function (args) {
+        var elm = $(this);
+        
         return {
             enable: function () {
-                if (elm.data("resizable-enabled")) return;
-                elm.data("resizable-enabled",true);
 
-                elm.data("resizable-clickspacing",click_spacing);
-                elm.data("resizable-class", resize_class);
+                elm.data("resizable-clickspacing",args.click_spacing);
+                elm.data("resizable-class",args.resize_class);
                 elm.data("resizable-moveX",-1);
                 elm.data("resizable-moveY",-1);
 
@@ -55,9 +54,6 @@
                 elm.on("mouseup",mouseup);
             },
             disable: function () {
-                if (!elm.data("resizable-enabled")) return;
-                elm.removeData("resizable-enabled");
-
                 elm.off("mousedown",mousedown);
                 elm.off("mouseup",mouseup);
 
@@ -69,4 +65,10 @@
             }
         }
     }
+    
+    Plugins.fn.resizable.args = {
+        resize_class: Plugins.REQUIRED,
+        click_spacing:  Plugins.REQUIRED
+    };
+    Plugins.fn.resizable.key = [];
 }(jQuery));

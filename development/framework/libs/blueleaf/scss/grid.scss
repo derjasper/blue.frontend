@@ -24,7 +24,7 @@
     height: 100%/$rows*$size;
 }
 @mixin row-offset($x) {
-    @include customrule(grid-offset, (width:100%,height:100%/$rows*$x));
+    @include customrule(grid_offset, (width:100%,height:100%/$rows*$x));
 }
 @mixin row-push($x) {
     top:100%/$columns*$x;

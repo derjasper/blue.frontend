@@ -59,14 +59,57 @@ jQuery.fn.uniqueId = function () {
 };
 
 // Plugins
-var Plugins = function (elm) {
-    return new Plugins.init(elm);
+var Plugins = {
+    REQUIRED: "_required_argument",
+    fn: {},
+    use: function(elm,plugin,args,setEnabled) {
+        var instances = jQuery.data(elm,"data-instances");
+        if (instances==undefined) instances = {};
+        jQuery.data(elm,"data-instances",instances);
+        
+        var pluginObj = Plugins.fn[plugin];
+        if (pluginObj==undefined)
+            throw "Plugin API: Plugin "+plugin+" not found.";
+        
+        // set defaults
+        var pArg = {};
+        for (var cArg in pluginObj.args) {
+            if (args[cArg] == undefined) {
+                var cArgVal = pluginObj.args[cArg];
+                if (cArgVal==Plugins.REQUIRED) {
+                    throw "Plugin API: Plugin "+plugin+" could not be instanciated because parameter "+cArg+" was invalid";
+                }
+                else {
+                    pArg[cArg] = cArgVal;
+                }
+            }
+            else {
+                pArg[cArg] = args[cArg];
+            }
+        }
+        
+        // generate key
+        var key = plugin;
+        for (var i=0;i<pluginObj.key.length;i++)
+            key += "~" + pArg[pluginObj.key[i]];
+        
+        // check if instance already exists
+        var instance = instances[key];
+        
+        if (setEnabled==false && instance!=undefined) { // disable
+            instance.disable();
+            delete instances[key];
+        }
+        else if (setEnabled==true && instance==undefined) { // enable
+            instance = pluginObj.bind(elm)(pArg);
+            
+            if (instance != null) {
+                instances[key]=instance;
+                instance.enable();
+            }
+        }
+    }
 };
-Plugins.fn = {};
-Plugins.init = function (elm) {
-    this.elm = elm;
-}
-Plugins.init.prototype = Plugins.fn;
 
 
 // Element Property Change Listener
