@@ -105,29 +105,30 @@ var blueleaf = {
             var observer = new MutationObserver(function(mutations) {
                 for (var i = 0; i < mutations.length; i++) {
                     if (mutations[i].type=="attributes") {
-                        var elm = mutations[i].target;
-                        var active = [];
-                        for(var mq in that.properties) {
-                            if (that.properties[mq].active==true) {
-                                for (var sel in that.properties[mq].selectors) {
-                                    if (jQuery(elm).is(sel)) {
-                                        for (var idx=0; idx<that.properties[mq].selectors[sel].length; idx++) {
-                                            that.enableProperty(elm,mq,sel,idx);
-                                            active.push(mq+"~"+sel+"~"+idx);
+                        traverseChildElements(mutations[i].target, function(elm) {
+                            var active = [];
+                            for(var mq in that.properties) {
+                                if (that.properties[mq].active==true) {
+                                    for (var sel in that.properties[mq].selectors) {
+                                        if (jQuery(elm).is(sel)) {
+                                            for (var idx=0; idx<that.properties[mq].selectors[sel].length; idx++) {
+                                                that.enableProperty(elm,mq,sel,idx);
+                                                active.push(mq+"~"+sel+"~"+idx);
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
-                        var enProps = that.enabledProperties.get(elm);
-                        if (enProps!=undefined) {
-                            for (var j=0;j<enProps.length;j++) {
-                                if (jQuery.inArray(enProps[j], active) == -1) {
-                                    var prop = enProps[j].split("~");
-                                    that.disableProperty(elm,prop[0],prop[1],prop[2]);
+                            var enProps = that.enabledProperties.get(elm);
+                            if (enProps!=undefined) {
+                                for (var j=0;j<enProps.length;j++) {
+                                    if (jQuery.inArray(enProps[j], active) == -1) {
+                                        var prop = enProps[j].split("~");
+                                        that.disableProperty(elm,prop[0],prop[1],prop[2]);
+                                    }
                                 }
                             }
-                        }
+                        });
                     }
                     else if (mutations[i].type=="childList") {
                         for (var j=0; j<mutations[i].addedNodes.length; j++) {
