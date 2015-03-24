@@ -74,8 +74,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .simple .trigger {
     /*! customrule: {"trigger_bind_scrollposition": {"key": "scrolled_top", "scroll_status": "top", "scrollarea": "window", "offset": [], "enabled": true}} */ }
   .simple .listener {
-    /*! customrule: {"expressionlistener_class": {"expression": "scrolled_top", "element_class": "upkdvgwr7", "enabled": true}} */ }
-    .simple .listener.upkdvgwr7 {
+    /*! customrule: {"expressionlistener_class": {"expression": "scrolled_top", "element_class": "uaix6tbti", "enabled": true}} */ }
+    .simple .listener.uaix6tbti {
       font-weight: bold; }
 
 .scrollarea {
@@ -144,8 +144,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .scrollarea .largecontainer .trigger:after {
         clear: both; }
       .scrollarea .largecontainer .trigger span {
-        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "upkdvgwr8", "enabled": true}} */ }
-        .scrollarea .largecontainer .trigger span.upkdvgwr8 {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "uaix6tbtl", "enabled": true}} */ }
+        .scrollarea .largecontainer .trigger span.uaix6tbtl {
           color: red; }
 
 .offsets {
@@ -214,8 +214,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .offsets .largecontainer .trigger:after {
         clear: both; }
       .offsets .largecontainer .trigger span {
-        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "upkdvgwrh", "enabled": true}} */ }
-        .offsets .largecontainer .trigger span.upkdvgwrh {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "uaix6tbtu", "enabled": true}} */ }
+        .offsets .largecontainer .trigger span.uaix6tbtu {
           color: red; }
 
 .scrolling-offset {
@@ -232,8 +232,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
-  /*! customrule: {"expressionlistener_class": {"expression": "top", "element_class": "upkdvgwrr", "enabled": true}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "bottom", "element_class": "upkdvgwry", "enabled": true}} */ }
+  /*! customrule: {"expressionlistener_class": {"expression": "top", "element_class": "uaix6tbtz", "enabled": true}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "bottom", "element_class": "uaix6tbu2", "enabled": true}} */ }
   .scrolling-offset:before, .scrolling-offset:after {
     content: "";
     display: table; }
@@ -246,9 +246,9 @@ ol:not(.nostyle), ul:not(.nostyle) {
     position: relative;
     top: -100px;
     visibility: hidden; }
-  .scrolling-offset.upkdvgwrr {
+  .scrolling-offset.uaix6tbtz {
     background-color: red; }
-  .scrolling-offset.upkdvgwry {
+  .scrolling-offset.uaix6tbu2 {
     background-color: green; }
 
 .navigation {
@@ -273,8 +273,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .navigation .nav ul.bl-sticked {
         z-index: 5; }
     .navigation .nav a {
-      /*! customrule: {"expressionlistener_class": {"expression": "nav.{attr-href}", "element_class": "upkdvgws0", "enabled": true}} */ }
-      .navigation .nav a.upkdvgws0 {
+      /*! customrule: {"expressionlistener_class": {"expression": "nav.{attr-href}", "element_class": "uaix6tbuc", "enabled": true}} */ }
+      .navigation .nav a.uaix6tbuc {
         font-weight: bold; }
   .navigation .content {
     float: left;
