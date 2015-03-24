@@ -83,7 +83,7 @@
         value_expression: "true",
         priority: 0
     };
-    Plugins.fn.trigger.key = ["key","event_type"];
+    Plugins.fn.trigger.key = ["key","event_type","value_expression","priority"];
     
     
     Plugins.fn.trigger_bind = function (args) {
