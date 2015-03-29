@@ -41,6 +41,71 @@ Map.prototype.each = function (callback) {
     }
 }
 
+// HashMap
+HashMap = function (xt) {
+    this._dict = {};
+    if (xt)
+        this._keys = {};
+}
+HashMap.prototype._shared = {id: 1};
+HashMap.prototype.put = function(key, value) {
+    if (key instanceof Element) {
+        var hashid = jQuery.data(key,"_hashid");
+        if (hashid==undefined) {
+            hashid = this._shared.id++;
+            jQuery.data(key,"_hashid",hashid);
+        }
+        this._dict[hashid] = value;
+        if (this._keys!=undefined) this._keys[hashid] = key;
+    }
+    else if (typeof key == "object") {
+        if (key._hashid == undefined) {
+            key._hashid = this._shared.id++;
+        }
+        this._dict[key._hashid] = value;
+        if (this._keys!=undefined) this._keys[key._hashid] = key;
+    }
+    else {
+        this._dict[key] = value;
+    }
+    return this;
+}
+HashMap.prototype.get = function(key) {
+    if (key instanceof Element) {
+        var hashid = jQuery.data(key,"_hashid");
+        return hashid == undefined ? undefined : this._dict[hashid];
+    }
+    else if (typeof key == "object") {
+        return key._hashid == undefined ? undefined : this._dict[key._hashid];
+    }
+    else {
+        return this._dict[key];
+    }
+}
+HashMap.prototype.remove = function(key) {
+    if (key instanceof Element) {
+        var hashid = jQuery.data(key,"_hashid");
+        delete this._dict[hashid];
+        if (this._keys!=undefined) delete this._keys[hashid];
+    }
+    else if (typeof key == "object") {
+        delete this._dict[key._hashid];
+        if (this._keys!=undefined) delete this._keys[key._hashid];
+    }
+    else {
+        delete this._dict[key];
+    }
+}
+HashMap.prototype.each = function (callback) {
+    if (this._keys==undefined) return;
+    var keys = this._keys;
+    var dict = this._dict;
+    for (var hashid in keys) {
+        callback(keys[hashid], dict[hashid]);
+    }
+}
+
+
 
 // helper functions
 function getFirstKeyInArray(data) {
@@ -58,26 +123,27 @@ jQuery.fn.uniqueId = function () {
     });
 };
 
-// Plugins // TODO buggy
+// Plugins
 var Plugins = {
     REQUIRED: "_required_argument",
     fn: {},
-    use: function(elm,plugin,args,setEnabled) {
-        var instances = jQuery.data(elm,"data-instances");
-        if (instances==undefined) instances = {};
-        jQuery.data(elm,"data-instances",instances);
-        
+    use: function (elm, plugin, args, setEnabled) {
+        var instances = jQuery.data(elm, "data-instances");
+        if (instances == undefined)
+            instances = {};
+        jQuery.data(elm, "data-instances", instances);
+
         var pluginObj = Plugins.fn[plugin];
-        if (pluginObj==undefined)
-            throw "Plugin API: Plugin "+plugin+" not found.";
-        
+        if (pluginObj == undefined)
+            throw "Plugin API: Plugin " + plugin + " not found.";
+
         // set defaults
         var pArg = {};
         for (var cArg in pluginObj.args) {
             if (args[cArg] == undefined) {
                 var cArgVal = pluginObj.args[cArg];
-                if (cArgVal==Plugins.REQUIRED) {
-                    throw "Plugin API: Plugin "+plugin+" could not be instanciated because parameter "+cArg+" was invalid";
+                if (cArgVal == Plugins.REQUIRED) {
+                    throw "Plugin API: Plugin " + plugin + " could not be instanciated because parameter " + cArg + " was invalid";
                 }
                 else {
                     pArg[cArg] = cArgVal;
@@ -87,24 +153,24 @@ var Plugins = {
                 pArg[cArg] = args[cArg];
             }
         }
-        
+
         // generate key
         var key = plugin;
-        for (var i=0;i<pluginObj.key.length;i++)
+        for (var i = 0; i < pluginObj.key.length; i++)
             key += "~" + pArg[pluginObj.key[i]];
-        
+
         // check if instance already exists
         var instance = instances[key];
-        
-        if (setEnabled==false && instance!=undefined) { // disable
+
+        if (setEnabled == false && instance != undefined) { // disable
             instance.disable();
             delete instances[key];
         }
-        else if (setEnabled==true && instance==undefined) { // enable
+        else if (setEnabled == true && instance == undefined) { // enable
             instance = pluginObj.bind(elm)(pArg);
-            
+
             if (instance != null) {
-                instances[key]=instance;
+                instances[key] = instance;
                 instance.enable();
             }
         }
@@ -114,26 +180,26 @@ var Plugins = {
 
 // Element Property Change Listener
 var ElementProperty = {
-    properties: new Map(), // TODO jquery data verwenden und parallel liste mit DOMElements (?) [ggf direkt in map so machen???]
+    properties: new HashMap(true),
     on: function (element, property, handler) {
         // element: DOM element
         // property: css.property, height, width, outerHeight, offsetTop, ...
         // handler: function(newValue,oldValue)
-        var props=this.properties.get(element);
-        
+        var props = this.properties.get(element);
+
         if (props == undefined) {
-            props={};
-            this.properties.put(element,props);
+            props = {};
+            this.properties.put(element, props);
         }
-        
+
         if (props[property] == undefined)
             props[property] = {value: this.getProperty(element, property), listener: []};
-                
+
         props[property].listener.push(handler);
     },
     off: function (element, property, handler) {
-        var props=this.properties.get(element);
-        
+        var props = this.properties.get(element);
+
         if (props == undefined)
             return;
         if (props[property] == undefined)
@@ -153,7 +219,7 @@ var ElementProperty = {
             delete this.properties.remove(element);
     },
     fire: function (element, property, newVal, oldVal) {
-        var props=this.properties.get(element);
+        var props = this.properties.get(element);
         if (props == undefined)
             return;
         if (props[property] == undefined)
@@ -215,15 +281,15 @@ var ElementProperty = {
     },
     check: function (element, property) { // TOOD performance
         if (element == undefined) {
-            var that=this;
-            
-            this.properties.each(function(el) {
+            var that = this;
+
+            this.properties.each(function (el) {
                 that.check(el, property);
             });
         }
         else {
-            var props=this.properties.get(element);
-            
+            var props = this.properties.get(element);
+
             if (property == undefined && props != undefined) {
                 var propList = [];
                 for (var prop in props)
@@ -234,7 +300,7 @@ var ElementProperty = {
                 for (var i = 0; i < property.length; i++) {
                     if (props[property[i]] != undefined) {
                         var current = this.getProperty(element, property[i]);
-                        
+
                         if (props[property[i]].value != current) {
                             this.fire(element, property[i], current, props[property[i]].value);
                             props[property[i]].value = current;
@@ -249,7 +315,7 @@ var ElementProperty = {
             var observer = new MutationObserver(function (mutations) {
                 for (var i = 0; i < mutations.length; i++) {
                     var current = mutations[i].target;
-                    
+
                     while (current != document && current != null) {
                         obj.check(current);
                         current = current.parentNode;
@@ -272,31 +338,31 @@ jQuery(function () {
 
 // Advanced Selectors
 var Selectors = {
-    generate: function(selector, context) {
+    generate: function (selector, context) {
         var elm = $(context);
         elm.uniqueId();
-        
+
         // {this}
-        var selector=selector.replace(/{this}/g, "#"+elm.attr('id'));
+        var selector = selector.replace(/{this}/g, "#" + elm.attr('id'));
 
         // {parent-x}
         var parent_result;
-        while((parent_result = /{parent-([0-9]+)}/g.exec(selector))!=null) {
-            var tmp_obj=$("#"+elm.attr('id'));
-            for (var i=0; i<parent_result[1]; i++) {
-                tmp_obj=tmp_obj.parent();
+        while ((parent_result = /{parent-([0-9]+)}/g.exec(selector)) != null) {
+            var tmp_obj = $("#" + elm.attr('id'));
+            for (var i = 0; i < parent_result[1]; i++) {
+                tmp_obj = tmp_obj.parent();
             }
             tmp_obj.uniqueId();
 
-            var selector=selector.replace(new RegExp("{parent-"+parent_result[1]+"}"), "#"+tmp_obj.attr('id'));          
+            var selector = selector.replace(new RegExp("{parent-" + parent_result[1] + "}"), "#" + tmp_obj.attr('id'));
         }
 
         // {attr-x}
         var attr_result;
-        while((attr_result = /{attr-([0-9a-zA-Z_\-]+)}/g.exec(selector))!=null) {
-            var selector=selector.replace(new RegExp("{attr-"+attr_result[1]+"}"), elm.attr(attr_result[1]));          
+        while ((attr_result = /{attr-([0-9a-zA-Z_\-]+)}/g.exec(selector)) != null) {
+            var selector = selector.replace(new RegExp("{attr-" + attr_result[1] + "}"), elm.attr(attr_result[1]));
         }
-        
+
         return selector;
     }
 };
@@ -304,232 +370,233 @@ var Selectors = {
 
 // Variables API
 var Variables = {
-    addVariable: function(elm,variable,value,type) { // type: simple, group, stack
-        var vars = jQuery.data(elm,"variables");
-        if (vars==null) {
+    addVariable: function (elm, variable, value, type) { // type: simple, group, stack
+        var vars = jQuery.data(elm, "variables");
+        if (vars == null) {
             vars = {};
-            jQuery.data(elm,"variables",vars);
+            jQuery.data(elm, "variables", vars);
         }
-        
-        if (type=="simple") {
-            vars[variable]={initial: value, value: value, type: type};
+
+        if (type == "simple") {
+            vars[variable] = {initial: value, value: value, type: type};
         }
-        else if (type=="group") {
-            vars[variable]={initial: value, value: value, type: type};
+        else if (type == "group") {
+            vars[variable] = {initial: value, value: value, type: type};
         }
         else {
-            vars[variable]={initial: value, value: [value], type: type};
+            vars[variable] = {initial: value, value: [value], type: type};
         }
-        
-        this.checkfire(elm,variable);
+
+        this.checkfire(elm, variable);
     },
-    removeVariable: function(elm,variable) {
-        var vars = jQuery.data(elm,"variables");
-        if (vars==null) {
+    removeVariable: function (elm, variable) {
+        var vars = jQuery.data(elm, "variables");
+        if (vars == null) {
             return;
         }
         delete vars[variable];
-        
-        this.checkfire(elm,variable);
+
+        this.checkfire(elm, variable);
     },
-    getVariable: function(elm,variable) { // get a directly attached variable
-        var vars = jQuery.data(elm,"variables");
-        
-        if (vars==null) 
+    getVariable: function (elm, variable) { // get a directly attached variable
+        var vars = jQuery.data(elm, "variables");
+
+        if (vars == null)
             return undefined;
-        
+
         return vars[variable];
     },
-    setVariable: function(elm,key,value) { // set a directly attached variable
+    setVariable: function (elm, key, value) { // set a directly attached variable
         var k = key.split(".");
-        
-        var variable = this.getVariable(elm,k[0]);
-        
-        if (variable==undefined) {
-            if (elm==document.documentElement) {
-                this.addVariable(elm,key,value,"simple");
-                variable = this.getVariable(elm,key);
+
+        var variable = this.getVariable(elm, k[0]);
+
+        if (variable == undefined) {
+            if (elm == document.documentElement) {
+                this.addVariable(elm, key, value, "simple");
+                variable = this.getVariable(elm, key);
             }
             else {
                 return false;
             }
         }
-        
-        this.setVal(variable,k[1],value);
-        
-        this.checkfire(elm,k[0]);
-        
+
+        this.setVal(variable, k[1], value);
+
+        this.checkfire(elm, k[0]);
+
         return true;
     },
     getVal: function (variable, sub) { // process a variables value
-        if (variable.type=="simple") {
+        if (variable.type == "simple") {
             return variable.value;
         }
-        else if (variable.type=="group") {
-            return variable.value==sub;
+        else if (variable.type == "group") {
+            return variable.value == sub;
         }
         else {
-            return variable.value[variable.value.length-1]==sub;
+            return variable.value[variable.value.length - 1] == sub;
         }
     },
     setVal: function (variable, sub, value) { // process the input to a variable value
-        if (variable.type=="simple") {
-            variable.value=value;
+        if (variable.type == "simple") {
+            variable.value = value;
         }
-        else if (variable.type=="group") {
+        else if (variable.type == "group") {
             if (value) {
-                variable.value=sub;
+                variable.value = sub;
             }
             else {
-                variable.value=variable.initial;
+                variable.value = variable.initial;
             }
         }
         else {
             if (value) {
-                if (variable.value[variable.value.length-1]!=sub)
+                if (variable.value[variable.value.length - 1] != sub)
                     variable.value.push(sub);
             }
             else {
-                variable.value=jQuery.grep(variable.value, function(value) {
+                variable.value = jQuery.grep(variable.value, function (value) {
                     return value != sub;
                 });
             }
         }
     },
-    get: function(context,key) { // get a variable in the current context
+    get: function (context, key) { // get a variable in the current context
         var current = context;
         var k = key.split(".");
-        
-        while (current!=document) {
+
+        while (current != document) {
             var val;
-            if ((val=this.getVariable(current,k[0]))!=undefined) 
-                return this.getVal(val,k[1]);
-            
+            if ((val = this.getVariable(current, k[0])) != undefined)
+                return this.getVal(val, k[1]);
+
             current = current.parentNode;
         }
         return false;
     },
-    _expr_get_var_paths: function(expression) {
-        var vars = expression.replace(/(&&|\|\||!|\(|\))/g," ").split(" ");
+    _expr_get_var_paths: function (expression) {
+        var vars = expression.replace(/(&&|\|\||!|\(|\))/g, " ").split(" ");
         var names = [];
-        
-        for (var i=0;i<vars.length;i++) {
-            vars[i]=vars[i].trim();
-            if (vars[i]!=="" && vars[i]!=="true" && vars[i]!=="false" && jQuery.inArray(vars[i], names)==-1) {
+
+        for (var i = 0; i < vars.length; i++) {
+            vars[i] = vars[i].trim();
+            if (vars[i] !== "" && vars[i] !== "true" && vars[i] !== "false" && jQuery.inArray(vars[i], names) == -1) {
                 names.push(vars[i]);
             }
         }
-        
+
         return names;
     },
-    eval: function(context,expression) { // evaluate an expression in the givne context
+    eval: function (context, expression) { // evaluate an expression in the givne context
         // supported: (,),&&,||,!,true,false and variables
-       
+
         var re = /[^(&&|\|\||!|\(|\))]+(?=(|&&|\|\||!|\(|\)))/g;
         var offset = 0;
-        var matches=[];
+        var matches = [];
         var match;
         while ((match = re.exec(expression)) != null) {
             matches.push(match);
         }
-        for (var i=0;i<matches.length;i++) {
-            if (matches[i][0]==="true" || matches[i][0]==="false") continue;
-            
-            var value=this.get(context,matches[i][0])+"";
-            
-            expression=expression.substring(0,matches[i].index+offset) + value + expression.substring(matches[i].index+offset+matches[i][0].length,expression.length); 
-            offset+=value.length-matches[i][0].length;
+        for (var i = 0; i < matches.length; i++) {
+            if (matches[i][0] === "true" || matches[i][0] === "false")
+                continue;
+
+            var value = this.get(context, matches[i][0]) + "";
+
+            expression = expression.substring(0, matches[i].index + offset) + value + expression.substring(matches[i].index + offset + matches[i][0].length, expression.length);
+            offset += value.length - matches[i][0].length;
         }
-        
+
         return eval(expression);
     },
-    set: function(context,key,value) { // set a variable
+    set: function (context, key, value) { // set a variable
         var current = context;
-        
-        while (current!=document) {
-            if (this.setVariable(current,key,value))
+
+        while (current != document) {
+            if (this.setVariable(current, key, value))
                 return;
-            
+
             current = current.parentNode;
         }
     },
-    on: function(context,expression,fn) { // fn: fn(value)
-        var lstnr = jQuery.data(context,"variables-listener");
-        if (lstnr==null) {
+    on: function (context, expression, fn) { // fn: fn(value)
+        var lstnr = jQuery.data(context, "variables-listener");
+        if (lstnr == null) {
             lstnr = {};
-            jQuery.data(context,"variables-listener",lstnr);
+            jQuery.data(context, "variables-listener", lstnr);
         }
-        
+
         var listener = {
             expression: expression,
             fn: fn,
             lastval: false
         };
-        
+
         var vars = this._expr_get_var_paths(expression);
-        
-        for (var i=0;i<vars.length; i++) {
+
+        for (var i = 0; i < vars.length; i++) {
             var varname = vars[i].split(".")[0];
-            
+
             var temp = lstnr[varname];
-            if(temp==undefined) {
+            if (temp == undefined) {
                 temp = [];
                 lstnr[varname] = temp;
             }
-            
+
             temp.push(listener);
         }
-        
-        listener.last=this.eval(context,expression);
+
+        listener.last = this.eval(context, expression);
         fn(listener.last);
     },
-    off: function(context,expression,fn) {
-        var lstnr = jQuery.data(context,"variables-listener");
-        if (lstnr==null) {
+    off: function (context, expression, fn) {
+        var lstnr = jQuery.data(context, "variables-listener");
+        if (lstnr == null) {
             return;
         }
-                
+
         var vars = this._expr_get_var_paths(expression);
-        
-        for (var i=0;i<vars.length; i++) {
+
+        for (var i = 0; i < vars.length; i++) {
             var varname = vars[i].split(".")[0];
-            
-            if(lstnr[varname]==undefined) {
+
+            if (lstnr[varname] == undefined) {
                 return;
             }
-            
-            lstnr[varname]=jQuery.grep(lstnr[varname],function(val) {
-                return val.expression!=expression && val.fn!=fn;
+
+            lstnr[varname] = jQuery.grep(lstnr[varname], function (val) {
+                return val.expression != expression && val.fn != fn;
             });
         }
-        
-        if (this.eval(context,expression)) {
+
+        if (this.eval(context, expression)) {
             fn(false);
         }
     },
-    checkfire: function (context,variable) { // check and fire listeners if necessary
+    checkfire: function (context, variable) { // check and fire listeners if necessary
         // check if listeners are set
-        var listener = jQuery.data(context,"variables-listener");
-        if (listener!=null) {
+        var listener = jQuery.data(context, "variables-listener");
+        if (listener != null) {
             var fns = listener[variable];
-            if (fns!=null) {
+            if (fns != null) {
                 // fire listeners if neccessary
-                for (var i=0;i<fns.length;i++) {
-                    var newValue = this.eval(context,fns[i].expression);
-                    
-                    if (fns[i].last!=newValue) {
-                        fns[i].last=newValue;
+                for (var i = 0; i < fns.length; i++) {
+                    var newValue = this.eval(context, fns[i].expression);
+
+                    if (fns[i].last != newValue) {
+                        fns[i].last = newValue;
                         fns[i].fn(newValue);
                     }
                 }
             }
         }
-        
+
         // propagate changes to children
         var children = context.children;
-        for (var i=0; i<children.length; i++) {
-            if (this.getVariable(children[i],variable)==undefined) {
-                this.checkfire(children[i],variable);
+        for (var i = 0; i < children.length; i++) {
+            if (this.getVariable(children[i], variable) == undefined) {
+                this.checkfire(children[i], variable);
             }
         }
     }

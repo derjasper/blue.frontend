@@ -3,7 +3,7 @@ var blueleaf = {
     cutomrules: {
         ruleslist: {},
         properties: {},
-        enabledProperties: new Map(),
+        enabledProperties: new HashMap(),
         addRule: function (rule, options) { // options: enable(sel,options) + disable(sel,options)
             this.ruleslist[rule] = options;
         },
@@ -102,7 +102,7 @@ var blueleaf = {
             }
             
             var that = this;
-            var observer = new MutationObserver(function(mutations) {
+            var observer = new MutationObserver(function(mutations) { // TODO debounce
                 for (var i = 0; i < mutations.length; i++) {
                     if (mutations[i].type=="attributes") {
                         traverseChildElements(mutations[i].target, function(elm) {
