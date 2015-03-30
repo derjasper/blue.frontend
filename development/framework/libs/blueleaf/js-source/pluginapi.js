@@ -113,6 +113,17 @@ function getFirstKeyInArray(data) {
         return prop;
 }
 
+function isDescendant(parent,child) {
+    var node = child.parentNode;
+    while (node != null) {
+        if (node == parent) {
+            return true;
+        }
+        node = node.parentNode;
+    }
+    return false;
+}
+
 // uuid
 var uuid = 0;
 jQuery.fn.uniqueId = function () {
@@ -279,7 +290,7 @@ var ElementProperty = {
 
         return null;
     },
-    check: function (element, property) { // TOOD performance
+    check: function (element, property) { // TOOD performance / debounce events
         if (element == undefined) {
             var that = this;
 
@@ -340,15 +351,17 @@ jQuery(function () {
 var Selectors = {
     generate: function (selector, context) {
         var elm = $(context);
-        elm.uniqueId();
 
         // {this}
-        var selector = selector.replace(/{this}/g, "#" + elm.attr('id'));
+        if (/{parent-([0-9]+)}/g.exec(selector) != null) {
+            elm.uniqueId();
+            var selector = selector.replace(/{this}/g, "#" + elm.attr('id'));
+        }
 
         // {parent-x}
         var parent_result;
         while ((parent_result = /{parent-([0-9]+)}/g.exec(selector)) != null) {
-            var tmp_obj = $("#" + elm.attr('id'));
+            var tmp_obj = elm;
             for (var i = 0; i < parent_result[1]; i++) {
                 tmp_obj = tmp_obj.parent();
             }
@@ -368,7 +381,7 @@ var Selectors = {
 };
 
 
-// Variables API
+// Variables API // TODO checkfire langsam
 var Variables = {
     addVariable: function (elm, variable, value, type) { // type: simple, group, stack
         var vars = jQuery.data(elm, "variables");
@@ -466,7 +479,7 @@ var Variables = {
         var current = context;
         var k = key.split(".");
 
-        while (current != document) {
+        while (current != null) {
             var val;
             if ((val = this.getVariable(current, k[0])) != undefined)
                 return this.getVal(val, k[1]);
@@ -575,6 +588,9 @@ var Variables = {
         }
     },
     checkfire: function (context, variable) { // check and fire listeners if necessary
+/*TODO
+ * bei addVariable, on, off listener updaten
+ */
         // check if listeners are set
         var listener = jQuery.data(context, "variables-listener");
         if (listener != null) {

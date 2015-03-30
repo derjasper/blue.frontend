@@ -3,7 +3,7 @@ var blueleaf = {
     cutomrules: {
         ruleslist: {},
         properties: {},
-        enabledProperties: new HashMap(),
+        enabledSelectors: new HashMap(),
         addRule: function (rule, options) { // options: enable(sel,options) + disable(sel,options)
             this.ruleslist[rule] = options;
         },
@@ -35,31 +35,38 @@ var blueleaf = {
                 }
             }
         },
-        enableProperty: function(elm,mq,sel,index) {
-            var enProps = this.enabledProperties.get(elm);
+        enableSelector: function(elm,mq,sel) {
+            var enProps = this.enabledSelectors.get(elm);
             if (enProps==undefined) {
-                enProps=[];
-                this.enabledProperties.put(elm,enProps);
+                enProps={};
+                this.enabledSelectors.put(elm,enProps);
             }
-            if (jQuery.inArray(mq+"~"+sel+"~"+index, enProps) > -1) return;
-            if (this.ruleslist[this.properties[mq].selectors[sel][index].rule] == undefined) return;
-                
-            this.ruleslist[this.properties[mq].selectors[sel][index].rule].enable(elm, this.properties[mq].selectors[sel][index].options);
+            if (enProps[mq+"~"+sel]==true) return;
+            enProps[mq+"~"+sel]=true;
             
-            enProps.push(mq+"~"+sel+"~"+index);
+            var rules = this.properties[mq].selectors[sel];
+            
+            for (var i=0; i< rules.length; i++) {
+                var r = this.ruleslist[rules[i].rule];
+                if (r != undefined) 
+                    r.enable(elm, rules[i].options);
+            }
         },
-        disableProperty: function(elm,mq,sel,index) {
-            var enProps = this.enabledProperties.get(elm);
+        disableSelector: function(elm,mq,sel) {
+            var enProps = this.enabledSelectors.get(elm);
             
             if (enProps==undefined) return;
-            if (jQuery.inArray(mq+"~"+sel+"~"+index, enProps) == -1) return;
-            if (this.ruleslist[this.properties[mq].selectors[sel][index].rule] == undefined) return;
-                
-            this.ruleslist[this.properties[mq].selectors[sel][index].rule].disable(elm, this.properties[mq].selectors[sel][index].options);
+            if (enProps[mq+"~"+sel]==undefined) return;
+            delete enProps[mq+"~"+sel];
             
-            this.enabledProperties.put(elm,jQuery.grep(enProps, function(value) {
-                return value !== mq+"~"+sel+"~"+index;
-            }));
+            var rules = this.properties[mq].selectors[sel];
+            
+            for (var i=0; i< rules.length; i++) {
+                var r = this.ruleslist[rules[i].rule];
+                if (r != undefined)
+                    r.disable(elm, rules[i].options);
+            }
+            
         },
         apply: function () { // re-applys custom rules (if you need this, it's a bug)
             for (var key in enquire.queries) {
@@ -74,27 +81,18 @@ var blueleaf = {
                             properties.active=true;
                             
                             for (var sel in properties.selectors) {
-                                for (var i=0; i<properties.selectors[sel].length; i++) {
-                                    if (ruleslist[properties.selectors[sel][i].rule] != undefined) {
-                                        jQuery(sel).each(function() {
-                                            that.enableProperty(this,mq1,sel,i);
-                                        });
-                                    }
-                                        
-                                }
+                                jQuery(sel).each(function() {
+                                    that.enableSelector(this,mq1,sel);
+                                });
                             }
                         },
                         unmatch: function () {
                             properties.active=false;
                             
                             for (var sel in properties.selectors) {
-                                for (var i=0; i<properties.selectors[sel].length; i++) {
-                                    if (ruleslist[properties.selectors[sel][i].rule] != undefined) {
-                                        jQuery(sel).each(function() {
-                                            that.disableProperty(this,mq1,sel,i);
-                                        });
-                                    }
-                                }
+                                jQuery(sel).each(function() {
+                                    that.disableSelector(this,mq1,sel);
+                                });
                             }
                         }
                     });
@@ -102,66 +100,122 @@ var blueleaf = {
             }
             
             var that = this;
-            var observer = new MutationObserver(function(mutations) { // TODO debounce
-                for (var i = 0; i < mutations.length; i++) {
-                    if (mutations[i].type=="attributes") {
-                        traverseChildElements(mutations[i].target, function(elm) {
-                            var active = [];
+            
+            var changes=[];
+            function pushChange(elm,type) { // 0:addAll,1:removeAll,2:update
+                var length = changes.length;
+                for (var i=0;i<length; i++) {
+                    if (changes[i].elm==elm) {
+                        if (changes[i].type!=type && changes[i].type==2) {
+                            changes[i].type=type;
+                            return;
+                        }
+                    }
+                    else if (isDescendant(changes[i].elm,elm)) {
+                        if (changes[i].type!=type && changes[i].type==2) {
+                            changes.push({elm:elm,type:type,exclude:[]});
+                            changes[i].exclude.push(elm);
+                        }
+                        return;
+                    }
+                    else if (isDescendant(elm,changes[i].elm)) {
+                        if (changes[i].type!=type && type==2) {
+                            changes.push(changes[i]);
+                            changes[i]={elm:elm,type:type,exclude:[changes[i].elm]};
+                        }
+                        else {
+                            changes[i]={elm:elm,type:type,exclude:[]};
+                        }
+                        return;
+                    }
+                }
+                changes.push({elm:elm,type:type,exclude:[]});
+            }
+            function processChanges() {
+                // TODO ggf selektor-basiert traversieren (prüfen ob das schneller ist)
+                for (var i=0;i<changes.length; i++) {
+                    var c = changes[i];
+                    if (c.type==0) { // addAll
+                        traverseChildElements(c.elm,function(elm) {
+                            if (jQuery.inArray(elm,c.exclude)!=-1) return false;
+                            
                             for(var mq in that.properties) {
                                 if (that.properties[mq].active==true) {
                                     for (var sel in that.properties[mq].selectors) {
                                         if (jQuery(elm).is(sel)) {
-                                            for (var idx=0; idx<that.properties[mq].selectors[sel].length; idx++) {
-                                                that.enableProperty(elm,mq,sel,idx);
-                                                active.push(mq+"~"+sel+"~"+idx);
-                                            }
+                                            that.enableSelector(elm,mq,sel);
                                         }
                                     }
                                 }
                             }
-                            var enProps = that.enabledProperties.get(elm);
+                            
+                            return true;
+                        });
+                    }
+                    else if (changes[i].type==1) { // removeAll
+                        traverseChildElements(c.elm,function(elm) {
+                            var enProps = that.enabledSelectors.get(elm);
                             if (enProps!=undefined) {
-                                for (var j=0;j<enProps.length;j++) {
-                                    if (jQuery.inArray(enProps[j], active) == -1) {
-                                        var prop = enProps[j].split("~");
-                                        that.disableProperty(elm,prop[0],prop[1],prop[2]);
+                                for (var key in enProps) {
+                                    var prop = key.split("~");
+                                    that.disableSelector(elm,prop[0],prop[1]);
+                                }
+                            }
+                            return true;
+                        });
+                    }
+                    else { // update
+                        traverseChildElements(c.elm, function(elm) {
+                            // remove invalid rules
+                            var enProps = that.enabledSelectors.get(elm);
+                            if (enProps!=undefined) {
+                                for (var key in enProps) {
+                                    var prop = key.split("~");
+                                    if (!jQuery(elm).is(prop[1])) {
+                                        that.disableSelector(elm,prop[0],prop[1]);
+                                    }
+                                }
+                            }
+                            
+                            // add new rules
+                            for(var mq in that.properties) {
+                                if (that.properties[mq].active==true) {
+                                    for (var sel in that.properties[mq].selectors) {
+                                        if (jQuery(elm).is(sel)) {
+                                            that.enableSelector(elm,mq,sel);
+                                        }
                                     }
                                 }
                             }
                         });
                     }
+                }
+                
+                changes=[];
+            }
+            var _timeout;
+            
+            var observer = new MutationObserver(function(mutations) {
+                for (var i = 0; i < mutations.length; i++) {
+                    if (mutations[i].type=="attributes") {
+                        pushChange(mutations[i].target,2);
+                    }
                     else if (mutations[i].type=="childList") {
                         for (var j=0; j<mutations[i].addedNodes.length; j++) {
-                            
-                            traverseChildElements(mutations[i].addedNodes.item(j),function(elm) {
-                                for(var mq in that.properties) {
-                                    if (that.properties[mq].active==true) {
-                                        for (var sel in that.properties[mq].selectors) {
-                                            if (jQuery(elm).is(sel)) {
-                                                for (var idx=0; idx<that.properties[mq].selectors[sel].length; idx++) {
-                                                    that.enableProperty(elm,mq,sel,idx);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            });
+                            pushChange(mutations[i].addedNodes.item(j),0);
                         }
-                        
                         for (var j=0; j<mutations[i].removedNodes.length; j++) {
-                            traverseChildElements(mutations[i].removedNodes.item(j),function(elm) {
-                                var enProps = that.enabledProperties.get(elm);
-                                if (enProps!=undefined) {
-                                    for (var idx=0; idx<enProps.length; idx++) {
-                                        var prop = enProps[idx].split("~");
-                                        that.disableProperty(elm,prop[0],prop[1],prop[2]);
-                                    }
-                                }
-                            });
+                            pushChange(mutations[i].removedNodes.item(j),1);
                         }
                     }
                 }
-
+                
+                if (!!_timeout) {
+                    clearTimeout(_timeout);
+                }
+                _timeout = setTimeout(function () {
+                    processChanges();
+                }, 50);
             });
             observer.observe(document, { attributes:true,childList:true,subtree:true });
             
@@ -171,7 +225,7 @@ var blueleaf = {
                 var children = elm.children;
                 if (children==undefined) return;
                 for (var i=0;i<children.length;i++) {
-                    traverseChildElements(children[i],fn);
+                    if (traverseChildElements(children[i],fn)==false) return;
                 }
             }
         }
