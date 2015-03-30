@@ -44,8 +44,6 @@
     
     Plugins.fn.trigger = function (args) {
         var elm = this;
-        
-        $(elm).uniqueId();
                 
         // process key
         var keyList = args.key.split(",");
