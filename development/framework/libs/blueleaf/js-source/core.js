@@ -1,12 +1,10 @@
+// TODO auf memory leaks testen
+
 // blue leaf object
 var blueleaf = {
     cutomrules: {
-        ruleslist: {},
         properties: {},
         enabledSelectors: new Map(),
-        addRule: function (rule, options) { // options: enable(sel,options) + disable(sel,options)
-            this.ruleslist[rule] = options;
-        },
         addProperty: function(mq,sel,rule,options) {
             if (this.properties[mq]==undefined) this.properties[mq]= {
                 selectors: {},
@@ -47,9 +45,7 @@ var blueleaf = {
             var rules = this.properties[mq].selectors[sel];
             
             for (var i=0; i< rules.length; i++) {
-                var r = this.ruleslist[rules[i].rule];
-                if (r != undefined) 
-                    r.enable(elm, rules[i].options);
+                Plugins.use(elm, rules[i].rule, rules[i].options, true);
             }
         },
         disableSelector: function(elm,mq,sel) {
@@ -62,9 +58,7 @@ var blueleaf = {
             var rules = this.properties[mq].selectors[sel];
             
             for (var i=0; i< rules.length; i++) {
-                var r = this.ruleslist[rules[i].rule];
-                if (r != undefined)
-                    r.disable(elm, rules[i].options);
+                Plugins.use(elm, rules[i].rule, rules[i].options, false);
             }
             
         },
@@ -81,18 +75,20 @@ var blueleaf = {
                             properties.active=true;
                             
                             for (var sel in properties.selectors) {
-                                jQuery(sel).each(function() {
-                                    that.enableSelector(this,mq1,sel);
-                                });
+                                var lst = document.querySelectorAll(sel);
+                                for (var n=0; n<lst.length; n++) {
+                                    that.enableSelector(lst[n],mq1,sel);
+                                }
                             }
                         },
                         unmatch: function () {
                             properties.active=false;
                             
                             for (var sel in properties.selectors) {
-                                jQuery(sel).each(function() {
-                                    that.disableSelector(this,mq1,sel);
-                                });
+                                var lst = document.querySelectorAll(sel);
+                                for (var n=0; n<lst.length; n++) {
+                                    that.disableSelector(lst[n],mq1,sel);
+                                }
                             }
                         }
                     });
@@ -132,25 +128,25 @@ var blueleaf = {
                 changes.push({elm:elm,type:type,exclude:[]});
             }
             function processChanges() {
-                // TODO ggf selektor-basiert traversieren (prüfen ob das schneller ist)
                 for (var i=0;i<changes.length; i++) {
                     var c = changes[i];
-                    if (c.type==0) { // addAll
-                        traverseChildElements(c.elm,function(elm) {
-                            if (jQuery.inArray(elm,c.exclude)!=-1) return false;
-                            
-                            for(var mq in that.properties) {
-                                if (that.properties[mq].active==true) {
-                                    for (var sel in that.properties[mq].selectors) {
-                                        if (jQuery(elm).is(sel)) {
-                                            that.enableSelector(elm,mq,sel);
+                    
+                    if (c.elm.querySelectorAll == undefined) continue;
+                    
+                    if (c.type==0) { // addAll                        
+                        for(var mq in that.properties) {
+                            if (that.properties[mq].active==true) {
+                                for (var sel in that.properties[mq].selectors) { // TODO ggf maps benutzen ...
+                                    var lst = c.elm.querySelectorAll(sel);
+                                    
+                                    for (var n=0; n<lst.length; n++) {
+                                        if (jQuery.inArray(lst[n],c.exclude)==-1) { // TODO ggf set benutzen ...
+                                            that.enableSelector(lst[n],mq,sel);
                                         }
                                     }
                                 }
                             }
-                            
-                            return true;
-                        });
+                        }
                     }
                     else if (changes[i].type==1) { // removeAll
                         traverseChildElements(c.elm,function(elm) {
@@ -165,29 +161,31 @@ var blueleaf = {
                         });
                     }
                     else { // update
+                        // remove invalid rules
                         traverseChildElements(c.elm, function(elm) {
-                            // remove invalid rules
                             var enProps = that.enabledSelectors.get(elm);
                             if (enProps!=undefined) {
                                 for (var key in enProps) {
                                     var prop = key.split("~");
-                                    if (!jQuery(elm).is(prop[1])) {
+                                    if (!matchesSelector(elm,prop[1])) {
                                         that.disableSelector(elm,prop[0],prop[1]);
                                     }
                                 }
                             }
-                            
-                            // add new rules
-                            for(var mq in that.properties) {
-                                if (that.properties[mq].active==true) {
-                                    for (var sel in that.properties[mq].selectors) {
-                                        if (jQuery(elm).is(sel)) {
-                                            that.enableSelector(elm,mq,sel);
-                                        }
+                        });
+                        
+                        // add new rules
+                        for(var mq in that.properties) {
+                            if (that.properties[mq].active==true) {
+                                for (var sel in that.properties[mq].selectors) {
+                                    var lst = c.elm.querySelectorAll(sel);
+                                    
+                                    for (var n=0; n<lst.length; n++) {
+                                        that.enableSelector(lst[n],mq,sel);
                                     }
                                 }
                             }
-                        });
+                        }
                     }
                 }
                 
@@ -233,23 +231,7 @@ var blueleaf = {
 
 };
 
-// TODO auf memory leaks testen
-
 (function ($) {
-    // add plugins // TODO direkt drauf zugreifen
-    for (var key in Plugins.fn) {
-        (function(rule) {
-            blueleaf.cutomrules.addRule(rule, {
-                enable: function (elm, options) {
-                    Plugins.use(elm,rule,options,true);
-                },
-                disable: function (elm, options) {
-                    Plugins.use(elm,rule,options,false);
-                }
-            });
-        })(key);
-    }
-
     // get JSON data from CSS, and enable media querys
     $(function () {
         function getStyleSheets() {
