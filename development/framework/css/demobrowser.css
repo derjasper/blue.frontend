@@ -31,8 +31,8 @@ body {
     clear: both; }
 
 html {
-  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0, "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple"}} */
+  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0}} */ }
 html, body {
   font-family: sans;
   height: 100%; }
@@ -122,9 +122,9 @@ html, body {
       .header .inner > ul > li > *:not(ul):not(ol), .header .inner > ul ul > li > *:not(ul):not(ol), .header .inner > ul > li > *:not(ul):not(ol), .header .inner > ul ol > li > *:not(ul):not(ol) {
         padding: 0.4rem; }
       .header .inner > ul li, .header .inner > ul ul li, .header .inner > ul li, .header .inner > ul ol li {
-        /*! customrule: {"variable_init": {"variable": "show", "value": false, "type": "simple", "enabled": true}} */
-        /*! customrule: {"trigger_bind": {"key": "show", "status_type": "hover", "enabled": true}} */
-        /*! customrule: {"expressionlistener_class": {"expression": "show", "element_class": "bl-menu-show", "enabled": true}} */ }
+        /*! customrule: {"variable_init": {"variable": "show", "value": false, "type": "simple"}} */
+        /*! customrule: {"trigger_bind": {"key": "show", "status_type": "hover"}} */
+        /*! customrule: {"expressionlistener_class": {"expression": "show", "element_class": "bl-menu-show"}} */ }
         .header .inner > ul li > ul, .header .inner > ul ul li > ul, .header .inner > ul li > ul, .header .inner > ul ol li > ul {
           display: none; }
         .header .inner > ul li.bl-menu-show > ul, .header .inner > ul ul li.bl-menu-show > ul, .header .inner > ul li.bl-menu-show > ul, .header .inner > ul ol li.bl-menu-show > ul {
@@ -156,7 +156,7 @@ html, body {
     padding: 0.8rem;
     max-width: 100%;
     max-height: 100%;
-    /*! customrule: {"resizable": {"resize_class": "resizing", "click_spacing": 10, "enabled": true}} */
+    /*! customrule: {"resizable": {"resize_class": "resizing", "click_spacing": 10}} */
     overflow: hidden;
     width: 100%;
     height: 100%; }
@@ -197,27 +197,27 @@ html, body {
         clear: both; }
 
 html {
-  /*! customrule: {"variable_init": {"variable": "tab", "value": "demo", "type": "group", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "tab", "value": "demo", "type": "group"}} */ }
 
 .button.tab-demo {
-  /*! customrule: {"trigger": {"key": "tab.demo", "event_type": "click", "value_expression": "true", "priority": 0, "enabled": true}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "tab.demo", "element_class": "active", "enabled": true}} */ }
+  /*! customrule: {"trigger": {"key": "tab.demo", "event_type": "click", "value_expression": "true", "priority": 0}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.demo", "element_class": "active"}} */ }
 
 .button.tab-code {
-  /*! customrule: {"trigger": {"key": "tab.code", "event_type": "click", "value_expression": "true", "priority": 0, "enabled": true}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "tab.code", "element_class": "active", "enabled": true}} */ }
+  /*! customrule: {"trigger": {"key": "tab.code", "event_type": "click", "value_expression": "true", "priority": 0}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.code", "element_class": "active"}} */ }
 
 .tab {
   display: none; }
 
 .tab.tab-demo {
-  /*! customrule: {"expressionlistener_class": {"expression": "tab.demo", "element_class": "active", "enabled": true}} */ }
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.demo", "element_class": "active"}} */ }
   .tab.tab-demo.active {
     display: initial;
     visibility: visible; }
 
 .tab.tab-code {
-  /*! customrule: {"expressionlistener_class": {"expression": "tab.code", "element_class": "active", "enabled": true}} */ }
+  /*! customrule: {"expressionlistener_class": {"expression": "tab.code", "element_class": "active"}} */ }
   .tab.tab-code.active {
     display: initial;
     visibility: visible; }

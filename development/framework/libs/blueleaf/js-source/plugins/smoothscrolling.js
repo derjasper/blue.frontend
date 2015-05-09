@@ -1,4 +1,4 @@
-(function ($) {
+(function ($) {// TODO bugy bei leeren target
     Plugins.fn.smoothscrolling = function (args) {
         var elm = this;
         

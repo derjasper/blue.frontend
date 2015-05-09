@@ -1,6 +1,8 @@
 (function ($) {
     var trigger_actions=new Object();
     
+    // TODO prüfen, wie auf delegated umgestellt werden kann
+    
     $(document).on("click mouseover mouseout",function(event) {
         var eventID=event.target.id+"-"+event.type;
                         

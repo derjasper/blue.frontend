@@ -31,8 +31,8 @@ body {
     clear: both; }
 
 html {
-  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0, "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple"}} */
+  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0}} */ }
 body {
   font-family: sans;
   color: white;
@@ -70,20 +70,20 @@ ol:not(.nostyle), ul:not(.nostyle) {
       color: white; }
 
 .simple {
-  /*! customrule: {"variable_init": {"variable": "scrolled_top", "value": false, "type": "simple", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "scrolled_top", "value": false, "type": "simple"}} */ }
   .simple .trigger {
-    /*! customrule: {"trigger_bind_scrollposition": {"key": "scrolled_top", "scroll_status": "top", "scrollarea": "window", "offset": [], "enabled": true}} */ }
+    /*! customrule: {"trigger_bind_scrollposition": {"key": "scrolled_top", "scroll_status": "top", "scrollarea": "window", "offset": []}} */ }
   .simple .listener {
-    /*! customrule: {"expressionlistener_class": {"expression": "scrolled_top", "element_class": "u5umii0ez", "enabled": true}} */ }
-    .simple .listener.u5umii0ez {
+    /*! customrule: {"expressionlistener_class": {"expression": "scrolled_top", "element_class": "uzte8lxgl"}} */ }
+    .simple .listener.uzte8lxgl {
       font-weight: bold; }
 
 .scrollarea {
-  /*! customrule: {"variable_init": {"variable": "visible", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "top", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "right", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "bottom", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "left", "value": false, "type": "simple", "enabled": true}} */
+  /*! customrule: {"variable_init": {"variable": "visible", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "top", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "right", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "bottom", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "left", "value": false, "type": "simple"}} */
   *zoom: 1;
   position: relative;
   width: 60rem;
@@ -133,27 +133,27 @@ ol:not(.nostyle), ul:not(.nostyle) {
       bottom: 0;
       margin-top: auto;
       margin-bottom: auto;
-      /*! customrule: {"trigger_bind_scrollposition": {"key": "visible", "scroll_status": "visible", "scrollarea": ".scrollarea", "offset": [], "enabled": true}} */
-      /*! customrule: {"trigger_bind_scrollposition": {"key": "top", "scroll_status": "top", "scrollarea": ".scrollarea", "offset": [], "enabled": true}} */
-      /*! customrule: {"trigger_bind_scrollposition": {"key": "right", "scroll_status": "right", "scrollarea": ".scrollarea", "offset": [], "enabled": true}} */
-      /*! customrule: {"trigger_bind_scrollposition": {"key": "bottom", "scroll_status": "bottom", "scrollarea": ".scrollarea", "offset": [], "enabled": true}} */
-      /*! customrule: {"trigger_bind_scrollposition": {"key": "left", "scroll_status": "left", "scrollarea": ".scrollarea", "offset": [], "enabled": true}} */ }
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "visible", "scroll_status": "visible", "scrollarea": ".scrollarea", "offset": []}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "top", "scroll_status": "top", "scrollarea": ".scrollarea", "offset": []}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "right", "scroll_status": "right", "scrollarea": ".scrollarea", "offset": []}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "bottom", "scroll_status": "bottom", "scrollarea": ".scrollarea", "offset": []}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "left", "scroll_status": "left", "scrollarea": ".scrollarea", "offset": []}} */ }
       .scrollarea .largecontainer .trigger:before, .scrollarea .largecontainer .trigger:after {
         content: "";
         display: table; }
       .scrollarea .largecontainer .trigger:after {
         clear: both; }
       .scrollarea .largecontainer .trigger span {
-        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "u5umii0f7", "enabled": true}} */ }
-        .scrollarea .largecontainer .trigger span.u5umii0f7 {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "uzte8lxgs"}} */ }
+        .scrollarea .largecontainer .trigger span.uzte8lxgs {
           color: red; }
 
 .offsets {
-  /*! customrule: {"variable_init": {"variable": "visible", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "top", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "right", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "bottom", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "left", "value": false, "type": "simple", "enabled": true}} */
+  /*! customrule: {"variable_init": {"variable": "visible", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "top", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "right", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "bottom", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "left", "value": false, "type": "simple"}} */
   *zoom: 1;
   position: relative;
   width: 60rem;
@@ -203,24 +203,24 @@ ol:not(.nostyle), ul:not(.nostyle) {
       bottom: 0;
       margin-top: auto;
       margin-bottom: auto;
-      /*! customrule: {"trigger_bind_scrollposition": {"key": "visible", "scroll_status": "visible", "scrollarea": ".offsets", "offset": {"top": 20, "left": 20, "bottom": 20, "right": 20}, "enabled": true}} */
-      /*! customrule: {"trigger_bind_scrollposition": {"key": "top", "scroll_status": "top", "scrollarea": ".offsets", "offset": {"top": 20}, "enabled": true}} */
-      /*! customrule: {"trigger_bind_scrollposition": {"key": "right", "scroll_status": "right", "scrollarea": ".offsets", "offset": {"right": 20}, "enabled": true}} */
-      /*! customrule: {"trigger_bind_scrollposition": {"key": "bottom", "scroll_status": "bottom", "scrollarea": ".offsets", "offset": {"bottom": 20}, "enabled": true}} */
-      /*! customrule: {"trigger_bind_scrollposition": {"key": "left", "scroll_status": "left", "scrollarea": ".offsets", "offset": {"left": 20}, "enabled": true}} */ }
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "visible", "scroll_status": "visible", "scrollarea": ".offsets", "offset": {"top": 20, "left": 20, "bottom": 20, "right": 20}}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "top", "scroll_status": "top", "scrollarea": ".offsets", "offset": {"top": 20}}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "right", "scroll_status": "right", "scrollarea": ".offsets", "offset": {"right": 20}}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "bottom", "scroll_status": "bottom", "scrollarea": ".offsets", "offset": {"bottom": 20}}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "left", "scroll_status": "left", "scrollarea": ".offsets", "offset": {"left": 20}}} */ }
       .offsets .largecontainer .trigger:before, .offsets .largecontainer .trigger:after {
         content: "";
         display: table; }
       .offsets .largecontainer .trigger:after {
         clear: both; }
       .offsets .largecontainer .trigger span {
-        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "u5umii0f8", "enabled": true}} */ }
-        .offsets .largecontainer .trigger span.u5umii0f8 {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "uzte8lxgz"}} */ }
+        .offsets .largecontainer .trigger span.uzte8lxgz {
           color: red; }
 
 .scrolling-offset {
-  /*! customrule: {"variable_init": {"variable": "top", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "bottom", "value": false, "type": "simple", "enabled": true}} */
+  /*! customrule: {"variable_init": {"variable": "top", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "bottom", "value": false, "type": "simple"}} */
   *zoom: 1;
   position: relative;
   width: 60rem;
@@ -232,23 +232,23 @@ ol:not(.nostyle), ul:not(.nostyle) {
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
-  /*! customrule: {"expressionlistener_class": {"expression": "top", "element_class": "u5umii0fh", "enabled": true}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "bottom", "element_class": "u5umii0fn", "enabled": true}} */ }
+  /*! customrule: {"expressionlistener_class": {"expression": "top", "element_class": "uzte8lxh0"}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "bottom", "element_class": "uzte8lxh5"}} */ }
   .scrolling-offset:before, .scrolling-offset:after {
     content: "";
     display: table; }
   .scrolling-offset:after {
     clear: both; }
   .scrolling-offset a {
-    /*! customrule: {"trigger_bind_scrollposition": {"key": "top", "scroll_status": "top", "scrollarea": ".scrolling-offset", "offset": [], "enabled": true}} */
-    /*! customrule: {"trigger_bind_scrollposition": {"key": "bottom", "scroll_status": "bottom", "scrollarea": ".scrolling-offset", "offset": [], "enabled": true}} */
+    /*! customrule: {"trigger_bind_scrollposition": {"key": "top", "scroll_status": "top", "scrollarea": ".scrolling-offset", "offset": []}} */
+    /*! customrule: {"trigger_bind_scrollposition": {"key": "bottom", "scroll_status": "bottom", "scrollarea": ".scrolling-offset", "offset": []}} */
     display: block;
     position: relative;
     top: -100px;
     visibility: hidden; }
-  .scrolling-offset.u5umii0fh {
+  .scrolling-offset.uzte8lxh0 {
     background-color: red; }
-  .scrolling-offset.u5umii0fn {
+  .scrolling-offset.uzte8lxh5 {
     background-color: green; }
 
 .navigation {
@@ -258,7 +258,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  /*! customrule: {"variable_init": {"variable": "nav", "value": "#none", "type": "stack", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "nav", "value": "#none", "type": "stack"}} */ }
   .navigation:before, .navigation:after {
     content: "";
     display: table; }
@@ -269,18 +269,18 @@ ol:not(.nostyle), ul:not(.nostyle) {
     position: relative;
     width: 25%; }
     .navigation .nav ul {
-      /*! customrule: {"sticky": {"directions": {"top": true}, "scrollarea_sel": "viewport", "container_sel": "_null", "sticky_class": "bl-sticked", "enabled": true}} */ }
+      /*! customrule: {"sticky": {"directions": {"top": true}, "scrollarea_sel": "viewport", "container_sel": "_null", "sticky_class": "bl-sticked"}} */ }
       .navigation .nav ul.bl-sticked {
         z-index: 5; }
     .navigation .nav a {
-      /*! customrule: {"expressionlistener_class": {"expression": "nav.{attr-href}", "element_class": "u5umii0fx", "enabled": true}} */ }
-      .navigation .nav a.u5umii0fx {
+      /*! customrule: {"expressionlistener_class": {"expression": "nav.{attr-href}", "element_class": "uzte8lxha"}} */ }
+      .navigation .nav a.uzte8lxha {
         font-weight: bold; }
   .navigation .content {
     float: left;
     position: relative;
     width: 75%; }
     .navigation .content a {
-      /*! customrule: {"trigger_bind_scrollposition": {"key": "nav.#{attr-name}", "scroll_status": "top", "scrollarea": "window", "offset": [], "enabled": true}} */ }
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "nav.#{attr-name}", "scroll_status": "top", "scrollarea": "window", "offset": []}} */ }
 
 /*# sourceMappingURL=scrollposition.css.map */

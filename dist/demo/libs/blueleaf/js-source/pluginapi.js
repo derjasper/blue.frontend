@@ -1,110 +1,73 @@
-// Map // should be replaced with native map in EMCAScript 6
-Map = function () {
-    this._dict = [];
-}
-Map.prototype._get = function (key) {
-    for (var i = 0, couplet; couplet = this._dict[i]; i++) {
-        if (couplet[0] === key) {
-            return couplet;
-        }
-    }
-    return undefined;
-}
-Map.prototype.put = function (key, value) {
-    var couplet = this._get(key);
-    if (couplet) {
-        couplet[1] = value;
-    }
-    else {
-        this._dict.push([key, value]);
-    }
-    return this;
-}
-Map.prototype.get = function (key) {
-    var couplet = this._get(key);
-    if (couplet) {
-        return couplet[1];
-    }
-    return undefined;
-}
-Map.prototype.remove = function (key) {
-    for (var i = 0, couplet; couplet = this._dict[i]; i++) {
-        if (couplet[0] === key) {
-            this._dict.splice(i, 1);
-            return;
-        }
-    }
-}
-Map.prototype.each = function (callback) {
-    for (var i = 0, couplet; couplet = this._dict[i]; i++) {
-        callback(couplet[0], couplet[1]);
-    }
-}
+"use strict";
+// TODO maps verstärkt einsetzen (evtl jquery data ersetzen; prüfen was schneller ist)
+// TODO sets verwenden + polyfill
 
-// HashMap
-HashMap = function (xt) {
-    this._dict = {};
-    if (xt)
+// map polyfill
+if (Map==undefined) {
+    console.log("enabling legacy map");
+    var LegacyMap = function () {
+        this._dict = {};
         this._keys = {};
-}
-HashMap.prototype._shared = {id: 1};
-HashMap.prototype.put = function(key, value) {
-    if (key instanceof Element) {
-        var hashid = jQuery.data(key,"_hashid");
-        if (hashid==undefined) {
-            hashid = this._shared.id++;
-            jQuery.data(key,"_hashid",hashid);
+    }
+    LegacyMap.prototype._shared = {id: 1};
+    LegacyMap.prototype.set = function(key, value) {
+        if (key instanceof Element) {
+            var hashid = jQuery.data(key,"_hashid");
+            if (hashid==undefined) {
+                hashid = this._shared.id++;
+                jQuery.data(key,"_hashid",hashid);
+            }
+            this._dict[hashid] = value;
+            this._keys[hashid] = key;
         }
-        this._dict[hashid] = value;
-        if (this._keys!=undefined) this._keys[hashid] = key;
-    }
-    else if (typeof key == "object") {
-        if (key._hashid == undefined) {
-            key._hashid = this._shared.id++;
+        else if (typeof key == "object") {
+            if (key._hashid == undefined) {
+                key._hashid = this._shared.id++;
+            }
+            this._dict[key._hashid] = value;
+            this._keys[key._hashid] = key;
         }
-        this._dict[key._hashid] = value;
-        if (this._keys!=undefined) this._keys[key._hashid] = key;
+        else {
+            this._dict[key] = value;
+        }
+        return this;
     }
-    else {
-        this._dict[key] = value;
+    LegacyMap.prototype.get = function(key) {
+        if (key instanceof Element) {
+            var hashid = jQuery.data(key,"_hashid");
+            return hashid == undefined ? undefined : this._dict[hashid];
+        }
+        else if (typeof key == "object") {
+            return key._hashid == undefined ? undefined : this._dict[key._hashid];
+        }
+        else {
+            return this._dict[key];
+        }
     }
-    return this;
+    LegacyMap.prototype.delete = function(key) {
+        if (key instanceof Element) {
+            var hashid = jQuery.data(key,"_hashid");
+            delete this._dict[hashid];
+            delete this._keys[hashid];
+        }
+        else if (typeof key == "object") {
+            delete this._dict[key._hashid];
+            delete this._keys[key._hashid];
+        }
+        else {
+            delete this._dict[key];
+        }
+    }
+    LegacyMap.prototype.forEach = function (callback) {
+        var keys = this._keys;
+        var dict = this._dict;
+        for (var hashid in keys) {
+            callback(dict[hashid],keys[hashid]);
+        }
+    }
+    
+    var Map = LegacyMap;
 }
-HashMap.prototype.get = function(key) {
-    if (key instanceof Element) {
-        var hashid = jQuery.data(key,"_hashid");
-        return hashid == undefined ? undefined : this._dict[hashid];
-    }
-    else if (typeof key == "object") {
-        return key._hashid == undefined ? undefined : this._dict[key._hashid];
-    }
-    else {
-        return this._dict[key];
-    }
-}
-HashMap.prototype.remove = function(key) {
-    if (key instanceof Element) {
-        var hashid = jQuery.data(key,"_hashid");
-        delete this._dict[hashid];
-        if (this._keys!=undefined) delete this._keys[hashid];
-    }
-    else if (typeof key == "object") {
-        delete this._dict[key._hashid];
-        if (this._keys!=undefined) delete this._keys[key._hashid];
-    }
-    else {
-        delete this._dict[key];
-    }
-}
-HashMap.prototype.each = function (callback) {
-    if (this._keys==undefined) return;
-    var keys = this._keys;
-    var dict = this._dict;
-    for (var hashid in keys) {
-        callback(keys[hashid], dict[hashid]);
-    }
-}
-
 
 
 // helper functions
@@ -191,7 +154,7 @@ var Plugins = {
 
 // Element Property Change Listener
 var ElementProperty = {
-    properties: new HashMap(true),
+    properties: new Map(),
     on: function (element, property, handler) {
         // element: DOM element
         // property: css.property, height, width, outerHeight, offsetTop, ...
@@ -200,7 +163,7 @@ var ElementProperty = {
 
         if (props == undefined) {
             props = {};
-            this.properties.put(element, props);
+            this.properties.set(element, props);
         }
 
         if (props[property] == undefined)
@@ -227,7 +190,7 @@ var ElementProperty = {
                 size++;
         }
         if (size == 0)
-            delete this.properties.remove(element);
+            this.properties.delete(element);
     },
     fire: function (element, property, newVal, oldVal) {
         var props = this.properties.get(element);
@@ -294,7 +257,7 @@ var ElementProperty = {
         if (element == undefined) {
             var that = this;
 
-            this.properties.each(function (el) {
+            this.properties.forEach(function (val,el) {
                 that.check(el, property);
             });
         }
@@ -333,9 +296,9 @@ var ElementProperty = {
                     }
                 }
             });
-            observer.observe(document, {attributes: true, childList: true, characterData: true, subtree: true});
+            observer.observe(document, {attributes: true, childList: true, characterData: true, subtree: true}); // TODO debounce
 
-            jQuery(window).on('resize', function () {
+            jQuery(window).on('resize', function () { // TODO debounce
                 obj.check();
             });
         })(this);
@@ -382,6 +345,7 @@ var Selectors = {
 
 
 // Variables API // TODO checkfire langsam
+// TODO ggf javascript scopes oder javascript prototypes ausnutzen
 var Variables = {
     addVariable: function (elm, variable, value, type) { // type: simple, group, stack
         var vars = jQuery.data(elm, "variables");
@@ -526,7 +490,7 @@ var Variables = {
     set: function (context, key, value) { // set a variable
         var current = context;
 
-        while (current != document) {
+        while (current != document && current!=null) {
             if (this.setVariable(current, key, value))
                 return;
 
@@ -540,10 +504,11 @@ var Variables = {
             jQuery.data(context, "variables-listener", lstnr);
         }
 
-        var listener = {
+        var listener = { // TODO
             expression: expression,
             fn: fn,
-            lastval: false
+            lastval: false,
+            context: context
         };
 
         var vars = this._expr_get_var_paths(expression);
@@ -589,7 +554,7 @@ var Variables = {
     },
     checkfire: function (context, variable) { // check and fire listeners if necessary
 /*TODO
- * bei addVariable, on, off listener updaten
+ * bei addVariable, removeVariable, on, off listener updaten
  */
         // check if listeners are set
         var listener = jQuery.data(context, "variables-listener");
@@ -598,7 +563,7 @@ var Variables = {
             if (fns != null) {
                 // fire listeners if neccessary
                 for (var i = 0; i < fns.length; i++) {
-                    var newValue = this.eval(context, fns[i].expression);
+                    var newValue = this.eval(fns[i].context, fns[i].expression);
 
                     if (fns[i].last != newValue) {
                         fns[i].last = newValue;

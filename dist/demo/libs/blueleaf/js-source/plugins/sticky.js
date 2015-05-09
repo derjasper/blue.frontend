@@ -1,5 +1,5 @@
 (function ($) {
-    Plugins.fn.sticky = function (args) {
+    Plugins.fn.sticky = function (args) { // TODO langsam
         var rawElm = this;
         var elm = $(rawElm);
         

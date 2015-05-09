@@ -31,8 +31,8 @@ body {
     clear: both; }
 
 html {
-  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0, "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple"}} */
+  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0}} */ }
 body {
   font-family: sans;
   color: white;
@@ -70,135 +70,135 @@ ol:not(.nostyle), ul:not(.nostyle) {
       color: white; }
 
 .clickdemo {
-  /*! customrule: {"variable_init": {"variable": "clicked", "value": false, "type": "simple", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "clicked", "value": false, "type": "simple"}} */ }
   .clickdemo a {
-    /*! customrule: {"trigger": {"key": "clicked", "event_type": "click", "value_expression": "!clicked", "priority": 0, "enabled": true}} */
-    /*! customrule: {"expressionlistener_class": {"expression": "clicked", "element_class": "toggleclass", "enabled": true}} */ }
+    /*! customrule: {"trigger": {"key": "clicked", "event_type": "click", "value_expression": "!clicked", "priority": 0}} */
+    /*! customrule: {"expressionlistener_class": {"expression": "clicked", "element_class": "toggleclass"}} */ }
     .clickdemo a.toggleclass {
       font-weight: bold; }
 
 .hoverdemo {
-  /*! customrule: {"variable_init": {"variable": "hovered", "value": false, "type": "simple", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "hovered", "value": false, "type": "simple"}} */ }
   .hoverdemo a {
-    /*! customrule: {"trigger": {"key": "hovered", "event_type": "mouseover", "value_expression": "true", "priority": 0, "enabled": true}} */
-    /*! customrule: {"trigger": {"key": "hovered", "event_type": "mouseout", "value_expression": "false", "priority": 0, "enabled": true}} */
-    /*! customrule: {"expressionlistener_class": {"expression": "hovered", "element_class": "triggered", "enabled": true}} */ }
+    /*! customrule: {"trigger": {"key": "hovered", "event_type": "mouseover", "value_expression": "true", "priority": 0}} */
+    /*! customrule: {"trigger": {"key": "hovered", "event_type": "mouseout", "value_expression": "false", "priority": 0}} */
+    /*! customrule: {"expressionlistener_class": {"expression": "hovered", "element_class": "triggered"}} */ }
     .hoverdemo a.triggered {
       font-weight: bold; }
 
 .focusdemo {
-  /*! customrule: {"variable_init": {"variable": "focussed", "value": false, "type": "simple", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "focussed", "value": false, "type": "simple"}} */ }
   .focusdemo a {
-    /*! customrule: {"trigger": {"key": "focussed", "event_type": "focus", "value_expression": "true", "priority": 0, "enabled": true}} */
-    /*! customrule: {"trigger": {"key": "focussed", "event_type": "blur", "value_expression": "false", "priority": 0, "enabled": true}} */
-    /*! customrule: {"expressionlistener_class": {"expression": "focussed", "element_class": "toggleclass", "enabled": true}} */ }
+    /*! customrule: {"trigger": {"key": "focussed", "event_type": "focus", "value_expression": "true", "priority": 0}} */
+    /*! customrule: {"trigger": {"key": "focussed", "event_type": "blur", "value_expression": "false", "priority": 0}} */
+    /*! customrule: {"expressionlistener_class": {"expression": "focussed", "element_class": "toggleclass"}} */ }
     .focusdemo a.toggleclass {
       font-weight: bold; }
 
 .binddemo a.hover {
-  /*! customrule: {"variable_init": {"variable": "hovered", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"trigger_bind": {"key": "hovered", "status_type": "hover", "enabled": true}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "hovered", "element_class": "u8buzzblm", "enabled": true}} */ }
-  .binddemo a.hover.u8buzzblm {
+  /*! customrule: {"variable_init": {"variable": "hovered", "value": false, "type": "simple"}} */
+  /*! customrule: {"trigger_bind": {"key": "hovered", "status_type": "hover"}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "hovered", "element_class": "u2gxjgjt5"}} */ }
+  .binddemo a.hover.u2gxjgjt5 {
     font-weight: bold; }
 .binddemo a.focus {
-  /*! customrule: {"variable_init": {"variable": "focussed", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"trigger_bind": {"key": "focussed", "status_type": "focus", "enabled": true}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "focussed", "element_class": "toggleclass", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "focussed", "value": false, "type": "simple"}} */
+  /*! customrule: {"trigger_bind": {"key": "focussed", "status_type": "focus"}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "focussed", "element_class": "toggleclass"}} */ }
   .binddemo a.focus.toggleclass {
     font-weight: bold; }
 
 .setfocus {
-  /*! customrule: {"variable_init": {"variable": "focus", "value": false, "type": "simple", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "focus", "value": false, "type": "simple"}} */ }
   .setfocus input {
-    /*! customrule: {"expressionlistener_focus": {"expression": "focus", "enabled": true}} */
-    /*! customrule: {"expressionlistener_focus": {"expression": "!focus", "enabled": true}} */ }
+    /*! customrule: {"expressionlistener_focus": {"expression": "focus"}} */
+    /*! customrule: {"expressionlistener_focus": {"expression": "!focus"}} */ }
   .setfocus a {
-    /*! customrule: {"trigger": {"key": "focus", "event_type": "click", "value_expression": "!focus", "priority": 1, "enabled": true}} */ }
+    /*! customrule: {"trigger": {"key": "focus", "event_type": "click", "value_expression": "!focus", "priority": 1}} */ }
 
 .mulvar {
-  /*! customrule: {"variable_init": {"variable": "var1", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "var2", "value": false, "type": "simple", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "var1", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "var2", "value": false, "type": "simple"}} */ }
   .mulvar a {
-    /*! customrule: {"trigger": {"key": "var1,var2", "event_type": "click", "value_expression": "!var1", "priority": 0, "enabled": true}} */ }
+    /*! customrule: {"trigger": {"key": "var1,var2", "event_type": "click", "value_expression": "!var1", "priority": 0}} */ }
   .mulvar span {
-    /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "u8buzzblt", "enabled": true}} */ }
-    .mulvar span.u8buzzblt {
+    /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "u2gxjgjt8"}} */ }
+    .mulvar span.u2gxjgjt8 {
       font-weight: bold; }
 
 .expressions {
-  /*! customrule: {"variable_init": {"variable": "a", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "b", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "c", "value": false, "type": "simple", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "a", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "b", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "c", "value": false, "type": "simple"}} */ }
   .expressions span {
-    /*! customrule: {"expressionlistener_class": {"expression": "a&&a&&(!b||c)", "element_class": "red", "enabled": true}} */ }
+    /*! customrule: {"expressionlistener_class": {"expression": "a&&a&&(!b||c)", "element_class": "red"}} */ }
     .expressions span.red {
       color: red;
       font-weight: bold; }
   .expressions a {
-    /*! customrule: {"trigger": {"key": "{attr-data-var}", "event_type": "click", "value_expression": "!{attr-data-var}", "priority": 0, "enabled": true}} */
-    /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-var}", "element_class": "on", "enabled": true}} */ }
+    /*! customrule: {"trigger": {"key": "{attr-data-var}", "event_type": "click", "value_expression": "!{attr-data-var}", "priority": 0}} */
+    /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-var}", "element_class": "on"}} */ }
     .expressions a.on {
       font-weight: bold; }
 
 .listenset {
-  /*! customrule: {"variable_init": {"variable": "a", "value": "true", "type": "simple", "enabled": true}} */
-  /*! customrule: {"variable_init": {"variable": "b", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"expressionlistener_set": {"expression": "b", "key": "a", "value_expression": "!b", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "a", "value": "true", "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "b", "value": false, "type": "simple"}} */
+  /*! customrule: {"expressionlistener_set": {"expression": "b", "key": "a", "value_expression": "!b"}} */ }
   .listenset span {
-    /*! customrule: {"expressionlistener_class": {"expression": "a", "element_class": "red", "enabled": true}} */ }
+    /*! customrule: {"expressionlistener_class": {"expression": "a", "element_class": "red"}} */ }
     .listenset span.red {
       color: red;
       font-weight: bold; }
   .listenset a {
-    /*! customrule: {"trigger": {"key": "b", "event_type": "click", "value_expression": "!b", "priority": 0, "enabled": true}} */
-    /*! customrule: {"expressionlistener_class": {"expression": "b", "element_class": "on", "enabled": true}} */ }
+    /*! customrule: {"trigger": {"key": "b", "event_type": "click", "value_expression": "!b", "priority": 0}} */
+    /*! customrule: {"expressionlistener_class": {"expression": "b", "element_class": "on"}} */ }
     .listenset a.on {
       font-weight: bold; }
 
 .offcanvasdemo a {
-  /*! customrule: {"trigger": {"key": "offcanvas", "event_type": "click", "value_expression": "!offcanvas", "priority": 0, "enabled": true}} */ }
+  /*! customrule: {"trigger": {"key": "offcanvas", "event_type": "click", "value_expression": "!offcanvas", "priority": 0}} */ }
 .offcanvasdemo div {
   height: 0;
   border: none !important;
   overflow: hidden;
   transition: height 1s ease, height 1s ease;
-  /*! customrule: {"expressionlistener_class": {"expression": "offcanvas", "element_class": "show", "enabled": true}} */ }
+  /*! customrule: {"expressionlistener_class": {"expression": "offcanvas", "element_class": "show"}} */ }
   .offcanvasdemo div.show {
     height: 50px; }
 
 .groupdemo {
-  /*! customrule: {"variable_init": {"variable": "groupvar", "value": "1", "type": "group", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "groupvar", "value": "1", "type": "group"}} */ }
   .groupdemo a {
-    /*! customrule: {"trigger": {"key": "groupvar.{attr-data-tab}", "event_type": "click", "value_expression": "true", "priority": 0, "enabled": true}} */
-    /*! customrule: {"expressionlistener_class": {"expression": "groupvar.{attr-data-tab}", "element_class": "active", "enabled": true}} */ }
+    /*! customrule: {"trigger": {"key": "groupvar.{attr-data-tab}", "event_type": "click", "value_expression": "true", "priority": 0}} */
+    /*! customrule: {"expressionlistener_class": {"expression": "groupvar.{attr-data-tab}", "element_class": "active"}} */ }
     .groupdemo a.active {
       font-weight: bold; }
   .groupdemo div.tab {
     display: none;
-    /*! customrule: {"expressionlistener_class": {"expression": "groupvar.{attr-data-tab}", "element_class": "active", "enabled": true}} */ }
+    /*! customrule: {"expressionlistener_class": {"expression": "groupvar.{attr-data-tab}", "element_class": "active"}} */ }
     .groupdemo div.tab.active {
       display: block;
       visibility: visible; }
 
 html {
-  /*! customrule: {"variable_init": {"variable": "menus", "value": "none", "type": "group", "enabled": true}} */
-  /*! customrule: {"trigger": {"key": "menus.none", "event_type": "click", "value_expression": "true", "priority": 0, "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "menus", "value": "none", "type": "group"}} */
+  /*! customrule: {"trigger": {"key": "menus.none", "event_type": "click", "value_expression": "true", "priority": 0}} */ }
 
 .menudemo li a {
-  /*! customrule: {"trigger": {"key": "menus.{parent-1}", "event_type": "click", "value_expression": "true", "priority": 1, "enabled": true}} */ }
+  /*! customrule: {"trigger": {"key": "menus.{parent-1}", "event_type": "click", "value_expression": "true", "priority": 1}} */ }
 .menudemo li div {
   display: none;
-  /*! customrule: {"expressionlistener_class": {"expression": "menus.{parent-1}", "element_class": "show", "enabled": true}} */ }
+  /*! customrule: {"expressionlistener_class": {"expression": "menus.{parent-1}", "element_class": "show"}} */ }
   .menudemo li div.show {
     display: initial;
     visibility: visible; }
 
 .stackdemo {
-  /*! customrule: {"variable_init": {"variable": "stackvar", "value": "none", "type": "stack", "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "stackvar", "value": "none", "type": "stack"}} */ }
   .stackdemo a {
-    /*! customrule: {"trigger": {"key": "stackvar.{this}", "event_type": "click", "value_expression": "!stackvar.{this}", "priority": 0, "enabled": true}} */
-    /*! customrule: {"expressionlistener_class": {"expression": "stackvar.{this}", "element_class": "active", "enabled": true}} */ }
+    /*! customrule: {"trigger": {"key": "stackvar.{this}", "event_type": "click", "value_expression": "!stackvar.{this}", "priority": 0}} */
+    /*! customrule: {"expressionlistener_class": {"expression": "stackvar.{this}", "element_class": "active"}} */ }
     .stackdemo a.active {
       font-weight: bold; }
 

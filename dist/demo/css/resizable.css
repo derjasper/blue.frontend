@@ -31,8 +31,8 @@ body {
     clear: both; }
 
 html {
-  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0, "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple"}} */
+  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0}} */ }
 body {
   font-family: sans;
   color: white;
@@ -74,12 +74,12 @@ div {
   height: 20em; }
 
 .resizable {
-  /*! customrule: {"resizable": {"resize_class": "resizing", "click_spacing": 10, "enabled": true}} */ }
+  /*! customrule: {"resizable": {"resize_class": "resizing", "click_spacing": 10}} */ }
   .resizable.resizing {
     opacity: 0.8; }
 
 .resize-hide {
-  /*! customrule: {"resizable": {"resize_class": "hidecontent", "click_spacing": 10, "enabled": true}} */ }
+  /*! customrule: {"resizable": {"resize_class": "hidecontent", "click_spacing": 10}} */ }
   .resize-hide.hidecontent * {
     display: none; }
 
