@@ -3,18 +3,18 @@ Misc
 
 Helper functions, data structures, ...
 
-Map and HashMap
----------------
+SimpleMap and HashMap
+---------------------
 
 A map/dictionary. Every object can be a key.
 Should be avoided whereever possible (use jQuery.data instead), because it may be
 slow.
 
-The ``Map`` does no hashing, it stores key-value pairs in an array. The
+The ``SimpleMap`` does no hashing, it stores key-value pairs in an array. The
 ``HashMap`` appends a ``_hashid`` property to each key or uses ``jQuery.data``
 for DOM ``Element``s.
 
-The HashMap has the same API as the Map, with one difference: The constructor of
+The HashMap has the same API as the SimpleMap, with one difference: The constructor of
 the HashMap has a boolean parameter which indicates whether the method ``each``
 is needed or not.
 

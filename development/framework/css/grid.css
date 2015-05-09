@@ -31,8 +31,8 @@ body {
     clear: both; }
 
 html {
-  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple", "enabled": true}} */
-  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0, "enabled": true}} */ }
+  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple"}} */
+  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0}} */ }
 body {
   font-family: sans;
   color: white;
@@ -212,7 +212,7 @@ ol:not(.nostyle), ul:not(.nostyle) {
     position: relative;
     height: 25%; }
   .row-offset .o {
-    /*! customrule: {"grid_offset": {"width": "100%", "height": "25%", "enabled": true}} */ }
+    /*! customrule: {"grid_offset": {"width": "100%", "height": "25%"}} */ }
 
 .row-pushpull {
   *zoom: 1;

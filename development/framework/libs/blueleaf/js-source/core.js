@@ -3,7 +3,7 @@ var blueleaf = {
     cutomrules: {
         ruleslist: {},
         properties: {},
-        enabledSelectors: new HashMap(),
+        enabledSelectors: new Map(),
         addRule: function (rule, options) { // options: enable(sel,options) + disable(sel,options)
             this.ruleslist[rule] = options;
         },
@@ -39,7 +39,7 @@ var blueleaf = {
             var enProps = this.enabledSelectors.get(elm);
             if (enProps==undefined) {
                 enProps={};
-                this.enabledSelectors.put(elm,enProps);
+                this.enabledSelectors.set(elm,enProps);
             }
             if (enProps[mq+"~"+sel]==true) return;
             enProps[mq+"~"+sel]=true;
@@ -75,7 +75,7 @@ var blueleaf = {
         },
         init: function() {
             for(var mq in this.properties) {
-                (function (mq1, properties, ruleslist, that) {
+                (function (mq1, properties, that) {
                     enquire.register(mq1, {
                         match: function () {
                             properties.active=true;
@@ -96,7 +96,7 @@ var blueleaf = {
                             }
                         }
                     });
-                })(mq, this.properties[mq], this.ruleslist, this);
+                })(mq, this.properties[mq], this);
             }
             
             var that = this;
@@ -233,8 +233,10 @@ var blueleaf = {
 
 };
 
+// TODO auf memory leaks testen
+
 (function ($) {
-    // add plugins
+    // add plugins // TODO direkt drauf zugreifen
     for (var key in Plugins.fn) {
         (function(rule) {
             blueleaf.cutomrules.addRule(rule, {
