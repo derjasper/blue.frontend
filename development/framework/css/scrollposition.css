@@ -74,8 +74,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .simple .trigger {
     /*! customrule: {"trigger_bind_scrollposition": {"key": "scrolled_top", "scroll_status": "top", "scrollarea": "window", "offset": []}} */ }
   .simple .listener {
-    /*! customrule: {"expressionlistener_class": {"expression": "scrolled_top", "element_class": "uwrxbfcrt"}} */ }
-    .simple .listener.uwrxbfcrt {
+    /*! customrule: {"expressionlistener_class": {"expression": "scrolled_top", "element_class": "uvmv2czc6"}} */ }
+    .simple .listener.uvmv2czc6 {
       font-weight: bold; }
 
 .scrollarea {
@@ -144,8 +144,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .scrollarea .largecontainer .trigger:after {
         clear: both; }
       .scrollarea .largecontainer .trigger span {
-        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "uwrxbfcrw"}} */ }
-        .scrollarea .largecontainer .trigger span.uwrxbfcrw {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "uvmv2czc9"}} */ }
+        .scrollarea .largecontainer .trigger span.uvmv2czc9 {
           color: red; }
 
 .offsets {
@@ -214,8 +214,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .offsets .largecontainer .trigger:after {
         clear: both; }
       .offsets .largecontainer .trigger span {
-        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "uwrxbfcs3"}} */ }
-        .offsets .largecontainer .trigger span.uwrxbfcs3 {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "uvmv2czcj"}} */ }
+        .offsets .largecontainer .trigger span.uvmv2czcj {
           color: red; }
 
 .scrolling-offset {
@@ -232,8 +232,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
-  /*! customrule: {"expressionlistener_class": {"expression": "top", "element_class": "uwrxbfcs9"}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "bottom", "element_class": "uwrxbfcsh"}} */ }
+  /*! customrule: {"expressionlistener_class": {"expression": "top", "element_class": "uvmv2czcl"}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "bottom", "element_class": "uvmv2czcs"}} */ }
   .scrolling-offset:before, .scrolling-offset:after {
     content: "";
     display: table; }
@@ -246,9 +246,9 @@ ol:not(.nostyle), ul:not(.nostyle) {
     position: relative;
     top: -100px;
     visibility: hidden; }
-  .scrolling-offset.uwrxbfcs9 {
+  .scrolling-offset.uvmv2czcl {
     background-color: red; }
-  .scrolling-offset.uwrxbfcsh {
+  .scrolling-offset.uvmv2czcs {
     background-color: green; }
 
 .navigation {
@@ -273,8 +273,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .navigation .nav ul.bl-sticked {
         z-index: 5; }
     .navigation .nav a {
-      /*! customrule: {"expressionlistener_class": {"expression": "nav.{attr-href}", "element_class": "uwrxbfcsp"}} */ }
-      .navigation .nav a.uwrxbfcsp {
+      /*! customrule: {"expressionlistener_class": {"expression": "nav.{attr-href}", "element_class": "uvmv2czcx"}} */ }
+      .navigation .nav a.uvmv2czcx {
         font-weight: bold; }
   .navigation .content {
     float: left;

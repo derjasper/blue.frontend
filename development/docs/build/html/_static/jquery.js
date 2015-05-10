@@ -11,7 +11,7 @@
  * Copyright 2011, The Dojo Foundation
  * Released under the MIT, BSD, and GPL Licenses.
  *
- * Date: Fri Jul  5 14:07:58 UTC 2013
+ * Date: Wed Jul 30 14:06:55 UTC 2014
  */
 (function( window, undefined ) {
 
@@ -3154,6 +3154,7 @@ jQuery.event = {
 		// Handle a global trigger
 		if ( !elem ) {
 
+			// TODO: Stop taunting the data cache; remove global events and always attach to document
 			cache = jQuery.cache;
 			for ( i in cache ) {
 				if ( cache[ i ].events && cache[ i ].events[ type ] ) {
@@ -4508,6 +4509,7 @@ var Expr = Sizzle.selectors = {
 				Sizzle.error( match[0] );
 			}
 
+			// TODO: Move to normal caching system
 			match[0] = done++;
 
 			return match;

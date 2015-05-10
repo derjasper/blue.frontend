@@ -16,6 +16,7 @@ module.exports = function (grunt) {
             js: {
                 dest: 'development/framework/libs/blueleaf/js/blueleaf.js',
                 src: [
+                    'development/framework/libs/blueleaf/js-source/polyfills.js',
                     'development/framework/libs/blueleaf/js-source/pluginapi.js',
                     'development/framework/libs/blueleaf/js-source/plugins/*.js',
                     'development/framework/libs/blueleaf/js-source/cssparser.js',

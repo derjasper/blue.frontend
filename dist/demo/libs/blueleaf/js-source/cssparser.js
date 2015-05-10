@@ -1,151 +1,92 @@
-function CSSParser (css) {
-    this.css=css;
-    this.token={
-        'ENABLE': /\/\*! blueleaf \*\//,
-        
-        'SELECTOR': /^([^{}@\/]+)(?={)/,
-        'MEDIA_DIRECTIVE': /^@media ([^{}\/]+)(?={)/,
-        'IGNORE': /^@[^{}@\/]+(?={)/,
-        
-        'BLOCK_OPEN': /^{/,
-        'BLOCK_CLOSE': /^}/,
-        'BLOCK_CONTENT': /^((\/\*[^]*\*\/|[^{}])*)/, 
-                
-        'COMMENT_OPEN':/^\/\*/,
-        'COMMENT_CLOSE': /^\*\//,
-        'COMMENT_CONTENT': /^((?!\*\/)[^])+/,
-        
-        'RULE': /^([^\/{}:;\n]+:[^{}:;\n]+;)/,
-        
-        'COMMENT_CONTENT_JSON_DATA': /^! customrule: /
-    };
-    this.position=0;
-    this.tree=new Object();
-    this.error=false;
-    
-    this.currentMediaQuery='all';
-    this.currentSelector='';
-}
+// TODO docs
+// TODO namespace
 
-CSSParser.prototype.requireToken = function(tokens) {
-    if (!(tokens instanceof Array)) tokens=new Array(tokens);
-        
-    var skip=/^[\s\n]*/;
-    var match1=skip.exec(this.css.substring(this.position));
-    if (match1 != null) {
-        this.position+=match1.index+match1[0].length;
-    }
-        
-    for (var i=0;i<tokens.length;i++) {
-        var match = this.token[tokens[i]].exec(this.css.substring(this.position));
-        
-        if (match != null) {
-            this.position+=match.index+match[0].length;
-            
-            return {
-                type: tokens[i],
-                match: match
-            };
-        }
-    }
+function parseCSS(css) {
+    var tree=new Object();
     
-    return null;
-};
- 
-CSSParser.prototype.parse = function() {
-    function parseBlockContent(that) {
-        var current;
-        
-        while((current=that.requireToken(['RULE', 'COMMENT_OPEN']))!=null) {
-            if (current.type=='COMMENT_OPEN') {
-                if (that.requireToken('COMMENT_CONTENT_JSON_DATA')!=null) {
-                    var res=that.requireToken('COMMENT_CONTENT');
-                    if (res!=null) {
-                        var obj = JSON.parse(res.match[0]);
-                        
-                        if (that.tree[that.currentMediaQuery]==undefined)
-                            that.tree[that.currentMediaQuery]=new Object();
-                        
-                        if (that.tree[that.currentMediaQuery][that.currentSelector]==undefined) {
-                            that.tree[that.currentMediaQuery][that.currentSelector]=new Array();
-                        }
-                        
-                        that.tree[that.currentMediaQuery][that.currentSelector].push(obj);
+    var currentId="";    
+    var openBrackets=[];
+    var comment = false;
+    
+    var pos=0;
+    while(pos < css.length) {
+        if (!comment && css[pos]=="/") {
+            var match = /^\/\*! customrule: ({(?:(?!\*\/).)*}) \*\//g.exec(css.substring(pos));
+            
+            if (match != null) {
+                pos+=match.index+match[0].length;
+                
+                var mediaQuery='';
+                var selector='';
+                
+                for (var i=0; i<openBrackets.length; i++) {
+                    if (openBrackets[i].indexOf("@media") === 0) {
+                        var str = openBrackets[i].substring(6).trim();
+                                                
+                        if (mediaQuery == "") 
+                            mediaQuery = str;
+                    }
+                    else if (openBrackets[i].indexOf("@") === -1) {
+                        selector = openBrackets[i];
                     }
                 }
-                that.requireToken('COMMENT_CONTENT');
-                if (that.requireToken('COMMENT_CLOSE')==null) {that.error=true; return false;}
+                
+                if (mediaQuery == "") {
+                    mediaQuery = "all";
+                }
+                
+                if (selector == "")
+                    return null;
+                
+                var json;
+                try {
+                    json = JSON.parse(match[1])
+                }
+                catch(e) {
+                    return null;
+                }
+                
+                if (tree[mediaQuery] == undefined)
+                    tree[mediaQuery] = {};
+                if (tree[mediaQuery][selector] == undefined)
+                    tree[mediaQuery][selector] = [];
+                
+                tree[mediaQuery][selector].push(json);
+                
+                continue;
             }
         }
-                
-        return true;
-    }
-    
-    function requireBlockContentXT(that) {
-        var current;
         
-        while((current=that.requireToken(['SELECTOR','IGNORE','BLOCK_CONTENT']))!=null) {
-            if (current.type=='BLOCK_CONTENT') {return true;}
-            
-            if (that.requireToken('BLOCK_OPEN')==null) {return false;}
-            if (!requireBlockContentXT(that)) {return false;}
-            if (that.requireToken('BLOCK_CLOSE')==null) {return false;}
-        }
-                
-        return true;
-    }
-    
-    if (this.requireToken('ENABLE')==null) {
-        return false;
-    }
-    
-    var current;
-    while((current=this.requireToken(['SELECTOR','MEDIA_DIRECTIVE', 'IGNORE', 'COMMENT_OPEN']))!=null) {
-        if (current.type=='SELECTOR') {
-            this.currentSelector=current.match[1];
-            if (this.requireToken('BLOCK_OPEN')==null) {this.error=true; return false;}
-            if (parseBlockContent(this)==false) {return false;}
-            if (this.requireToken('BLOCK_CLOSE')==null) {this.error=true; return false;}
-            this.currentSelector='';
-        }
-        else if (current.type=='MEDIA_DIRECTIVE') {
-            this.currentMediaQuery=current.match[1];
-            if (this.requireToken('BLOCK_OPEN')==null) {this.error=true; return false;}
-
-            var current2;
-            while((current2=this.requireToken(['SELECTOR', 'IGNORE', 'COMMENT_OPEN']))!=null) {
-                if (current2.type=='SELECTOR') {
-                    this.currentSelector=current2.match[1];
-                    if (this.requireToken('BLOCK_OPEN')==null) {this.error=true; return false;}
-                    if (parseBlockContent(this)==false) {return false;}
-                    if (this.requireToken('BLOCK_CLOSE')==null) {this.error=true; return false;}
-                    this.currentSelector='';
-                }
-                else if (current2.type=='IGNORE') {
-                    if (this.requireToken('BLOCK_OPEN')==null) {this.error=true; return false;}
-                    if (!requireBlockContentXT(this)) {this.error=true; return false;}
-                    if (this.requireToken('BLOCK_CLOSE')==null) {this.error=true; return false;}
-                }
-                else if (current2.type=='COMMENT_OPEN') {
-                    if (this.requireToken('COMMENT_CONTENT')==null) {this.error=true; return false;}
-                    if (this.requireToken('COMMENT_CLOSE')==null) {this.error=true; return false;}
-                }
+        if (!comment) {
+            if (css[pos]=="{") {
+                openBrackets.push(currentId.trim());
+                currentId=""; 
             }
-            
-            if (this.requireToken('BLOCK_CLOSE')==null) {this.error=true; return false;}
-            this.currentMediaQuery='all';
+            else if (css[pos]=="}") {
+                openBrackets.pop();
+                currentId=""; 
+            }
+            else if (css[pos]==";") {
+                currentId="";
+            }
+            else if (css[pos]=="/" && pos+1<css.length && css[pos+1]=="*") {
+                comment = true;
+                currentId="";
+            }
+            else {
+                currentId+=css[pos]; 
+            }
         }
-        else if (current.type=='IGNORE') {
-            if (this.requireToken('BLOCK_OPEN')==null) {this.error=true; return false;}
-            if (!requireBlockContentXT(this)) {this.error=true; return false;}
-            if (this.requireToken('BLOCK_CLOSE')==null) {this.error=true; return false;}
+        else {
+            if (css[pos]=="*" && pos+1<css.length && css[pos+1]=="/") {
+                comment = false;
+            }
         }
-        else if (current.type=='COMMENT_OPEN') {
-            if (this.requireToken('COMMENT_CONTENT')==null) {this.error=true; return false;}
-            if (this.requireToken('COMMENT_CLOSE')==null) {this.error=true; return false;}
-        }
+        
+        pos++;
     }
     
-    return true;
+    if (openBrackets.length != 0) return null;
+    
+    return tree;
 };
-

@@ -1,74 +1,8 @@
 "use strict";
-// TODO maps verstärkt einsetzen (evtl jquery data ersetzen; prüfen was schneller ist)
-// TODO sets verwenden + polyfill
+// TODO use maps and sets
+// TODO get rid of jQuery.data
 
-// map polyfill
-if (Map==undefined) {
-    console.log("enabling legacy map");
-    var LegacyMap = function () {
-        this._dict = {};
-        this._keys = {};
-    }
-    LegacyMap.prototype._shared = {id: 1};
-    LegacyMap.prototype.set = function(key, value) {
-        if (key instanceof Element) {
-            var hashid = jQuery.data(key,"_hashid");
-            if (hashid==undefined) {
-                hashid = this._shared.id++;
-                jQuery.data(key,"_hashid",hashid);
-            }
-            this._dict[hashid] = value;
-            this._keys[hashid] = key;
-        }
-        else if (typeof key == "object") {
-            if (key._hashid == undefined) {
-                key._hashid = this._shared.id++;
-            }
-            this._dict[key._hashid] = value;
-            this._keys[key._hashid] = key;
-        }
-        else {
-            this._dict[key] = value;
-        }
-        return this;
-    }
-    LegacyMap.prototype.get = function(key) {
-        if (key instanceof Element) {
-            var hashid = jQuery.data(key,"_hashid");
-            return hashid == undefined ? undefined : this._dict[hashid];
-        }
-        else if (typeof key == "object") {
-            return key._hashid == undefined ? undefined : this._dict[key._hashid];
-        }
-        else {
-            return this._dict[key];
-        }
-    }
-    LegacyMap.prototype.delete = function(key) {
-        if (key instanceof Element) {
-            var hashid = jQuery.data(key,"_hashid");
-            delete this._dict[hashid];
-            delete this._keys[hashid];
-        }
-        else if (typeof key == "object") {
-            delete this._dict[key._hashid];
-            delete this._keys[key._hashid];
-        }
-        else {
-            delete this._dict[key];
-        }
-    }
-    LegacyMap.prototype.forEach = function (callback) {
-        var keys = this._keys;
-        var dict = this._dict;
-        for (var hashid in keys) {
-            callback(dict[hashid],keys[hashid]);
-        }
-    }
-    
-    var Map = LegacyMap;
-}
-
+// TODO namespace für helper funktionen
 
 // helper functions
 function getFirstKeyInArray(data) {
@@ -76,7 +10,7 @@ function getFirstKeyInArray(data) {
         return prop;
 }
 
-function isDescendant(parent,child) {
+function isDescendant(parent, child) {
     var node = child.parentNode;
     while (node != null) {
         if (node == parent) {
@@ -101,11 +35,12 @@ jQuery.fn.uniqueId = function () {
 var Plugins = {
     REQUIRED: "_required_argument",
     fn: {},
-    use: function (elm, plugin, args, setEnabled) {
-        var instances = jQuery.data(elm, "data-instances");
+    instances: new Map(),
+    use: function (elm, plugin, args, setEnabled) { // TODO langsam
+        var instances = this.instances.get(elm);
         if (instances == undefined)
             instances = {};
-        jQuery.data(elm, "data-instances", instances);
+        this.instances.set(elm, instances);
 
         var pluginObj = Plugins.fn[plugin];
         if (pluginObj == undefined)
@@ -150,7 +85,6 @@ var Plugins = {
         }
     }
 };
-
 
 // Element Property Change Listener
 var ElementProperty = {
@@ -257,7 +191,7 @@ var ElementProperty = {
         if (element == undefined) {
             var that = this;
 
-            this.properties.forEach(function (val,el) {
+            this.properties.forEach(function (val, el) {
                 that.check(el, property);
             });
         }
@@ -286,6 +220,8 @@ var ElementProperty = {
     },
     start: function () {
         (function (obj) {
+            // TODO performance: debounce checks (Property Listener)
+
             var observer = new MutationObserver(function (mutations) {
                 for (var i = 0; i < mutations.length; i++) {
                     var current = mutations[i].target;
@@ -296,9 +232,9 @@ var ElementProperty = {
                     }
                 }
             });
-            observer.observe(document, {attributes: true, childList: true, characterData: true, subtree: true}); // TODO debounce
+            observer.observe(document, {attributes: true, childList: true, characterData: true, subtree: true});
 
-            jQuery(window).on('resize', function () { // TODO debounce
+            jQuery(window).on('resize', function () {
                 obj.check();
             });
         })(this);
@@ -465,7 +401,7 @@ var Variables = {
 
         return names;
     },
-    eval: function (context, expression) { // evaluate an expression in the givne context
+    eval: function (context, expression) { // evaluate an expression in the given context
         // supported: (,),&&,||,!,true,false and variables
 
         var re = /[^(&&|\|\||!|\(|\))]+(?=(|&&|\|\||!|\(|\)))/g;
@@ -490,7 +426,7 @@ var Variables = {
     set: function (context, key, value) { // set a variable
         var current = context;
 
-        while (current != document && current!=null) {
+        while (current != document && current != null) {
             if (this.setVariable(current, key, value))
                 return;
 
@@ -504,7 +440,7 @@ var Variables = {
             jQuery.data(context, "variables-listener", lstnr);
         }
 
-        var listener = { // TODO
+        var listener = {// TODO listener umstellen...
             expression: expression,
             fn: fn,
             lastval: false,
@@ -553,9 +489,8 @@ var Variables = {
         }
     },
     checkfire: function (context, variable) { // check and fire listeners if necessary
-/*TODO
- * bei addVariable, removeVariable, on, off listener updaten
- */
+// TODO bei addVariable, removeVariable, on, off listener updaten
+
         // check if listeners are set
         var listener = jQuery.data(context, "variables-listener");
         if (listener != null) {
