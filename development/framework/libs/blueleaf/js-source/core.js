@@ -138,11 +138,14 @@ var blueleaf = {
                             if (that.properties[mq].active==true) {
                                 for (var sel in that.properties[mq].selectors) { // TODO ggf maps benutzen ...
                                     var lst = c.elm.querySelectorAll(sel);
-                                    
                                     for (var n=0; n<lst.length; n++) {
                                         if (jQuery.inArray(lst[n],c.exclude)==-1) { // TODO ggf set benutzen ...
                                             that.enableSelector(lst[n],mq,sel);
                                         }
+                                    }
+                                    
+                                    if (matchesSelector(c.elm,sel)) {
+                                        that.enableSelector(c.elm,mq,sel);
                                     }
                                 }
                             }
@@ -179,9 +182,12 @@ var blueleaf = {
                             if (that.properties[mq].active==true) {
                                 for (var sel in that.properties[mq].selectors) {
                                     var lst = c.elm.querySelectorAll(sel);
-                                    
                                     for (var n=0; n<lst.length; n++) {
                                         that.enableSelector(lst[n],mq,sel);
+                                    }
+                                    
+                                    if (matchesSelector(c.elm,sel)) {
+                                        that.enableSelector(c.elm,mq,sel);
                                     }
                                 }
                             }
