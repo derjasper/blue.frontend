@@ -14,7 +14,6 @@ how to use it:
 blue leaf has the following dependencies, please add them to your project:
 
 - `jQuery <http://jquery.com/>`_ (1.9 is recommended)
-- `enquire.js <http://wicky.nillia.ms/enquire.js/>`_ (latest)
 
 
 To run a blueleaf project, the CSS files must be load via HTTP, because JavaScript
@@ -38,7 +37,6 @@ HTML:
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
             <script src="libs/jquery/jquery.js"></script>
-            <script src="libs/enquire.js/enquire.js"></script>
             <script src="libs/blueleaf/js/blueleaf.js"></script>
 
             <link rel="stylesheet" href="css/dummy.css" />

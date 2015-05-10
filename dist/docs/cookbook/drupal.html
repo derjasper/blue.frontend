@@ -67,7 +67,6 @@ regions[...] = ...
 
 stylesheets[all][] = libs/font-awesome/css/font-awesome.css
 
-scripts[] = libs/enquire.js/enquire.js
 scripts[] = libs/blueleaf/js/blueleaf.js
 
 features[] = ...
@@ -99,13 +98,7 @@ Otherwise, the JavaScript-Bridge would not work!</p>
 <h2>Drupal 8<a class="headerlink" href="#drupal-8" title="Permalink to this headline">¶</a></h2>
 <p>Since Drupal 8 is not finished yet, this instruction may not work in the future.</p>
 <p>Add this to your theme&#8217;s <tt class="docutils literal"><span class="pre">THEMENAME.libraries.yml</span></tt>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">enquirejs</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">version</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1.x</span>
-  <span class="l-Scalar-Plain">js</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">libs/enquire.js/enquire.js</span><span class="p-Indicator">:</span> <span class="p-Indicator">{}</span>
-  <span class="l-Scalar-Plain">dependencies</span><span class="p-Indicator">:</span>
-
-<span class="l-Scalar-Plain">blueleaf</span><span class="p-Indicator">:</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">blueleaf</span><span class="p-Indicator">:</span>
   <span class="l-Scalar-Plain">version</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1.x</span>
   <span class="l-Scalar-Plain">js</span><span class="p-Indicator">:</span>
     <span class="l-Scalar-Plain">libs/blueleaf/js/blueleaf.js</span><span class="p-Indicator">:</span> <span class="p-Indicator">{}</span>
@@ -123,7 +116,6 @@ Otherwise, the JavaScript-Bridge would not work!</p>
         <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">css/style.css</span>
         <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">libs/font-awesome/css/font-awesome.css</span>
 <span class="l-Scalar-Plain">libraries</span><span class="p-Indicator">:</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">THEMENAME/enquirejs</span>
     <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">THEMENAME/blueleaf</span>
 
 <span class="l-Scalar-Plain">regions</span><span class="p-Indicator">:</span>
@@ -199,7 +191,7 @@ Otherwise, the JavaScript-Bridge would not work!</p>
     </div>
     <div class="footer">
         &copy; Copyright blue treehouse, bluetreehouse.de. blue leaf is released under the MIT licence.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

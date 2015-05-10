@@ -19,7 +19,6 @@ Your ``theme.info`` file should look like this:
 
     stylesheets[all][] = libs/font-awesome/css/font-awesome.css
 
-    scripts[] = libs/enquire.js/enquire.js
     scripts[] = libs/blueleaf/js/blueleaf.js
 
     features[] = ...
@@ -59,12 +58,6 @@ Add this to your theme's ``THEMENAME.libraries.yml``:
 
 .. code-block:: yaml
 
-    enquirejs:
-      version: 1.x
-      js:
-        libs/enquire.js/enquire.js: {}
-      dependencies:
-
     blueleaf:
       version: 1.x
       js:
@@ -86,7 +79,6 @@ Your theme's ``THEMENAME.info.yml`` should look like tihs:
             - css/style.css
             - libs/font-awesome/css/font-awesome.css
     libraries:
-        - THEMENAME/enquirejs
         - THEMENAME/blueleaf
 
     regions:
