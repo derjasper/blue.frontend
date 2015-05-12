@@ -2,34 +2,20 @@
 // TODO use maps and sets
 // TODO get rid of jQuery.data
 
-// TODO namespace für helper funktionen
+// TODO namespace für api
 
-// helper functions
-function getFirstKeyInArray(data) {
-    for (var prop in data)
-        return prop;
+// TODO move somewhere else:
+// jQuery plugin
+{
+    var uuid = 0;
+    jQuery.fn.uniqueId = function () {
+        return this.each(function () {
+            if (!this.id) {
+                this.id = "uuid-" + (++uuid);
+            }
+        });
+    };
 }
-
-function isDescendant(parent, child) {
-    var node = child.parentNode;
-    while (node != null) {
-        if (node == parent) {
-            return true;
-        }
-        node = node.parentNode;
-    }
-    return false;
-}
-
-// uuid
-var uuid = 0;
-jQuery.fn.uniqueId = function () {
-    return this.each(function () {
-        if (!this.id) {
-            this.id = "uuid-" + (++uuid);
-        }
-    });
-};
 
 // Plugins
 var Plugins = {

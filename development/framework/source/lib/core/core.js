@@ -26,8 +26,8 @@ var blueleaf = {
             for (var mq in tree) {
                 for (var sel in tree[mq]) {
                     for (var i = 0; i < tree[mq][sel].length; i++) {
-                        var cl = getFirstKeyInArray(tree[mq][sel][i]);
-                        this.addProperty(mq, sel, cl, tree[mq][sel][i][cl]);
+                        for (var cl in tree[mq][sel][i])
+                            this.addProperty(mq, sel, cl, tree[mq][sel][i][cl]);
                     }
                 }
             }
@@ -261,7 +261,7 @@ var blueleaf = {
             });
             observer.observe(document, {attributes: true, childList: true, subtree: true});
 
-            // helper function
+            // helper functions
             function traverseChildElements(elm, fn) {
                 fn(elm);
                 var children = elm.children;
@@ -271,6 +271,16 @@ var blueleaf = {
                     if (traverseChildElements(children[i], fn) == false)
                         return;
                 }
+            }
+            function isDescendant(parent, child) {
+                var node = child.parentNode;
+                while (node != null) {
+                    if (node == parent) {
+                        return true;
+                    }
+                    node = node.parentNode;
+                }
+                return false;
             }
         }
     }
