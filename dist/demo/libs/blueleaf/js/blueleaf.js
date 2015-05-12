@@ -1,5 +1,5 @@
 // TODO durch dritte libs ersetzen
-// TODO was ist mit modernizr?
+// TODO was ist mit modernizr? (mal gucken...)
 
 // Map
 if (Map == undefined) {
@@ -96,34 +96,20 @@ if (ElementPrototype.matches == undefined) {
 // TODO use maps and sets
 // TODO get rid of jQuery.data
 
-// TODO namespace für helper funktionen
+// TODO namespace für api
 
-// helper functions
-function getFirstKeyInArray(data) {
-    for (var prop in data)
-        return prop;
+// TODO move somewhere else:
+// jQuery plugin
+{
+    var uuid = 0;
+    jQuery.fn.uniqueId = function () {
+        return this.each(function () {
+            if (!this.id) {
+                this.id = "uuid-" + (++uuid);
+            }
+        });
+    };
 }
-
-function isDescendant(parent, child) {
-    var node = child.parentNode;
-    while (node != null) {
-        if (node == parent) {
-            return true;
-        }
-        node = node.parentNode;
-    }
-    return false;
-}
-
-// uuid
-var uuid = 0;
-jQuery.fn.uniqueId = function () {
-    return this.each(function () {
-        if (!this.id) {
-            this.id = "uuid-" + (++uuid);
-        }
-    });
-};
 
 // Plugins
 var Plugins = {
@@ -1549,7 +1535,7 @@ function parseCSS(css) {
 };
 // TODO auf memory leaks testen
 
-// TODO build-directorys: TODOs nerven...
+// TODO docs und neue ordnerstruktur
 
 // blue leaf object
 var blueleaf = {
@@ -1575,8 +1561,8 @@ var blueleaf = {
             for (var mq in tree) {
                 for (var sel in tree[mq]) {
                     for (var i = 0; i < tree[mq][sel].length; i++) {
-                        var cl = getFirstKeyInArray(tree[mq][sel][i]);
-                        this.addProperty(mq, sel, cl, tree[mq][sel][i][cl]);
+                        for (var cl in tree[mq][sel][i])
+                            this.addProperty(mq, sel, cl, tree[mq][sel][i][cl]);
                     }
                 }
             }
@@ -1810,7 +1796,7 @@ var blueleaf = {
             });
             observer.observe(document, {attributes: true, childList: true, subtree: true});
 
-            // helper function
+            // helper functions
             function traverseChildElements(elm, fn) {
                 fn(elm);
                 var children = elm.children;
@@ -1820,6 +1806,16 @@ var blueleaf = {
                     if (traverseChildElements(children[i], fn) == false)
                         return;
                 }
+            }
+            function isDescendant(parent, child) {
+                var node = child.parentNode;
+                while (node != null) {
+                    if (node == parent) {
+                        return true;
+                    }
+                    node = node.parentNode;
+                }
+                return false;
             }
         }
     }

@@ -74,8 +74,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .simple .trigger {
     /*! customrule: {"trigger_bind_scrollposition": {"key": "scrolled_top", "scroll_status": "top", "scrollarea": "window", "offset": []}} */ }
   .simple .listener {
-    /*! customrule: {"expressionlistener_class": {"expression": "scrolled_top", "element_class": "u7jxvgpj8"}} */ }
-    .simple .listener.u7jxvgpj8 {
+    /*! customrule: {"expressionlistener_class": {"expression": "scrolled_top", "element_class": "ub9bv63im"}} */ }
+    .simple .listener.ub9bv63im {
       font-weight: bold; }
 
 .scrollarea {
@@ -144,8 +144,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .scrollarea .largecontainer .trigger:after {
         clear: both; }
       .scrollarea .largecontainer .trigger span {
-        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "u7jxvgpj9"}} */ }
-        .scrollarea .largecontainer .trigger span.u7jxvgpj9 {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "ub9bv63iu"}} */ }
+        .scrollarea .largecontainer .trigger span.ub9bv63iu {
           color: red; }
 
 .offsets {
@@ -214,8 +214,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .offsets .largecontainer .trigger:after {
         clear: both; }
       .offsets .largecontainer .trigger span {
-        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "u7jxvgpjj"}} */ }
-        .offsets .largecontainer .trigger span.u7jxvgpjj {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "ub9bv63iz"}} */ }
+        .offsets .largecontainer .trigger span.ub9bv63iz {
           color: red; }
 
 .scrolling-offset {
@@ -232,8 +232,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
-  /*! customrule: {"expressionlistener_class": {"expression": "top", "element_class": "u7jxvgpjs"}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "bottom", "element_class": "u7jxvgpjy"}} */ }
+  /*! customrule: {"expressionlistener_class": {"expression": "top", "element_class": "ub9bv63j8"}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "bottom", "element_class": "ub9bv63jf"}} */ }
   .scrolling-offset:before, .scrolling-offset:after {
     content: "";
     display: table; }
@@ -246,9 +246,9 @@ ol:not(.nostyle), ul:not(.nostyle) {
     position: relative;
     top: -100px;
     visibility: hidden; }
-  .scrolling-offset.u7jxvgpjs {
+  .scrolling-offset.ub9bv63j8 {
     background-color: red; }
-  .scrolling-offset.u7jxvgpjy {
+  .scrolling-offset.ub9bv63jf {
     background-color: green; }
 
 .navigation {
@@ -273,8 +273,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
       .navigation .nav ul.bl-sticked {
         z-index: 5; }
     .navigation .nav a {
-      /*! customrule: {"expressionlistener_class": {"expression": "nav.{attr-href}", "element_class": "u7jxvgpk0"}} */ }
-      .navigation .nav a.u7jxvgpk0 {
+      /*! customrule: {"expressionlistener_class": {"expression": "nav.{attr-href}", "element_class": "ub9bv63jm"}} */ }
+      .navigation .nav a.ub9bv63jm {
         font-weight: bold; }
   .navigation .content {
     float: left;
