@@ -71,6 +71,8 @@ core.js
 cssparser.js
 ************
 
+The CSS Parser has been replaced. These docs are outdated.
+
 .. js:class:: CSSParser(css)
 
    :param string css: A string containing the CSS stylesheets.
