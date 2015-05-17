@@ -1,4 +1,4 @@
-(function ($) {
+(function ($,Plugins,ElementProperty) {
     Plugins.fn.container_aspectratio = function (args) {
         var elm = this;
         
@@ -40,4 +40,4 @@
         factor: Plugins.REQUIRED // float
     };
     Plugins.fn.container_aspectratio.key = [];
-}(jQuery));
+}(jQuery,blue.Plugins,blue.ElementProperty));

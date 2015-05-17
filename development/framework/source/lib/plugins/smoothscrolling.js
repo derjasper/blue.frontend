@@ -1,4 +1,4 @@
-(function ($) {// TODO buggy bei leeren target
+(function ($,Plugins) {// TODO buggy bei leeren target
     Plugins.fn.smoothscrolling = function (args) {
         var elm = this;
         
@@ -40,4 +40,4 @@
         time: 500
     };
     Plugins.fn.smoothscrolling.key = [];
-}(jQuery));
+}(jQuery,blue.Plugins));

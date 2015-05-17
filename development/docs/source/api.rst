@@ -51,8 +51,8 @@ refers to variables.js).
    api/jsplugins/*
 
 
-JavaScript Plugin API
----------------------
+JavaScript Plugin API (the blue object)
+---------------------------------------
 
 The JavaScript Plugin API provides a set of APIs and services that allows Plugins
 to communicate with each other, be fully responsive and to have a consistent state.
@@ -62,7 +62,9 @@ implement a bridge between jQuery and the Plugin API. (For a while all Plugins
 were implemented as jQuery Plugins but some changes in the core needed an API providing
 more control over the plugins.)
 
-The JavaScript Plugin API is contained in the ``pluginapi.js`` file.
+The JavaScript Plugin API is contained in the ``pluginapi`` folder.
+
+The Plugin API creates the global ``blue`` object.
 
 
 .. toctree::
@@ -72,10 +74,24 @@ The JavaScript Plugin API is contained in the ``pluginapi.js`` file.
    api/jspluginapi/*
 
 
+JavaScript CSS Parser
+---------------------
+
+The CSS Parser library provides a function to parse a stylesheet string to a
+JSON tree containing custom rules.
+
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+
+   api/jscssparser/*
+
+
 JavaScript core
 ---------------
 
-The JavaScript core of blue leaf parses the CSS files for custom rules, listens
+The core provides an interface to add rules and listens
 to media querys and DOM changes and manages the en- and disabling of the rules.
 Rules are using the Plugin API for it's features.
 
@@ -87,3 +103,18 @@ The JavaScript core is contained in the ``core.js`` file.
    :glob:
 
    api/jscore/*
+
+
+JavaScript loader file
+----------------------
+
+The JavaScript loader file uses the CSS parser to parse all present CSS files
+and adds them to the core. It puts the whole thing together to a working script
+that can be added to end products.
+
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+
+   api/jsloader/*

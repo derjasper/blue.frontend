@@ -1,4 +1,4 @@
-(function ($) {
+(function ($,Plugins) {
     Plugins.fn.stickyfooter = function (args) {
         var elm = $(this);
         
@@ -65,4 +65,4 @@
         scrollarea: null
     };
     Plugins.fn.stickyfooter.key = [];
-}(jQuery));
+}(jQuery,blue.Plugins));

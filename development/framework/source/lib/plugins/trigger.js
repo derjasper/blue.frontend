@@ -1,4 +1,4 @@
-(function ($) {
+(function ($,Plugins,Variables,Selectors) {
     var trigger_actions=new Object();
     
     // TODO delegated trigger
@@ -221,4 +221,4 @@
         offset: {} // offset: {top:,right:,bottom:,left:}
     };
     Plugins.fn.trigger_bind_scrollposition.key = ["key"];
-}(jQuery));
+}(jQuery,blue.Plugins,blue.Variables,blue.Selectors));

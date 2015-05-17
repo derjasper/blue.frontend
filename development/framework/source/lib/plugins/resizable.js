@@ -1,4 +1,4 @@
-(function ($) {
+(function ($,Plugins) {
     var currentResizing=null;
     var mousemove=function(event) {
         if (event.which!=1) {
@@ -71,4 +71,4 @@
         click_spacing:  Plugins.REQUIRED
     };
     Plugins.fn.resizable.key = [];
-}(jQuery));
+}(jQuery,blue.Plugins));

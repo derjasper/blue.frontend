@@ -55,28 +55,32 @@
 <h1>Plugin Manager<a class="headerlink" href="#plugin-manager" title="Permalink to this headline">¶</a></h1>
 <p>The plugin manager which hosts all plugins.</p>
 <p>An plugin should be created like this:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">Plugins</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">elm</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// the function is called in the context of the current DOM Element</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Plugins</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="c1">// do preprocessing of parameters here (determine DOM Elements, calculate values, define helper functions)</span>
+    <span class="nx">Plugins</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">elm</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// the function is called in the context of the current DOM Element</span>
 
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="nx">enable</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// enable the plugin</span>
-        <span class="p">},</span>
-        <span class="nx">disable</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="c1">// undo everything the enable function does</span>
+        <span class="c1">// do preprocessing of parameters here (determine DOM Elements, calculate values, define helper functions)</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">enable</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="c1">// enable the plugin</span>
+            <span class="p">},</span>
+            <span class="nx">disable</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="c1">// undo everything the enable function does</span>
+            <span class="p">}</span>
         <span class="p">}</span>
+        <span class="c1">// return null if the args are invalid</span>
     <span class="p">}</span>
-    <span class="c1">// return null if the args are invalid</span>
-<span class="p">}</span>
 
-<span class="nx">Plugins</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name</span><span class="p">.</span><span class="nx">args</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">// default arguments</span>
-    <span class="nx">required_param</span><span class="o">:</span> <span class="nx">Plugins</span><span class="p">.</span><span class="nx">REQUIRED</span><span class="p">,</span> <span class="c1">// required param</span>
-    <span class="nx">param2</span><span class="o">:</span> <span class="nx">value</span><span class="p">,</span> <span class="c1">// default value</span>
-    <span class="nx">param3</span><span class="o">:</span> <span class="nx">value</span>
-<span class="p">};</span>
-<span class="nx">Plugins</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name</span><span class="p">.</span><span class="nx">key</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;required_param&quot;</span><span class="p">,</span><span class="s2">&quot;param1&quot;</span><span class="p">];</span> <span class="c1">// list of arguments to identify an instance</span>
+    <span class="nx">Plugins</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name</span><span class="p">.</span><span class="nx">args</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">// default arguments</span>
+        <span class="nx">required_param</span><span class="o">:</span> <span class="nx">Plugins</span><span class="p">.</span><span class="nx">REQUIRED</span><span class="p">,</span> <span class="c1">// required param</span>
+        <span class="nx">param2</span><span class="o">:</span> <span class="nx">value</span><span class="p">,</span> <span class="c1">// default value</span>
+        <span class="nx">param3</span><span class="o">:</span> <span class="nx">value</span>
+    <span class="p">};</span>
+    <span class="nx">Plugins</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name</span><span class="p">.</span><span class="nx">key</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;required_param&quot;</span><span class="p">,</span><span class="s2">&quot;param1&quot;</span><span class="p">];</span> <span class="c1">// list of arguments to identify an instance</span>
+
+<span class="p">}(</span><span class="nx">blue</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>A plugin is a function with parameters and returns an object with an enable and
@@ -95,15 +99,15 @@ are automatically added if keys are undefined. The Plugin Manager throws an
 error if required parameters are not set. Each used argument must be defined
 in the arguments list.</p>
 <p>A plugin can be used like this:</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">Plugins</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">elm</span><span class="p">,</span><span class="nx">plugin_name</span><span class="p">,</span><span class="nx">args_obj</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// enable</span>
-<span class="nx">Plugins</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">elm</span><span class="p">,</span><span class="nx">plugin_name</span><span class="p">,</span><span class="nx">args_obj</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// disable</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">blue</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">elm</span><span class="p">,</span><span class="nx">plugin_name</span><span class="p">,</span><span class="nx">args_obj</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// enable</span>
+<span class="nx">blue</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">elm</span><span class="p">,</span><span class="nx">plugin_name</span><span class="p">,</span><span class="nx">args_obj</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// disable</span>
 </pre></div>
 </div>
 <div class="section" id="javascript">
 <h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="Plugins">
-<tt class="descname">Plugins</tt><big>(</big><em>elm</em>, <em>plugin</em>, <em>args</em>, <em>setEnabled</em><big>)</big><a class="headerlink" href="#Plugins" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Plugins">
+<tt class="descclassname">blue.</tt><tt class="descname">Plugins</tt><big>(</big><em>elm</em>, <em>plugin</em>, <em>args</em>, <em>setEnabled</em><big>)</big><a class="headerlink" href="#blue.Plugins" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the <tt class="docutils literal"><span class="pre">plugin</span></tt> with the given <tt class="docutils literal"><span class="pre">args</span></tt> for <tt class="docutils literal"><span class="pre">elm</span></tt> enabled or disabled
 depending on <tt class="docutils literal"><span class="pre">setEnabled</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -123,14 +127,14 @@ depending on <tt class="docutils literal"><span class="pre">setEnabled</span></t
 </dd></dl>
 
 <dl class="data">
-<dt id="Plugins.fn">
-<tt class="descclassname">Plugins.</tt><tt class="descname">fn</tt><a class="headerlink" href="#Plugins.fn" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Plugins.fn">
+<tt class="descclassname">blue.Plugins.</tt><tt class="descname">fn</tt><a class="headerlink" href="#blue.Plugins.fn" title="Permalink to this definition">¶</a></dt>
 <dd><p>An object containing all plugins.</p>
 </dd></dl>
 
 <dl class="data">
-<dt id="Plugins.REQUIRED">
-<tt class="descclassname">Plugins.</tt><tt class="descname">REQUIRED</tt><a class="headerlink" href="#Plugins.REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Plugins.REQUIRED">
+<tt class="descclassname">blue.Plugins.</tt><tt class="descname">REQUIRED</tt><a class="headerlink" href="#blue.Plugins.REQUIRED" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constant for marking an argument as required.</p>
 </dd></dl>
 

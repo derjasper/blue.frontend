@@ -1,7 +1,3 @@
-// TODO auf memory leaks testen
-
-// TODO docs und neue ordnerstruktur
-
 // blue leaf object
 var blueleaf = {
     customrules: {
@@ -45,7 +41,7 @@ var blueleaf = {
             var rules = this.properties[mq].selectors[sel];
 
             for (var i = 0; i < rules.length; i++) {
-                Plugins.use(elm, rules[i].rule, rules[i].options, true);
+                blue.Plugins.use(elm, rules[i].rule, rules[i].options, true);
             }
         },
         disableSelector: function (elm, mq, sel) {
@@ -60,7 +56,7 @@ var blueleaf = {
             var rules = this.properties[mq].selectors[sel];
 
             for (var i = 0; i < rules.length; i++) {
-                Plugins.use(elm, rules[i].rule, rules[i].options, false);
+                blue.Plugins.use(elm, rules[i].rule, rules[i].options, false);
             }
 
         },

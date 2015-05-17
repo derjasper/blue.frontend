@@ -1,4 +1,4 @@
-(function ($) {
+(function ($,Plugins,Selectors,Variables) {
     Plugins.fn.variable_init = function (args) {
         var elm = this;
         
@@ -24,4 +24,4 @@
         type: "simple" // type: simple, group, stack
     };
     Plugins.fn.variable_init.key = ["variable"];
-}(jQuery));
+}(jQuery,blue.Plugins,blue.Selectors,blue.Variables));
