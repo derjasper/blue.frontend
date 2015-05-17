@@ -6,6 +6,7 @@ module.exports = function (grunt) {
                 dest: 'development/framework/build/js/blueleaf.js',
                 src: [
                     'development/framework/source/js/polyfills.js',
+                    'development/framework/source/lib/pluginapi/api.js',
                     'development/framework/source/lib/pluginapi/*.js',
                     'development/framework/source/lib/plugins/*.js',
                     'development/framework/source/lib/cssparser/cssparser.js',

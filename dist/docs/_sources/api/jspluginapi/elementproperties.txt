@@ -48,7 +48,7 @@ JavaScript
 Public API
 **********
 
-.. js:function:: ElementProperty.on(element, property, handler)
+.. js:function:: blue.ElementProperty.on(element, property, handler)
 
    Attach the ``handler`` to the ``property`` of the ``element``.
 
@@ -58,7 +58,7 @@ Public API
 
    :param function handler: A handler. Will be called as ``handler(newVal, oldVal)``.
 
-.. js:function:: ElementProperty.off(element, property, handler)
+.. js:function:: blue.ElementProperty.off(element, property, handler)
 
    Remove a handler.
 
@@ -72,19 +72,19 @@ Public API
 Private functions (not for use from outside)
 ********************************************
 
-.. js:function:: ElementProperty.fire(element, property, newVal, oldVal)
+.. js:function:: blue.ElementProperty.fire(element, property, newVal, oldVal)
 
    Call all handlers related to the given parameters.
 
-.. js:function:: ElementProperty.getProperty(element, property)
+.. js:function:: blue.ElementProperty.getProperty(element, property)
 
    Get the property of the element.
 
-.. js:function:: ElementProperty.check(element, property)
+.. js:function:: blue.ElementProperty.check(element, property)
 
    Check for changes for the given element and properties (it's a list). Both parameters
    can be ``undefined``, which will perform checks for all elements/properties.
 
-.. js:function:: ElementProperty.start()
+.. js:function:: blue.ElementProperty.start()
 
    Start the engines.

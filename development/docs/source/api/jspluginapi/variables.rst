@@ -99,7 +99,7 @@ JavaScript
 Public API
 **********
 
-.. js:function:: Variables.addVariable(elm,variable,value,type) 
+.. js:function:: blue.Variables.addVariable(elm,variable,value,type) 
 
    Attaches a variable to the given element.
 
@@ -111,7 +111,7 @@ Public API
    
    :param string type: ``"simple"``, ``"group"`` or ``"stack"``
 
-.. js:function:: Variables.removeVariable(elm,variable) 
+.. js:function:: blue.Variables.removeVariable(elm,variable) 
 
    Removes a variable from the given element.
 
@@ -119,7 +119,7 @@ Public API
 
    :param string variable: Variable name.   
 
-.. js:function:: Variables.eval(context,expression)
+.. js:function:: blue.Variables.eval(context,expression)
 
    Evaluates an expression (see above).
 
@@ -129,7 +129,7 @@ Public API
 
    :return: A boolean value.
 
-.. js:function:: Variables.set(context,key,value)
+.. js:function:: blue.Variables.set(context,key,value)
 
    Sets the value of the key.
 
@@ -139,7 +139,7 @@ Public API
 
    :param boolean value: The value.
 
-.. js:function:: Variables.on(context,expression,fn)
+.. js:function:: blue.Variables.on(context,expression,fn)
 
    Adds a listener to the expression evaluated in the given context.
 
@@ -149,7 +149,7 @@ Public API
 
    :param function fn: The listener, should have a parameter to receive the current value.
 
-.. js:function:: Variables.off(context,expression,fn)
+.. js:function:: blue.Variables.off(context,expression,fn)
 
    Removes a listener from the expression evaluated in the given context.
 
@@ -164,30 +164,30 @@ Public API
 Private functions (not for use from outside)
 ********************************************
 
-.. js:function:: Variables.getVariable(elm,variable) 
+.. js:function:: blue.Variables.getVariable(elm,variable) 
 
    Get the object of a directly attached variable.
 
-.. js:function:: Variables.setVariable(elm,key,value)
+.. js:function:: blue.Variables.setVariable(elm,key,value)
 
    Set a directly attached variable to the value (if existent). Creates a new variable
    if ``elm`` is the root element. Returns false if the variable does not exist.
 
-.. js:function:: Variables.getVal(variable, sub)
+.. js:function:: blue.Variables.getVal(variable, sub)
 
    Process a variable object to a boolean value using ``sub`` as value. Returns
    the boolean value.
 
-.. js:function:: Variables.setVal(variable, sub, value)
+.. js:function:: blue.Variables.setVal(variable, sub, value)
 
    Process ``sub`` and ``value`` using the variable object's type and set the value
    properly.
 
-.. js:function:: Variables.get(context,key)
+.. js:function:: blue.Variables.get(context,key)
 
    Get a variable's value in the given context.
 
-.. js:function:: Variables.checkfire(context,variable)
+.. js:function:: blue.Variables.checkfire(context,variable)
 
    To be called whenever the given variable in the given context has changed. Calls
    listeners if neccessary.

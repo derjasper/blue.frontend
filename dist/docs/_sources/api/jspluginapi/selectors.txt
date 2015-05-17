@@ -35,7 +35,7 @@ Keywords
 JavaScript
 ----------
 
-.. js:function:: Selectors.generate(selector, context)
+.. js:function:: blue.Selectors.generate(selector, context)
 
    :param string selector: A selector expression.
 

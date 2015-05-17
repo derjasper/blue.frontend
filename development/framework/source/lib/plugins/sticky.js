@@ -1,4 +1,4 @@
-(function ($) {
+(function ($,Plugins,ElementProperty) {
     Plugins.fn.sticky = function (args) { // TODO langsam
         var rawElm = this;
         var elm = $(rawElm);
@@ -236,4 +236,4 @@
         sticky_class: "sticky"
     };
     Plugins.fn.sticky.key = [];
-}(jQuery));
+}(jQuery,blue.Plugins,blue.ElementProperty));

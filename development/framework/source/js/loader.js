@@ -24,7 +24,7 @@
         for (var i = 0; i < stylesheets.length; i++) {
             jQuery.get(stylesheets[i], null, function (data) {
                 if (data.indexOf("/*! blueleaf */") === 0) {
-                    var tree = parseCSS(data);
+                    var tree = CSSParser.parse(data);
                     if (tree != null) {
                         blueleaf.customrules.addProperties(tree);
                     }

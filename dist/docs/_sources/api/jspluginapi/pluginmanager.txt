@@ -7,28 +7,32 @@ An plugin should be created like this:
 
 .. code-block:: javascript
 
-    Plugins.fn.plugin_name = function (args) {
-        var elm = this; // the function is called in the context of the current DOM Element
-        
-        // do preprocessing of parameters here (determine DOM Elements, calculate values, define helper functions)
+    (function (Plugins) {
 
-        return {
-            enable: function () {
-                // enable the plugin
-            },
-            disable: function () {
-                // undo everything the enable function does
+        Plugins.fn.plugin_name = function (args) {
+            var elm = this; // the function is called in the context of the current DOM Element
+
+            // do preprocessing of parameters here (determine DOM Elements, calculate values, define helper functions)
+
+            return {
+                enable: function () {
+                    // enable the plugin
+                },
+                disable: function () {
+                    // undo everything the enable function does
+                }
             }
+            // return null if the args are invalid
         }
-        // return null if the args are invalid
-    }
 
-    Plugins.fn.plugin_name.args = { // default arguments
-        required_param: Plugins.REQUIRED, // required param
-        param2: value, // default value
-        param3: value
-    };
-    Plugins.fn.plugin_name.key = ["required_param","param1"]; // list of arguments to identify an instance
+        Plugins.fn.plugin_name.args = { // default arguments
+            required_param: Plugins.REQUIRED, // required param
+            param2: value, // default value
+            param3: value
+        };
+        Plugins.fn.plugin_name.key = ["required_param","param1"]; // list of arguments to identify an instance
+
+    }(blue.Plugins));
 
 A plugin is a function with parameters and returns an object with an enable and 
 disable function. An argument list and a key definition as seen in the example is
@@ -55,14 +59,14 @@ A plugin can be used like this:
 
 .. code-block:: javascript
 
-    Plugins.use(elm,plugin_name,args_obj,true); // enable
-    Plugins.use(elm,plugin_name,args_obj,false); // disable
+    blue.Plugins.use(elm,plugin_name,args_obj,true); // enable
+    blue.Plugins.use(elm,plugin_name,args_obj,false); // disable
 
 
 JavaScript
 ----------
 
-.. js:function:: Plugins(elm,plugin,args,setEnabled)
+.. js:function:: blue.Plugins(elm,plugin,args,setEnabled)
 
    Sets the ``plugin`` with the given ``args`` for ``elm`` enabled or disabled
    depending on ``setEnabled``.
@@ -75,10 +79,10 @@ JavaScript
 
    :param boolean setEnabled: ``treu`` for enabled, ``false`` for disabled.
 
-.. js:data:: Plugins.fn
+.. js:data:: blue.Plugins.fn
 
    An object containing all plugins.
 
-.. js:data:: Plugins.REQUIRED
+.. js:data:: blue.Plugins.REQUIRED
 
    Constant for marking an argument as required.

@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="blue leaf 1.2.0 documentation" href="../../index.html" />
     <link rel="up" title="API" href="../../api.html" />
-    <link rel="next" title="blue leaf JavaScript core" href="../jscore/core.html" />
+    <link rel="next" title="JavaScript CSS Parser" href="../jscssparser/cssparser.html" />
     <link rel="prev" title="Selectors" href="selectors.html" /> 
   </head>
   <body>
@@ -36,7 +36,7 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../jscore/core.html" title="blue leaf JavaScript core"
+          <a href="../jscssparser/cssparser.html" title="JavaScript CSS Parser"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="selectors.html" title="Selectors"
@@ -121,8 +121,8 @@ expression is changed (and when it is added or removed).</p>
 <div class="section" id="public-api">
 <h3>Public API<a class="headerlink" href="#public-api" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
-<dt id="Variables.addVariable">
-<tt class="descclassname">Variables.</tt><tt class="descname">addVariable</tt><big>(</big><em>elm</em>, <em>variable</em>, <em>value</em>, <em>type</em><big>)</big><a class="headerlink" href="#Variables.addVariable" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.addVariable">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">addVariable</tt><big>(</big><em>elm</em>, <em>variable</em>, <em>value</em>, <em>type</em><big>)</big><a class="headerlink" href="#blue.Variables.addVariable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attaches a variable to the given element.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -141,8 +141,8 @@ expression is changed (and when it is added or removed).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="Variables.removeVariable">
-<tt class="descclassname">Variables.</tt><tt class="descname">removeVariable</tt><big>(</big><em>elm</em>, <em>variable</em><big>)</big><a class="headerlink" href="#Variables.removeVariable" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.removeVariable">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">removeVariable</tt><big>(</big><em>elm</em>, <em>variable</em><big>)</big><a class="headerlink" href="#blue.Variables.removeVariable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes a variable from the given element.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -159,8 +159,8 @@ expression is changed (and when it is added or removed).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="Variables.eval">
-<tt class="descclassname">Variables.</tt><tt class="descname">eval</tt><big>(</big><em>context</em>, <em>expression</em><big>)</big><a class="headerlink" href="#Variables.eval" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.eval">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">eval</tt><big>(</big><em>context</em>, <em>expression</em><big>)</big><a class="headerlink" href="#blue.Variables.eval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates an expression (see above).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -180,8 +180,8 @@ expression is changed (and when it is added or removed).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="Variables.set">
-<tt class="descclassname">Variables.</tt><tt class="descname">set</tt><big>(</big><em>context</em>, <em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#Variables.set" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.set">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">set</tt><big>(</big><em>context</em>, <em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#blue.Variables.set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the value of the key.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -199,8 +199,8 @@ expression is changed (and when it is added or removed).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="Variables.on">
-<tt class="descclassname">Variables.</tt><tt class="descname">on</tt><big>(</big><em>context</em>, <em>expression</em>, <em>fn</em><big>)</big><a class="headerlink" href="#Variables.on" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.on">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">on</tt><big>(</big><em>context</em>, <em>expression</em>, <em>fn</em><big>)</big><a class="headerlink" href="#blue.Variables.on" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a listener to the expression evaluated in the given context.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -218,8 +218,8 @@ expression is changed (and when it is added or removed).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="Variables.off">
-<tt class="descclassname">Variables.</tt><tt class="descname">off</tt><big>(</big><em>context</em>, <em>expression</em>, <em>fn</em><big>)</big><a class="headerlink" href="#Variables.off" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.off">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">off</tt><big>(</big><em>context</em>, <em>expression</em>, <em>fn</em><big>)</big><a class="headerlink" href="#blue.Variables.off" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes a listener from the expression evaluated in the given context.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -240,41 +240,41 @@ expression is changed (and when it is added or removed).</p>
 <div class="section" id="private-functions-not-for-use-from-outside">
 <h3>Private functions (not for use from outside)<a class="headerlink" href="#private-functions-not-for-use-from-outside" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
-<dt id="Variables.getVariable">
-<tt class="descclassname">Variables.</tt><tt class="descname">getVariable</tt><big>(</big><em>elm</em>, <em>variable</em><big>)</big><a class="headerlink" href="#Variables.getVariable" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.getVariable">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">getVariable</tt><big>(</big><em>elm</em>, <em>variable</em><big>)</big><a class="headerlink" href="#blue.Variables.getVariable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the object of a directly attached variable.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="Variables.setVariable">
-<tt class="descclassname">Variables.</tt><tt class="descname">setVariable</tt><big>(</big><em>elm</em>, <em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#Variables.setVariable" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.setVariable">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">setVariable</tt><big>(</big><em>elm</em>, <em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#blue.Variables.setVariable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a directly attached variable to the value (if existent). Creates a new variable
 if <tt class="docutils literal"><span class="pre">elm</span></tt> is the root element. Returns false if the variable does not exist.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="Variables.getVal">
-<tt class="descclassname">Variables.</tt><tt class="descname">getVal</tt><big>(</big><em>variable</em>, <em>sub</em><big>)</big><a class="headerlink" href="#Variables.getVal" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.getVal">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">getVal</tt><big>(</big><em>variable</em>, <em>sub</em><big>)</big><a class="headerlink" href="#blue.Variables.getVal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process a variable object to a boolean value using <tt class="docutils literal"><span class="pre">sub</span></tt> as value. Returns
 the boolean value.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="Variables.setVal">
-<tt class="descclassname">Variables.</tt><tt class="descname">setVal</tt><big>(</big><em>variable</em>, <em>sub</em>, <em>value</em><big>)</big><a class="headerlink" href="#Variables.setVal" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.setVal">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">setVal</tt><big>(</big><em>variable</em>, <em>sub</em>, <em>value</em><big>)</big><a class="headerlink" href="#blue.Variables.setVal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process <tt class="docutils literal"><span class="pre">sub</span></tt> and <tt class="docutils literal"><span class="pre">value</span></tt> using the variable object&#8217;s type and set the value
 properly.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="Variables.get">
-<tt class="descclassname">Variables.</tt><tt class="descname">get</tt><big>(</big><em>context</em>, <em>key</em><big>)</big><a class="headerlink" href="#Variables.get" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.get">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">get</tt><big>(</big><em>context</em>, <em>key</em><big>)</big><a class="headerlink" href="#blue.Variables.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a variable&#8217;s value in the given context.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="Variables.checkfire">
-<tt class="descclassname">Variables.</tt><tt class="descname">checkfire</tt><big>(</big><em>context</em>, <em>variable</em><big>)</big><a class="headerlink" href="#Variables.checkfire" title="Permalink to this definition">¶</a></dt>
+<dt id="blue.Variables.checkfire">
+<tt class="descclassname">blue.Variables.</tt><tt class="descname">checkfire</tt><big>(</big><em>context</em>, <em>variable</em><big>)</big><a class="headerlink" href="#blue.Variables.checkfire" title="Permalink to this definition">¶</a></dt>
 <dd><p>To be called whenever the given variable in the given context has changed. Calls
 listeners if neccessary.</p>
 </dd></dl>
@@ -314,8 +314,8 @@ listeners if neccessary.</p>
   <p class="topless"><a href="selectors.html"
                         title="previous chapter">Selectors</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../jscore/core.html"
-                        title="next chapter">blue leaf JavaScript core</a></p>
+  <p class="topless"><a href="../jscssparser/cssparser.html"
+                        title="next chapter">JavaScript CSS Parser</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../_sources/api/jspluginapi/variables.txt"
@@ -345,7 +345,7 @@ listeners if neccessary.</p>
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../jscore/core.html" title="blue leaf JavaScript core"
+          <a href="../jscssparser/cssparser.html" title="JavaScript CSS Parser"
              >next</a> |</li>
         <li class="right" >
           <a href="selectors.html" title="Selectors"

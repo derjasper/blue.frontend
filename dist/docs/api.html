@@ -229,15 +229,16 @@ refers to variables.js).</p>
 </ul>
 </div>
 </div>
-<div class="section" id="javascript-plugin-api">
-<h2>JavaScript Plugin API<a class="headerlink" href="#javascript-plugin-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="javascript-plugin-api-the-blue-object">
+<h2>JavaScript Plugin API (the blue object)<a class="headerlink" href="#javascript-plugin-api-the-blue-object" title="Permalink to this headline">¶</a></h2>
 <p>The JavaScript Plugin API provides a set of APIs and services that allows Plugins
 to communicate with each other, be fully responsive and to have a consistent state.</p>
 <p>Note that the Plugin API is fully independent from the core, so it&#8217;s possible to
 implement a bridge between jQuery and the Plugin API. (For a while all Plugins
 were implemented as jQuery Plugins but some changes in the core needed an API providing
 more control over the plugins.)</p>
-<p>The JavaScript Plugin API is contained in the <tt class="docutils literal"><span class="pre">pluginapi.js</span></tt> file.</p>
+<p>The JavaScript Plugin API is contained in the <tt class="docutils literal"><span class="pre">pluginapi</span></tt> folder.</p>
+<p>The Plugin API creates the global <tt class="docutils literal"><span class="pre">blue</span></tt> object.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/jspluginapi/elementproperties.html">Element Properties</a><ul>
@@ -246,8 +247,7 @@ more control over the plugins.)</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/jspluginapi/misc.html">Misc</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api/jspluginapi/misc.html#simplemap-and-hashmap">SimpleMap and HashMap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/jspluginapi/misc.html#helper-functions">helper functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/jspluginapi/misc.html#polyfill-map">Polyfill Map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/jspluginapi/misc.html#uniqueids-jquery-plugin">uniqueIds (jQuery Plugin)</a></li>
 </ul>
 </li>
@@ -271,18 +271,42 @@ more control over the plugins.)</p>
 </ul>
 </div>
 </div>
+<div class="section" id="javascript-css-parser">
+<h2>JavaScript CSS Parser<a class="headerlink" href="#javascript-css-parser" title="Permalink to this headline">¶</a></h2>
+<p>The CSS Parser library provides a function to parse a stylesheet string to a
+JSON tree containing custom rules.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/jscssparser/cssparser.html">JavaScript CSS Parser</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/jscssparser/cssparser.html#javascript">JavaScript</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="javascript-core">
 <h2>JavaScript core<a class="headerlink" href="#javascript-core" title="Permalink to this headline">¶</a></h2>
-<p>The JavaScript core of blue leaf parses the CSS files for custom rules, listens
+<p>The core provides an interface to add rules and listens
 to media querys and DOM changes and manages the en- and disabling of the rules.
 Rules are using the Plugin API for it&#8217;s features.</p>
 <p>The JavaScript core is contained in the <tt class="docutils literal"><span class="pre">core.js</span></tt> file.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="api/jscore/core.html">blue leaf JavaScript core</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="api/jscore/core.html">JavaScript core</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/jscore/core.html#javascript">JavaScript</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+<div class="section" id="javascript-loader-file">
+<h2>JavaScript loader file<a class="headerlink" href="#javascript-loader-file" title="Permalink to this headline">¶</a></h2>
+<p>The JavaScript loader file uses the CSS parser to parse all present CSS files
+and adds them to the core. It puts the whole thing together to a working script
+that can be added to end products.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/jsloader/loader.html">JavaScript loader (blueleaf.js)</a></li>
 </ul>
 </div>
 </div>
@@ -299,8 +323,10 @@ Rules are using the Plugin API for it&#8217;s features.</p>
 <li><a class="reference internal" href="#">API</a><ul>
 <li><a class="reference internal" href="#sass-modules">SASS modules</a></li>
 <li><a class="reference internal" href="#javascript-plugins">JavaScript plugins</a></li>
-<li><a class="reference internal" href="#javascript-plugin-api">JavaScript Plugin API</a></li>
+<li><a class="reference internal" href="#javascript-plugin-api-the-blue-object">JavaScript Plugin API (the blue object)</a></li>
+<li><a class="reference internal" href="#javascript-css-parser">JavaScript CSS Parser</a></li>
 <li><a class="reference internal" href="#javascript-core">JavaScript core</a></li>
+<li><a class="reference internal" href="#javascript-loader-file">JavaScript loader file</a></li>
 </ul>
 </li>
 </ul>

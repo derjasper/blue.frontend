@@ -54,17 +54,10 @@
   <div class="section" id="misc">
 <h1>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h1>
 <p>Helper functions, data structures, ...</p>
-<div class="section" id="simplemap-and-hashmap">
-<h2>SimpleMap and HashMap<a class="headerlink" href="#simplemap-and-hashmap" title="Permalink to this headline">¶</a></h2>
-<p>A map/dictionary. Every object can be a key.
-Should be avoided whereever possible (use jQuery.data instead), because it may be
-slow.</p>
-<p>The <tt class="docutils literal"><span class="pre">SimpleMap</span></tt> does no hashing, it stores key-value pairs in an array. The
-<tt class="docutils literal"><span class="pre">HashMap</span></tt> appends a <tt class="docutils literal"><span class="pre">_hashid</span></tt> property to each key or uses <tt class="docutils literal"><span class="pre">jQuery.data</span></tt>
-for DOM <a href="#id1"><span class="problematic" id="id2">``</span></a>Element``s.</p>
-<p>The HashMap has the same API as the SimpleMap, with one difference: The constructor of
-the HashMap has a boolean parameter which indicates whether the method <tt class="docutils literal"><span class="pre">each</span></tt>
-is needed or not.</p>
+<div class="section" id="polyfill-map">
+<h2>Polyfill Map<a class="headerlink" href="#polyfill-map" title="Permalink to this headline">¶</a></h2>
+<p>An ECMAScript 6 Map polyfill (incomplete). Uses jQuery.data.
+Will be replaced by a thrid party library in future.</p>
 <dl class="class">
 <dt id="Map">
 <em class="property">class </em><tt class="descname">Map</tt><big>(</big><big>)</big><a class="headerlink" href="#Map" title="Permalink to this definition">¶</a></dt>
@@ -144,16 +137,6 @@ is needed or not.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="helper-functions">
-<h2>helper functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="getFirstKeyInArray">
-<tt class="descname">getFirstKeyInArray</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#getFirstKeyInArray" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Deprecated</em> Gets the first key of the given array. (Will be moved in future, too
-lazy until now.)</p>
-</dd></dl>
-
-</div>
 <div class="section" id="uniqueids-jquery-plugin">
 <h2>uniqueIds (jQuery Plugin)<a class="headerlink" href="#uniqueids-jquery-plugin" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -174,8 +157,7 @@ lazy until now.)</p>
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Misc</a><ul>
-<li><a class="reference internal" href="#simplemap-and-hashmap">SimpleMap and HashMap</a></li>
-<li><a class="reference internal" href="#helper-functions">helper functions</a></li>
+<li><a class="reference internal" href="#polyfill-map">Polyfill Map</a></li>
 <li><a class="reference internal" href="#uniqueids-jquery-plugin">uniqueIds (jQuery Plugin)</a></li>
 </ul>
 </li>

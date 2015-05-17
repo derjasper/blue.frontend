@@ -1,4 +1,4 @@
-(function ($) {
+(function ($,Plugins) {
     Plugins.fn.grid_offset = function (args) {
         var elm = this;
         
@@ -26,4 +26,4 @@
         height:Plugins.REQUIRED
     };
     Plugins.fn.grid_offset.key = [];
-}(jQuery));
+}(jQuery,blue.Plugins));

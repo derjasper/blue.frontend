@@ -1,5 +1,5 @@
-blue leaf JavaScript core
-=========================
+JavaScript core
+===============
 
 The core scans all CSS files for custom rules, listens on DOM changes and media
 querys and en-/disables the rules.
@@ -66,24 +66,3 @@ core.js
    Initializes the custom rules. After the init, no more rules or properties can
    be added. blue leaf will handle media querys and DOM changes, the framework 
    should be mostly transparent to the developer.
-
-
-cssparser.js
-************
-
-The CSS Parser has been replaced. These docs are outdated.
-
-.. js:class:: CSSParser(css)
-
-   :param string css: A string containing the CSS stylesheets.
-
-.. js:function:: CSSParser.parse()
-
-   Parses the ``CSSParser``s CSS.
-
-   :returns: ``true`` if parsing was successful, otherwise ``false``.
-
-.. js:attribute:: CSSParser.tree
-
-   Contains a tree containing custom rules with their selectors and media querys.
-   Only valid if ``CSSParser.parse()`` has returned ``true``.

@@ -93,13 +93,14 @@ if (ElementPrototype.matches == undefined) {
 // Set
 // TODO set polyfill
 "use strict";
-// TODO use maps and sets
-// TODO get rid of jQuery.data
 
-// TODO namespace für api
+var blue = {};
 
-// TODO move somewhere else:
-// jQuery plugin
+jQuery(function () {
+    blue.ElementProperty.start();
+});
+
+// jQuery plugins // TODO replace (create a Plugin API?) or move into another lib
 {
     var uuid = 0;
     jQuery.fn.uniqueId = function () {
@@ -110,496 +111,498 @@ if (ElementPrototype.matches == undefined) {
         });
     };
 }
-
-// Plugins
-var Plugins = {
-    REQUIRED: "_required_argument",
-    fn: {},
-    instances: new Map(),
-    use: function (elm, plugin, args, setEnabled) { // TODO langsam
-        var instances = this.instances.get(elm);
-        if (instances == undefined)
-            instances = {};
-        this.instances.set(elm, instances);
-
-        var pluginObj = Plugins.fn[plugin];
-        if (pluginObj == undefined)
-            throw "Plugin API: Plugin " + plugin + " not found.";
-
-        // set defaults
-        var pArg = {};
-        for (var cArg in pluginObj.args) {
-            if (args[cArg] == undefined) {
-                var cArgVal = pluginObj.args[cArg];
-                if (cArgVal == Plugins.REQUIRED) {
-                    throw "Plugin API: Plugin " + plugin + " could not be instanciated because parameter " + cArg + " was invalid";
-                }
-                else {
-                    pArg[cArg] = cArgVal;
-                }
-            }
-            else {
-                pArg[cArg] = args[cArg];
-            }
-        }
-
-        // generate key
-        var key = plugin;
-        for (var i = 0; i < pluginObj.key.length; i++)
-            key += "~" + pArg[pluginObj.key[i]];
-
-        // check if instance already exists
-        var instance = instances[key];
-
-        if (setEnabled == false && instance != undefined) { // disable
-            instance.disable();
-            delete instances[key];
-        }
-        else if (setEnabled == true && instance == undefined) { // enable
-            instance = pluginObj.bind(elm)(pArg);
-
-            if (instance != null) {
-                instances[key] = instance;
-                instance.enable();
-            }
-        }
-    }
-};
-
-// Element Property Change Listener
-var ElementProperty = {
-    properties: new Map(),
-    on: function (element, property, handler) {
-        // element: DOM element
-        // property: css.property, height, width, outerHeight, offsetTop, ...
-        // handler: function(newValue,oldValue)
-        var props = this.properties.get(element);
-
-        if (props == undefined) {
-            props = {};
-            this.properties.set(element, props);
-        }
-
-        if (props[property] == undefined)
-            props[property] = {value: this.getProperty(element, property), listener: []};
-
-        props[property].listener.push(handler);
-    },
-    off: function (element, property, handler) {
-        var props = this.properties.get(element);
-
-        if (props == undefined)
-            return;
-        if (props[property] == undefined)
-            return;
-        props[property].listener = jQuery.grep(props[property].listener, function (value) {
-            return value != handler;
-        });
-
-        if (props[property].listener.length == 0)
-            delete props[property];
-        var size = 0;
-        for (var key in props) {
-            if (props.hasOwnProperty(key))
-                size++;
-        }
-        if (size == 0)
-            this.properties.delete(element);
-    },
-    fire: function (element, property, newVal, oldVal) {
-        var props = this.properties.get(element);
-        if (props == undefined)
-            return;
-        if (props[property] == undefined)
-            return;
-        for (var i = 0; i < props[property].listener.length; i++) {
-            props[property].listener[i](newVal, oldVal);
-        }
-    },
-    getProperty: function (element, property) {
-        var p = property.split(".");
-
-        if (p[0] == "css") { // p[1]: jQuery CSS
-            return jQuery(element).css(p[1]);
-        }
-        else if (p[0] == "offset") { // p[1]: left + top
-            return jQuery(element).offset()[p[1]];
-        }
-        else if (p[0] == "position") { // p[1]: left + top
-            return jQuery(element).position()[p[1]];
-        }
-        else if (p[0] == "width") { // p[1]: undefined, inner, outer, outerWithMargin
-            if (p[1] == undefined) {
-                return jQuery(element).width();
-            }
-            else if (p[1] == "inner") {
-                return jQuery(element).innerWidth();
-            }
-            else if (p[1] == "outer") {
-                return jQuery(element).outerWidth();
-            }
-            else if (p[1] == "outerWithMargin") {
-                return jQuery(element).outerWidth(true);
-            }
-        }
-        else if (p[0] == "height") { // p[1]: undefined, inner, outer, outerWithMargin
-            if (p[1] == undefined) {
-                return jQuery(element).height();
-            }
-            else if (p[1] == "inner") {
-                return jQuery(element).innerHeight();
-            }
-            else if (p[1] == "outer") {
-                return jQuery(element).outerHeight();
-            }
-            else if (p[1] == "outerWithMargin") {
-                return jQuery(element).outerHeight(true);
-            }
-        }
-        else if (p[0] == "scroll") { // p[1]: top, left
-            if (p[1] == "top") {
-                return jQuery(element).scrollTop();
-            }
-            else if (p[1] == "left") {
-                return jQuery(element).scrollLeft();
-            }
-        }
-
-        return null;
-    },
-    check: function (element, property) { // TOOD performance / debounce events
-        if (element == undefined) {
-            var that = this;
-
-            this.properties.forEach(function (val, el) {
-                that.check(el, property);
-            });
-        }
-        else {
+{
+    // Element Property Change Listener
+    // TODO use maps and sets
+    blue.ElementProperty = {
+        properties: new Map(),
+        on: function (element, property, handler) {
+            // element: DOM element
+            // property: css.property, height, width, outerHeight, offsetTop, ...
+            // handler: function(newValue,oldValue)
             var props = this.properties.get(element);
 
-            if (property == undefined && props != undefined) {
-                var propList = [];
-                for (var prop in props)
-                    propList.push(prop);
-                this.check(element, propList);
+            if (props == undefined) {
+                props = {};
+                this.properties.set(element, props);
             }
-            else if (props != undefined) {
-                for (var i = 0; i < property.length; i++) {
-                    if (props[property[i]] != undefined) {
-                        var current = this.getProperty(element, property[i]);
 
-                        if (props[property[i]].value != current) {
-                            this.fire(element, property[i], current, props[property[i]].value);
-                            props[property[i]].value = current;
+            if (props[property] == undefined)
+                props[property] = {value: this.getProperty(element, property), listener: []};
+
+            props[property].listener.push(handler);
+        },
+        off: function (element, property, handler) {
+            var props = this.properties.get(element);
+
+            if (props == undefined)
+                return;
+            if (props[property] == undefined)
+                return;
+            props[property].listener = jQuery.grep(props[property].listener, function (value) {
+                return value != handler;
+            });
+
+            if (props[property].listener.length == 0)
+                delete props[property];
+            var size = 0;
+            for (var key in props) {
+                if (props.hasOwnProperty(key))
+                    size++;
+            }
+            if (size == 0)
+                this.properties.delete(element);
+        },
+        fire: function (element, property, newVal, oldVal) {
+            var props = this.properties.get(element);
+            if (props == undefined)
+                return;
+            if (props[property] == undefined)
+                return;
+            for (var i = 0; i < props[property].listener.length; i++) {
+                props[property].listener[i](newVal, oldVal);
+            }
+        },
+        getProperty: function (element, property) {
+            var p = property.split(".");
+
+            if (p[0] == "css") { // p[1]: jQuery CSS
+                return jQuery(element).css(p[1]);
+            }
+            else if (p[0] == "offset") { // p[1]: left + top
+                return jQuery(element).offset()[p[1]];
+            }
+            else if (p[0] == "position") { // p[1]: left + top
+                return jQuery(element).position()[p[1]];
+            }
+            else if (p[0] == "width") { // p[1]: undefined, inner, outer, outerWithMargin
+                if (p[1] == undefined) {
+                    return jQuery(element).width();
+                }
+                else if (p[1] == "inner") {
+                    return jQuery(element).innerWidth();
+                }
+                else if (p[1] == "outer") {
+                    return jQuery(element).outerWidth();
+                }
+                else if (p[1] == "outerWithMargin") {
+                    return jQuery(element).outerWidth(true);
+                }
+            }
+            else if (p[0] == "height") { // p[1]: undefined, inner, outer, outerWithMargin
+                if (p[1] == undefined) {
+                    return jQuery(element).height();
+                }
+                else if (p[1] == "inner") {
+                    return jQuery(element).innerHeight();
+                }
+                else if (p[1] == "outer") {
+                    return jQuery(element).outerHeight();
+                }
+                else if (p[1] == "outerWithMargin") {
+                    return jQuery(element).outerHeight(true);
+                }
+            }
+            else if (p[0] == "scroll") { // p[1]: top, left
+                if (p[1] == "top") {
+                    return jQuery(element).scrollTop();
+                }
+                else if (p[1] == "left") {
+                    return jQuery(element).scrollLeft();
+                }
+            }
+
+            return null;
+        },
+        check: function (element, property) { // TOOD performance / debounce events
+            if (element == undefined) {
+                var that = this;
+
+                this.properties.forEach(function (val, el) {
+                    that.check(el, property);
+                });
+            }
+            else {
+                var props = this.properties.get(element);
+
+                if (property == undefined && props != undefined) {
+                    var propList = [];
+                    for (var prop in props)
+                        propList.push(prop);
+                    this.check(element, propList);
+                }
+                else if (props != undefined) {
+                    for (var i = 0; i < property.length; i++) {
+                        if (props[property[i]] != undefined) {
+                            var current = this.getProperty(element, property[i]);
+
+                            if (props[property[i]].value != current) {
+                                this.fire(element, property[i], current, props[property[i]].value);
+                                props[property[i]].value = current;
+                            }
                         }
                     }
                 }
             }
+        },
+        start: function () {
+            (function (obj) {
+                // TODO performance: debounce checks (Property Listener)
+
+                var observer = new MutationObserver(function (mutations) {
+                    for (var i = 0; i < mutations.length; i++) {
+                        var current = mutations[i].target;
+
+                        while (current != document && current != null) {
+                            obj.check(current);
+                            current = current.parentNode;
+                        }
+                    }
+                });
+                observer.observe(document, {attributes: true, childList: true, characterData: true, subtree: true});
+
+                jQuery(window).on('resize', function () {
+                    obj.check();
+                });
+            })(this);
         }
-    },
-    start: function () {
-        (function (obj) {
-            // TODO performance: debounce checks (Property Listener)
+    };
+}
+{
+    // Plugins
+    blue.Plugins = {
+        REQUIRED: "_required_argument",
+        fn: {},
+        instances: new Map(),
+        use: function (elm, plugin, args, setEnabled) { // TODO Plugins.use slow
+            var instances = this.instances.get(elm);
+            if (instances == undefined)
+                instances = new Map();
+            this.instances.set(elm, instances);
 
-            var observer = new MutationObserver(function (mutations) {
-                for (var i = 0; i < mutations.length; i++) {
-                    var current = mutations[i].target;
+            var pluginObj = this.fn[plugin];
+            if (pluginObj == undefined)
+                throw "Plugin API: Plugin " + plugin + " not found.";
 
-                    while (current != document && current != null) {
-                        obj.check(current);
-                        current = current.parentNode;
+            // set defaults
+            var pArg = {};
+            for (var cArg in pluginObj.args) {
+                if (args[cArg] == undefined) {
+                    var cArgVal = pluginObj.args[cArg];
+                    if (cArgVal == this.REQUIRED) {
+                        throw "Plugin API: Plugin " + plugin + " could not be instanciated because parameter " + cArg + " was invalid";
+                    }
+                    else {
+                        pArg[cArg] = cArgVal;
                     }
                 }
-            });
-            observer.observe(document, {attributes: true, childList: true, characterData: true, subtree: true});
-
-            jQuery(window).on('resize', function () {
-                obj.check();
-            });
-        })(this);
-    }
-};
-
-jQuery(function () {
-    ElementProperty.start();
-});
-
-
-// Advanced Selectors
-var Selectors = {
-    generate: function (selector, context) {
-        var elm = $(context);
-
-        // {this}
-        if (/{parent-([0-9]+)}/g.exec(selector) != null) {
-            elm.uniqueId();
-            var selector = selector.replace(/{this}/g, "#" + elm.attr('id'));
-        }
-
-        // {parent-x}
-        var parent_result;
-        while ((parent_result = /{parent-([0-9]+)}/g.exec(selector)) != null) {
-            var tmp_obj = elm;
-            for (var i = 0; i < parent_result[1]; i++) {
-                tmp_obj = tmp_obj.parent();
+                else {
+                    pArg[cArg] = args[cArg];
+                }
             }
-            tmp_obj.uniqueId();
 
-            var selector = selector.replace(new RegExp("{parent-" + parent_result[1] + "}"), "#" + tmp_obj.attr('id'));
+            // generate key
+            var key = plugin;
+            for (var i = 0; i < pluginObj.key.length; i++)
+                key += "~" + pArg[pluginObj.key[i]];
+
+            // check if instance already exists
+            var instance = instances.get(key);
+
+            if (setEnabled == false && instance != undefined) { // disable
+                instance.disable();
+                instances.delete(key);
+            }
+            else if (setEnabled == true && instance == undefined) { // enable
+                instance = pluginObj.bind(elm)(pArg);
+
+                if (instance != null) {
+                    instances.set(key,instance);
+                    instance.enable();
+                }
+            }
         }
+    };
+}
+{
+    // Advanced Selectors
+    blue.Selectors = {
+        generate: function (selector, context) {
+            var elm = $(context);
 
-        // {attr-x}
-        var attr_result;
-        while ((attr_result = /{attr-([0-9a-zA-Z_\-]+)}/g.exec(selector)) != null) {
-            var selector = selector.replace(new RegExp("{attr-" + attr_result[1] + "}"), elm.attr(attr_result[1]));
+            // {this}
+            if (/{parent-([0-9]+)}/g.exec(selector) != null) {
+                elm.uniqueId();
+                var selector = selector.replace(/{this}/g, "#" + elm.attr('id'));
+            }
+
+            // {parent-x}
+            var parent_result;
+            while ((parent_result = /{parent-([0-9]+)}/g.exec(selector)) != null) {
+                var tmp_obj = elm;
+                for (var i = 0; i < parent_result[1]; i++) {
+                    tmp_obj = tmp_obj.parent();
+                }
+                tmp_obj.uniqueId();
+
+                var selector = selector.replace(new RegExp("{parent-" + parent_result[1] + "}"), "#" + tmp_obj.attr('id'));
+            }
+
+            // {attr-x}
+            var attr_result;
+            while ((attr_result = /{attr-([0-9a-zA-Z_\-]+)}/g.exec(selector)) != null) {
+                var selector = selector.replace(new RegExp("{attr-" + attr_result[1] + "}"), elm.attr(attr_result[1]));
+            }
+
+            return selector;
         }
+    };
+}
+{
+        
+    // TODO get rid of jQuery.data
+    // TODO use maps and sets
+    // TODO checkfire langsam
+    // Variables
+    blue.Variables = {
+        addVariable: function (elm, variable, value, type) { // type: simple, group, stack
+            var vars = jQuery.data(elm, "variables");
+            if (vars == null) {
+                vars = {};
+                jQuery.data(elm, "variables", vars);
+            }
 
-        return selector;
-    }
-};
-
-
-// Variables API // TODO checkfire langsam
-// TODO ggf javascript scopes oder javascript prototypes ausnutzen
-var Variables = {
-    addVariable: function (elm, variable, value, type) { // type: simple, group, stack
-        var vars = jQuery.data(elm, "variables");
-        if (vars == null) {
-            vars = {};
-            jQuery.data(elm, "variables", vars);
-        }
-
-        if (type == "simple") {
-            vars[variable] = {initial: value, value: value, type: type};
-        }
-        else if (type == "group") {
-            vars[variable] = {initial: value, value: value, type: type};
-        }
-        else {
-            vars[variable] = {initial: value, value: [value], type: type};
-        }
-
-        this.checkfire(elm, variable);
-    },
-    removeVariable: function (elm, variable) {
-        var vars = jQuery.data(elm, "variables");
-        if (vars == null) {
-            return;
-        }
-        delete vars[variable];
-
-        this.checkfire(elm, variable);
-    },
-    getVariable: function (elm, variable) { // get a directly attached variable
-        var vars = jQuery.data(elm, "variables");
-
-        if (vars == null)
-            return undefined;
-
-        return vars[variable];
-    },
-    setVariable: function (elm, key, value) { // set a directly attached variable
-        var k = key.split(".");
-
-        var variable = this.getVariable(elm, k[0]);
-
-        if (variable == undefined) {
-            if (elm == document.documentElement) {
-                this.addVariable(elm, key, value, "simple");
-                variable = this.getVariable(elm, key);
+            if (type == "simple") {
+                vars[variable] = {initial: value, value: value, type: type};
+            }
+            else if (type == "group") {
+                vars[variable] = {initial: value, value: value, type: type};
             }
             else {
-                return false;
+                vars[variable] = {initial: value, value: [value], type: type};
             }
-        }
 
-        this.setVal(variable, k[1], value);
+            this.checkfire(elm, variable);
+        },
+        removeVariable: function (elm, variable) {
+            var vars = jQuery.data(elm, "variables");
+            if (vars == null) {
+                return;
+            }
+            delete vars[variable];
 
-        this.checkfire(elm, k[0]);
+            this.checkfire(elm, variable);
+        },
+        getVariable: function (elm, variable) { // get a directly attached variable
+            var vars = jQuery.data(elm, "variables");
 
-        return true;
-    },
-    getVal: function (variable, sub) { // process a variables value
-        if (variable.type == "simple") {
-            return variable.value;
-        }
-        else if (variable.type == "group") {
-            return variable.value == sub;
-        }
-        else {
-            return variable.value[variable.value.length - 1] == sub;
-        }
-    },
-    setVal: function (variable, sub, value) { // process the input to a variable value
-        if (variable.type == "simple") {
-            variable.value = value;
-        }
-        else if (variable.type == "group") {
-            if (value) {
-                variable.value = sub;
+            if (vars == null)
+                return undefined;
+
+            return vars[variable];
+        },
+        setVariable: function (elm, key, value) { // set a directly attached variable
+            var k = key.split(".");
+
+            var variable = this.getVariable(elm, k[0]);
+
+            if (variable == undefined) {
+                if (elm == document.documentElement) {
+                    this.addVariable(elm, key, value, "simple");
+                    variable = this.getVariable(elm, key);
+                }
+                else {
+                    return false;
+                }
+            }
+
+            this.setVal(variable, k[1], value);
+
+            this.checkfire(elm, k[0]);
+
+            return true;
+        },
+        getVal: function (variable, sub) { // process a variables value
+            if (variable.type == "simple") {
+                return variable.value;
+            }
+            else if (variable.type == "group") {
+                return variable.value == sub;
             }
             else {
-                variable.value = variable.initial;
+                return variable.value[variable.value.length - 1] == sub;
             }
-        }
-        else {
-            if (value) {
-                if (variable.value[variable.value.length - 1] != sub)
-                    variable.value.push(sub);
+        },
+        setVal: function (variable, sub, value) { // process the input to a variable value
+            if (variable.type == "simple") {
+                variable.value = value;
+            }
+            else if (variable.type == "group") {
+                if (value) {
+                    variable.value = sub;
+                }
+                else {
+                    variable.value = variable.initial;
+                }
             }
             else {
-                variable.value = jQuery.grep(variable.value, function (value) {
-                    return value != sub;
+                if (value) {
+                    if (variable.value[variable.value.length - 1] != sub)
+                        variable.value.push(sub);
+                }
+                else {
+                    variable.value = jQuery.grep(variable.value, function (value) {
+                        return value != sub;
+                    });
+                }
+            }
+        },
+        get: function (context, key) { // get a variable in the current context
+            var current = context;
+            var k = key.split(".");
+
+            while (current != null) {
+                var val;
+                if ((val = this.getVariable(current, k[0])) != undefined)
+                    return this.getVal(val, k[1]);
+
+                current = current.parentNode;
+            }
+            return false;
+        },
+        _expr_get_var_paths: function (expression) {
+            var vars = expression.replace(/(&&|\|\||!|\(|\))/g, " ").split(" ");
+            var names = [];
+
+            for (var i = 0; i < vars.length; i++) {
+                vars[i] = vars[i].trim();
+                if (vars[i] !== "" && vars[i] !== "true" && vars[i] !== "false" && jQuery.inArray(vars[i], names) == -1) {
+                    names.push(vars[i]);
+                }
+            }
+
+            return names;
+        },
+        eval: function (context, expression) { // evaluate an expression in the given context
+            // supported: (,),&&,||,!,true,false and variables
+
+            var re = /[^(&&|\|\||!|\(|\))]+(?=(|&&|\|\||!|\(|\)))/g;
+            var offset = 0;
+            var matches = [];
+            var match;
+            while ((match = re.exec(expression)) != null) {
+                matches.push(match);
+            }
+            for (var i = 0; i < matches.length; i++) {
+                if (matches[i][0] === "true" || matches[i][0] === "false")
+                    continue;
+
+                var value = this.get(context, matches[i][0]) + "";
+
+                expression = expression.substring(0, matches[i].index + offset) + value + expression.substring(matches[i].index + offset + matches[i][0].length, expression.length);
+                offset += value.length - matches[i][0].length;
+            }
+
+            return eval(expression);
+        },
+        set: function (context, key, value) { // set a variable
+            var current = context;
+
+            while (current != document && current != null) {
+                if (this.setVariable(current, key, value))
+                    return;
+
+                current = current.parentNode;
+            }
+        },
+        on: function (context, expression, fn) { // fn: fn(value)
+            var lstnr = jQuery.data(context, "variables-listener");
+            if (lstnr == null) {
+                lstnr = {};
+                jQuery.data(context, "variables-listener", lstnr);
+            }
+
+            var listener = {// TODO listener umstellen...
+                expression: expression,
+                fn: fn,
+                lastval: false,
+                context: context
+            };
+
+            var vars = this._expr_get_var_paths(expression);
+
+            for (var i = 0; i < vars.length; i++) {
+                var varname = vars[i].split(".")[0];
+
+                var temp = lstnr[varname];
+                if (temp == undefined) {
+                    temp = [];
+                    lstnr[varname] = temp;
+                }
+
+                temp.push(listener);
+            }
+
+            listener.last = this.eval(context, expression);
+            fn(listener.last);
+        },
+        off: function (context, expression, fn) {
+            var lstnr = jQuery.data(context, "variables-listener");
+            if (lstnr == null) {
+                return;
+            }
+
+            var vars = this._expr_get_var_paths(expression);
+
+            for (var i = 0; i < vars.length; i++) {
+                var varname = vars[i].split(".")[0];
+
+                if (lstnr[varname] == undefined) {
+                    return;
+                }
+
+                lstnr[varname] = jQuery.grep(lstnr[varname], function (val) {
+                    return val.expression != expression && val.fn != fn;
                 });
             }
-        }
-    },
-    get: function (context, key) { // get a variable in the current context
-        var current = context;
-        var k = key.split(".");
 
-        while (current != null) {
-            var val;
-            if ((val = this.getVariable(current, k[0])) != undefined)
-                return this.getVal(val, k[1]);
-
-            current = current.parentNode;
-        }
-        return false;
-    },
-    _expr_get_var_paths: function (expression) {
-        var vars = expression.replace(/(&&|\|\||!|\(|\))/g, " ").split(" ");
-        var names = [];
-
-        for (var i = 0; i < vars.length; i++) {
-            vars[i] = vars[i].trim();
-            if (vars[i] !== "" && vars[i] !== "true" && vars[i] !== "false" && jQuery.inArray(vars[i], names) == -1) {
-                names.push(vars[i]);
+            if (this.eval(context, expression)) {
+                fn(false);
             }
-        }
-
-        return names;
-    },
-    eval: function (context, expression) { // evaluate an expression in the given context
-        // supported: (,),&&,||,!,true,false and variables
-
-        var re = /[^(&&|\|\||!|\(|\))]+(?=(|&&|\|\||!|\(|\)))/g;
-        var offset = 0;
-        var matches = [];
-        var match;
-        while ((match = re.exec(expression)) != null) {
-            matches.push(match);
-        }
-        for (var i = 0; i < matches.length; i++) {
-            if (matches[i][0] === "true" || matches[i][0] === "false")
-                continue;
-
-            var value = this.get(context, matches[i][0]) + "";
-
-            expression = expression.substring(0, matches[i].index + offset) + value + expression.substring(matches[i].index + offset + matches[i][0].length, expression.length);
-            offset += value.length - matches[i][0].length;
-        }
-
-        return eval(expression);
-    },
-    set: function (context, key, value) { // set a variable
-        var current = context;
-
-        while (current != document && current != null) {
-            if (this.setVariable(current, key, value))
-                return;
-
-            current = current.parentNode;
-        }
-    },
-    on: function (context, expression, fn) { // fn: fn(value)
-        var lstnr = jQuery.data(context, "variables-listener");
-        if (lstnr == null) {
-            lstnr = {};
-            jQuery.data(context, "variables-listener", lstnr);
-        }
-
-        var listener = {// TODO listener umstellen...
-            expression: expression,
-            fn: fn,
-            lastval: false,
-            context: context
-        };
-
-        var vars = this._expr_get_var_paths(expression);
-
-        for (var i = 0; i < vars.length; i++) {
-            var varname = vars[i].split(".")[0];
-
-            var temp = lstnr[varname];
-            if (temp == undefined) {
-                temp = [];
-                lstnr[varname] = temp;
-            }
-
-            temp.push(listener);
-        }
-
-        listener.last = this.eval(context, expression);
-        fn(listener.last);
-    },
-    off: function (context, expression, fn) {
-        var lstnr = jQuery.data(context, "variables-listener");
-        if (lstnr == null) {
-            return;
-        }
-
-        var vars = this._expr_get_var_paths(expression);
-
-        for (var i = 0; i < vars.length; i++) {
-            var varname = vars[i].split(".")[0];
-
-            if (lstnr[varname] == undefined) {
-                return;
-            }
-
-            lstnr[varname] = jQuery.grep(lstnr[varname], function (val) {
-                return val.expression != expression && val.fn != fn;
-            });
-        }
-
-        if (this.eval(context, expression)) {
-            fn(false);
-        }
-    },
-    checkfire: function (context, variable) { // check and fire listeners if necessary
+        },
+        checkfire: function (context, variable) { // check and fire listeners if necessary
 // TODO bei addVariable, removeVariable, on, off listener updaten
 
-        // check if listeners are set
-        var listener = jQuery.data(context, "variables-listener");
-        if (listener != null) {
-            var fns = listener[variable];
-            if (fns != null) {
-                // fire listeners if neccessary
-                for (var i = 0; i < fns.length; i++) {
-                    var newValue = this.eval(fns[i].context, fns[i].expression);
+            // check if listeners are set
+            var listener = jQuery.data(context, "variables-listener");
+            if (listener != null) {
+                var fns = listener[variable];
+                if (fns != null) {
+                    // fire listeners if neccessary
+                    for (var i = 0; i < fns.length; i++) {
+                        var newValue = this.eval(fns[i].context, fns[i].expression);
 
-                    if (fns[i].last != newValue) {
-                        fns[i].last = newValue;
-                        fns[i].fn(newValue);
+                        if (fns[i].last != newValue) {
+                            fns[i].last = newValue;
+                            fns[i].fn(newValue);
+                        }
                     }
                 }
             }
-        }
 
-        // propagate changes to children
-        var children = context.children;
-        for (var i = 0; i < children.length; i++) {
-            if (this.getVariable(children[i], variable) == undefined) {
-                this.checkfire(children[i], variable);
+            // propagate changes to children
+            var children = context.children;
+            for (var i = 0; i < children.length; i++) {
+                if (this.getVariable(children[i], variable) == undefined) {
+                    this.checkfire(children[i], variable);
+                }
             }
         }
-    }
-};
+    };
 
 
-(function ($) {
+}
+(function ($,Plugins,ElementProperty) {
     Plugins.fn.container_aspectratio = function (args) {
         var elm = this;
         
@@ -641,8 +644,8 @@ var Variables = {
         factor: Plugins.REQUIRED // float
     };
     Plugins.fn.container_aspectratio.key = [];
-}(jQuery));
-(function ($) { 
+}(jQuery,blue.Plugins,blue.ElementProperty));
+(function ($,Plugins,Variables,Selectors) { 
     Plugins.fn.expressionlistener_class = function (args) {
         var elm = this;
         
@@ -734,8 +737,8 @@ var Variables = {
         value_expression: Plugins.REQUIRED
     };
     Plugins.fn.expressionlistener_set.key = ["expression","key"];
-}(jQuery));
-(function ($) {
+}(jQuery,blue.Plugins,blue.Variables,blue.Selectors));
+(function ($,Plugins) {
     Plugins.fn.grid_offset = function (args) {
         var elm = this;
         
@@ -763,9 +766,9 @@ var Variables = {
         height:Plugins.REQUIRED
     };
     Plugins.fn.grid_offset.key = [];
-}(jQuery));
+}(jQuery,blue.Plugins));
 
-(function ($) {
+(function ($,Plugins) {
     var currentResizing=null;
     var mousemove=function(event) {
         if (event.which!=1) {
@@ -838,8 +841,8 @@ var Variables = {
         click_spacing:  Plugins.REQUIRED
     };
     Plugins.fn.resizable.key = [];
-}(jQuery));
-(function ($) {// TODO buggy bei leeren target
+}(jQuery,blue.Plugins));
+(function ($,Plugins) {// TODO buggy bei leeren target
     Plugins.fn.smoothscrolling = function (args) {
         var elm = this;
         
@@ -881,9 +884,9 @@ var Variables = {
         time: 500
     };
     Plugins.fn.smoothscrolling.key = [];
-}(jQuery));
+}(jQuery,blue.Plugins));
 
-(function ($) {
+(function ($,Plugins,ElementProperty) {
     Plugins.fn.sticky = function (args) { // TODO langsam
         var rawElm = this;
         var elm = $(rawElm);
@@ -1121,8 +1124,8 @@ var Variables = {
         sticky_class: "sticky"
     };
     Plugins.fn.sticky.key = [];
-}(jQuery));
-(function ($) {
+}(jQuery,blue.Plugins,blue.ElementProperty));
+(function ($,Plugins) {
     Plugins.fn.stickyfooter = function (args) {
         var elm = $(this);
         
@@ -1189,8 +1192,8 @@ var Variables = {
         scrollarea: null
     };
     Plugins.fn.stickyfooter.key = [];
-}(jQuery));
-(function ($) {
+}(jQuery,blue.Plugins));
+(function ($,Plugins,Variables,Selectors) {
     var trigger_actions=new Object();
     
     // TODO delegated trigger
@@ -1413,8 +1416,8 @@ var Variables = {
         offset: {} // offset: {top:,right:,bottom:,left:}
     };
     Plugins.fn.trigger_bind_scrollposition.key = ["key"];
-}(jQuery));
-(function ($) {
+}(jQuery,blue.Plugins,blue.Variables,blue.Selectors));
+(function ($,Plugins,Selectors,Variables) {
     Plugins.fn.variable_init = function (args) {
         var elm = this;
         
@@ -1440,103 +1443,103 @@ var Variables = {
         type: "simple" // type: simple, group, stack
     };
     Plugins.fn.variable_init.key = ["variable"];
-}(jQuery));
-// TODO docs
-// TODO namespace
+}(jQuery,blue.Plugins,blue.Selectors,blue.Variables));
+var CSSParser;
 
-function parseCSS(css) {
-    var tree=new Object();
-    
-    var currentId="";    
-    var openBrackets=[];
-    var comment = false;
-    
-    var pos=0;
-    while(pos < css.length) {
-        if (!comment && css[pos]=="/") {
-            var match = /^\/\*! customrule: ({(?:(?!\*\/).)*}) \*\//g.exec(css.substring(pos));
-            
-            if (match != null) {
-                pos+=match.index+match[0].length;
-                
-                var mediaQuery='';
-                var selector='';
-                
-                for (var i=0; i<openBrackets.length; i++) {
-                    if (openBrackets[i].indexOf("@media") === 0) {
-                        var str = openBrackets[i].substring(6).trim();
-                                                
-                        if (mediaQuery == "") 
-                            mediaQuery = str;
+{
+    CSSParser = {};
+
+    CSSParser.parse = function parse(css) {
+        var tree = new Object();
+
+        var currentId = "";
+        var openBrackets = [];
+        var comment = false;
+
+        var pos = 0;
+        while (pos < css.length) {
+            if (!comment && css[pos] == "/") {
+                var match = /^\/\*! customrule: ({(?:(?!\*\/).)*}) \*\//g.exec(css.substring(pos));
+
+                if (match != null) {
+                    pos += match.index + match[0].length;
+
+                    var mediaQuery = '';
+                    var selector = '';
+
+                    for (var i = 0; i < openBrackets.length; i++) {
+                        if (openBrackets[i].indexOf("@media") === 0) {
+                            var str = openBrackets[i].substring(6).trim();
+
+                            if (mediaQuery == "")
+                                mediaQuery = str;
+                        }
+                        else if (openBrackets[i].indexOf("@") === -1) {
+                            selector = openBrackets[i];
+                        }
                     }
-                    else if (openBrackets[i].indexOf("@") === -1) {
-                        selector = openBrackets[i];
+
+                    if (mediaQuery == "") {
+                        mediaQuery = "all";
                     }
+
+                    if (selector == "")
+                        return null;
+
+                    var json;
+                    try {
+                        json = JSON.parse(match[1])
+                    }
+                    catch (e) {
+                        return null;
+                    }
+
+                    if (tree[mediaQuery] == undefined)
+                        tree[mediaQuery] = {};
+                    if (tree[mediaQuery][selector] == undefined)
+                        tree[mediaQuery][selector] = [];
+
+                    tree[mediaQuery][selector].push(json);
+
+                    continue;
                 }
-                
-                if (mediaQuery == "") {
-                    mediaQuery = "all";
+            }
+
+            if (!comment) {
+                if (css[pos] == "{") {
+                    openBrackets.push(currentId.trim());
+                    currentId = "";
                 }
-                
-                if (selector == "")
-                    return null;
-                
-                var json;
-                try {
-                    json = JSON.parse(match[1])
+                else if (css[pos] == "}") {
+                    openBrackets.pop();
+                    currentId = "";
                 }
-                catch(e) {
-                    return null;
+                else if (css[pos] == ";") {
+                    currentId = "";
                 }
-                
-                if (tree[mediaQuery] == undefined)
-                    tree[mediaQuery] = {};
-                if (tree[mediaQuery][selector] == undefined)
-                    tree[mediaQuery][selector] = [];
-                
-                tree[mediaQuery][selector].push(json);
-                
-                continue;
-            }
-        }
-        
-        if (!comment) {
-            if (css[pos]=="{") {
-                openBrackets.push(currentId.trim());
-                currentId=""; 
-            }
-            else if (css[pos]=="}") {
-                openBrackets.pop();
-                currentId=""; 
-            }
-            else if (css[pos]==";") {
-                currentId="";
-            }
-            else if (css[pos]=="/" && pos+1<css.length && css[pos+1]=="*") {
-                comment = true;
-                currentId="";
+                else if (css[pos] == "/" && pos + 1 < css.length && css[pos + 1] == "*") {
+                    comment = true;
+                    currentId = "";
+                }
+                else {
+                    currentId += css[pos];
+                }
             }
             else {
-                currentId+=css[pos]; 
+                if (css[pos] == "*" && pos + 1 < css.length && css[pos + 1] == "/") {
+                    comment = false;
+                }
             }
-        }
-        else {
-            if (css[pos]=="*" && pos+1<css.length && css[pos+1]=="/") {
-                comment = false;
-            }
-        }
-        
-        pos++;
-    }
-    
-    if (openBrackets.length != 0) return null;
-    
-    return tree;
-};
-// TODO auf memory leaks testen
 
-// TODO docs und neue ordnerstruktur
+            pos++;
+        }
 
+        if (openBrackets.length != 0)
+            return null;
+
+        return tree;
+    };
+}
 // blue leaf object
 var blueleaf = {
     customrules: {
@@ -1580,7 +1583,7 @@ var blueleaf = {
             var rules = this.properties[mq].selectors[sel];
 
             for (var i = 0; i < rules.length; i++) {
-                Plugins.use(elm, rules[i].rule, rules[i].options, true);
+                blue.Plugins.use(elm, rules[i].rule, rules[i].options, true);
             }
         },
         disableSelector: function (elm, mq, sel) {
@@ -1595,7 +1598,7 @@ var blueleaf = {
             var rules = this.properties[mq].selectors[sel];
 
             for (var i = 0; i < rules.length; i++) {
-                Plugins.use(elm, rules[i].rule, rules[i].options, false);
+                blue.Plugins.use(elm, rules[i].rule, rules[i].options, false);
             }
 
         },
@@ -1847,7 +1850,7 @@ var blueleaf = {
         for (var i = 0; i < stylesheets.length; i++) {
             jQuery.get(stylesheets[i], null, function (data) {
                 if (data.indexOf("/*! blueleaf */") === 0) {
-                    var tree = parseCSS(data);
+                    var tree = CSSParser.parse(data);
                     if (tree != null) {
                         blueleaf.customrules.addProperties(tree);
                     }

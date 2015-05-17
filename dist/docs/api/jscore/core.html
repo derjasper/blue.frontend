@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>blue leaf JavaScript core &mdash; blue leaf 1.2.0 documentation</title>
+    <title>JavaScript core &mdash; blue leaf 1.2.0 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="blue leaf 1.2.0 documentation" href="../../index.html" />
     <link rel="up" title="API" href="../../api.html" />
-    <link rel="next" title="Cookbook" href="../../cookbook.html" />
-    <link rel="prev" title="Variables" href="../jspluginapi/variables.html" /> 
+    <link rel="next" title="JavaScript loader (blueleaf.js)" href="../jsloader/loader.html" />
+    <link rel="prev" title="JavaScript CSS Parser" href="../jscssparser/cssparser.html" /> 
   </head>
   <body>
     <div class="related">
@@ -36,10 +36,10 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../cookbook.html" title="Cookbook"
+          <a href="../jsloader/loader.html" title="JavaScript loader (blueleaf.js)"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../jspluginapi/variables.html" title="Variables"
+          <a href="../jscssparser/cssparser.html" title="JavaScript CSS Parser"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">blue leaf 1.2.0 documentation</a> &raquo;</li>
           <li><a href="../../api.html" accesskey="U">API</a> &raquo;</li> 
@@ -51,8 +51,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="blue-leaf-javascript-core">
-<h1>blue leaf JavaScript core<a class="headerlink" href="#blue-leaf-javascript-core" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="javascript-core">
+<h1>JavaScript core<a class="headerlink" href="#javascript-core" title="Permalink to this headline">¶</a></h1>
 <p>The core scans all CSS files for custom rules, listens on DOM changes and media
 querys and en-/disables the rules.</p>
 <p>The core automatically registers all plugins using the <a class="reference internal" href="../jspluginapi/pluginmanager.html"><em>Plugin Manager</em></a>.</p>
@@ -152,47 +152,6 @@ should be mostly transparent to the developer.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="cssparser-js">
-<h3>cssparser.js<a class="headerlink" href="#cssparser-js" title="Permalink to this headline">¶</a></h3>
-<p>The CSS Parser has been replaced. These docs are outdated.</p>
-<dl class="class">
-<dt id="CSSParser">
-<em class="property">class </em><tt class="descname">CSSParser</tt><big>(</big><em>css</em><big>)</big><a class="headerlink" href="#CSSParser" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>css</strong> (<em>string</em>) &#8211; A string containing the CSS stylesheets.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="CSSParser.parse">
-<tt class="descclassname">CSSParser.</tt><tt class="descname">parse</tt><big>(</big><big>)</big><a class="headerlink" href="#CSSParser.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses the <a href="#id1"><span class="problematic" id="id2">``</span></a>CSSParser``s CSS.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">true</span></tt> if parsing was successful, otherwise <tt class="docutils literal"><span class="pre">false</span></tt>.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="CSSParser.tree">
-<tt class="descclassname">CSSParser.</tt><tt class="descname">tree</tt><a class="headerlink" href="#CSSParser.tree" title="Permalink to this definition">¶</a></dt>
-<dd><p>Contains a tree containing custom rules with their selectors and media querys.
-Only valid if <tt class="docutils literal"><span class="pre">CSSParser.parse()</span></tt> has returned <tt class="docutils literal"><span class="pre">true</span></tt>.</p>
-</dd></dl>
-
-</div>
 </div>
 </div>
 
@@ -204,10 +163,9 @@ Only valid if <tt class="docutils literal"><span class="pre">CSSParser.parse()</
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">blue leaf JavaScript core</a><ul>
+<li><a class="reference internal" href="#">JavaScript core</a><ul>
 <li><a class="reference internal" href="#javascript">JavaScript</a><ul>
 <li><a class="reference internal" href="#core-js">core.js</a></li>
-<li><a class="reference internal" href="#cssparser-js">cssparser.js</a></li>
 </ul>
 </li>
 </ul>
@@ -215,11 +173,11 @@ Only valid if <tt class="docutils literal"><span class="pre">CSSParser.parse()</
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../jspluginapi/variables.html"
-                        title="previous chapter">Variables</a></p>
+  <p class="topless"><a href="../jscssparser/cssparser.html"
+                        title="previous chapter">JavaScript CSS Parser</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../../cookbook.html"
-                        title="next chapter">Cookbook</a></p>
+  <p class="topless"><a href="../jsloader/loader.html"
+                        title="next chapter">JavaScript loader (blueleaf.js)</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../_sources/api/jscore/core.txt"
@@ -249,10 +207,10 @@ Only valid if <tt class="docutils literal"><span class="pre">CSSParser.parse()</
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../cookbook.html" title="Cookbook"
+          <a href="../jsloader/loader.html" title="JavaScript loader (blueleaf.js)"
              >next</a> |</li>
         <li class="right" >
-          <a href="../jspluginapi/variables.html" title="Variables"
+          <a href="../jscssparser/cssparser.html" title="JavaScript CSS Parser"
              >previous</a> |</li>
         <li><a href="../../index.html">blue leaf 1.2.0 documentation</a> &raquo;</li>
           <li><a href="../../api.html" >API</a> &raquo;</li> 

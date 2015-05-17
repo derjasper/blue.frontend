@@ -1,4 +1,4 @@
-(function ($) { 
+(function ($,Plugins,Variables,Selectors) { 
     Plugins.fn.expressionlistener_class = function (args) {
         var elm = this;
         
@@ -90,4 +90,4 @@
         value_expression: Plugins.REQUIRED
     };
     Plugins.fn.expressionlistener_set.key = ["expression","key"];
-}(jQuery));
+}(jQuery,blue.Plugins,blue.Variables,blue.Selectors));
