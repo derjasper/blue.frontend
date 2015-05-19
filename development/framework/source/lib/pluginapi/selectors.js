@@ -5,7 +5,7 @@
             var elm = $(context);
 
             // {this}
-            if (/{parent-([0-9]+)}/g.exec(selector) != null) {
+            if (/{this}/g.exec(selector) != null) {
                 elm.uniqueId();
                 var selector = selector.replace(/{this}/g, "#" + elm.attr('id'));
             }
