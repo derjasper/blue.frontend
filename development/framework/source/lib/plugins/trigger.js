@@ -1,7 +1,7 @@
 (function ($,Plugins,Variables,Selectors) {
     var trigger_actions=new Object();
     
-    // TODO delegated trigger
+    // TODO delegated trigger (API addition)
     
     $(document).on("click mouseover mouseout",function(event) {
         var eventID=event.target.id+"-"+event.type;

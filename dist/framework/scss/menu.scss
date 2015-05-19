@@ -109,7 +109,7 @@
                 }
             }
         }
-        @else if map-get($opt,submenutrggr)==click-superfish { // TODO BUG menu funzt nicht
+        @else if map-get($opt,submenutrggr)==click-superfish {
             @include list-level(0,true) {
                 @include initvar("show{this}","none","group");
                 
