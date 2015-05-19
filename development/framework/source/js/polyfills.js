@@ -1,5 +1,4 @@
-// TODO durch dritte libs ersetzen
-// TODO was ist mit modernizr? (mal gucken...)
+// TODO replace with 3rd party libs
 
 // Map
 if (Map == undefined) {

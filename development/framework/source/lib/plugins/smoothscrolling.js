@@ -1,21 +1,23 @@
-(function ($,Plugins) {// TODO buggy bei leeren target
+(function ($,Plugins) {
     Plugins.fn.smoothscrolling = function (args) {
         var elm = this;
         
         var listener = function(event) {
             if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
                 var lehash=this.hash;
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, args.time,"swing",function() {
-                        location.hash=lehash;
-                    });
-                    event.preventDefault();
+                if (lehash != "") {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, args.time,"swing",function() {
+                            location.hash=lehash;
+                        });
+                        event.preventDefault();
+                    }
                 }
-                else if(this.hash=="") {
+                else {
                     $('html,body').animate({
                         scrollTop: 0
                     }, args.time,"swing",function() {

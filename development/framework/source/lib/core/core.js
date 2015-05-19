@@ -1,7 +1,8 @@
 // blue leaf object
+// TODO use maps and sets
 var blueleaf = {
     customrules: {
-        properties: {},
+        properties: {}, // TODO use map
         enabledSelectors: new Map(),
         addProperty: function (mq, sel, rule, options) {
             if (this.properties[mq] == undefined)
@@ -30,7 +31,7 @@ var blueleaf = {
         },
         enableSelector: function (elm, mq, sel) {
             var enProps = this.enabledSelectors.get(elm);
-            if (enProps == undefined) {
+            if (enProps == undefined) { // TODO use set or map
                 enProps = {};
                 this.enabledSelectors.set(elm, enProps);
             }
@@ -143,7 +144,7 @@ var blueleaf = {
                     else if (isDescendant(changes[i].elm, elm)) {
                         if (changes[i].type != type && changes[i].type == 2) {
                             changes.push({elm: elm, type: type, exclude: []});
-                            changes[i].exclude.push(elm);
+                            changes[i].exclude.push(elm); // TODO use set for exclude
                         }
                         return;
                     }
@@ -170,10 +171,10 @@ var blueleaf = {
                     if (c.type == 0) { // addAll                        
                         for (var mq in that.properties) {
                             if (that.properties[mq].active == true) {
-                                for (var sel in that.properties[mq].selectors) { // TODO ggf maps benutzen ...
+                                for (var sel in that.properties[mq].selectors) {
                                     var lst = c.elm.querySelectorAll(sel);
                                     for (var n = 0; n < lst.length; n++) {
-                                        if (jQuery.inArray(lst[n], c.exclude) == -1) { // TODO ggf set benutzen ...
+                                        if (jQuery.inArray(lst[n], c.exclude) == -1) {
                                             that.enableSelector(lst[n], mq, sel);
                                         }
                                     }
