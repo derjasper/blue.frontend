@@ -1,5 +1,4 @@
-// TODO durch dritte libs ersetzen
-// TODO was ist mit modernizr? (mal gucken...)
+// TODO replace with 3rd party libs
 
 // Map
 if (Map == undefined) {
@@ -359,10 +358,9 @@ jQuery(function () {
     };
 }
 {
-        
     // TODO get rid of jQuery.data
     // TODO use maps and sets
-    // TODO checkfire langsam
+    // TODO checkfire() slow
     // Variables
     blue.Variables = {
         addVariable: function (elm, variable, value, type) { // type: simple, group, stack
@@ -522,7 +520,7 @@ jQuery(function () {
                 jQuery.data(context, "variables-listener", lstnr);
             }
 
-            var listener = {// TODO listener umstellen...
+            var listener = {
                 expression: expression,
                 fn: fn,
                 lastval: false,
@@ -571,8 +569,6 @@ jQuery(function () {
             }
         },
         checkfire: function (context, variable) { // check and fire listeners if necessary
-// TODO bei addVariable, removeVariable, on, off listener updaten
-
             // check if listeners are set
             var listener = jQuery.data(context, "variables-listener");
             if (listener != null) {
@@ -842,24 +838,26 @@ jQuery(function () {
     };
     Plugins.fn.resizable.key = [];
 }(jQuery,blue.Plugins));
-(function ($,Plugins) {// TODO buggy bei leeren target
+(function ($,Plugins) {
     Plugins.fn.smoothscrolling = function (args) {
         var elm = this;
         
         var listener = function(event) {
             if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
                 var lehash=this.hash;
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, args.time,"swing",function() {
-                        location.hash=lehash;
-                    });
-                    event.preventDefault();
+                if (lehash != "") {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, args.time,"swing",function() {
+                            location.hash=lehash;
+                        });
+                        event.preventDefault();
+                    }
                 }
-                else if(this.hash=="") {
+                else {
                     $('html,body').animate({
                         scrollTop: 0
                     }, args.time,"swing",function() {
@@ -887,7 +885,7 @@ jQuery(function () {
 }(jQuery,blue.Plugins));
 
 (function ($,Plugins,ElementProperty) {
-    Plugins.fn.sticky = function (args) { // TODO langsam
+    Plugins.fn.sticky = function (args) {
         var rawElm = this;
         var elm = $(rawElm);
         
@@ -1541,9 +1539,10 @@ var CSSParser;
     };
 }
 // blue leaf object
+// TODO use maps and sets
 var blueleaf = {
     customrules: {
-        properties: {},
+        properties: {}, // TODO use map
         enabledSelectors: new Map(),
         addProperty: function (mq, sel, rule, options) {
             if (this.properties[mq] == undefined)
@@ -1572,7 +1571,7 @@ var blueleaf = {
         },
         enableSelector: function (elm, mq, sel) {
             var enProps = this.enabledSelectors.get(elm);
-            if (enProps == undefined) {
+            if (enProps == undefined) { // TODO use set or map
                 enProps = {};
                 this.enabledSelectors.set(elm, enProps);
             }
@@ -1685,7 +1684,7 @@ var blueleaf = {
                     else if (isDescendant(changes[i].elm, elm)) {
                         if (changes[i].type != type && changes[i].type == 2) {
                             changes.push({elm: elm, type: type, exclude: []});
-                            changes[i].exclude.push(elm);
+                            changes[i].exclude.push(elm); // TODO use set for exclude
                         }
                         return;
                     }
@@ -1712,10 +1711,10 @@ var blueleaf = {
                     if (c.type == 0) { // addAll                        
                         for (var mq in that.properties) {
                             if (that.properties[mq].active == true) {
-                                for (var sel in that.properties[mq].selectors) { // TODO ggf maps benutzen ...
+                                for (var sel in that.properties[mq].selectors) {
                                     var lst = c.elm.querySelectorAll(sel);
                                     for (var n = 0; n < lst.length; n++) {
-                                        if (jQuery.inArray(lst[n], c.exclude) == -1) { // TODO ggf set benutzen ...
+                                        if (jQuery.inArray(lst[n], c.exclude) == -1) {
                                             that.enableSelector(lst[n], mq, sel);
                                         }
                                     }

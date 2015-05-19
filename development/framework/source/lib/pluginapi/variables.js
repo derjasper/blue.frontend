@@ -1,8 +1,7 @@
 {
-        
     // TODO get rid of jQuery.data
     // TODO use maps and sets
-    // TODO checkfire langsam
+    // TODO checkfire() slow
     // Variables
     blue.Variables = {
         addVariable: function (elm, variable, value, type) { // type: simple, group, stack
@@ -162,7 +161,7 @@
                 jQuery.data(context, "variables-listener", lstnr);
             }
 
-            var listener = {// TODO listener umstellen...
+            var listener = {
                 expression: expression,
                 fn: fn,
                 lastval: false,
@@ -211,8 +210,6 @@
             }
         },
         checkfire: function (context, variable) { // check and fire listeners if necessary
-// TODO bei addVariable, removeVariable, on, off listener updaten
-
             // check if listeners are set
             var listener = jQuery.data(context, "variables-listener");
             if (listener != null) {
