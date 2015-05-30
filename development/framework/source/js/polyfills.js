@@ -3,6 +3,7 @@
 // Map
 if (Map == undefined) {
     console.log("enabling map polyfill");
+    
     var LegacyMap = function () {
         this._dict = {};
         this._keys = {};
@@ -63,8 +64,20 @@ if (Map == undefined) {
             callback(dict[hashid], keys[hashid]);
         }
     }
+    LegacyMap.prototype.has = function (key) {
+        if (key instanceof Element) {
+            var hashid = jQuery.data(key, "_hashid");
+            return hashid == undefined ? false : this._dict[hashid] != undefined;
+        }
+        else if (typeof key == "object") {
+            return key._hashid == undefined ? false : this._dict[key._hashid] != undefined;
+        }
+        else {
+            return this._dict[key] != undefined;
+        }
+    }
 
-    var Map = LegacyMap;
+    Map = LegacyMap;
 }
 
 // Element.matches
@@ -90,4 +103,38 @@ if (ElementPrototype.matches == undefined) {
 }
 
 // Set
-// TODO set polyfill
+if (Set == undefined) {
+    console.log("enabling set polyfill");
+    
+    var LegacySet=function() {
+        this.values = [];
+        this.size = 0;
+    }
+    LegacySet.prototype.add = function(value) {
+        if (this.has(value))
+            return;
+        this.values.push(value);
+        this.size++;
+    }
+    LegacySet.prototype.clear = function() {
+        this.values = [];
+        this.size=0;
+    }
+    LegacySet.prototype.delete = function(value) {
+        var idx = this.values.indexOf(value);
+        if (idx===-1)
+            return;
+        this.values.splice(idx,1);
+        this.size--;
+    }
+    LegacySet.prototype.has = function(value) {
+        return this.values.indexOf(value) !== -1;
+    }
+    LegacySet.prototype.forEach = function(fn) {
+        for (var i=0; i<this.values.length; i++) {
+            fn(this.values[i]);
+        }
+    }
+    
+    Set = LegacySet;
+}
