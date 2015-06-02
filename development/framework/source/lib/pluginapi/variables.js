@@ -59,7 +59,7 @@
 
         for (var i = 0; i < vars.length; i++) {
             vars[i] = vars[i].trim();
-            if (vars[i] !== "" && vars[i] !== "true" && vars[i] !== "false" && jQuery.inArray(vars[i], names) == -1) {
+            if (vars[i] !== "" && vars[i] !== "true" && vars[i] !== "false" && names.indexOf(vars[i]) == -1) {
                 names.push(vars[i]);
             }
         }
@@ -243,9 +243,12 @@
                 if (this.value[this.value.length - 1] == sub)
                     changed = true;
                 
-                this.value = jQuery.grep(this.value, function (value) {
-                    return value != sub;
-                });
+                for (var i=0;i<this.value.length;i++) {
+                    if (this.value[i]==sub) {
+                        this.value.splice(i,1);
+                        i--;
+                    }
+                }
             }
         }
         
