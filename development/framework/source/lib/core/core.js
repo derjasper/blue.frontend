@@ -1,8 +1,7 @@
-// blue leaf object
-// TODO use maps and sets
+// blue leaf code
 var blueleaf = {
     customrules: {
-        properties: {}, // TODO use map
+        properties: {},
         enabledSelectors: new Map(),
         addProperty: function (mq, sel, rule, options) {
             if (this.properties[mq] == undefined)
@@ -31,13 +30,13 @@ var blueleaf = {
         },
         enableSelector: function (elm, mq, sel) {
             var enProps = this.enabledSelectors.get(elm);
-            if (enProps == undefined) { // TODO use set
-                enProps = {};
+            if (enProps == undefined) {
+                enProps = new Set();
                 this.enabledSelectors.set(elm, enProps);
             }
-            if (enProps[mq + "~" + sel] == true)
+            if (enProps.has(mq + "~" + sel))
                 return;
-            enProps[mq + "~" + sel] = true;
+            enProps.add(mq + "~" + sel);
 
             var rules = this.properties[mq].selectors[sel];
 
@@ -50,9 +49,9 @@ var blueleaf = {
 
             if (enProps == undefined)
                 return;
-            if (enProps[mq + "~" + sel] == undefined)
+            if (!enProps.has(mq + "~" + sel))
                 return;
-            delete enProps[mq + "~" + sel];
+            delete enProps.delete(mq + "~" + sel);
 
             var rules = this.properties[mq].selectors[sel];
 
@@ -191,10 +190,10 @@ var blueleaf = {
                         traverseChildElements(c.elm, function (elm) {
                             var enProps = that.enabledSelectors.get(elm);
                             if (enProps != undefined) {
-                                for (var key in enProps) {
+                                enProps.forEach(function(key) {
                                     var prop = key.split("~");
                                     that.disableSelector(elm, prop[0], prop[1]);
-                                }
+                                });
                             }
                             return true;
                         });
@@ -204,12 +203,12 @@ var blueleaf = {
                         traverseChildElements(c.elm, function (elm) {
                             var enProps = that.enabledSelectors.get(elm);
                             if (enProps != undefined) {
-                                for (var key in enProps) {
+                                enProps.forEach(function(key) {
                                     var prop = key.split("~");
                                     if (!elm.matches(prop[1])) {
                                         that.disableSelector(elm, prop[0], prop[1]);
                                     }
-                                }
+                                });
                             }
                         });
 
