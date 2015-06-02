@@ -31,7 +31,7 @@ var blueleaf = {
         },
         enableSelector: function (elm, mq, sel) {
             var enProps = this.enabledSelectors.get(elm);
-            if (enProps == undefined) { // TODO use set or map
+            if (enProps == undefined) { // TODO use set
                 enProps = {};
                 this.enabledSelectors.set(elm, enProps);
             }
@@ -143,23 +143,24 @@ var blueleaf = {
                     }
                     else if (isDescendant(changes[i].elm, elm)) {
                         if (changes[i].type != type && changes[i].type == 2) {
-                            changes.push({elm: elm, type: type, exclude: []});
-                            changes[i].exclude.push(elm); // TODO use set for exclude
+                            changes.push({elm: elm, type: type, exclude: new Set()});
+                            changes[i].exclude.add(elm); // TODO exclude set TESTEN
                         }
                         return;
                     }
                     else if (isDescendant(elm, changes[i].elm)) {
                         if (changes[i].type != type && type == 2) {
                             changes.push(changes[i]);
-                            changes[i] = {elm: elm, type: type, exclude: [changes[i].elm]};
+                            changes[i] = {elm: elm, type: type, exclude: new Set()};
+                            changes[i].exclude.add(changes[i].elm);
                         }
                         else {
-                            changes[i] = {elm: elm, type: type, exclude: []};
+                            changes[i] = {elm: elm, type: type, exclude: new Set()};
                         }
                         return;
                     }
                 }
-                changes.push({elm: elm, type: type, exclude: []});
+                changes.push({elm: elm, type: type, exclude: new Set()});
             }
             function processChanges() {
                 for (var i = 0; i < changes.length; i++) {
@@ -174,7 +175,7 @@ var blueleaf = {
                                 for (var sel in that.properties[mq].selectors) {
                                     var lst = c.elm.querySelectorAll(sel);
                                     for (var n = 0; n < lst.length; n++) {
-                                        if (jQuery.inArray(lst[n], c.exclude) == -1) {
+                                        if (!c.exclude.has(lst[n])) {
                                             that.enableSelector(lst[n], mq, sel);
                                         }
                                     }

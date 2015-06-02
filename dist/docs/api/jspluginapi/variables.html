@@ -64,7 +64,8 @@ attached to the element. If a variable is initialized with the same name as a
 variable attached to an anchestor, the anchestor&#8217;s variable cannot be accessed from
 this element and all descendants, instead, the current element&#8217;s variable will be
 used.</p>
-<p>When accessing a variable, the nearest variable to the context element will be used.
+<p>When accessing a variable, the first variable when going up in the DOM tree starting
+from the context element context element will be used.
 If the variable is not initialized, a new <tt class="docutils literal"><span class="pre">simple</span></tt> variable will be created at
 the root element.</p>
 </div>
@@ -237,49 +238,6 @@ expression is changed (and when it is added or removed).</p>
 </dd></dl>
 
 </div>
-<div class="section" id="private-functions-not-for-use-from-outside">
-<h3>Private functions (not for use from outside)<a class="headerlink" href="#private-functions-not-for-use-from-outside" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="blue.Variables.getVariable">
-<tt class="descclassname">blue.Variables.</tt><tt class="descname">getVariable</tt><big>(</big><em>elm</em>, <em>variable</em><big>)</big><a class="headerlink" href="#blue.Variables.getVariable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the object of a directly attached variable.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="blue.Variables.setVariable">
-<tt class="descclassname">blue.Variables.</tt><tt class="descname">setVariable</tt><big>(</big><em>elm</em>, <em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#blue.Variables.setVariable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set a directly attached variable to the value (if existent). Creates a new variable
-if <tt class="docutils literal"><span class="pre">elm</span></tt> is the root element. Returns false if the variable does not exist.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="blue.Variables.getVal">
-<tt class="descclassname">blue.Variables.</tt><tt class="descname">getVal</tt><big>(</big><em>variable</em>, <em>sub</em><big>)</big><a class="headerlink" href="#blue.Variables.getVal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Process a variable object to a boolean value using <tt class="docutils literal"><span class="pre">sub</span></tt> as value. Returns
-the boolean value.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="blue.Variables.setVal">
-<tt class="descclassname">blue.Variables.</tt><tt class="descname">setVal</tt><big>(</big><em>variable</em>, <em>sub</em>, <em>value</em><big>)</big><a class="headerlink" href="#blue.Variables.setVal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Process <tt class="docutils literal"><span class="pre">sub</span></tt> and <tt class="docutils literal"><span class="pre">value</span></tt> using the variable object&#8217;s type and set the value
-properly.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="blue.Variables.get">
-<tt class="descclassname">blue.Variables.</tt><tt class="descname">get</tt><big>(</big><em>context</em>, <em>key</em><big>)</big><a class="headerlink" href="#blue.Variables.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a variable&#8217;s value in the given context.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="blue.Variables.checkfire">
-<tt class="descclassname">blue.Variables.</tt><tt class="descname">checkfire</tt><big>(</big><em>context</em>, <em>variable</em><big>)</big><a class="headerlink" href="#blue.Variables.checkfire" title="Permalink to this definition">¶</a></dt>
-<dd><p>To be called whenever the given variable in the given context has changed. Calls
-listeners if neccessary.</p>
-</dd></dl>
-
-</div>
 </div>
 </div>
 
@@ -303,7 +261,6 @@ listeners if neccessary.</p>
 <li><a class="reference internal" href="#listener">Listener</a></li>
 <li><a class="reference internal" href="#javascript">JavaScript</a><ul>
 <li><a class="reference internal" href="#public-api">Public API</a></li>
-<li><a class="reference internal" href="#private-functions-not-for-use-from-outside">Private functions (not for use from outside)</a></li>
 </ul>
 </li>
 </ul>
