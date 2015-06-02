@@ -98,8 +98,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
 .binddemo a.hover {
   /*! customrule: {"variable_init": {"variable": "hovered", "value": false, "type": "simple"}} */
   /*! customrule: {"trigger_bind": {"key": "hovered", "status_type": "hover"}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "hovered", "element_class": "udhayocp8"}} */ }
-  .binddemo a.hover.udhayocp8 {
+  /*! customrule: {"expressionlistener_class": {"expression": "hovered", "element_class": "uogh8ie4q"}} */ }
+  .binddemo a.hover.uogh8ie4q {
     font-weight: bold; }
 .binddemo a.focus {
   /*! customrule: {"variable_init": {"variable": "focussed", "value": false, "type": "simple"}} */
@@ -122,8 +122,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .mulvar a {
     /*! customrule: {"trigger": {"key": "var1,var2", "event_type": "click", "value_expression": "!var1", "priority": 0}} */ }
   .mulvar span {
-    /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "udhayocpa"}} */ }
-    .mulvar span.udhayocpa {
+    /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "uogh8ie4w"}} */ }
+    .mulvar span.uogh8ie4w {
       font-weight: bold; }
 
 .expressions {
