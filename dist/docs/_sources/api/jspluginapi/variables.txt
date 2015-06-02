@@ -16,7 +16,8 @@ variable attached to an anchestor, the anchestor's variable cannot be accessed f
 this element and all descendants, instead, the current element's variable will be
 used.
 
-When accessing a variable, the nearest variable to the context element will be used.
+When accessing a variable, the first variable when going up in the DOM tree starting
+from the context element context element will be used.
 If the variable is not initialized, a new ``simple`` variable will be created at
 the root element.
 
@@ -158,36 +159,3 @@ Public API
    :param string expression: Expression.
 
    :param function fn: The listener.
-
-    
-
-Private functions (not for use from outside)
-********************************************
-
-.. js:function:: blue.Variables.getVariable(elm,variable) 
-
-   Get the object of a directly attached variable.
-
-.. js:function:: blue.Variables.setVariable(elm,key,value)
-
-   Set a directly attached variable to the value (if existent). Creates a new variable
-   if ``elm`` is the root element. Returns false if the variable does not exist.
-
-.. js:function:: blue.Variables.getVal(variable, sub)
-
-   Process a variable object to a boolean value using ``sub`` as value. Returns
-   the boolean value.
-
-.. js:function:: blue.Variables.setVal(variable, sub, value)
-
-   Process ``sub`` and ``value`` using the variable object's type and set the value
-   properly.
-
-.. js:function:: blue.Variables.get(context,key)
-
-   Get a variable's value in the given context.
-
-.. js:function:: blue.Variables.checkfire(context,variable)
-
-   To be called whenever the given variable in the given context has changed. Calls
-   listeners if neccessary.
