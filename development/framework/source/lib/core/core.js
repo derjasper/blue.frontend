@@ -144,7 +144,7 @@ var blueleaf = {
                     else if (isDescendant(changes[i].elm, elm)) {
                         if (changes[i].type != type && changes[i].type == 2) {
                             changes.push({elm: elm, type: type, exclude: new Set()});
-                            changes[i].exclude.add(elm); // TODO exclude set TESTEN
+                            changes[i].exclude.add(elm);
                         }
                         return;
                     }
