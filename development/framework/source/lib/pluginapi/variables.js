@@ -1,4 +1,3 @@
-// TODO variables testen
 {
     var nodeMap = new Map();
     
@@ -71,6 +70,7 @@
     var Node = function(element) {
         this.var = new Map(); // variable
         this.bnd = new Map(); // binding
+        this.lst = new Set(); // listener
         this.element = element; // DOM Element
     }
     Node.prototype.addVar = function(name,variable,noupdate) {
@@ -104,15 +104,18 @@
         
         // assign new vars to existing bindings
         
-        var newvar = getVarByContext(this.element,name,true);
+        var newvar = getVarByContext(this.element,name);
         
         for (var i=0;i<variable.bnd.length;i++) {
             variable.bnd[i].setVar(newvar);
         }
     }
     Node.prototype.addLst = function(listener) {
+        // add listener
         listener.context = this.element;
+        this.lst.add(listener);
         
+        // add listener to bindings
         var vars = getVarKeysFromExpression(listener.expression);
         
         for (var i = 0; i < vars.length; i++) {
@@ -121,7 +124,7 @@
             // get or create binding
             var binding = this.bnd.get(varname);
             if (binding == undefined) {
-                var variable = getVarByContext(this.element,varname); // TODO ggf nobinding? -> TESTEN
+                var variable = getVarByContext(this.element,varname);
                 binding = new Binding(variable);
                 this.bnd.set(varname,binding);
             }
@@ -130,36 +133,33 @@
             binding.lst.add(listener);
         }
 
+        // update listener
         listener.update(true);
     }
     Node.prototype.rmLst = function(expr,fn) {
-        var vars = getVarKeysFromExpression(expr);
-        
         var listener = null;
         
         // find listener
-        for (var i = 0; i < vars.length && listener==null; i++) {
-            var varname = vars[i].split(".")[0];
-
-            var binding = this.bnd.get(varname)
-            if (binding != undefined) {
-                binding.lst.forEach(function(v) {
-                    if (v.expression == expr && v.fn == fn) {
-                        listener = v;
-                        return false;
-                    }
-                });
+        this.lst.forEach(function(v) {
+            if (v.expression == expr && v.fn == fn) {
+                listener = v;
+                return false;
             }
-        }
+        });
         
         if (listener == null) return;
         
         
-        // update listener one last time
-        listener.update(false);
+        // update listener to "false" for the last time
+        listener.fn(false);
+        
+        
+        // remove listener
+        this.lst.delete(listener);
         
         
         // remove listener from bindings
+        var vars = getVarKeysFromExpression(expr);
         for (var i = 0; i < vars.length; i++) {
             var varname = vars[i].split(".")[0];
 
@@ -176,7 +176,7 @@
         }
     }
     Node.prototype.empty = function() {
-        return this.bnd.size == 0 && this.var.size == 0;
+        return this.bnd.size == 0 && this.var.size == 0 && this.lst.size == 0;
     }
     
     var Variable = function(type,value) {
