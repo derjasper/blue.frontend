@@ -4,7 +4,7 @@
         REQUIRED: "_required_argument",
         fn: {},
         instances: new Map(),
-        use: function (elm, plugin, args, setEnabled) { // TODO Plugins.use slow (?)
+        use: function (elm, plugin, args, setEnabled) {
             var instances = this.instances.get(elm);
             if (instances == undefined) {
                 instances = new Map();
