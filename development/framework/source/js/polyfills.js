@@ -1,5 +1,3 @@
-// TODO replace with 3rd party libs
-
 // Map
 if (Map == undefined) {
     console.log("enabling map polyfill");
@@ -81,24 +79,26 @@ if (Map == undefined) {
 }
 
 // Element.matches
-ElementPrototype = (window.Element || window.Node || window.HTMLElement).prototype;
-if (ElementPrototype.matches == undefined) {
-    console.log("enabling Element.matches polyfill");
-    
-    ElementPrototype.matches = function (selector) {
-        var dom_element = this;
-        var matchesSelector = dom_element.matches || dom_element.matchesSelector || dom_element.webkitMatchesSelector || dom_element.mozMatchesSelector || dom_element.msMatchesSelector || dom_element.oMatchesSelector;
-        if (matchesSelector)
-            return matchesSelector.call(dom_element, selector);
+{
+    var ElementPrototype = (window.Element || window.Node || window.HTMLElement).prototype;
+    if (ElementPrototype.matches == undefined) {
+        console.log("enabling Element.matches polyfill");
 
-        var matches = (dom_element.document || dom_element.ownerDocument).querySelectorAll(selector);
-        var i = 0;
+        ElementPrototype.matches = function (selector) {
+            var dom_element = this;
+            var matchesSelector = dom_element.matches || dom_element.matchesSelector || dom_element.webkitMatchesSelector || dom_element.mozMatchesSelector || dom_element.msMatchesSelector || dom_element.oMatchesSelector;
+            if (matchesSelector)
+                return matchesSelector.call(dom_element, selector);
 
-        while (matches[i] && matches[i] !== dom_element) {
-            i++;
+            var matches = (dom_element.document || dom_element.ownerDocument).querySelectorAll(selector);
+            var i = 0;
+
+            while (matches[i] && matches[i] !== dom_element) {
+                i++;
+            }
+
+            return matches[i] ? true : false;
         }
-
-        return matches[i] ? true : false;
     }
 }
 
