@@ -1,19 +1,20 @@
-"use strict";
-
 var blue = {};
 
 jQuery(function () {
     blue.ElementProperty.start();
 });
 
-// jQuery plugins // TODO replace (create a Plugin API?) or move into another lib
-{
-    var uuid = 0;
-    jQuery.fn.uniqueId = function () {
-        return this.each(function () {
-            if (!this.id) {
-                this.id = "uuid-" + (++uuid);
-            }
-        });
-    };
+// jQuery plugins
+if (jQuery.fn.uniqueId == undefined) {
+    jQuery.fn.uniqueId = (function () {
+        var uuid = 0;
+
+        return function () {
+            return this.each(function () {
+                if (!this.id) {
+                    this.id = "unq-id-" + (++uuid);
+                }
+            });
+        };
+    })();
 }

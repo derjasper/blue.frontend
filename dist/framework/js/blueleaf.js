@@ -1,5 +1,4 @@
-// TODO replace with 3rd party libs
-
+"use strict";
 // Map
 if (Map == undefined) {
     console.log("enabling map polyfill");
@@ -81,24 +80,26 @@ if (Map == undefined) {
 }
 
 // Element.matches
-ElementPrototype = (window.Element || window.Node || window.HTMLElement).prototype;
-if (ElementPrototype.matches == undefined) {
-    console.log("enabling Element.matches polyfill");
-    
-    ElementPrototype.matches = function (selector) {
-        var dom_element = this;
-        var matchesSelector = dom_element.matches || dom_element.matchesSelector || dom_element.webkitMatchesSelector || dom_element.mozMatchesSelector || dom_element.msMatchesSelector || dom_element.oMatchesSelector;
-        if (matchesSelector)
-            return matchesSelector.call(dom_element, selector);
+{
+    var ElementPrototype = (window.Element || window.Node || window.HTMLElement).prototype;
+    if (ElementPrototype.matches == undefined) {
+        console.log("enabling Element.matches polyfill");
 
-        var matches = (dom_element.document || dom_element.ownerDocument).querySelectorAll(selector);
-        var i = 0;
+        ElementPrototype.matches = function (selector) {
+            var dom_element = this;
+            var matchesSelector = dom_element.matches || dom_element.matchesSelector || dom_element.webkitMatchesSelector || dom_element.mozMatchesSelector || dom_element.msMatchesSelector || dom_element.oMatchesSelector;
+            if (matchesSelector)
+                return matchesSelector.call(dom_element, selector);
 
-        while (matches[i] && matches[i] !== dom_element) {
-            i++;
+            var matches = (dom_element.document || dom_element.ownerDocument).querySelectorAll(selector);
+            var i = 0;
+
+            while (matches[i] && matches[i] !== dom_element) {
+                i++;
+            }
+
+            return matches[i] ? true : false;
         }
-
-        return matches[i] ? true : false;
     }
 }
 
@@ -138,28 +139,29 @@ if (Set == undefined) {
     
     Set = LegacySet;
 }
-"use strict";
-
 var blue = {};
 
 jQuery(function () {
     blue.ElementProperty.start();
 });
 
-// jQuery plugins // TODO replace (create a Plugin API?) or move into another lib
-{
-    var uuid = 0;
-    jQuery.fn.uniqueId = function () {
-        return this.each(function () {
-            if (!this.id) {
-                this.id = "uuid-" + (++uuid);
-            }
-        });
-    };
+// jQuery plugins
+if (jQuery.fn.uniqueId == undefined) {
+    jQuery.fn.uniqueId = (function () {
+        var uuid = 0;
+
+        return function () {
+            return this.each(function () {
+                if (!this.id) {
+                    this.id = "unq-id-" + (++uuid);
+                }
+            });
+        };
+    })();
 }
+
 {
     // Element Property Change Listener
-    // TODO use maps and sets
     blue.ElementProperty = {
         properties: new Map(),
         on: function (element, property, handler) {
@@ -169,44 +171,51 @@ jQuery(function () {
             var props = this.properties.get(element);
 
             if (props == undefined) {
-                props = {};
+                props = new Map();
                 this.properties.set(element, props);
             }
 
-            if (props[property] == undefined)
-                props[property] = {value: this.getProperty(element, property), listener: []};
+            if (!props.has(property))
+                props.set(property, {value: this.getProperty(element, property), listener: []});
 
-            props[property].listener.push(handler);
+            // add handler
+            props.get(property).listener.push(handler);
         },
         off: function (element, property, handler) {
             var props = this.properties.get(element);
 
             if (props == undefined)
                 return;
-            if (props[property] == undefined)
+            
+            var le_property = props.get(property);
+            
+            if (le_property == undefined)
                 return;
-            props[property].listener = jQuery.grep(props[property].listener, function (value) {
-                return value != handler;
-            });
-
-            if (props[property].listener.length == 0)
-                delete props[property];
-            var size = 0;
-            for (var key in props) {
-                if (props.hasOwnProperty(key))
-                    size++;
+            
+            // remove listener
+            for (var i=0;i<le_property.listener.length;i++) {
+                if (le_property.listener[i] == handler) {
+                    le_property.listener.splice(i,1);
+                    i--;
+                }
             }
-            if (size == 0)
+
+            // clean up if neccessary
+            if (le_property.listener.length == 0)
+                props.delete(property);
+            
+            if (props.size == 0)
                 this.properties.delete(element);
         },
         fire: function (element, property, newVal, oldVal) {
             var props = this.properties.get(element);
             if (props == undefined)
                 return;
-            if (props[property] == undefined)
+            var le_property = props.get(property);
+            if (le_property == undefined)
                 return;
-            for (var i = 0; i < props[property].listener.length; i++) {
-                props[property].listener[i](newVal, oldVal);
+            for (var i = 0; i < le_property.listener.length; i++) {
+                le_property.listener[i](newVal, oldVal);
             }
         },
         getProperty: function (element, property) {
@@ -260,7 +269,7 @@ jQuery(function () {
 
             return null;
         },
-        check: function (element, property) { // TOOD performance / debounce events
+        check: function (element, property) {
             if (element == undefined) {
                 var that = this;
 
@@ -273,18 +282,20 @@ jQuery(function () {
 
                 if (property == undefined && props != undefined) {
                     var propList = [];
-                    for (var prop in props)
+                    props.forEach(function (val, prop) {
                         propList.push(prop);
+                    });
                     this.check(element, propList);
                 }
                 else if (props != undefined) {
                     for (var i = 0; i < property.length; i++) {
-                        if (props[property[i]] != undefined) {
+                        var le_property = props.get(property[i]);
+                        if (le_property != undefined) {
                             var current = this.getProperty(element, property[i]);
 
-                            if (props[property[i]].value != current) {
-                                this.fire(element, property[i], current, props[property[i]].value);
-                                props[property[i]].value = current;
+                            if (le_property.value != current) {
+                                this.fire(element, property[i], current, le_property.value);
+                                le_property.value = current;
                             }
                         }
                     }
@@ -293,8 +304,6 @@ jQuery(function () {
         },
         start: function () {
             (function (obj) {
-                // TODO performance: debounce checks (Property Listener)
-
                 var observer = new MutationObserver(function (mutations) {
                     for (var i = 0; i < mutations.length; i++) {
                         var current = mutations[i].target;
@@ -320,7 +329,7 @@ jQuery(function () {
         REQUIRED: "_required_argument",
         fn: {},
         instances: new Map(),
-        use: function (elm, plugin, args, setEnabled) { // TODO Plugins.use slow (?)
+        use: function (elm, plugin, args, setEnabled) {
             var instances = this.instances.get(elm);
             if (instances == undefined) {
                 instances = new Map();
@@ -1375,8 +1384,6 @@ jQuery(function () {
 (function ($,Plugins,Variables,Selectors) {
     var trigger_actions=new Object();
     
-    // TODO delegated trigger (API addition)
-    
     $(document).on("click mouseover mouseout",function(event) {
         var eventID=event.target.id+"-"+event.type;
                         
@@ -1719,11 +1726,10 @@ var CSSParser;
         return tree;
     };
 }
-// blue leaf object
-// TODO use maps and sets
+// blue leaf code
 var blueleaf = {
     customrules: {
-        properties: {}, // TODO use map
+        properties: {},
         enabledSelectors: new Map(),
         addProperty: function (mq, sel, rule, options) {
             if (this.properties[mq] == undefined)
@@ -1752,13 +1758,13 @@ var blueleaf = {
         },
         enableSelector: function (elm, mq, sel) {
             var enProps = this.enabledSelectors.get(elm);
-            if (enProps == undefined) { // TODO use set
-                enProps = {};
+            if (enProps == undefined) {
+                enProps = new Set();
                 this.enabledSelectors.set(elm, enProps);
             }
-            if (enProps[mq + "~" + sel] == true)
+            if (enProps.has(mq + "~" + sel))
                 return;
-            enProps[mq + "~" + sel] = true;
+            enProps.add(mq + "~" + sel);
 
             var rules = this.properties[mq].selectors[sel];
 
@@ -1771,9 +1777,9 @@ var blueleaf = {
 
             if (enProps == undefined)
                 return;
-            if (enProps[mq + "~" + sel] == undefined)
+            if (!enProps.has(mq + "~" + sel))
                 return;
-            delete enProps[mq + "~" + sel];
+            delete enProps.delete(mq + "~" + sel);
 
             var rules = this.properties[mq].selectors[sel];
 
@@ -1912,10 +1918,10 @@ var blueleaf = {
                         traverseChildElements(c.elm, function (elm) {
                             var enProps = that.enabledSelectors.get(elm);
                             if (enProps != undefined) {
-                                for (var key in enProps) {
+                                enProps.forEach(function(key) {
                                     var prop = key.split("~");
                                     that.disableSelector(elm, prop[0], prop[1]);
-                                }
+                                });
                             }
                             return true;
                         });
@@ -1925,12 +1931,12 @@ var blueleaf = {
                         traverseChildElements(c.elm, function (elm) {
                             var enProps = that.enabledSelectors.get(elm);
                             if (enProps != undefined) {
-                                for (var key in enProps) {
+                                enProps.forEach(function(key) {
                                     var prop = key.split("~");
                                     if (!elm.matches(prop[1])) {
                                         that.disableSelector(elm, prop[0], prop[1]);
                                     }
-                                }
+                                });
                             }
                         });
 

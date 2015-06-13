@@ -5,6 +5,7 @@ module.exports = function (grunt) {
             framework_js: {
                 dest: 'development/framework/build/js/blueleaf.js',
                 src: [
+                    'development/framework/source/js/header.js',
                     'development/framework/source/js/polyfills.js',
                     'development/framework/source/lib/pluginapi/api.js',
                     'development/framework/source/lib/pluginapi/*.js',
@@ -18,7 +19,7 @@ module.exports = function (grunt) {
         uglify: {
             framework_js: {
                 options: {
-                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+                    banner: '/*! <%= pkg.name %> <%= pkg.version %> (<%= grunt.template.today("dd-mm-yyyy") %>) */\n'
                 },
                 files: {
                     'development/framework/build/js/blueleaf.min.js': ['development/framework/build/js/blueleaf.js']
