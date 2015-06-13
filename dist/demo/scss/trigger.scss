@@ -151,7 +151,7 @@
         transition: height 1s ease, height 1s ease;  
         @include listen("offcanvas","show");
         @include bp-triggered("show") {
-            height:50px;// TODO replace with own effects framework
+            height:50px;
         }
     }
 }

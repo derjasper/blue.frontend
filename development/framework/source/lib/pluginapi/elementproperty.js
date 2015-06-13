@@ -1,6 +1,5 @@
 {
     // Element Property Change Listener
-    // TODO use maps and sets
     blue.ElementProperty = {
         properties: new Map(),
         on: function (element, property, handler) {
@@ -10,44 +9,51 @@
             var props = this.properties.get(element);
 
             if (props == undefined) {
-                props = {};
+                props = new Map();
                 this.properties.set(element, props);
             }
 
-            if (props[property] == undefined)
-                props[property] = {value: this.getProperty(element, property), listener: []};
+            if (!props.has(property))
+                props.set(property, {value: this.getProperty(element, property), listener: []});
 
-            props[property].listener.push(handler);
+            // add handler
+            props.get(property).listener.push(handler);
         },
         off: function (element, property, handler) {
             var props = this.properties.get(element);
 
             if (props == undefined)
                 return;
-            if (props[property] == undefined)
+            
+            var le_property = props.get(property);
+            
+            if (le_property == undefined)
                 return;
-            props[property].listener = jQuery.grep(props[property].listener, function (value) {
-                return value != handler;
-            });
-
-            if (props[property].listener.length == 0)
-                delete props[property];
-            var size = 0;
-            for (var key in props) {
-                if (props.hasOwnProperty(key))
-                    size++;
+            
+            // remove listener
+            for (var i=0;i<le_property.listener.length;i++) {
+                if (le_property.listener[i] == handler) {
+                    le_property.listener.splice(i,1);
+                    i--;
+                }
             }
-            if (size == 0)
+
+            // clean up if neccessary
+            if (le_property.listener.length == 0)
+                props.delete(property);
+            
+            if (props.size == 0)
                 this.properties.delete(element);
         },
         fire: function (element, property, newVal, oldVal) {
             var props = this.properties.get(element);
             if (props == undefined)
                 return;
-            if (props[property] == undefined)
+            var le_property = props.get(property);
+            if (le_property == undefined)
                 return;
-            for (var i = 0; i < props[property].listener.length; i++) {
-                props[property].listener[i](newVal, oldVal);
+            for (var i = 0; i < le_property.listener.length; i++) {
+                le_property.listener[i](newVal, oldVal);
             }
         },
         getProperty: function (element, property) {
@@ -101,7 +107,7 @@
 
             return null;
         },
-        check: function (element, property) { // TOOD performance / debounce events
+        check: function (element, property) {
             if (element == undefined) {
                 var that = this;
 
@@ -114,18 +120,20 @@
 
                 if (property == undefined && props != undefined) {
                     var propList = [];
-                    for (var prop in props)
+                    props.forEach(function (val, prop) {
                         propList.push(prop);
+                    });
                     this.check(element, propList);
                 }
                 else if (props != undefined) {
                     for (var i = 0; i < property.length; i++) {
-                        if (props[property[i]] != undefined) {
+                        var le_property = props.get(property[i]);
+                        if (le_property != undefined) {
                             var current = this.getProperty(element, property[i]);
 
-                            if (props[property[i]].value != current) {
-                                this.fire(element, property[i], current, props[property[i]].value);
-                                props[property[i]].value = current;
+                            if (le_property.value != current) {
+                                this.fire(element, property[i], current, le_property.value);
+                                le_property.value = current;
                             }
                         }
                     }
@@ -134,8 +142,6 @@
         },
         start: function () {
             (function (obj) {
-                // TODO performance: debounce checks (Property Listener)
-
                 var observer = new MutationObserver(function (mutations) {
                     for (var i = 0; i < mutations.length; i++) {
                         var current = mutations[i].target;
