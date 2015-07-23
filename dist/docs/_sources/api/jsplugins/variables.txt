@@ -42,10 +42,10 @@ Initialisation
 
 The initialisation is done with a preprocessed variable name, an initial
 value (which is also preprocessed) and a variable type, which can be
-``simple``, ``group`` or ``stack``. In case of a simple varaible, this has
+``simple``, ``group`` or ``stack``. In case of a simple variable, this has
 to be ``true`` or ``false``.
 
-For more information read the documentationof the Variables API.
+For more information read the documentation of the Variables API.
 
 
 JavaScript

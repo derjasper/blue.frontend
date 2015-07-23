@@ -440,21 +440,10 @@ if (jQuery.fn.uniqueId == undefined) {
                 }
             }
             
-            if(current == document.documentElement) {
-                if (node==undefined) {
-                    node = new Node(current);
-                    nodeMap.set(current,node);
-                }
-                
-                variable = new Variable("simple",false);
-                node.addVar(name,variable,true);
-                return variable;
-            }
-                
             current = current.parentNode;
         }
         
-        return false;
+        return null;
     }
     
     // call a function on all child elements
@@ -518,11 +507,11 @@ if (jQuery.fn.uniqueId == undefined) {
         
         this.var.delete(name);
         
-        // assign new vars to existing bindings
-        
+        // assign new var to existing bindings
         var newvar = getVarByContext(this.element,name);
-        
+                        
         for (var i=0;i<variable.bnd.length;i++) {
+            // newvar == null: this is an inconsistent state. the binding does nothing; either waits for an variable or will be deleted soon.
             variable.bnd[i].setVar(newvar);
         }
     }
@@ -541,6 +530,9 @@ if (jQuery.fn.uniqueId == undefined) {
             var binding = this.bnd.get(varname);
             if (binding == undefined) {
                 var variable = getVarByContext(this.element,varname);
+                
+                // variable == null: this is an inconsistent state. the binding does nothing; either waits for an variable or will be deleted soon.
+                
                 binding = new Binding(variable);
                 this.bnd.set(varname,binding);
             }
@@ -678,7 +670,10 @@ if (jQuery.fn.uniqueId == undefined) {
     
     var Binding = function(variable) {
         this.variable = variable;
-        this.variable.bnd.add(this);
+        
+        if (variable != null)
+            this.variable.bnd.add(this);
+        
         this.lst = new Set();
     }
     Binding.prototype.update = function() {
@@ -687,7 +682,7 @@ if (jQuery.fn.uniqueId == undefined) {
         });
     }
     Binding.prototype.setVar = function(variable) {
-        if (this.variable != undefined) {
+        if (this.variable != null && this.variable != undefined) {
             this.variable.bnd.delete(this);
         }
         
@@ -738,11 +733,14 @@ if (jQuery.fn.uniqueId == undefined) {
         },
         get: function (context, key) {
             var k = key.split(".");
-            return getVarByContext(context,k[0]).get(k[1]);
+            var variable = getVarByContext(context,k[0]);
+            if (variable == null) return false;
+            return variable.get(k[1]);
         },
         set: function (context, key, value) {
             var k = key.split(".");
-            getVarByContext(context,k[0]).set(k[1],value);
+            var variable = getVarByContext(context,k[0]);
+            if (variable!=null) variable.set(k[1],value);
         },
         eval: function(context, expression) {  // evaluate an expression in the given context
             // supported: (,),&&,||,!,true,false and variables
@@ -1726,7 +1724,7 @@ var CSSParser;
         return tree;
     };
 }
-// blue leaf code
+// blue leaf core
 var blueleaf = {
     customrules: {
         properties: {},

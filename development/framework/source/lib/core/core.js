@@ -1,4 +1,4 @@
-// blue leaf code
+// blue leaf core
 var blueleaf = {
     customrules: {
         properties: {},
