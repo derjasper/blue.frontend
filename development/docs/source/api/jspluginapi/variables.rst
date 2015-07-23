@@ -18,8 +18,7 @@ used.
 
 When accessing a variable, the first variable when going up in the DOM tree starting
 from the context element context element will be used.
-If the variable is not initialized, a new ``simple`` variable will be created at
-the root element.
+If the variable is not initialized, the value will always be false.
 
 
 Variable types
