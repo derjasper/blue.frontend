@@ -2,7 +2,7 @@ Media Querys
 ============
 
 Simple media query shorthands. The mixin ``bp`` is the one you will use most.
-Screen sizes can be configured via the ``$screensizes`` variable in :doc:`blueleaf`.
+Screen sizes can be configured via the ``$screensizes`` variable in :doc:`blue`.
 
 
 SASS
@@ -15,7 +15,7 @@ SASS
 
    .. describe:: $screen
 
-      See the ``$screensizes`` variable in :doc:`blueleaf`. By default ``s``, ``m``, ``l``, ``xl`` or ``xxl``.
+      See the ``$screensizes`` variable in :doc:`blue`. By default ``s``, ``m``, ``l``, ``xl`` or ``xxl``.
 
    .. describe:: $mode
 
@@ -53,7 +53,7 @@ The following functions are used to construct advanced media querys. They can be
 
    .. describe:: $screen
 
-      See the ``$screensizes`` variable in :doc:`blueleaf`.
+      See the ``$screensizes`` variable in :doc:`blue`.
 
    .. describe:: $mode
 

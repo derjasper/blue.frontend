@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Using blue leaf with Drupal &mdash; blue leaf 1.2.0 documentation</title>
+    <title>Using blue.frontend with Drupal &mdash; blue.frontend 1.2.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="blue leaf 1.2.0 documentation" href="../index.html" />
+    <link rel="top" title="blue.frontend 1.2.0 documentation" href="../index.html" />
     <link rel="up" title="Cookbook" href="../cookbook.html" />
     <link rel="next" title="Creating jQuery-Plugins from the Plugin API" href="jQuery-plugins.html" />
     <link rel="prev" title="Cookbook" href="../cookbook.html" /> 
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="../cookbook.html" title="Cookbook"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.2.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
           <li><a href="../cookbook.html" accesskey="U">Cookbook</a> &raquo;</li> 
       </ul>
     </div>  
@@ -51,8 +51,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="using-blue-leaf-with-drupal">
-<h1>Using blue leaf with Drupal<a class="headerlink" href="#using-blue-leaf-with-drupal" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="using-blue-frontend-with-drupal">
+<h1>Using blue.frontend with Drupal<a class="headerlink" href="#using-blue-frontend-with-drupal" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="drupal-7">
 <h2>Drupal 7<a class="headerlink" href="#drupal-7" title="Permalink to this headline">¶</a></h2>
 <p>Your <tt class="docutils literal"><span class="pre">theme.info</span></tt> file should look like this:</p>
@@ -67,7 +67,7 @@ regions[...] = ...
 
 stylesheets[all][] = libs/font-awesome/css/font-awesome.css
 
-scripts[] = libs/blueleaf/js/blueleaf.js
+scripts[] = libs/blue/js/blue.js
 
 features[] = ...
 </pre></div>
@@ -89,7 +89,7 @@ features[] = ...
 <span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 </div>
-<p>This makes sure that the CSS file can be found by blueleaf&#8217;s CSS and enables
+<p>This makes sure that the CSS file can be found by blue.frontend&#8217;s CSS and enables
 correct rendering on mobile devices.</p>
 <p>For now, it is important to <strong>enable CSS compression</strong> in Drupal&#8217;s cache settings.
 Otherwise, the JavaScript-Bridge would not work!</p>
@@ -98,10 +98,10 @@ Otherwise, the JavaScript-Bridge would not work!</p>
 <h2>Drupal 8<a class="headerlink" href="#drupal-8" title="Permalink to this headline">¶</a></h2>
 <p>Since Drupal 8 is not finished yet, this instruction may not work in the future.</p>
 <p>Add this to your theme&#8217;s <tt class="docutils literal"><span class="pre">THEMENAME.libraries.yml</span></tt>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">blueleaf</span><span class="p-Indicator">:</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">blue</span><span class="p-Indicator">:</span>
   <span class="l-Scalar-Plain">version</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1.x</span>
   <span class="l-Scalar-Plain">js</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">libs/blueleaf/js/blueleaf.js</span><span class="p-Indicator">:</span> <span class="p-Indicator">{}</span>
+    <span class="l-Scalar-Plain">libs/blue/js/blue.js</span><span class="p-Indicator">:</span> <span class="p-Indicator">{}</span>
   <span class="l-Scalar-Plain">dependencies</span><span class="p-Indicator">:</span>
     <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">core/jquery</span>
 </pre></div>
@@ -116,7 +116,7 @@ Otherwise, the JavaScript-Bridge would not work!</p>
         <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">css/style.css</span>
         <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">libs/font-awesome/css/font-awesome.css</span>
 <span class="l-Scalar-Plain">libraries</span><span class="p-Indicator">:</span>
-    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">THEMENAME/blueleaf</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">THEMENAME/blue</span>
 
 <span class="l-Scalar-Plain">regions</span><span class="p-Indicator">:</span>
     <span class="c1">#...</span>
@@ -138,7 +138,7 @@ Otherwise, the JavaScript-Bridge would not work!</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Using blue leaf with Drupal</a><ul>
+<li><a class="reference internal" href="#">Using blue.frontend with Drupal</a><ul>
 <li><a class="reference internal" href="#drupal-7">Drupal 7</a></li>
 <li><a class="reference internal" href="#drupal-8">Drupal 8</a></li>
 </ul>
@@ -185,12 +185,12 @@ Otherwise, the JavaScript-Bridge would not work!</p>
         <li class="right" >
           <a href="../cookbook.html" title="Cookbook"
              >previous</a> |</li>
-        <li><a href="../index.html">blue leaf 1.2.0 documentation</a> &raquo;</li>
+        <li><a href="../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
           <li><a href="../cookbook.html" >Cookbook</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright blue treehouse, bluetreehouse.de. blue leaf is released under the MIT licence.
+        &copy; Copyright blue treehouse, bluetreehouse.de. blue.frontend is released under the MIT license.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>

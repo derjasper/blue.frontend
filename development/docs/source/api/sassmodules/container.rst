@@ -4,7 +4,7 @@ Container
 One of the most important modules. Containers are block elements with sizing, 
 positioning, alignment and spacing options.
 
-Some sizing options are multiplied by the ``$container`` factor, defined in :doc:`blueleaf`.
+Some sizing options are multiplied by the ``$container`` factor, defined in :doc:`blue`.
 
 This module will be reworked in a very future release.
 

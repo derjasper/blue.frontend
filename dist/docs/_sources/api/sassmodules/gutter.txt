@@ -2,7 +2,7 @@ Gutter
 ======
 
 The gutter module is there for consistent inner spacings of elements. The
-scaling can be configured via the ``$gutter`` variable in :doc:`blueleaf`.
+scaling can be configured via the ``$gutter`` variable in :doc:`blue`.
 
 
 SASS

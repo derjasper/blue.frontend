@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# blueleaf documentation build configuration file, created by
+# blue.framework documentation build configuration file, created by
 # sphinx-quickstart on Thu Sep 25 23:33:46 2014.
 #
 # This file is execfile()d with the current directory set to its
@@ -46,8 +46,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'blue leaf'
-copyright = u'blue treehouse, bluetreehouse.de. blue leaf is released under the MIT licence'
+project = u'blue.frontend'
+copyright = u'blue treehouse, bluetreehouse.de. blue.frontend is released under the MIT license'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -179,7 +179,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'blueleafdoc'
+htmlhelp_basename = 'bluedoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -199,7 +199,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'blueleaf.tex', u'blueleaf Documentation',
+  ('index', 'blue.tex', u'blue.frontend Documentation',
    u'blue treehouse', 'manual'),
 ]
 
@@ -229,7 +229,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'blueleaf', u'blueleaf Documentation',
+    ('index', 'blue', u'blue.frontend Documentation',
      [u'blue treehouse'], 1)
 ]
 
@@ -243,8 +243,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'blueleaf', u'blueleaf Documentation',
-   u'blue treehouse', 'blueleaf', 'One line description of project.',
+  ('index', 'blue', u'blue.frontend Documentation',
+   u'blue treehouse', 'blue.frontend', 'One line description of project.',
    'Miscellaneous'),
 ]
 

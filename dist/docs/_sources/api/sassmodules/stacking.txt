@@ -1,8 +1,8 @@
 Stacking
 ========
 
-This is not a "real" module, but blue leaf assumes some code style rules to create
-predictable results. This is necessary, because blue leaf uses some CSS properties
+This is not a "real" module, but blue.frontend assumes some code style rules to create
+predictable results. This is necessary, because blue.frontend uses some CSS properties
 which create a new stacking context. Because most devs do not know how ``z-index``
 really works, this would lead to hopelessly developers losing their beliefs.
 

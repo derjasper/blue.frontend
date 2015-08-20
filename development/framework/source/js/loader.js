@@ -19,14 +19,14 @@
         function init() {
             loaded++;
             if (loaded == stylesheets.length)
-                blueleaf.customrules.init();
+                bluejs.customrules.init();
         }
         for (var i = 0; i < stylesheets.length; i++) {
             jQuery.get(stylesheets[i], null, function (data) {
-                if (data.indexOf("/*! blueleaf */") === 0) {
+                if (data.indexOf("/*! blue */") === 0) {
                     var tree = CSSParser.parse(data);
                     if (tree != null) {
-                        blueleaf.customrules.addProperties(tree);
+                        bluejs.customrules.addProperties(tree);
                     }
                 }
 

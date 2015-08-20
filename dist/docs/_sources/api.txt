@@ -2,7 +2,7 @@ API
 ===
 
 Please note that some modules are not for use from outside of the framework. Also,
-JavaScript functions are designed for use through blue leaf mixins, not for direct
+JavaScript functions are designed for use through blue.frontend mixins, not for direct
 usage. However, some JavaScript modules can be used independently from the framework
 (but this is not supported).
 
@@ -20,7 +20,7 @@ Some of them are using JavaScript Plugins (through :doc:`api/sassmodules/customr
 but this is transparent to the developer. The documentation informs the developer
 whenever a mixin is using JavaScript. One thing important to know is that JavaScript
 Plugins do not cascade, so mixins have to explicitly be disabled via media querys.
-(This is an issue that is targeted to the blue leaf 3 series.)
+(This is an issue that is targeted to the blue.frontend 3 series.)
 
 The SASS module documentation pages refer always to a SASS file (e.g. sticky refers to
 sticky.scss).

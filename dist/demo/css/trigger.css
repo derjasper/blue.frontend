@@ -1,4 +1,4 @@
-/*! blueleaf */
+/*! blue */
 *, *:before, *:after {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -98,8 +98,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
 .binddemo a.hover {
   /*! customrule: {"variable_init": {"variable": "hovered", "value": false, "type": "simple"}} */
   /*! customrule: {"trigger_bind": {"key": "hovered", "status_type": "hover"}} */
-  /*! customrule: {"expressionlistener_class": {"expression": "hovered", "element_class": "u7e4bvuxe"}} */ }
-  .binddemo a.hover.u7e4bvuxe {
+  /*! customrule: {"expressionlistener_class": {"expression": "hovered", "element_class": "u64s94n2f"}} */ }
+  .binddemo a.hover.u64s94n2f {
     font-weight: bold; }
 .binddemo a.focus {
   /*! customrule: {"variable_init": {"variable": "focussed", "value": false, "type": "simple"}} */
@@ -122,8 +122,8 @@ ol:not(.nostyle), ul:not(.nostyle) {
   .mulvar a {
     /*! customrule: {"trigger": {"key": "var1,var2", "event_type": "click", "value_expression": "!var1", "priority": 0}} */ }
   .mulvar span {
-    /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "u7e4bvuxl"}} */ }
-    .mulvar span.u7e4bvuxl {
+    /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "u64s94n2h"}} */ }
+    .mulvar span.u64s94n2h {
       font-weight: bold; }
 
 .expressions {

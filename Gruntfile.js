@@ -3,7 +3,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         concat: {
             framework_js: {
-                dest: 'development/framework/build/js/blueleaf.js',
+                dest: 'development/framework/build/js/blue.js',
                 src: [
                     'development/framework/source/js/header.js',
                     'development/framework/source/js/polyfills.js',
@@ -22,7 +22,7 @@ module.exports = function (grunt) {
                     banner: '/*! <%= pkg.name %> <%= pkg.version %> (<%= grunt.template.today("dd-mm-yyyy") %>) */\n'
                 },
                 files: {
-                    'development/framework/build/js/blueleaf.min.js': ['development/framework/build/js/blueleaf.js']
+                    'development/framework/build/js/blue.min.js': ['development/framework/build/js/blue.js']
                 }
             }
         },
@@ -51,13 +51,13 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'development/framework/build/js', 
                         src: ['**'], 
-                        dest: 'development/demo/build/libs/blueleaf/js'
+                        dest: 'development/demo/build/libs/blue/js'
                     },
                     {
                         expand: true,
                         cwd: 'development/framework/build/scss', 
                         src: ['**'], 
-                        dest: 'development/demo/build/libs/blueleaf/scss'
+                        dest: 'development/demo/build/libs/blue/scss'
                     },
                 ]
             },

@@ -1,5 +1,5 @@
-// blue leaf core
-var blueleaf = {
+// blue.js core
+var bluejs = {
     customrules: {
         properties: {},
         enabledSelectors: new Map(),
