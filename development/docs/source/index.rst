@@ -1,12 +1,12 @@
-Welcome to blue leaf's documentation!
-=====================================
+Welcome to blue.frontend's documentation!
+=========================================
 
 Useful weblinks:
 
-- `website <http://blueleaf.bluetreehouse.de/>`_
-- `demo browser <http://blueleaf.bluetreehouse.de/demo>`_
-- `documentation <http://blueleaf.bluetreehouse.de/docs>`_
-- `git access & downloads <http://gitlab.bluetreehouse.de/blueleaf/blueleaf>`_
+- `website <http://bluefrontend.bluetreehouse.de/>`_
+- `demo browser <http://bluefrontend.bluetreehouse.de/demo>`_
+- `documentation <http://bluefrontend.bluetreehouse.de/docs>`_
+- `git access & downloads <https://github.com/derjasper/blue.frontend>`_
 
 Demo browser:
 

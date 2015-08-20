@@ -1,13 +1,13 @@
 Predefined Rules
 ================
 
-Predefined rules are CSS classes defined by blue leaf.
+Predefined rules are CSS classes defined by blue.frontend.
 
-Normally, blue leaf does not create any CSS rules for specific classes. If a module
+Normally, blue.frontend does not create any CSS rules for specific classes. If a module
 defines such rules it should happen via the ``predefine`` mixin in order to allow site 
 developers to disable these rules.
 
-Predefined rules can be turned off via the ``$predefined`` variable in :doc:`blueleaf`.
+Predefined rules can be turned off via the ``$predefined`` variable in :doc:`blue`.
 
 Note: These mixins are not for use from outside the framework. They are documented
 for framework developers.

@@ -17,7 +17,7 @@ from SASS maps, which will look as follows:
    /*! customrule: {rulename: {option1: value, option2: value, enabled:true}} */
 
 
-Now, blue leaf's JavaScript will parse all CSS files beginning with ``/*! blueleaf */``
+Now, blue.frontend's JavaScript will parse all CSS files beginning with ``/*! blue */``
 for these comments and parse the JSON objects. The JSON objects will be stored
 in association with the current media query and the current CSS rule.
 

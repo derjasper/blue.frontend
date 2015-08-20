@@ -1,5 +1,5 @@
-Using blue leaf with Drupal
-============================
+Using blue.frontend with Drupal
+===============================
 
 Drupal 7
 --------
@@ -19,7 +19,7 @@ Your ``theme.info`` file should look like this:
 
     stylesheets[all][] = libs/font-awesome/css/font-awesome.css
 
-    scripts[] = libs/blueleaf/js/blueleaf.js
+    scripts[] = libs/blue/js/blue.js
 
     features[] = ...
 
@@ -43,7 +43,7 @@ Then, add this to your ``template.php``:
     }
     ?>
 
-This makes sure that the CSS file can be found by blueleaf's CSS and enables
+This makes sure that the CSS file can be found by blue.frontend's CSS and enables
 correct rendering on mobile devices.
 
 For now, it is important to **enable CSS compression** in Drupal's cache settings.
@@ -58,10 +58,10 @@ Add this to your theme's ``THEMENAME.libraries.yml``:
 
 .. code-block:: yaml
 
-    blueleaf:
+    blue:
       version: 1.x
       js:
-        libs/blueleaf/js/blueleaf.js: {}
+        libs/blue/js/blue.js: {}
       dependencies:
         - core/jquery
         
@@ -79,7 +79,7 @@ Your theme's ``THEMENAME.info.yml`` should look like tihs:
             - css/style.css
             - libs/font-awesome/css/font-awesome.css
     libraries:
-        - THEMENAME/blueleaf
+        - THEMENAME/blue
 
     regions:
         #...

@@ -4,7 +4,7 @@ Variables
 This is the SASS binding for the Variables plugin. Please read
 :doc:`../jsplugins/variables` for usage information.
 
-Convention: blue leaf modules should only create variables starting with "bl-".
+Convention: blue.frontend modules should only create variables starting with "bl-".
 
 
 SASS

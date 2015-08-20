@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>JavaScript core &mdash; blue leaf 1.2.0 documentation</title>
+    <title>JavaScript core &mdash; blue.frontend 1.2.0 documentation</title>
     
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -23,9 +23,9 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="blue leaf 1.2.0 documentation" href="../../index.html" />
+    <link rel="top" title="blue.frontend 1.2.0 documentation" href="../../index.html" />
     <link rel="up" title="API" href="../../api.html" />
-    <link rel="next" title="JavaScript loader (blueleaf.js)" href="../jsloader/loader.html" />
+    <link rel="next" title="JavaScript loader (blue.js)" href="../jsloader/loader.html" />
     <link rel="prev" title="JavaScript CSS Parser" href="../jscssparser/cssparser.html" /> 
   </head>
   <body>
@@ -36,12 +36,12 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../jsloader/loader.html" title="JavaScript loader (blueleaf.js)"
+          <a href="../jsloader/loader.html" title="JavaScript loader (blue.js)"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../jscssparser/cssparser.html" title="JavaScript CSS Parser"
              accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">blue leaf 1.2.0 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
           <li><a href="../../api.html" accesskey="U">API</a> &raquo;</li> 
       </ul>
     </div>  
@@ -62,22 +62,22 @@ querys and en-/disables the rules.</p>
 <div class="section" id="core-js">
 <h3>core.js<a class="headerlink" href="#core-js" title="Permalink to this headline">¶</a></h3>
 <dl class="data">
-<dt id="blueleaf.customrules.properties">
-<tt class="descclassname">blueleaf.customrules.</tt><tt class="descname">properties</tt><a class="headerlink" href="#blueleaf.customrules.properties" title="Permalink to this definition">¶</a></dt>
+<dt id="bluejs.customrules.properties">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">properties</tt><a class="headerlink" href="#bluejs.customrules.properties" title="Permalink to this definition">¶</a></dt>
 <dd><p>An associative array of properties:
 <tt class="docutils literal"><span class="pre">properties[mediaquery].selectors[selector][i]</span> <span class="pre">=</span> <span class="pre">{rule:</span> <span class="pre">rule,</span> <span class="pre">options:</span> <span class="pre">options};</span></tt></p>
 </dd></dl>
 
 <dl class="data">
-<dt id="blueleaf.customrules.enabledProperties">
-<tt class="descclassname">blueleaf.customrules.</tt><tt class="descname">enabledProperties</tt><a class="headerlink" href="#blueleaf.customrules.enabledProperties" title="Permalink to this definition">¶</a></dt>
+<dt id="bluejs.customrules.enabledProperties">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">enabledProperties</tt><a class="headerlink" href="#bluejs.customrules.enabledProperties" title="Permalink to this definition">¶</a></dt>
 <dd><p>A map containing information of enabled properties per DOM element:
 <tt class="docutils literal"><span class="pre">enabledProperties.get(DOMElement)[i]=&quot;mediaquery~selector~i&quot;;</span></tt></p>
 </dd></dl>
 
 <dl class="function">
-<dt id="blueleaf.customrules.addProperty">
-<tt class="descclassname">blueleaf.customrules.</tt><tt class="descname">addProperty</tt><big>(</big><em>mq</em>, <em>sel</em>, <em>rule</em>, <em>options</em><big>)</big><a class="headerlink" href="#blueleaf.customrules.addProperty" title="Permalink to this definition">¶</a></dt>
+<dt id="bluejs.customrules.addProperty">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">addProperty</tt><big>(</big><em>mq</em>, <em>sel</em>, <em>rule</em>, <em>options</em><big>)</big><a class="headerlink" href="#bluejs.customrules.addProperty" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -95,8 +95,8 @@ querys and en-/disables the rules.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="blueleaf.customrules.addProperties">
-<tt class="descclassname">blueleaf.customrules.</tt><tt class="descname">addProperties</tt><big>(</big><em>tree</em><big>)</big><a class="headerlink" href="#blueleaf.customrules.addProperties" title="Permalink to this definition">¶</a></dt>
+<dt id="bluejs.customrules.addProperties">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">addProperties</tt><big>(</big><em>tree</em><big>)</big><a class="headerlink" href="#bluejs.customrules.addProperties" title="Permalink to this definition">¶</a></dt>
 <dd><p>A tree generated by the CSS Parser. All rules will be merged to <tt class="docutils literal"><span class="pre">ruleslist</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -112,8 +112,8 @@ querys and en-/disables the rules.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="blueleaf.customrules.enableProperty">
-<tt class="descclassname">blueleaf.customrules.</tt><tt class="descname">enableProperty</tt><big>(</big><em>elm</em>, <em>mq</em>, <em>sel</em>, <em>index</em><big>)</big><a class="headerlink" href="#blueleaf.customrules.enableProperty" title="Permalink to this definition">¶</a></dt>
+<dt id="bluejs.customrules.enableProperty">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">enableProperty</tt><big>(</big><em>elm</em>, <em>mq</em>, <em>sel</em>, <em>index</em><big>)</big><a class="headerlink" href="#bluejs.customrules.enableProperty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enables a property.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -132,22 +132,22 @@ querys and en-/disables the rules.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="blueleaf.customrules.disableProperty">
-<tt class="descclassname">blueleaf.customrules.</tt><tt class="descname">disableProperty</tt><big>(</big><em>elm</em>, <em>mq</em>, <em>sel</em>, <em>index</em><big>)</big><a class="headerlink" href="#blueleaf.customrules.disableProperty" title="Permalink to this definition">¶</a></dt>
+<dt id="bluejs.customrules.disableProperty">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">disableProperty</tt><big>(</big><em>elm</em>, <em>mq</em>, <em>sel</em>, <em>index</em><big>)</big><a class="headerlink" href="#bluejs.customrules.disableProperty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disables a property. Parameters are the same as in <tt class="docutils literal"><span class="pre">enableProperty</span></tt>.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="blueleaf.customrules.apply">
-<tt class="descclassname">blueleaf.customrules.</tt><tt class="descname">apply</tt><big>(</big><big>)</big><a class="headerlink" href="#blueleaf.customrules.apply" title="Permalink to this definition">¶</a></dt>
+<dt id="bluejs.customrules.apply">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">apply</tt><big>(</big><big>)</big><a class="headerlink" href="#bluejs.customrules.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>Deprecated</em> Re-applys JavaScript-based rules. (If you need to use this, it&#8217;s a bug.)</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="blueleaf.customrules.init">
-<tt class="descclassname">blueleaf.customrules.</tt><tt class="descname">init</tt><big>(</big><big>)</big><a class="headerlink" href="#blueleaf.customrules.init" title="Permalink to this definition">¶</a></dt>
+<dt id="bluejs.customrules.init">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">init</tt><big>(</big><big>)</big><a class="headerlink" href="#bluejs.customrules.init" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializes the custom rules. After the init, no more rules or properties can
-be added. blue leaf will handle media querys and DOM changes, the framework
+be added. blue.frontend will handle media querys and DOM changes, the framework
 should be mostly transparent to the developer.</p>
 </dd></dl>
 
@@ -177,7 +177,7 @@ should be mostly transparent to the developer.</p>
                         title="previous chapter">JavaScript CSS Parser</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../jsloader/loader.html"
-                        title="next chapter">JavaScript loader (blueleaf.js)</a></p>
+                        title="next chapter">JavaScript loader (blue.js)</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../_sources/api/jscore/core.txt"
@@ -207,17 +207,17 @@ should be mostly transparent to the developer.</p>
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../jsloader/loader.html" title="JavaScript loader (blueleaf.js)"
+          <a href="../jsloader/loader.html" title="JavaScript loader (blue.js)"
              >next</a> |</li>
         <li class="right" >
           <a href="../jscssparser/cssparser.html" title="JavaScript CSS Parser"
              >previous</a> |</li>
-        <li><a href="../../index.html">blue leaf 1.2.0 documentation</a> &raquo;</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
           <li><a href="../../api.html" >API</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright blue treehouse, bluetreehouse.de. blue leaf is released under the MIT licence.
+        &copy; Copyright blue treehouse, bluetreehouse.de. blue.frontend is released under the MIT license.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>

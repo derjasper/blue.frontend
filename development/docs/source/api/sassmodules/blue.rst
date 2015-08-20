@@ -1,5 +1,5 @@
-blue leaf Core
-==============
+blue.framework Core
+===================
 
 These are some core functionalities and settings which can normally left untouched.
 

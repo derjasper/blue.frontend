@@ -4,7 +4,7 @@ Grid
 A (responsive) grid similiar to Foundation's one. Offers columns and rows.
 
 The number of cols/rows can be configured via the ``$columns`` / ``$rows``
-variable in :doc:`blueleaf`.
+variable in :doc:`blue`.
 
 Each element in the grid is a *box* and cannot be a *container* (see :doc:`container`).
 
