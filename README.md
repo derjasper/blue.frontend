@@ -6,7 +6,7 @@ Features
 
 A SASS & JavaScript library to write a website's frontend. You can define JavaScript functionality using SASS mixins.
 
-Learn more about the framework itself: Docs, Demo & Website.
+Learn more about the framework itself: [Docs](http://frontend.bluetreehouse.de/docs), [Demo](http://frontend.bluetreehouse.de/demo) & [Website](http://frontend.bluetreehouse.de/).
 
 Notes
 -----
