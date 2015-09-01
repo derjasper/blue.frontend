@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 // Map
 if (Map == undefined) {
     console.log("enabling map polyfill");

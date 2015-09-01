@@ -3,9 +3,9 @@ Welcome to blue.frontend's documentation!
 
 Useful weblinks:
 
-- `website <http://bluefrontend.bluetreehouse.de/>`_
-- `demo browser <http://bluefrontend.bluetreehouse.de/demo>`_
-- `documentation <http://bluefrontend.bluetreehouse.de/docs>`_
+- `website <http://frontend.bluetreehouse.de/>`_
+- `demo browser <http://frontend.bluetreehouse.de/demo>`_
+- `documentation <http://frontend.bluetreehouse.de/docs>`_
 - `git access & downloads <https://github.com/derjasper/blue.frontend>`_
 
 Demo browser:
