@@ -1,0 +1,286 @@
+/*! blue */
+*, *:before, *:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 100%; }
+
+html {
+  height: 100%;
+  position: relative; }
+
+body {
+  min-height: 100%; }
+
+.container {
+  *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto; }
+  .container:before, .container:after {
+    content: "";
+    display: table; }
+  .container:after {
+    clear: both; }
+
+html {
+  /*! customrule: {"variable_init": {"variable": "bl-menu-hide", "value": false, "type": "simple"}} */
+  /*! customrule: {"trigger": {"key": "bl-menu-hide", "event_type": "click", "value_expression": "!bl-menu-hide", "priority": 0}} */ }
+body {
+  font-family: sans;
+  color: white;
+  background: #222;
+  padding: 0 4em 4em 4em; }
+
+h1, h2, h3 {
+  padding: 1em 0;
+  margin: 0;
+  font-weight: normal; }
+
+a {
+  color: white; }
+
+div:not(.nostyle) {
+  background: #006785;
+  border: #037698 0.5em solid; }
+
+div:not(.nostyle) > div {
+  background: #4c4c4c;
+  border: #575757 0.5em solid; }
+
+div.placeholder, div > div.placeholder {
+  height: 30em;
+  background: transparent;
+  border: none; }
+
+ol:not(.nostyle), ul:not(.nostyle) {
+  background: #006785;
+  color: white; }
+  ol:not(.nostyle) li, ul:not(.nostyle) li {
+    background: #037698; }
+    ol:not(.nostyle) li a, ul:not(.nostyle) li a {
+      background: #4c4c4c;
+      color: white; }
+
+.simple {
+  /*! customrule: {"variable_init": {"variable": "scrolled_top", "value": false, "type": "simple"}} */ }
+  .simple .trigger {
+    /*! customrule: {"trigger_bind_scrollposition": {"key": "scrolled_top", "scroll_status": "top", "scrollarea": "window", "offset": []}} */ }
+  .simple .listener {
+    /*! customrule: {"expressionlistener_class": {"expression": "scrolled_top", "element_class": "ujw1nt51z"}} */ }
+    .simple .listener.ujw1nt51z {
+      font-weight: bold; }
+
+.scrollarea {
+  /*! customrule: {"variable_init": {"variable": "visible", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "top", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "right", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "bottom", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "left", "value": false, "type": "simple"}} */
+  *zoom: 1;
+  position: relative;
+  width: 60rem;
+  min-width: 60rem;
+  max-width: 60rem;
+  height: 30rem;
+  min-height: 30rem;
+  max-height: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: auto; }
+  .scrollarea:before, .scrollarea:after {
+    content: "";
+    display: table; }
+  .scrollarea:after {
+    clear: both; }
+  .scrollarea .largecontainer {
+    *zoom: 1;
+    position: relative;
+    width: 200%;
+    min-width: 200%;
+    max-width: 200%;
+    height: 200%;
+    min-height: 200%;
+    max-height: 200%;
+    margin-left: auto;
+    margin-right: auto; }
+    .scrollarea .largecontainer:before, .scrollarea .largecontainer:after {
+      content: "";
+      display: table; }
+    .scrollarea .largecontainer:after {
+      clear: both; }
+    .scrollarea .largecontainer .trigger {
+      *zoom: 1;
+      position: absolute;
+      width: 20rem;
+      min-width: 20rem;
+      max-width: 20rem;
+      height: 20rem;
+      min-height: 20rem;
+      max-height: 20rem;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      top: 0;
+      bottom: 0;
+      margin-top: auto;
+      margin-bottom: auto;
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "visible", "scroll_status": "visible", "scrollarea": ".scrollarea", "offset": []}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "top", "scroll_status": "top", "scrollarea": ".scrollarea", "offset": []}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "right", "scroll_status": "right", "scrollarea": ".scrollarea", "offset": []}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "bottom", "scroll_status": "bottom", "scrollarea": ".scrollarea", "offset": []}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "left", "scroll_status": "left", "scrollarea": ".scrollarea", "offset": []}} */ }
+      .scrollarea .largecontainer .trigger:before, .scrollarea .largecontainer .trigger:after {
+        content: "";
+        display: table; }
+      .scrollarea .largecontainer .trigger:after {
+        clear: both; }
+      .scrollarea .largecontainer .trigger span {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "ujw1nt524"}} */ }
+        .scrollarea .largecontainer .trigger span.ujw1nt524 {
+          color: red; }
+
+.offsets {
+  /*! customrule: {"variable_init": {"variable": "visible", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "top", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "right", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "bottom", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "left", "value": false, "type": "simple"}} */
+  *zoom: 1;
+  position: relative;
+  width: 60rem;
+  min-width: 60rem;
+  max-width: 60rem;
+  height: 30rem;
+  min-height: 30rem;
+  max-height: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: auto; }
+  .offsets:before, .offsets:after {
+    content: "";
+    display: table; }
+  .offsets:after {
+    clear: both; }
+  .offsets .largecontainer {
+    *zoom: 1;
+    position: relative;
+    width: 200%;
+    min-width: 200%;
+    max-width: 200%;
+    height: 200%;
+    min-height: 200%;
+    max-height: 200%;
+    margin-left: auto;
+    margin-right: auto; }
+    .offsets .largecontainer:before, .offsets .largecontainer:after {
+      content: "";
+      display: table; }
+    .offsets .largecontainer:after {
+      clear: both; }
+    .offsets .largecontainer .trigger {
+      *zoom: 1;
+      position: absolute;
+      width: 20rem;
+      min-width: 20rem;
+      max-width: 20rem;
+      height: 20rem;
+      min-height: 20rem;
+      max-height: 20rem;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      top: 0;
+      bottom: 0;
+      margin-top: auto;
+      margin-bottom: auto;
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "visible", "scroll_status": "visible", "scrollarea": ".offsets", "offset": {"top": 20, "left": 20, "bottom": 20, "right": 20}}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "top", "scroll_status": "top", "scrollarea": ".offsets", "offset": {"top": 20}}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "right", "scroll_status": "right", "scrollarea": ".offsets", "offset": {"right": 20}}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "bottom", "scroll_status": "bottom", "scrollarea": ".offsets", "offset": {"bottom": 20}}} */
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "left", "scroll_status": "left", "scrollarea": ".offsets", "offset": {"left": 20}}} */ }
+      .offsets .largecontainer .trigger:before, .offsets .largecontainer .trigger:after {
+        content: "";
+        display: table; }
+      .offsets .largecontainer .trigger:after {
+        clear: both; }
+      .offsets .largecontainer .trigger span {
+        /*! customrule: {"expressionlistener_class": {"expression": "{attr-data-listen}", "element_class": "ujw1nt52d"}} */ }
+        .offsets .largecontainer .trigger span.ujw1nt52d {
+          color: red; }
+
+.scrolling-offset {
+  /*! customrule: {"variable_init": {"variable": "top", "value": false, "type": "simple"}} */
+  /*! customrule: {"variable_init": {"variable": "bottom", "value": false, "type": "simple"}} */
+  *zoom: 1;
+  position: relative;
+  width: 60rem;
+  min-width: 60rem;
+  max-width: 60rem;
+  height: 30rem;
+  min-height: 30rem;
+  max-height: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: auto;
+  /*! customrule: {"expressionlistener_class": {"expression": "top", "element_class": "ujw1nt52l"}} */
+  /*! customrule: {"expressionlistener_class": {"expression": "bottom", "element_class": "ujw1nt52t"}} */ }
+  .scrolling-offset:before, .scrolling-offset:after {
+    content: "";
+    display: table; }
+  .scrolling-offset:after {
+    clear: both; }
+  .scrolling-offset a {
+    /*! customrule: {"trigger_bind_scrollposition": {"key": "top", "scroll_status": "top", "scrollarea": ".scrolling-offset", "offset": []}} */
+    /*! customrule: {"trigger_bind_scrollposition": {"key": "bottom", "scroll_status": "bottom", "scrollarea": ".scrolling-offset", "offset": []}} */
+    display: block;
+    position: relative;
+    top: -100px;
+    visibility: hidden; }
+  .scrolling-offset.ujw1nt52l {
+    background-color: red; }
+  .scrolling-offset.ujw1nt52t {
+    background-color: green; }
+
+.navigation {
+  *zoom: 1;
+  position: relative;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  /*! customrule: {"variable_init": {"variable": "nav", "value": "#none", "type": "stack"}} */ }
+  .navigation:before, .navigation:after {
+    content: "";
+    display: table; }
+  .navigation:after {
+    clear: both; }
+  .navigation .nav {
+    float: left;
+    position: relative;
+    width: 25%; }
+    .navigation .nav ul {
+      /*! customrule: {"sticky": {"directions": {"top": true}, "scrollarea_sel": "viewport", "container_sel": "_null", "sticky_class": "bl-sticked"}} */ }
+      .navigation .nav ul.bl-sticked {
+        z-index: 5; }
+    .navigation .nav a {
+      /*! customrule: {"expressionlistener_class": {"expression": "nav.{attr-href}", "element_class": "ujw1nt52y"}} */ }
+      .navigation .nav a.ujw1nt52y {
+        font-weight: bold; }
+  .navigation .content {
+    float: left;
+    position: relative;
+    width: 75%; }
+    .navigation .content a {
+      /*! customrule: {"trigger_bind_scrollposition": {"key": "nav.#{attr-name}", "scroll_status": "top", "scrollarea": "window", "offset": []}} */ }
+
+/*# sourceMappingURL=scrollposition.css.map */

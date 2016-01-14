@@ -1,0 +1,36 @@
+@function bpBase() {
+    @return "only screen";
+}
+
+@function bpScreen($screen,$mode,$screen2:"") {
+    @if ($mode==up or (length(map-get($screensizes,$screen))==1 and $mode==onl)) {
+        @return "(min-width:#{nth(map-get($screensizes,$screen),1)})";
+    }
+    @else if ($mode==onl) { // only
+        @return "(min-width:#{nth(map-get($screensizes,$screen),1)}) and (max-width:#{nth(map-get($screensizes,$screen),2)})";
+    }
+    @else if ($mode==down) {
+        @if (length(map-get($screensizes,$screen))>1) {
+            @return "(max-width:#{nth(map-get($screensizes,$screen),2)})";
+        }
+        @else {
+            @return "(max-width:#{nth(map-get($screensizes,$screen),1)})";
+        }
+    }
+    @else if($mode==to) {
+        @return "(min-width:#{nth(map-get($screensizes,$screen),1)}) and (max-width:#{nth(map-get($screensizes,$screen2),2)})";
+    }
+}
+// @media #{mediaQueryScreen($key,"up")} { ... }
+
+@function bpOrientation($orientation) { // landscape or portrait
+    @return "(orientation: #{$orientation})";    
+}
+
+@mixin bp($screen:s,$mode:up,$screen2:"") {
+    @media #{bpBase()} and #{bpScreen($screen,$mode,$screen2)} { @content; }
+}
+
+@mixin bp-o($orientation) {
+    @media #{bpBase()} and #{bpOrientation($orientation)} { @content; }
+}

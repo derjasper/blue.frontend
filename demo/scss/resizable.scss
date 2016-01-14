@@ -1,0 +1,24 @@
+@import "demo.scss";
+
+div {
+    width:20em;
+    height:20em;
+}
+
+.resizable {
+    @include resizable();
+    
+    @include bp-resizing() {
+        opacity:0.8;
+    }
+}
+
+.resize-hide {
+    @include resizable("hidecontent"); // class can be customized
+    
+    @include bp-resizing("hidecontent") {
+        * {
+            @include visibility(hide);
+        }
+    }
+}

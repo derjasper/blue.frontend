@@ -1,0 +1,79 @@
+// config
+$gutter: 0.2rem;
+$guttersteps: 10;
+$container: 10rem;
+$containersteps: 10;
+$columns: 12;
+$rows: 12;
+$screensizes: (
+    s: (0em 40em),
+    m: (40.063em 64em),
+    l: (64.063em 90em),
+    xl: (90.063em 120em),
+    xxl: (120.063em)
+);
+$predefined:true;
+
+// some constants to predict CSS behaviour (even it's an impossible task...)
+$inline-elements: "\
+    b, big, i, small, tt,\
+    abbr, acronym, cite, code, dfn, em, kbd, strong, samp, var,\
+    a, bdo, br, img, map, object, q, script, span, sub, sup,\
+    button, input, label, select, textarea\
+";
+
+
+// framework meta information
+// important: do not remove this comment, otherwise some features may not work
+/*! blue */
+
+// general rules
+*, *:before, *:after {
+    box-sizing: border-box; 
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    
+    // causes regressions at least in sticky and stickyfooter
+    //transform:translate3d(0,0,0);
+    //position:relative;
+}
+
+html,body {
+    margin:0;
+    padding:0;
+    font-size:100%;
+}
+
+html {
+    height:100%;
+    position:relative;
+}
+
+body {
+    min-height:100%;
+}
+
+// modules
+@import "helper.scss";
+@import "customrules.scss";
+@import "variables.scss";
+@import "expressionlistener.scss";
+@import "trigger.scss";
+@import "mediaquerys.scss";
+@import "predefinedrules.scss";
+@import "container.scss";
+@import "grid.scss";
+@import "gutter.scss";
+@import "menu.scss";
+@import "alignment.scss";
+@import "visibility.scss";
+@import "utility.scss";
+@import "sticky.scss";
+@import "smoothscrolling.scss";
+@import "scrolling.scss";
+@import "reset.scss";
+@import "list.scss";
+@import "resizable.scss";
+@import "offcanvas.scss";
+@import "stickyfooter.scss";

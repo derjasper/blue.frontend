@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Creating jQuery-Plugins from the Plugin API &mdash; blue.frontend 1.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="blue.frontend 1.2.0 documentation" href="../index.html" />
+    <link rel="up" title="Cookbook" href="../cookbook.html" />
+    <link rel="prev" title="Using blue.frontend with Drupal" href="drupal.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="drupal.html" title="Using blue.frontend with Drupal"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../cookbook.html" accesskey="U">Cookbook</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="creating-jquery-plugins-from-the-plugin-api">
+<h1>Creating jQuery-Plugins from the Plugin API<a class="headerlink" href="#creating-jquery-plugins-from-the-plugin-api" title="Permalink to this headline">¶</a></h1>
+<p>Creating a jQuery-Plugin from the Plugin API is traight forward:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name_enable</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args_obj</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">_fn</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elm</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">Plugins</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">elm</span><span class="p">,</span><span class="nx">plugin_name</span><span class="p">,</span><span class="nx">args_obj</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="nx">_i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">_len</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">_i</span> <span class="o">&lt;</span> <span class="nx">_len</span><span class="p">;</span> <span class="nx">_i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">elm</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span><span class="nx">_i</span><span class="p">];</span>
+            <span class="nx">_fn</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">elm</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">};</span>
+
+
+    <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">plugin_name_disable</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args_obj</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">_fn</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elm</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">Plugins</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">elm</span><span class="p">,</span><span class="nx">plugin_name</span><span class="p">,</span><span class="nx">args_obj</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="nx">_i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">_len</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">_i</span> <span class="o">&lt;</span> <span class="nx">_len</span><span class="p">;</span> <span class="nx">_i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">elm</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span><span class="nx">_i</span><span class="p">];</span>
+            <span class="nx">_fn</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">elm</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">};</span>
+<span class="p">}(</span><span class="nx">jQuery</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Thats it. Feel free to automate this.</p>
+<p>Note that this is a very basic bridge. You need to dis- and enable all the plugins
+if an element is moved in the DOM tree (see <a class="reference internal" href="../api/jspluginapi/pluginmanager.html"><em>Plugin Manager</em></a>), and disable all plugins
+whenever an element is destroyed.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="drupal.html"
+                        title="previous chapter">Using blue.frontend with Drupal</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/cookbook/jQuery-plugins.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="drupal.html" title="Using blue.frontend with Drupal"
+             >previous</a> |</li>
+        <li><a href="../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../cookbook.html" >Cookbook</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright blue treehouse, bluetreehouse.de. blue.frontend is released under the MIT license.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

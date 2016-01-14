@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Custom Rules &mdash; blue.frontend 1.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="blue.frontend 1.2.0 documentation" href="../../index.html" />
+    <link rel="up" title="API" href="../../api.html" />
+    <link rel="next" title="Expression Listener" href="expressionlistener.html" />
+    <link rel="prev" title="Container" href="container.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="expressionlistener.html" title="Expression Listener"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="container.html" title="Container"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" accesskey="U">API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="custom-rules">
+<h1>Custom Rules<a class="headerlink" href="#custom-rules" title="Permalink to this headline">¶</a></h1>
+<p>The custom rule feature is the most unique feature of this framework. It makes
+JavaScript code invocable from SASS depending on media querys.</p>
+<p>Note: This module is not intended for use from outside the framework. It is documented
+for framework developers.</p>
+<p><strong>How it works</strong></p>
+<p>The SASS mixin will create a CSS comment with an JSON object generated
+from SASS maps, which will look as follows:</p>
+<div class="highlight-css"><div class="highlight"><pre><span class="c">/*! customrule: {rulename: {option1: value, option2: value, enabled:true}} */</span>
+</pre></div>
+</div>
+<p>Now, blue.frontend&#8217;s JavaScript will parse all CSS files beginning with <tt class="docutils literal"><span class="pre">/*!</span> <span class="pre">blue</span> <span class="pre">*/</span></tt>
+for these comments and parse the JSON objects. The JSON objects will be stored
+in association with the current media query and the current CSS rule.</p>
+<p>The core handles media querys and DOM changes and will en- and disable rules
+properly.</p>
+<p>For now, rules cannot be overwritten (use media querys to disable them).
+(Will be improved in future.)</p>
+<p>Please study the source code for more details.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin customrule($rule,$map)</tt></dt>
+<dd><p>Defines a custom rule. The character <tt class="docutils literal"><span class="pre">&quot;</span></tt> is not allowed in $rule and $map.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$rule</tt></dt>
+<dd><p>Name of the rule.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$map</tt></dt>
+<dd><p>Map with configuration.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Custom Rules</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="container.html"
+                        title="previous chapter">Container</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="expressionlistener.html"
+                        title="next chapter">Expression Listener</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/api/sassmodules/customrules.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="expressionlistener.html" title="Expression Listener"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="container.html" title="Container"
+             >previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" >API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright blue treehouse, bluetreehouse.de. blue.frontend is released under the MIT license.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

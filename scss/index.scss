@@ -1,0 +1,476 @@
+@import '../libs/blue/scss/blue.scss';
+
+@font-face {
+    font-family: PinyonScript;
+    src: url("../font/PinyonScript-Regular.ttf");
+} 
+
+@font-face {
+    font-family: OpenSans-Regular;
+    src: url("../font/OpenSans/OpenSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: OpenSans-Light;
+    src: url("../font/OpenSans/OpenSans-Light.ttf");
+}
+
+@font-face {
+    font-family: OpenSans-Italic;
+    src: url("../font/OpenSans/OpenSans-Italic.ttf");
+}
+
+@font-face {
+    font-family: OpenSans-LightItalic;
+    src: url("../font/OpenSans/OpenSans-LightItalic.ttf");
+}
+
+body {
+    font-family: OpenSans-Light, sans-serif;
+    @include initvar("scroll","_none","stack");
+}
+
+.page-header {
+    @include container();
+    background-color:#006785;
+    color:white;
+    height:calc(100vh - 3.6rem);
+    min-height:35rem;
+    
+    @include bp(s, down) {
+        @include visibility(hide);
+    }
+    
+    .wrapper {
+        @include align(center);
+        @include container(8,full,center);
+    }
+    
+    .logo-spacer {
+        @include row(2);
+        @include col(12);
+    }
+    
+    .logo {
+        @include row(5);
+        @include col(12);
+        @include gutter(4);
+        
+        @include bp(m,onl) {
+            font-size:0.7em;
+        }
+        
+        h1 {
+            font-size:8em;
+            font-weight:normal;
+            margin:0;
+            
+            font-family:OpenSans-Regular;
+            
+            img {
+                @include inline-image();
+            }
+        }
+        
+        p {
+            font-size:1.5em;
+            margin:0;
+            text-align:right;
+        }
+    }
+    
+    .logo-sub, .logo-sub2 {
+        @include row(2);
+        @include col(12);
+    }
+    
+    .logo-sub {
+        font-size:2em;
+    }
+    
+    .logo-sub2 {
+        font-size:1.3em;
+    }
+}
+
+.page-navi {
+    @include container();
+    @include sticky();
+    
+    border-top: #006785 0.5em solid;
+    background-color:#037698;
+    
+    .wrapper {
+        @include container(10);
+    }
+    
+    .logo {
+        @include gutter(4);
+        
+        @include bp(s) {
+            @include col(10);
+        }
+        
+        @include bp(l) {
+            @include col(3);
+        }
+        
+        @include bp(m,onl) {
+            @include visibility(hide);
+        }
+                
+        h1 {
+            padding:0;
+            margin:0;
+            font-size:1.3rem;
+            color:white;
+            font-weight:normal;
+            display:block;
+            font-family:OpenSans-Regular;
+            
+            a {
+                color:white;
+                text-decoration:none;
+            }
+            
+            @include visibility(invisible);
+                
+            @include bp(s,onl) {
+                @include visibility(show);
+            }
+                
+            img {
+                @include inline-image();
+            }
+        }
+    }
+    
+    @include bp-sticked() {
+        .logo h1 {
+            @include visibility(show);
+        }
+    }
+    
+    .menu-button {
+        @include col(2);
+        @include align(right);
+        
+        @include bp(m) {
+            @include visibility(hide);
+        }
+        
+        a {
+            display:block;
+            font-size:1.3rem;
+            color:white;
+            text-decoration:none;
+            @include offcanvas-toggle("menu");
+            @include gutter(5);
+        }
+    } 
+    
+    .menu {
+        @include bp(s) {
+            @include col(12);
+        }
+        
+        @include bp(l) {
+            @include col(9);
+        }
+        
+        @include bp(s, onl) {
+            @include offcanvas("menu");
+            @include offcanvas-toggle("menu");
+            @include container(full,auto,fixed);
+            @include container-spacing(16,0,0,0);
+            background-color:#037698;
+            z-index:10;
+        }
+        
+        ul {
+            @include menu(vertical,(innrgttr: 5));
+            @include bp(m) {
+                @include menu(horizontal,(innrgttr:5));
+            }
+            @include bp(l) {
+                @include align(right);
+            }
+
+            a {
+                text-decoration:none;
+                color:white;
+                &:hover {
+                    background-color:#006785;
+                }
+                @include bp-listen("scroll.{attr-href}") {
+                    background-color:#006785;
+                }
+            }
+        }
+    }
+    
+    a {
+        @include smoothscrolling();
+    }
+}
+
+.page-footer {
+    @include container();
+    
+    background-color: #4c4c4c;
+    border-top: #575757 1em solid;
+    color:#999;
+    
+    .wrapper {
+        @include container(10);
+    }
+    
+    .menu-left, .menu-right {
+        ul {
+            @include menu(vertical,(innrgttr:5));
+            @include bp(m) {
+                @include menu(horizontal,(innrgttr:5));
+            }
+
+            a {
+                color:white;
+                text-decoration:none;
+                &:hover {
+                    background-color:#575757;
+                }
+            }
+        }
+    }
+    
+    .menu-left {
+        @include col(12);
+        @include bp(m) {
+            @include col(5);
+        }
+    }
+    
+    .menu-right {
+        @include col(12);
+        @include bp(m) {
+            @include col(7);
+            @include align(right);
+        }
+    }
+    
+    .copyright {
+        @include col(12);
+        @include gutter(5);
+    }
+}
+
+.page-content {
+    .wrapper {
+        @include container(10);
+        @include gutter(0,4);
+    }
+    
+    line-height:2em;
+    
+    h1,h2,h3,h4,h5,h6 {
+        font-weight:normal;
+        margin:2em 0 0.5em 0;
+        line-height:1em;
+    }
+        
+    h2.desc {
+        text-align:center;
+        font-size:1.6em;
+    }
+    
+    h2 {
+        font-size:2em;
+        @include bp(s,down) {
+            font-size:1.6em;
+        }
+    }
+    
+    h3 {
+        font-size:1.6em;
+        @include bp(s,down) {
+            font-size:1.3em;
+        }
+    }
+        
+    p, ul {
+        margin: 0.2em 0 0 0;
+    }
+    
+    p.sub {
+        font-size:1.3em;
+    }
+
+    ul.features {
+        @include list-layout(vertical);
+        @include list-gutter(outer,2,0);
+        
+        li {
+            color:#222;
+            font-size:1em;
+            span {
+                color:#555;
+                font-size:0.8em;
+            }
+        }
+    }
+    
+    div.section {
+        font-size:1.2em;
+        @include gutter(20, 0);
+        
+        @include bp(s,down) {
+            @include gutter(12, 0);
+        }
+        
+        h2 {
+            margin:0 0 1em 0;
+        }
+        
+        p.sub {
+            margin-bottom:1em;
+        }
+        
+        .sideimg {
+            font-size:10em;
+            float:right;
+            margin-left:4rem;
+            @include bp(s,onl) {
+                @include visibility(hide);
+            }
+        }
+        
+        .sideimg2 {
+            float:right;
+            width:20em;
+            height:auto;
+            margin-left:4rem;
+            
+            @include bp(s,onl) {
+                @include visibility(hide);
+            }
+        }
+    }
+    
+    div.highlight-1 {
+        background:#000 url("../img/bg1.png") repeat-x;
+        color:#fff;
+    }
+    
+    div.highlight-2 {
+        background:#c9c9c9;
+    }
+    
+    div.highlight-3 {
+        background:#222;
+        color:#fff;
+    }
+    
+    
+    
+    .gallery {
+        @include container();
+        @include gutter(5,0);
+        ul {
+            list-style:none;
+            margin:0;
+            padding:0;
+            li {
+                @include col(4);
+                height:1.5*$container;
+                overflow:hidden;
+                @include align(center);
+                @include gutter(5);
+                
+                @include bp(m,down) {
+                    @include col(6);
+                    height:1*$container;
+                }
+                
+                @include bp(s,down) {
+                    @include col(12);
+                    height:1*$container;
+                }
+                
+                a {
+                    width:100%;
+                    height:100%;
+                    display:block;
+                    background-size:cover;
+                }
+            }
+        }
+    }
+    
+    .threebox {
+        @include bp(s) {
+            @include col(12); 
+            @include gutter(4,0);
+        }
+        
+        @include bp(m) {
+            @include col(4); 
+            @include gutter(8, 4);
+        }
+        
+        .icon {
+            color:#aaa;
+            font-size:5em;
+            text-align:center;
+            @include bp(s,down) {
+                font-size:3em;
+            }
+        }
+        
+        .icon i {
+            padding: 0.5em 0.2em;
+        }
+        
+        h3 {
+            color:#555;
+            margin-top:0.2em;
+        }
+    }
+    
+    .page-inline-menu {
+        @include menu(vertical,(innrgttr:5,outrgttr:2));
+        
+        @include bp(m) {
+            @include menu(horizontal,(innrgttr:5,outrgttr:(10 2 0 2)));
+        }
+        
+        a {
+            color:white;
+            text-decoration:none;
+            background-color:#037698;
+            &:hover {
+                background-color:#006785;
+            }
+        }
+    }
+}
+
+.bluetreehouse {
+    font-family:PinyonScript;
+    font-weight:bold;
+    text-shadow:0.06em 0.06em 0 #000,-0.06em -0.06em 0 #000,0.06em -0.06em 0 #000,-0.06em 0.06em 0 #000,0.06em 0.06em 0 #000;
+    color:white;
+    vertical-align:middle;
+    font-size:1.5em;
+    height:0.66em;
+    display:inline-block;
+    margin-top:-0.33em;
+}
+
+
+a[name] {
+    @include scroll-offset(16*$gutter);
+    @include scrollposition('scroll.\#{attr-name}');
+}
+
+a[name='top'] {
+    @include scroll-offset(0);
+}

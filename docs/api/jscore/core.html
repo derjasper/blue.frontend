@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>JavaScript core &mdash; blue.frontend 1.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="blue.frontend 1.2.0 documentation" href="../../index.html" />
+    <link rel="up" title="API" href="../../api.html" />
+    <link rel="next" title="JavaScript loader (blue.js)" href="../jsloader/loader.html" />
+    <link rel="prev" title="JavaScript CSS Parser" href="../jscssparser/cssparser.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../jsloader/loader.html" title="JavaScript loader (blue.js)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../jscssparser/cssparser.html" title="JavaScript CSS Parser"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" accesskey="U">API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="javascript-core">
+<h1>JavaScript core<a class="headerlink" href="#javascript-core" title="Permalink to this headline">¶</a></h1>
+<p>The core scans all CSS files for custom rules, listens on DOM changes and media
+querys and en-/disables the rules.</p>
+<p>The core automatically registers all plugins using the <a class="reference internal" href="../jspluginapi/pluginmanager.html"><em>Plugin Manager</em></a>.</p>
+<p>On how the custom rules magic works, read <a class="reference internal" href="../sassmodules/customrules.html"><em>Custom Rules</em></a>.</p>
+<div class="section" id="javascript">
+<h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="core-js">
+<h3>core.js<a class="headerlink" href="#core-js" title="Permalink to this headline">¶</a></h3>
+<dl class="data">
+<dt id="bluejs.customrules.properties">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">properties</tt><a class="headerlink" href="#bluejs.customrules.properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>An associative array of properties:
+<tt class="docutils literal"><span class="pre">properties[mediaquery].selectors[selector][i]</span> <span class="pre">=</span> <span class="pre">{rule:</span> <span class="pre">rule,</span> <span class="pre">options:</span> <span class="pre">options};</span></tt></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="bluejs.customrules.enabledProperties">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">enabledProperties</tt><a class="headerlink" href="#bluejs.customrules.enabledProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>A map containing information of enabled properties per DOM element:
+<tt class="docutils literal"><span class="pre">enabledProperties.get(DOMElement)[i]=&quot;mediaquery~selector~i&quot;;</span></tt></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bluejs.customrules.addProperty">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">addProperty</tt><big>(</big><em>mq</em>, <em>sel</em>, <em>rule</em>, <em>options</em><big>)</big><a class="headerlink" href="#bluejs.customrules.addProperty" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mq</strong> (<em>string</em>) &#8211; Media Query.</li>
+<li><strong>sel</strong> (<em>string</em>) &#8211; Selector.</li>
+<li><strong>rule</strong> (<em>string</em>) &#8211; Rule identifier.</li>
+<li><strong>options</strong> (<em>object</em>) &#8211; An associative array of options.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="bluejs.customrules.addProperties">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">addProperties</tt><big>(</big><em>tree</em><big>)</big><a class="headerlink" href="#bluejs.customrules.addProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>A tree generated by the CSS Parser. All rules will be merged to <tt class="docutils literal"><span class="pre">ruleslist</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>tree</strong> (<em>object</em>) &#8211; The tree.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="bluejs.customrules.enableProperty">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">enableProperty</tt><big>(</big><em>elm</em>, <em>mq</em>, <em>sel</em>, <em>index</em><big>)</big><a class="headerlink" href="#bluejs.customrules.enableProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables a property.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>elm</strong> (<em>Element</em>) &#8211; A DOM element.</li>
+<li><strong>mq</strong> (<em>string</em>) &#8211; Media Query.</li>
+<li><strong>sel</strong> (<em>string</em>) &#8211; Selector.</li>
+<li><strong>index</strong> (<em>string</em>) &#8211; Property index.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="bluejs.customrules.disableProperty">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">disableProperty</tt><big>(</big><em>elm</em>, <em>mq</em>, <em>sel</em>, <em>index</em><big>)</big><a class="headerlink" href="#bluejs.customrules.disableProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables a property. Parameters are the same as in <tt class="docutils literal"><span class="pre">enableProperty</span></tt>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bluejs.customrules.apply">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">apply</tt><big>(</big><big>)</big><a class="headerlink" href="#bluejs.customrules.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Deprecated</em> Re-applys JavaScript-based rules. (If you need to use this, it&#8217;s a bug.)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bluejs.customrules.init">
+<tt class="descclassname">bluejs.customrules.</tt><tt class="descname">init</tt><big>(</big><big>)</big><a class="headerlink" href="#bluejs.customrules.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the custom rules. After the init, no more rules or properties can
+be added. blue.frontend will handle media querys and DOM changes, the framework
+should be mostly transparent to the developer.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">JavaScript core</a><ul>
+<li><a class="reference internal" href="#javascript">JavaScript</a><ul>
+<li><a class="reference internal" href="#core-js">core.js</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../jscssparser/cssparser.html"
+                        title="previous chapter">JavaScript CSS Parser</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../jsloader/loader.html"
+                        title="next chapter">JavaScript loader (blue.js)</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/api/jscore/core.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../jsloader/loader.html" title="JavaScript loader (blue.js)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../jscssparser/cssparser.html" title="JavaScript CSS Parser"
+             >previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" >API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright blue treehouse, bluetreehouse.de. blue.frontend is released under the MIT license.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

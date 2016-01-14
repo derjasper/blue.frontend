@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>blue.frontend Demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="../libs/jquery/jquery.js"></script>
+        <script src="../libs/blue/js/blue.js"></script>
+        
+        <link rel="stylesheet" href="../css/container.css" />
+    </head>
+    <body>
+        <h1>Container Demo</h1>
+        <div>default container</div>
+        
+        <h2>Alignment</h2>
+        
+        <h3>normal positioning model (extended mode)</h3>
+        
+        <div class="alignment-relative">
+            <div class="topleft">top left</div>
+        </div>
+        
+        <div class="alignment-relative">
+            <div class="middlecenter">middle center</div>
+        </div>
+        
+        <div class="alignment-relative">
+            <div class="bottomright">bottom right</div>
+        </div>
+        
+        <div class="alignment-relative">
+            <div class="outertopouterright">outer-top outer-right</div>
+        </div>
+        
+        <div class="alignment-relative">
+            <div class="outerright">outer-right and margin set to compensate border</div>
+        </div>
+        
+        <div class="alignment-relative">
+            <div class="outerbottom">outer-bottom right</div>
+        </div>
+        
+        
+        <h3>absolute positioning model (extended mode)</h3>
+        
+        <div class="alignment-absolute">
+            <div class="topleft">absolute top left</div>
+            <div class="middlecenter">absolute middle center</div>
+            <div class="bottomright">absolute bottom right</div>
+            <div class="outertopouterright">absolute outer-top outer-right</div>
+            <div class="outerright">absolute outer-right and margin set to compensate border</div>
+            <div class="outerbottom">absolute outer-bottom right</div>
+        </div>
+        
+        <h3>absolute positioning model (non-extended mode)</h3>
+
+        <div class="alignment-absolute-noxt">
+            <div class="middlecenter">absolute middle center (noxt) width fixed width and height</div>
+        </div>
+        
+        
+        <div class="alignment-fixed-bottomright">
+            fixed bottom right
+        </div>
+        
+        <h2>Floating</h2>
+        <div class="floating">
+            <div class="float-left">float-left</div>
+            <div class="float-right">float-right</div>
+        </div>
+        
+        <h2>Sizing</h2>
+        <div class="sizing-width-min-max">min and max width</div>
+        <div class="sizing-width-min-max-parent">
+            <div>min and max width relative to parent</div>
+        </div>
+        <div class="sizing-height-min-max">
+            <div>min and max height (outer div has height:45vh;)</div>
+        </div>
+        
+        <h3>aspect ratio</h3>
+        
+        <div class="aspectratio-width">
+            This div has it's width relative to its height.
+        </div>
+        <div class="aspectratio-height">
+            This div has it's height relative to its width.
+        </div>
+        
+        <h2>Container spacing</h2>
+        <div class="spacing">container spacing</div>
+    </body>
+</html>

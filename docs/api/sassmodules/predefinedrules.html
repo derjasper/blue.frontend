@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Predefined Rules &mdash; blue.frontend 1.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="blue.frontend 1.2.0 documentation" href="../../index.html" />
+    <link rel="up" title="API" href="../../api.html" />
+    <link rel="next" title="Reset" href="reset.html" />
+    <link rel="prev" title="Off Canvas" href="offcanvas.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="reset.html" title="Reset"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="offcanvas.html" title="Off Canvas"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" accesskey="U">API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="predefined-rules">
+<h1>Predefined Rules<a class="headerlink" href="#predefined-rules" title="Permalink to this headline">¶</a></h1>
+<p>Predefined rules are CSS classes defined by blue.frontend.</p>
+<p>Normally, blue.frontend does not create any CSS rules for specific classes. If a module
+defines such rules it should happen via the <tt class="docutils literal"><span class="pre">predefine</span></tt> mixin in order to allow site
+developers to disable these rules.</p>
+<p>Predefined rules can be turned off via the <tt class="docutils literal"><span class="pre">$predefined</span></tt> variable in <a class="reference internal" href="blue.html"><em>blue.framework Core</em></a>.</p>
+<p>Note: These mixins are not for use from outside the framework. They are documented
+for framework developers.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin predefine($classname,$flags...) { &#64;content }</tt></dt>
+<dd><p>Predefines a CSS rule for the given <tt class="docutils literal"><span class="pre">$classname</span></tt>.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$classname</tt></dt>
+<dd><p>The CSS class name.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$flags...</tt></dt>
+<dd><p>Some flags to specify how the rules have to be defined. Currently, this has no function.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;content</tt></dt>
+<dd><p>CSS rules.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Predefined Rules</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="offcanvas.html"
+                        title="previous chapter">Off Canvas</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reset.html"
+                        title="next chapter">Reset</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/api/sassmodules/predefinedrules.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="reset.html" title="Reset"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="offcanvas.html" title="Off Canvas"
+             >previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" >API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright blue treehouse, bluetreehouse.de. blue.frontend is released under the MIT license.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

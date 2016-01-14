@@ -1,0 +1,224 @@
+@import "demo.scss";
+
+.clickdemo {
+    @include initvar("clicked",false,"simple"); // last two arguments are optional
+    a {
+        // the variable "clicked" is assigend the value of the expression "!clicked" when the element is clicked
+        @include trigger("clicked","click","!clicked");
+        @include listen("clicked","toggleclass");
+        @include bp-triggered("toggleclass") {
+            font-weight:bold;
+        }
+        @include bp-untriggered("toggleclass") {
+            // use this for custom animations
+        }
+    }
+}
+
+.hoverdemo {
+    @include initvar("hovered");
+    a {
+        @include trigger("hovered","mouseover","true");
+        @include trigger("hovered","mouseout","false");
+        @include listen("hovered"); // "triggered" is default clas
+        @include bp-triggered() {
+            font-weight:bold;
+        }
+    }
+}
+
+.focusdemo {
+    @include initvar("focussed");
+    a {
+        @include trigger("focussed","focus","true");
+        @include trigger("focussed","blur","false");
+        
+        // shorthand for listen and bp-triggered
+        @include bp-listen("focussed","toggleclass") {
+            font-weight:bold;
+        }
+    }
+}
+
+.binddemo {
+    // does the same as the examples above, but shorter syntax
+    
+    
+    a.hover {
+        @include initvar("hovered");
+        @include trigger_bind("hovered","hover");
+        
+        // bp-listen generates an unique class if no class is specified
+        @include bp-listen("hovered") {
+            font-weight:bold;
+        }
+    }
+    
+    a.focus {
+        @include initvar("focussed");
+        @include trigger_bind("focussed","focus");
+        @include listen("focussed","toggleclass");
+        @include bp-triggered("toggleclass") {
+            font-weight:bold;
+        }
+        @include bp-untriggered("toggleclass") {
+            // use this for custom animations
+        }
+    }
+}
+
+.setfocus {
+    @include initvar("focus");
+    
+    input {
+        @include listen_focus("focus");
+        @include listen_focus("!focus");
+    }
+    
+    a {
+        @include trigger("focus","click","!focus",1);
+    }
+}
+
+.mulvar {
+    @include initvar("var1");
+    @include initvar("var2");
+    
+    a {
+        @include trigger("var1,var2","click","!var1");
+    }
+    
+    span {
+        @include bp-listen("{attr-data-listen}") {
+            font-weight:bold;
+        }
+    }
+}
+
+.expressions {
+    @include initvar("a");
+    @include initvar("b");
+    @include initvar("c");
+    
+    span {
+        @include listen("a&&a&&(!b||c)","red");
+        @include bp-triggered("red") {
+            color:red;
+            font-weight:bold;
+        }
+    }
+    a {
+        @include trigger("{attr-data-var}","click","!{attr-data-var}");
+        @include listen("{attr-data-var}","on");
+        @include bp-triggered("on") {
+            font-weight:bold;
+        }
+    }
+}
+
+.listenset {
+    @include initvar("a","true");
+    @include initvar("b");
+    
+    @include listen_set("b","a","!b");
+    
+    span {
+        @include listen("a","red");
+        @include bp-triggered("red") {
+            color:red;
+            font-weight:bold;
+        }
+    }
+    a {
+        @include trigger("b","click","!b");
+        @include listen("b","on");
+        @include bp-triggered("on") {
+            font-weight:bold;
+        }
+    }
+}
+
+.offcanvasdemo {
+    // if no variable is initialized, a (simple) global variable will be used
+    a {        
+        @include trigger("offcanvas",click,"!offcanvas");
+    }
+    
+    div {
+        height:0;
+        border:none !important;
+        overflow:hidden;
+        transition: height 1s ease, height 1s ease;  
+        @include listen("offcanvas","show");
+        @include bp-triggered("show") {
+            height:50px;
+        }
+    }
+}
+
+.groupdemo {
+    @include initvar("groupvar","1","group");
+    a {
+        // expressions and variable keys are be preprocessed to replace terms in { }
+        @include trigger("groupvar.{attr-data-tab}","click","true");
+        
+        @include listen("groupvar.{attr-data-tab}","active");
+                
+        @include bp-triggered("active") {
+            font-weight:bold;
+        }
+    }
+    
+    div.tab {
+        @include visibility(hide);
+        
+        @include listen("groupvar.{attr-data-tab}","active");
+        
+        @include bp-triggered("active") {
+            @include visibility(showblock);
+        }
+    }
+}
+
+
+// simple menus
+// the global variable "menus" indicates which submenu is currently show
+// priorities are used to hide all menu items first and then show the wanted submenu
+
+html {
+    @include initvar("menus","none","group");
+    @include trigger("menus.none","click","true",0);
+}
+
+.menudemo {
+    li {
+        a {
+            @include trigger("menus.{parent-1}","click","true",1);
+        }
+        
+        div {
+            @include visibility(hide);
+            
+            @include listen("menus.{parent-1}","show");
+            @include bp-triggered("show") {
+                @include visibility(show);
+            }
+        }
+    }
+}
+
+.stackdemo {
+    @include initvar("stackvar","none","stack");
+    
+    // the last triggered is always true
+    // this example is only for understanding stacks. it makes more sense with scrollposition
+    a {
+        @include trigger("stackvar.{this}","click","!stackvar.{this}");
+        
+        @include listen("stackvar.{this}","active");
+                
+        @include bp-triggered("active") {
+            font-weight:bold;
+        }
+    }
+}

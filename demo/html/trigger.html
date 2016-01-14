@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>blue.frontend Demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="../libs/jquery/jquery.js"></script>
+        <script src="../libs/blue/js/blue.js"></script>
+        
+        <link rel="stylesheet" href="../css/trigger.css" />
+    </head>
+    <body>
+        <h1>Trigger, Variables and Expression Listener Demo</h1>
+        
+        <h2>Trigger</h2>
+        <div class="clickdemo">
+            <a href="#">Click</a>
+        </div>
+        <br /><br />
+        
+        <div class="hoverdemo">
+            <a href="#">Hover</a>
+        </div>
+        <br /><br />
+        
+        <div class="focusdemo">
+            <a href="#">Focus</a>
+        </div>
+        <br /><br />
+        
+        <h2>bind to status</h2>        
+        <div class="binddemo">
+            <a href="#" class="hover">Hover</a>
+            <a href="#" class="focus">Focus</a>
+        </div>
+        <br /><br />
+        
+        <h2>set focus</h2>
+        <div class="setfocus">
+            <input type="text" />
+            <a href="#blub">set focus to input element</a>
+        </div>
+        
+        <h2>change multiple variables</h2>
+        <div class="mulvar">
+            <a href="#none">toggle</a><br />
+            <span data-listen="var1">listens to var1</span><br />
+            <span data-listen="var2">listens to var2</span>
+        </div>
+        
+        <h2>expressions</h2>
+        <div class="expressions">
+            <span>turns red if the expression a&&a&&(!b||c) is true.</span><br />
+            <a href="#expr" data-var="a">a</a>
+            <a href="#expr" data-var="b">b</a>
+            <a href="#expr" data-var="c">c</a>
+        </div>
+        
+        <h2>change variables on expression change</h2>
+        <div class="listenset">
+            <span>turns red if the expression <em>a</em> is true.</span><br />
+            variable a ist always set to !b.<br />
+            <a href="#expr">toggle variable b</a>
+        </div>
+        
+        <h2>Offcanvas</h2>        
+        <div class="offcanvasdemo">
+            <a href="#offcanvas">Offcanvas</a>
+            <div>
+                With CSS transitions :O
+            </div>
+        </div>
+        <br /><br />
+        
+        <h2>Grouping</h2>
+        <div class="groupdemo">
+            <a href="#tab" data-tab="1">Link #1</a>
+            <a href="#tab" data-tab="2">Link #2</a>
+            <a href="#tab" data-tab="3">Link #3</a>
+            
+            <div class="tab" data-tab="1">
+                TAB #1
+            </div>
+            <div class="tab" data-tab="2">
+                TAB #2
+            </div>
+            <div class="tab" data-tab="3">
+                TAB #3
+            </div>
+        </div>
+        <br /><br />
+        
+        <h2>low-level menu example</h2>
+        <div class="menudemo">
+            <ul class="nostyle">
+                <li>
+                    <a href="#menu">Link #1</a>
+                    <div>Menu #1</div>
+                </li>
+                <li>
+                    <a href="#menu">Link #2</a>
+                    <div>Menu #2</div>
+                </li>
+                <li>
+                    <a href="#menu">Link #3</a>
+                    <div>Menu #3</div>
+                </li>
+            </ul>
+        </div>
+        
+        <h2>stacks</h2>
+        <div class="stackdemo">
+            <a href="#stack">Stack #1</a> <a href="#stack">Stack #2</a> <a href="#stack">Stack #3</a>
+        </div>
+    </body>
+</html>

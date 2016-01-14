@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Trigger &mdash; blue.frontend 1.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="blue.frontend 1.2.0 documentation" href="../../index.html" />
+    <link rel="up" title="API" href="../../api.html" />
+    <link rel="next" title="Utility" href="utility.html" />
+    <link rel="prev" title="Sticky Footer" href="stickyfooter.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="utility.html" title="Utility"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="stickyfooter.html" title="Sticky Footer"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" accesskey="U">API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="trigger">
+<h1>Trigger<a class="headerlink" href="#trigger" title="Permalink to this headline">¶</a></h1>
+<p>The trigger module allows to define UI interactions from SASS.</p>
+<p>This module is the SASS binding of the <a class="reference internal" href="../jsplugins/trigger.html"><em>Trigger</em></a> JavaScript plugin,
+please read the documentation to understand how variables work and to learn about
+what the different trigger mixins do.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin trigger($key,$event_type:&quot;click&quot;,$value_expression:&quot;true&quot;,$priority:0)</tt></dt>
+<dd><p>Adds a trigger to the current element. Everything is interpreted in the context
+of the current element.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$key</tt></dt>
+<dd><p>Comma-seperated list of preprocessed keys.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$event_type</tt></dt>
+<dd><p>Event type; <tt class="docutils literal"><span class="pre">click</span></tt>, <tt class="docutils literal"><span class="pre">mouseover</span></tt>, <tt class="docutils literal"><span class="pre">mouseout</span></tt>, <tt class="docutils literal"><span class="pre">focus</span></tt> or <tt class="docutils literal"><span class="pre">blur</span></tt>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$value_expression</tt></dt>
+<dd><p>A preprocessed expression that will be evaluated whenever the given event
+occurs. The key will be set to the result.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$priority</tt></dt>
+<dd><p>If more than one trigger is triggered with a single click
+(even trigger of different DOM Elements), the priority states the order of
+the execution of the trigger (the higher the number the later it will be executed).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin trigger_bind($key,$status_type:&quot;hover&quot;)</tt></dt>
+<dd><p>Adds a trigger binding to the current element. Everything is interpreted in the context
+of the current element.</p>
+<p>The key is set to the current status of the current element whenever the status
+has changed.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$key</tt></dt>
+<dd><p>Comma-seperated list of preprocessed keys.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$status_type</tt></dt>
+<dd><p>Status type; <tt class="docutils literal"><span class="pre">hover</span></tt> or <tt class="docutils literal"><span class="pre">focus</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin scrollposition($key,$scroll_status:&quot;top&quot;,$scrollarea:&quot;window&quot;,$offset:())</tt></dt>
+<dd><p>Adds a trigger binding to the current element. Everything is interpreted in the context
+of the current element.</p>
+<p>The key is set to the current status of the current element whenever the status
+has changed.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$key</tt></dt>
+<dd><p>Comma-seperated list of preprocessed keys.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$scroll_status</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">visible</span></tt>, <tt class="docutils literal"><span class="pre">top</span></tt>, <tt class="docutils literal"><span class="pre">bottom</span></tt>, <tt class="docutils literal"><span class="pre">left</span></tt> or <tt class="docutils literal"><span class="pre">right</span></tt>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$scrollarea</tt></dt>
+<dd><p>A preprocessed selector (using <a class="reference internal" href="../jspluginapi/selectors.html"><em>Selectors</em></a>) which
+selects the scroll area (e.g. a parent element with overflow:auto). Set to <tt class="docutils literal"><span class="pre">&quot;window&quot;</span></tt>
+to use the window as scroll area.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$offset</tt></dt>
+<dd><p>A map containing offsets. Offsets reduce the scroll area
+at the given sides of the scroll area. The map might look like this:
+<tt class="docutils literal"><span class="pre">(top:0,right:0,bottom:0,left:0)</span></tt>. All offsets are scaled by <tt class="docutils literal"><span class="pre">px</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Trigger</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="stickyfooter.html"
+                        title="previous chapter">Sticky Footer</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="utility.html"
+                        title="next chapter">Utility</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/api/sassmodules/trigger.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="utility.html" title="Utility"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="stickyfooter.html" title="Sticky Footer"
+             >previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" >API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright blue treehouse, bluetreehouse.de. blue.frontend is released under the MIT license.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+@import "demo.scss";
+
+.defaultdemo {
+    @include sticky();
+}
+
+.scrollareademo {
+    @include container(auto, (2 2));
+    overflow:auto;
+    .sticky {
+        @include sticky("_default",".scrollareademo");
+    }
+}
+
+.containerdemo {
+    @include container();
+    .sticky {
+        @include sticky("_default","viewport",".containerdemo");
+    }
+}
+
+.topbottomdemo {
+    @include container();
+    .sticky {
+        @include sticky((top:true,bottom:true),"viewport",".topbottomdemo");
+    }
+}
+
+.classdemo {
+    @include container();
+    .sticky {
+        @include sticky("_default","viewport",".classdemo","classname"); // classname is bl-sticked by default
+
+        span {
+            @include visible(invisible);
+        }
+        @include bp-sticked("classname") { // classname does not need to be defined until it is left to default
+            span {
+                @include visible(show);
+            }
+        }
+    }
+}
+
+.offsetdemo {
+    @include container();
+    .sticky {
+        @include sticky((top:true, bottom:true),"viewport",".offsetdemo");
+        @include sticky-offset(5rem 0 5rem 0); // we are using margins for specifing offsets to provide flexibility with units
+    }
+}
+
+.jumplinkdemo {
+    @include container();
+    .sticky {
+        @include sticky((top:true),"viewport",".jumplinkdemo");
+        height:3rem;
+    }
+    a[href] {
+        @include smoothscrolling();
+    }
+    a[name] {
+        @include scroll-offset(3rem);
+    }
+}
+
+.multipledemo {
+    @include container();
+    .sticky1 {
+        @include sticky((top:true),"viewport",".multipledemo");
+        @include sticky-zindex(9); // default z-index is 5
+    }
+    .sticky2 {
+        z-index:10;
+        @include sticky((top:true),"viewport",".multipledemo");
+        @include sticky-zindex(10);
+        @include sticky-offset(1rem 0 0 0);
+    }
+}

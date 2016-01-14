@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Visibility &mdash; blue.frontend 1.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="blue.frontend 1.2.0 documentation" href="../../index.html" />
+    <link rel="up" title="API" href="../../api.html" />
+    <link rel="next" title="Container" href="../jsplugins/container.html" />
+    <link rel="prev" title="Variables" href="variables.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../jsplugins/container.html" title="Container"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="variables.html" title="Variables"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" accesskey="U">API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="visibility">
+<h1>Visibility<a class="headerlink" href="#visibility" title="Permalink to this headline">¶</a></h1>
+<p>The visibility module is intended to provide a simple API for visibility-related
+features.</p>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin visible($mode)</tt></dt>
+<dd><p>Sets the visibility of the current element. Old mixin <tt class="docutils literal"><span class="pre">visibility</span></tt> is available
+as alias for legacy support.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$mode</tt></dt>
+<dd><p>The possible modes are:</p>
+<dl class="describe">
+<dt>
+<tt class="descname">hide</tt></dt>
+<dd><p>Excluded from the rendering tree, <tt class="docutils literal"><span class="pre">display:none;</span></tt></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">invisible</tt></dt>
+<dd><p>Invisible, but still uses the space, <tt class="docutils literal"><span class="pre">visibility:hidden;</span></tt></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">show</tt></dt>
+<dd><p>Show as (inline) element, <tt class="docutils literal"><span class="pre">display:initial;</span></tt></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">showblock</tt></dt>
+<dd><p>Show as block element, <tt class="docutils literal"><span class="pre">display:block;</span></tt></p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">hidecontent</tt></dt>
+<dd><p>Hide (inline) content. May be used to replace text with images. Use
+with buttons, as seen in the demo.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">visuallyhidden</tt></dt>
+<dd><p>Hide element visually, but show them for screen readers.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Visibility</a><ul>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="variables.html"
+                        title="previous chapter">Variables</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../jsplugins/container.html"
+                        title="next chapter">Container</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/api/sassmodules/visibility.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../jsplugins/container.html" title="Container"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="variables.html" title="Variables"
+             >previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" >API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright blue treehouse, bluetreehouse.de. blue.frontend is released under the MIT license.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

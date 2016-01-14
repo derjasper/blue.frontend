@@ -1,0 +1,289 @@
+@function _processContainerSize($val) {
+    @if unitless($val) {
+        @return $val*$container;
+    }
+    @else {
+        @return $val;
+    }
+}
+@mixin _processSizing($val,$mode) { // $mode: width or height
+    @if $val!=auto {
+        // full width
+        @if $val==full {
+            #{$mode}:100%;
+        }
+        
+        // full screen width
+        @else if $val==screen {
+            $tmp:100vh;
+            @if ($mode=="width") {
+                $tmp:100vw;
+            }
+
+            #{$mode}:$tmp;
+        }
+        
+        // aspect ratio
+        @else if (length($val)==2 and nth($val,2)=="ar") {
+            @include customrule(container_aspectratio, (adjust:$mode,factor:nth($val,1)));
+        }
+        
+        // min/max width
+        @else {            
+            @if length($val)==2 and nth($val,1)==nth($val,2) {
+                #{$mode}: _processContainerSize(nth($val,1));
+            }
+            @else {
+                #{$mode}: 100%;
+            }
+
+            @if (length($val)==1) {
+                max-#{$mode}: _processContainerSize($val);
+            }
+            @else {
+                @if nth($val,1)!=auto {
+                    min-#{$mode}: _processContainerSize(nth($val,1));
+                }
+                @if nth($val,2)!=auto {
+                    max-#{$mode}: _processContainerSize(nth($val,2));
+                }
+            }
+        }
+    }
+    @else {
+        #{$mode}:auto;
+    }
+}
+
+// only apply to block elements
+@mixin container($width:auto,$height:auto,$flags...) {
+    //display:block; // commented because this causes incompatibility with the visibility module
+    
+    // default flags
+    @if (length($flags)==0) {
+        $flags:(center);
+    }
+    
+    // general    
+    *zoom:1;
+
+    &:before, &:after {
+	content:"";
+	display:table;
+    }
+    &:after {
+        clear:both;
+    }
+    
+    
+    // position
+    $positionType: regular;
+    @if index($flags,absolute) {
+        position:absolute;
+        $positionType: alt;
+    } 
+    @else if index($flags,fixed) {
+        position:fixed;
+        $positionType: alt;
+    }
+    @else if index($flags,static) {
+        position:static;
+        $positionType:static;
+    }
+    @else {
+        position:relative;
+    }            
+    
+    // enable extended algorithms
+    $extended: false;
+    @if index($flags,extended) or index($flags,xt) {
+        $extended: true;
+    }
+    
+    // floating (don't use in combination with alignment)
+    @if index($flags,float-left) {
+        float:left;
+    } 
+    @else if index($flags,float-right) {
+        float:right;
+    }
+    @else if index($flags,float-none) {
+        float:none;
+    }
+        
+    
+    // sizing
+    // Notice: designed for use with unitless numbers, %, vw, vh, vmin, vmax
+    @include _processSizing($width,"width");
+    @include _processSizing($height,"height");
+    
+    // alignment
+    $align-transform-x:0;
+    $align-transform-y:0;
+    
+    @if index($flags,left) {
+        @if $positionType==regular or $positionType==static {
+            margin-left:0;
+            margin-right:auto;
+        }
+        @else {
+            @if $extended==true {
+                $align-transform-x: 0;
+            }
+            left:0;
+            right:auto;
+        }
+    } 
+    @if index($flags,center) {
+        @if $positionType==regular or $positionType==static {
+            margin-left:auto;
+            margin-right:auto;
+        }
+        @else {
+            @if $extended==true {
+                left: 50%;
+                $align-transform-x: -50%;
+            }
+            @else { // only works with fixed width
+                left:0;
+                right:0;
+                margin-left:auto;
+                margin-right:auto;
+            }
+        }
+    }
+    @if index($flags,right) {
+        @if $positionType==regular or $positionType==static {
+            margin-left:auto;
+            margin-right:0;
+        }
+        @else {
+            @if $extended==true {
+                $align-transform-x: 0;
+            }
+            left:auto;
+            right:0;
+        }
+    }
+    @if index($flags,top) {
+        @if $positionType==regular {
+            @if $extended==true {
+                $align-transform-y: 0%;
+                top:0%;
+            }
+        }
+        @else if $positionType==alt {
+            @if $extended==true {
+                $align-transform-y: 0;
+            }
+            top:0;
+            bottom:auto;
+        }
+    } 
+    @if index($flags,middle) {
+        @if $positionType==regular {
+            @if $extended==true {
+                top: 50%;
+                $align-transform-y: -50%;
+            }
+        }
+        @else if $positionType==alt {
+            @if $extended==true {
+                top: 50%;
+                $align-transform-y: -50%;
+            }
+            @else { // only works with fixed height and not for regular positioning
+                top:0;
+                bottom:0;
+                margin-top:auto;
+                margin-bottom:auto;
+            }
+        }
+    } 
+    @if index($flags,bottom) {
+        @if $positionType==regular {
+            @if $extended==true {
+                top:100%;
+                $align-transform-y: -100%;
+            }
+        }
+        @else if $positionType==alt {
+            @if $extended==true {
+                $align-transform-y: 0%;
+            }
+            top:auto;
+            bottom:0;
+        }
+    }
+    @if index($flags,outer-top) {
+        @if $positionType==regular {
+            @if $extended==true {
+                top:auto;
+                bottom:auto;
+                $align-transform-y: -100%;
+            }
+        }
+        @else if $positionType==alt {
+            top:auto;
+            bottom:100%;
+        }
+    }
+    @if index($flags,outer-bottom) {
+        @if $positionType==regular {
+            @if $extended==true {
+                top:100%;
+                bottom:auto;
+                $align-transform-y: 0;
+            }
+        }
+        @else if $positionType==alt {
+            top:100%;
+            bottom:auto;
+        }
+    }
+    @if index($flags,outer-left) {
+        @if $positionType==regular {
+            @if $extended==true {
+                left:auto;
+                right:auto;
+                $align-transform-x: -100%;
+            }
+        }
+        @else if $positionType==alt {
+            left:auto;
+            right:100%;
+        }
+    }
+    @if index($flags,outer-right) {
+        @if $positionType==regular {
+            @if $extended==true {
+                left:100%;
+                right:auto;
+                $align-transform-x: 0;
+            }
+        }
+        @else if $positionType==alt {
+            left:100%;
+            right:auto;
+        }
+    }
+    
+    @if $extended==true {
+        @include vendor-prefix(transform,translate3d($align-transform-x,$align-transform-y,0));
+        //transform:translate3d($align-transform-x,$align-transform-y,0);
+    }
+}
+
+@include predefine("container") {
+    @include container();
+}
+
+// convience mixins, use with care
+@mixin container-spacing($spacing...) {
+    $spacing:multiply-list($gutter,$spacing);    
+    margin:$spacing;
+}
+@mixin container-breakout($spacing...) {
+    $spacing:multiply-list(-$gutter,$spacing);    
+    margin:$spacing;
+}

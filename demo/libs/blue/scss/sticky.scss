@@ -1,0 +1,28 @@
+@mixin sticky($directions:"_default", $scrollarea_sel:"viewport", $container_sel:"_null", $sticky_class: "bl-sticked") {
+    @if $directions=="_default" {
+        $directions: (top: true);
+    }
+    @include customrule(sticky, (directions: $directions, scrollarea_sel: $scrollarea_sel, container_sel: $container_sel, sticky_class: $sticky_class));
+
+    @include bp-sticked($sticky_class) {
+        z-index:5;
+    }
+}
+
+@mixin bp-sticked($sticky_class: "bl-sticked") {
+    &.#{$sticky_class} {
+        @content;
+    }
+}
+
+@mixin sticky-offset($offsets,$sticky_class: "bl-sticked") {
+    @include bp-sticked($sticky_class) {
+        margin:$offsets;
+    }
+}
+
+@mixin sticky-zindex($z-index,$sticky_class: "bl-sticked") {
+    @include bp-sticked($sticky_class) {
+        z-index:$z-index;
+    }
+}

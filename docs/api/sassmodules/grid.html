@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Grid &mdash; blue.frontend 1.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="blue.frontend 1.2.0 documentation" href="../../index.html" />
+    <link rel="up" title="API" href="../../api.html" />
+    <link rel="next" title="Gutter" href="gutter.html" />
+    <link rel="prev" title="Expression Listener" href="expressionlistener.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="gutter.html" title="Gutter"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="expressionlistener.html" title="Expression Listener"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" accesskey="U">API</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="grid">
+<h1>Grid<a class="headerlink" href="#grid" title="Permalink to this headline">¶</a></h1>
+<p>A (responsive) grid similiar to Foundation&#8217;s one. Offers columns and rows.</p>
+<p>The number of cols/rows can be configured via the <tt class="docutils literal"><span class="pre">$columns</span></tt> / <tt class="docutils literal"><span class="pre">$rows</span></tt>
+variable in <a class="reference internal" href="blue.html"><em>blue.framework Core</em></a>.</p>
+<p>Each element in the grid is a <em>box</em> and cannot be a <em>container</em> (see <a class="reference internal" href="container.html"><em>Container</em></a>).</p>
+<p>A group of <em>box</em> es should be wrapped in a <em>container</em>. This container must have a
+defined width to make the <em>col</em> s work properly. Same is true for <em>row</em> s and the container&#8217;s
+height.</p>
+<div class="section" id="offsets">
+<h2>Offsets<a class="headerlink" href="#offsets" title="Permalink to this headline">¶</a></h2>
+<p>A <em>col</em> or a <em>row</em> can have an offset.</p>
+</div>
+<div class="section" id="source-ordering">
+<h2>Source ordering<a class="headerlink" href="#source-ordering" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>col*s and <a href="#id3"><span class="problematic" id="id4">*</span></a>row*s can do source ordering (e.g. push and pull). For example, the code</p>
+<p>HTML:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;first&quot;</span><span class="nt">&gt;</span>1st<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;second&quot;</span><span class="nt">&gt;</span>2nd<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>SASS:</p>
+<div class="highlight-sass"><div class="highlight"><pre>.first {@include col(6);}
+.second {@include col(6);}
+</pre></div>
+</div>
+<p>has the same output as:</p>
+<p>HTML:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;second&quot;</span><span class="nt">&gt;</span>2nd<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;first&quot;</span><span class="nt">&gt;</span>1st<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>SASS:</p>
+<div class="highlight-sass"><div class="highlight"><pre>.second {@include col(6);@include col-push(6);}
+.first {@include col(6);@include col-pull(6);}
+</pre></div>
+</div>
+<p>For more information refer to the grid demo.</p>
+</div>
+<div class="section" id="direction">
+<h2>Direction<a class="headerlink" href="#direction" title="Permalink to this headline">¶</a></h2>
+<p>Each <em>box</em> has a direction indicating from which side the parent element will be
+filled (left or right).</p>
+</div>
+<div class="section" id="sass">
+<h2>SASS<a class="headerlink" href="#sass" title="Permalink to this headline">¶</a></h2>
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin box($direction)</tt></dt>
+<dd><p>An element which is part of the grid. Will be used by <tt class="docutils literal"><span class="pre">col</span></tt> and <tt class="docutils literal"><span class="pre">row</span></tt>, no
+need to use this directly.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$direction</tt></dt>
+<dd><p><tt class="docutils literal"><span class="pre">left</span></tt> or <tt class="docutils literal"><span class="pre">right</span></tt>, indicates the alignment of the grid.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin col($size,$direction:left)</tt></dt>
+<dd><p>An element with the width of <tt class="docutils literal"><span class="pre">$size</span></tt> cols.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$size</tt></dt>
+<dd><p>Width of the element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$direction</tt></dt>
+<dd><p>See <tt class="docutils literal"><span class="pre">box</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin col-offset($x)</tt></dt>
+<dd><p>Offset to the left of <tt class="docutils literal"><span class="pre">$x</span></tt> cols.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$x</tt></dt>
+<dd><p>Width of the offset.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin col-push($x)</tt></dt>
+<dd><p>The element pushes itself <tt class="docutils literal"><span class="pre">$x</span></tt> cols to the right.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$x</tt></dt>
+<dd><p>Number of cols.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin col-pull($x)</tt></dt>
+<dd><p>The element pulls itself <tt class="docutils literal"><span class="pre">$x</span></tt> cols to the left.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$x</tt></dt>
+<dd><p>Number of cols.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin row($size,$direction:left)</tt></dt>
+<dd><p>An element with the height of <tt class="docutils literal"><span class="pre">$size</span></tt> rows.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$size</tt></dt>
+<dd><p>Height of the element.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">$direction</tt></dt>
+<dd><p>See <tt class="docutils literal"><span class="pre">box</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin row-offset($x)</tt></dt>
+<dd><p>Offset to the top of <tt class="docutils literal"><span class="pre">$x</span></tt> rows. This mixin uses JavaScript, see <a class="reference internal" href="../jsplugins/grid.html"><em>Grid</em></a></p>
+<dl class="describe">
+<dt>
+<tt class="descname">$x</tt></dt>
+<dd><p>Height of the offset.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin row-push($x)</tt></dt>
+<dd><p>The element pushes itself <tt class="docutils literal"><span class="pre">$x</span></tt> rows to the bottom.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$x</tt></dt>
+<dd><p>Number of rows.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">&#64;mixin row-pull($x)</tt></dt>
+<dd><p>The element pulls itself <tt class="docutils literal"><span class="pre">$x</span></tt> rows to the top.</p>
+<dl class="describe">
+<dt>
+<tt class="descname">$x</tt></dt>
+<dd><p>Number of rows.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Grid</a><ul>
+<li><a class="reference internal" href="#offsets">Offsets</a></li>
+<li><a class="reference internal" href="#source-ordering">Source ordering</a></li>
+<li><a class="reference internal" href="#direction">Direction</a></li>
+<li><a class="reference internal" href="#sass">SASS</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="expressionlistener.html"
+                        title="previous chapter">Expression Listener</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gutter.html"
+                        title="next chapter">Gutter</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/api/sassmodules/grid.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="gutter.html" title="Gutter"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="expressionlistener.html" title="Expression Listener"
+             >previous</a> |</li>
+        <li><a href="../../index.html">blue.frontend 1.2.0 documentation</a> &raquo;</li>
+          <li><a href="../../api.html" >API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright blue treehouse, bluetreehouse.de. blue.frontend is released under the MIT license.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
