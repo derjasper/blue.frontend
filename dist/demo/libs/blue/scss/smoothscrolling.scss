@@ -1,3 +1,0 @@
-@mixin smoothscrolling($time:1000) {
-    @include customrule(smoothscrolling, (time: $time));
-}

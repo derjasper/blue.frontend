@@ -1,3 +1,0 @@
-@mixin stickyfooter($parent:"body") {
-    @include customrule(stickyfooter, (parent:$parent));
-}

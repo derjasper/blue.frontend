@@ -1,7 +1,0 @@
-@mixin predefine($classname,$flags...) {
-     @if $predefined {
-        .#{$classname} {
-            @content;
-        }
-     }
-}

@@ -1,8 +1,0 @@
-@mixin gutter($spacing...) { // $spacing: same as padding
-    @if (type-of(nth($spacing,1)) != number) {
-        $spacing:nth($spacing,1);
-    }
-                             
-    $spacing:multiply-list($gutter,$spacing);                         
-    padding:$spacing;
-}

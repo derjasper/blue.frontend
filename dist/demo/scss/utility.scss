@@ -1,7 +1,0 @@
-@import "demo.scss";
-
-.inline-image-demo {
-    img {
-        @include inline-image();
-    }
-}
