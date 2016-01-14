@@ -6,7 +6,7 @@ Features
 
 A SASS & JavaScript library to write a website's frontend. You can define JavaScript functionality using SASS mixins.
 
-Learn more about the framework itself: [Docs]http://derjasper.github.io/blue.frontend/docs), [Demo](http://derjasper.github.io/blue.frontend/demo) & [Website](http://derjasper.github.io/blue.frontend/).
+Learn more about the framework itself: [Docs](http://derjasper.github.io/blue.frontend/docs), [Demo](http://derjasper.github.io/blue.frontend/demo) & [Website](http://derjasper.github.io/blue.frontend/).
 
 Notes
 -----
