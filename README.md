@@ -30,12 +30,3 @@ LICENSE
 -------
 
 MIT License
-
-Donate
-------
-
-Bitcoin: 1M4hhpBENnVqJCwXekYhMPUP8TvUVx1NC9
-
-PayPal: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PEMUBVRD3B46G">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PEMUBVRD3B46G</a>
-
-
